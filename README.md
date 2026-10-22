@@ -1,137 +1,401 @@
-# Information Retrieval and Web Analytics (IRWA) - Final Project template
+# Information Retrieval and Web Analytics (IRWA) - Final Project
 
-<table>
-  <tr>
-    <td style="vertical-align: top;">
-      <img src="static/image.png" alt="Project Logo"/>
-    </td>
-    <td style="vertical-align: top;">
-      This repository contains the template code for the IRWA Final Project - Search Engine with Web Analytics.
-      The project is implemented using Python and the Flask web framework. It includes a simple web application that allows users to search through a collection of documents and view analytics about their searches.
-    </td>
-  </tr>
-</table>
+This repository contains our implementation of the **Information Retrieval and Web Analytics (IRWA) Final Project**.
 
-----
-## Project Structure
+The project develops an information retrieval system over a fashion-product dataset and is implemented incrementally in four parts:
 
-```
-/irwa-search-engine
-├── myapp                # Contains the main application logic
-├── templates            # Contains HTML templates for the Flask application
-├── static               # Contains static assets (images, CSS, JavaScript)
-├── data                 # Contains the dataset file (fashion_products_dataset.json)
-├── project_progress     # Contains your solutions for Parts 1, 2, and 3 of the project
-├── .env                 # Environment variables for configuration (e.g., API keys)
-├── .gitignore           # Specifies files and directories to be ignored by Git
-├── LICENSE              # License information for the project
-├── requirements.txt     # Lists Python package dependencies
-├── web_app.py           # Main Flask application
-└── README.md            # Project documentation and usage instructions
+- **Part 1 — Text Processing and Exploratory Data Analysis**
+- **Part 2 — Indexing and Evaluation**
+- **Part 3 — Ranking and Filtering**
+- **Part 4 — RAG, Web Interface and Web Analytics**
+
+The project is implemented in Python. The final stage will integrate the search engine into a Flask-based web application.
+
+---
+
+## Authors
+
+- Mariona Espí U232616
+- Ander Barnadas U233729
+- Pau Borrell U207992
+
+Repository:
+
+```text
+https://github.com/maariionaa-code/irwa-search-engine
 ```
 
+---
 
-----
-## To download this repo locally
+# Project Structure
 
-Open a terminal console and execute:
+```text
+irwa-search-engine/
+├── data/
+│   ├── fashion_products_dataset.json
+│   └── validation_labels.csv
+│
+├── myapp/
+│   ├── analytics/
+│   ├── core/
+│   ├── generation/
+│   └── search/
+│
+├── project_progress/
+│   ├── part_1/
+│   │   ├── part_1.ipynb
+│   │   ├── preprocessing.py
+│   │   ├── test_preprocessing.py
+│   │   ├── README.md
+│   │   ├── IRWA-2026-u232616-u233729-u207992-part-1.pdf
+│   │   └── figures/
+│   │
+│   ├── part_2/
+│   └── part_3/
+│
+├── static/
+├── templates/
+├── .gitignore
+├── LICENSE
+├── requirements.txt
+├── web_app.py
+└── README.md
 ```
-cd <your preferred projects root directory>
-git clone https://github.com/trokhymovych/irwa-search-engine.git
+
+The `project_progress/` directory contains the implementation and report material corresponding to each incremental project submission.
+
+---
+
+# Project Progress
+
+| Part | Description | Status |
+|---|---|---|
+| Part 1 | Text Processing and Exploratory Data Analysis | Complete |
+| Part 2 | Indexing and Evaluation | Not completed yet |
+| Part 3 | Ranking and Filtering | Not completed yet |
+| Part 4 | RAG, Web Interface and Web Analytics | Not completed yet |
+
+---
+
+# Data
+
+The project uses the fashion-products dataset provided for the course.
+
+Before running the project, place the following files inside the root `data/` directory:
+
+```text
+data/
+├── fashion_products_dataset.json
+└── validation_labels.csv
 ```
 
-## Setting up the Python environment (only for the first time you run the project)
-### Install virtualenv
-Setting up a virtualenv is recommended to isolate the project dependencies from other Python projects on your machine.
-It allows you to manage packages on a per-project basis, avoiding potential conflicts between different projects.
+These dataset files are not included in the repository.
 
-In the project root directory execute:
+The main dataset contains product information such as:
+
+- product ID
+- title
+- description
+- brand
+- category
+- sub-category
+- product details
+- seller
+- stock availability
+- selling price
+- actual price
+- discount
+- average rating
+- product URL
+
+The validation-label file contains relevance judgements that are used in later stages of the project for search-engine evaluation.
+
+---
+
+# Installation
+
+## 1. Clone the repository
+
 ```bash
-pip3 install virtualenv
-virtualenv --version
+git clone https://github.com/maariionaa-code/irwa-search-engine.git
+cd irwa-search-engine
 ```
 
-### Prepare virtualenv for the project
-In the root of the project folder run to create a virtualenv named `irwa_venv`:
+---
+
+## 2. Create a virtual environment
+
 ```bash
-virtualenv irwa_venv
+python -m venv .venv
 ```
 
-If you list the contents of the project root directory, you will see that it has created a new folder named `irwa_venv` that contains the virtualenv:
+### Windows PowerShell
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
+### macOS / Linux
+
 ```bash
-ls -l
+source .venv/bin/activate
 ```
 
-The next step is to activate your new virtualenv for the project:
+---
+
+## 3. Install dependencies
+
 ```bash
-source irwa_venv/bin/activate
-```
-
-or for Windows...
-```cmd
-irwa_venv\Scripts\activate.bat
-```
-
-This will load the python virtualenv for the project.
-
-### Installing Flask and other packages in your virtualenv
-Make sure you are in the root of the project folder and that your virtualenv is activated (you should see `(irwa_venv)` in your terminal prompt).
-And then install all the packages listed in `requirements.txt` with:
-```bash
+python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-If you need to add more packages in the future, you can install them with pip and then update `requirements.txt` with:
+---
+
+## 4. Download required NLTK resources
+
+The preprocessing pipeline uses the NLTK English stop-word corpus.
+
+Run:
+
 ```bash
-pip freeze > requirements.txt
+python -m nltk.downloader stopwords
 ```
 
-Enjoy!
+---
 
+## 5. Add the data files
 
-## Starting the Web App
+Make sure these two files exist:
+
+```text
+data/fashion_products_dataset.json
+data/validation_labels.csv
+```
+
+---
+
+# Part 1 — Text Processing and Exploratory Data Analysis
+
+Part 1 prepares the fashion-product corpus for later retrieval and ranking stages.
+
+The implementation includes:
+
+- dataset inspection
+- missing-value analysis
+- text normalization
+- tokenization
+- punctuation removal
+- stop-word removal
+- stemming
+- product metadata preprocessing
+- structured `product_details` processing
+- numerical field conversion
+- construction of searchable document representations
+- preprocessing unit tests
+- exploratory data analysis
+- corpus vocabulary analysis
+- category, brand and seller analysis
+- stock, price, discount and rating analysis
+- generated visualizations
+
+The original product fields are preserved for display purposes while additional processed representations are created for future indexing and ranking.
+
+Detailed Part 1 documentation is available in:
+
+```text
+project_progress/part_1/README.md
+```
+
+---
+
+# Running Part 1
+
+From the repository root, first run the preprocessing tests:
+
 ```bash
-python -V
-# Make sure we use Python 3
-
-cd search-engine-web-app
-python web_app.py
-```
-The above will start a web server with the application:
-```
- * Serving Flask app 'web-app' (lazy loading)
- * Environment: production
-   WARNING: This is a development server. Do not use it in a production deployment.
-   Use a production WSGI server instead.
- * Debug mode: off
- * Running on http://127.0.0.1:8088/ (Press CTRL+C to quit)
+python -m pytest project_progress/part_1/test_preprocessing.py -v
 ```
 
-Open Web app in your Browser:  
-[http://127.0.0.1:8088/](http://127.0.0.1:8088/) or [http://localhost:8088/](http://localhost:8088/)
+All tests should pass.
 
+Then launch the Part 1 notebook:
 
-## Creating your own GitHub repo
-After creating the project and code in local computer...
-
-1. Login to GitHub and create a new repo.
-2. Go to the root page of your new repo and note the url from the browser.
-3. Execute the following locally:
 ```bash
-cd <project root folder>
-git init -b main
-git add . && git commit -m "initial commit"
-git remote add origin <your GitHub repo URL from the browser>
-git push -u origin main
+jupyter lab project_progress/part_1/part_1.ipynb
 ```
 
-## Usage: 
-0. Put the data file `fashion_products_dataset.json` in the `data` folder. It will be provided to you by the instructor.
-1. As for Parts 1, 2, and 3 of the project, please use the `project_progress` folder to store your solutions. Each part should contain `.pdf` file with your report and `.ipynb` (Jupyter Notebook) file with your code for solution and `README.md` with explanation of the content and instructions for results reproduction.
-2. For the Part 4, of the project, you should build a web application using Flask that allows users to search through a collection of documents and view analytics about their searches. You should work mailnly in the `web_app.py` file `myapp` and `templates` folders. Feel free to change any code or add new files as needed. The provided code is just a starting point to help you get started quickly.
-3. Make sure to update the `.env` file with your Groq API key (can be found [here](https://groq.com/), the free version is more than enough for our purposes) and any other necessary configurations. IMPORTANT: Do not share your `.env` file publicly as it contains sensitive information. It is included in `.gitignore` to prevent accidental commits. (It should never be included in the repos and appear here only for demonstration purposes).
-4. Have fun and be creative!
+Alternatively, the notebook can be opened directly in VS Code or another Jupyter-compatible environment.
 
-## Attribution:
-The project is adapted from the following sources:
-- [IRWA Template 2021](https://github.com/irwa-labs/search-engine-web-app)
+Run all notebook cells from top to bottom.
+
+The generated EDA figures are stored in:
+
+```text
+project_progress/part_1/figures/
+```
+
+---
+
+# Part 1 Search Representation
+
+The Part 1 preprocessing pipeline preserves the original product information and generates separate processed fields for:
+
+- `title`
+- `description`
+- `brand`
+- `category`
+- `sub_category`
+- `product_details`
+- `seller`
+
+A combined `search_tokens` representation is constructed using:
+
+- title
+- description
+- brand
+- category
+- sub-category
+- product details
+
+The seller field is retained separately but is not included in the default combined representation.
+
+Numerical and boolean attributes such as:
+
+- selling price
+- actual price
+- discount
+- average rating
+- stock availability
+
+are maintained as structured values rather than being indexed as ordinary textual terms.
+
+These decisions provide the basis for the indexing and ranking methods implemented in later parts of the project.
+
+---
+
+# Parts 2 and 3
+
+Parts 2 and 3 will extend the preprocessing work with information-retrieval functionality including:
+
+- inverted indexes
+- conjunctive retrieval
+- TF-IDF
+- ranking
+- retrieval evaluation
+- BM25
+- alternative ranking strategies
+- filtering
+- semantic representations
+
+Their implementations will be stored under:
+
+```text
+project_progress/part_2/
+project_progress/part_3/
+```
+
+---
+
+# Part 4 — Web Application and RAG
+
+The final stage of the project will integrate the search engine into a Flask-based application.
+
+Part 4 will include:
+
+- search-engine integration
+- user interface
+- Retrieval-Augmented Generation (RAG)
+- interaction with an LLM
+- web analytics
+- query and user-interaction tracking
+
+The final web application will use the existing:
+
+```text
+web_app.py
+myapp/
+templates/
+static/
+```
+
+structure.
+
+Detailed execution instructions for the final application will be added once Part 4 is completed.
+
+---
+
+# Testing
+
+Part 1 preprocessing tests can be executed from the repository root with:
+
+```bash
+python -m pytest project_progress/part_1/test_preprocessing.py -v
+```
+
+Additional tests may be added as later parts of the project are implemented.
+
+---
+
+# Reproducibility
+
+To reproduce the current Part 1 results:
+
+```bash
+git clone https://github.com/maariionaa-code/irwa-search-engine.git
+cd irwa-search-engine
+
+python -m venv .venv
+```
+
+Activate the environment.
+
+### Windows PowerShell
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
+### macOS / Linux
+
+```bash
+source .venv/bin/activate
+```
+
+Then run:
+
+```bash
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+python -m nltk.downloader stopwords
+```
+
+Add:
+
+```text
+data/fashion_products_dataset.json
+data/validation_labels.csv
+```
+
+Then:
+
+```bash
+python -m pytest project_progress/part_1/test_preprocessing.py -v
+jupyter lab project_progress/part_1/part_1.ipynb
+```
+
+Run the notebook from beginning to end to reproduce the preprocessing results, statistics and EDA figures.
+
+---
+
+# AI Usage
+
+Generative AI tools were used during the development process for tasks such as:
+
+- reviewing preprocessing decisions
+- assisting with code generation
+- suggesting test cases
+- reviewing project structure
+- improving documentation clarity
+
+All suggestions incorporated into the project were reviewed and understood by the group. The group remains responsible for the final code, methodology, analysis and conclusions.
