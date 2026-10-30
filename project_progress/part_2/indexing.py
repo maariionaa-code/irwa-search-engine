@@ -46,6 +46,22 @@ def build_inverted_index(documents):
 
     return {term: sorted(pids) for term, pids in index.items()}
 
+def search_and(query, inverted_index):
+    """Return products containing all query terms."""
+
+    query_terms = preprocess_text(query)
+
+    if not query_terms:
+        return []
+
+    postings_lists = [
+        set(inverted_index.get(term, []))
+        for term in query_terms
+    ]
+
+    results = set.intersection(*postings_lists)
+
+    return sorted(results)
 
 if __name__ == "__main__":
 
@@ -56,3 +72,23 @@ if __name__ == "__main__":
     print("Unique terms:", len(inverted_index))
     print("Products containing cotton:", len(inverted_index.get("cotton", [])))
     print("First 5 product IDs:", inverted_index.get("cotton", [])[:5])
+    
+    query = "blue jeans"
+    results = search_and(query, inverted_index)
+
+    print("\nQuery:", query)
+    print("Matching products:", len(results))
+    print("First 5 results:", results[:5])
+    
+    # Verify that every result contains all query terms
+    query_terms = set(preprocess_text(query))
+
+    assert all(
+        query_terms.issubset(set(documents[pid]))
+        for pid in results
+    )
+
+    # Verify that queries without matches return an empty list
+    assert search_and("zznonexistentterm123", inverted_index) == []
+
+    print("AND search validation passed!")
