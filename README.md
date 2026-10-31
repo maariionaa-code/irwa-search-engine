@@ -71,7 +71,7 @@ The `project_progress/` directory contains the implementation and report materia
 | Part | Description | Status |
 |---|---|---|
 | Part 1 | Text Processing and Exploratory Data Analysis | Complete |
-| Part 2 | Indexing and Evaluation | Not completed yet |
+| Part 2 | Indexing and Evaluation | Implementation complete; report pending |
 | Part 3 | Ranking and Filtering | Not completed yet |
 | Part 4 | RAG, Web Interface and Web Analytics | Not completed yet |
 
@@ -274,26 +274,155 @@ These decisions provide the basis for the indexing and ranking methods implement
 
 ---
 
-# Parts 2 and 3
 
-Parts 2 and 3 will extend the preprocessing work with information-retrieval functionality including:
+# Part 2 — Indexing and Evaluation
 
-- inverted indexes
-- conjunctive retrieval
-- TF-IDF
-- ranking
-- retrieval evaluation
-- BM25
-- alternative ranking strategies
-- filtering
-- semantic representations
+Part 2 implements an inverted index, conjunctive retrieval
+(AND), TF-IDF ranking and retrieval evaluation over the
+fashion-product corpus prepared in Part 1.
 
-Their implementations will be stored under:
+## Implementation
 
-```text
-project_progress/part_2/
-project_progress/part_3/
+The implementation is located in:
+
+`project_progress/part_2/`
+
+The main components are:
+
+- `indexing.py`: loads processed documents, constructs an
+  inverted index and implements Boolean AND retrieval.
+- `ranking.py`: ranks matching products using TF-IDF
+  cosine similarity.
+- `evaluation.py`: implements the seven evaluation metrics.
+- `evaluate_validation.py`: evaluates the original order
+  of the professor's labeled validation documents.
+- `evaluate_validation_ranked.py`: evaluates TF-IDF within
+  the professor's judged document pool.
+- `prepare_test_queries.py`: generates ranked candidates
+  for five custom queries.
+- `evaluate_test_queries.py`: evaluates the manually
+  labeled custom-query results.
+- `test_part_2.py`: automated tests for Part 2.
+
+## Retrieval Methodology
+
+Documents and queries use the same preprocessing pipeline
+as Part 1, including normalization, tokenization,
+stop-word removal and Snowball stemming.
+
+The inverted index maps each term to the product IDs
+containing that term.
+
+Boolean AND retrieval requires every processed query
+term to appear in the searchable document representation.
+
+TF-IDF ranking uses:
+
+- Logarithmic term frequency: 1 + ln(tf)
+- Smoothed IDF: ln((N + 1) / (df + 1)) + 1
+- Cosine similarity between document and query vectors
+
+Results are sorted by decreasing cosine similarity.
+
+## Running Part 2
+
+Run all commands from the repository root.
+
+### Inverted index and AND retrieval
+
+```bash
+python -m project_progress.part_2.indexing
 ```
+
+### TF-IDF ranking
+
+```bash
+python -m project_progress.part_2.ranking
+```
+
+### Original validation-label evaluation
+
+```bash
+python -m project_progress.part_2.evaluate_validation
+```
+
+### TF-IDF validation within the labeled pool
+
+```bash
+python -m project_progress.part_2.evaluate_validation_ranked
+```
+
+### Five custom queries
+
+The evaluated queries are:
+
+- Q1: women cotton kurta
+- Q2: men slim fit jeans
+- Q3: men running shoes
+- Q4: women full sleeve jacket
+- Q5: men cotton sports shorts
+
+The file `test_queries_judgments.csv` contains the
+top 20 ranked products for each query, with binary
+relevance judgments.
+
+To calculate the evaluation metrics:
+
+```bash
+python -m project_progress.part_2.evaluate_test_queries
+```
+
+This produces:
+
+- `test_queries_metrics.csv`
+- `test_queries_summary.csv`
+
+Do not rerun `prepare_test_queries.py` after manually
+labeling the products because it overwrites the
+relevance judgments.
+
+## Evaluation Metrics
+
+The implemented metrics are:
+
+- Precision@K
+- Recall@K
+- F1@K
+- Average Precision@K
+- Mean Average Precision (MAP)
+- Mean Reciprocal Rank (MRR)
+- Normalized Discounted Cumulative Gain (NDCG)
+
+Results are evaluated for K = 5, 10 and 20.
+
+Relevance judgments are binary: 1 for relevant
+documents and 0 for non-relevant documents.
+
+Recall and related metrics for the custom queries are
+relative to the 20 labeled candidates per query.
+They should not be interpreted as full-corpus recall.
+
+For the professor's validation queries, TF-IDF is also
+evaluated within the available labeled pool. Unjudged
+documents are excluded, so these results are not
+equivalent to full-corpus top-K evaluation.
+
+## Tests
+
+Run all Part 1 and Part 2 tests:
+
+```bash
+python -m pytest project_progress/part_1/test_preprocessing.py project_progress/part_2/test_part_2.py -v
+```
+
+The verified test run passed all 31 tests:
+24 preprocessing tests and 7 Part 2 tests.
+
+# Part 3 — Ranking and Filtering
+
+Part 3 will extend the retrieval system with additional
+ranking algorithms, filtering capabilities and other
+improvements specified in the next assignment.
 
 ---
 

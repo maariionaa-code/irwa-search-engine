@@ -89,13 +89,22 @@ def read_judgments():
             raise ValueError(f"Duplicate product IDs in {query_id}.")
 
     # Check for potential Excel decimal conversion errors
+        # Validate TF-IDF scores and ranking order
     if "tfidf_score" in df.columns:
-
         scores = pd.to_numeric(df["tfidf_score"], errors="coerce")
 
-        if scores.isna().any() or (scores < 0).any() or (scores > 1).any():
-            print("WARNING: TF-IDF scores may have been altered by Excel.")
-            print("Evaluation will use the original rank order.")
+        if scores.isna().any() or not scores.between(0, 1).all():
+            raise ValueError("Invalid TF-IDF scores detected.")
+
+        df["tfidf_score"] = scores
+
+        for query_id, group in df.groupby("query_id"):
+            ordered = group.sort_values("rank")["tfidf_score"]
+
+            if (ordered.diff().dropna() > 1e-9).any():
+                raise ValueError(
+                    f"Incorrect score ordering in {query_id}"
+                )
 
     return df
 

@@ -34,6 +34,11 @@ TOP_K = 20
 
 def export_candidates() -> None:
     """Rank each query and export the top K with empty manual relevance labels."""
+    if OUTPUT_PATH.exists():
+        raise FileExistsError(
+            "The judgments CSV already exists. "
+            "It cannot be overwritten automatically."
+        )
     documents = load_processed_documents()
     inverted_index = build_inverted_index(documents)
     products = pd.read_json(DATASET_PATH).set_index("pid")
