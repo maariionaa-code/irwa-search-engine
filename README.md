@@ -71,7 +71,7 @@ The `project_progress/` directory contains the implementation and report materia
 | Part | Description | Status |
 |---|---|---|
 | Part 1 | Text Processing and Exploratory Data Analysis | Complete |
-| Part 2 | Indexing and Evaluation | Implementation complete; report pending |
+| Part 2 | Indexing and Evaluation | Complete |
 | Part 3 | Ranking and Filtering | Not completed yet |
 | Part 4 | RAG, Web Interface and Web Analytics | Not completed yet |
 
@@ -310,8 +310,33 @@ Documents and queries use the same preprocessing pipeline
 as Part 1, including normalization, tokenization,
 stop-word removal and Snowball stemming.
 
+
+We also added an explicit normalization rule for the
+irregular plural "women", which is converted to "woman"
+before applying Snowball stemming.
+
+This correction was necessary because Snowball does not
+automatically normalize this irregular plural.
+
+By applying the same rule to documents and queries,
+both "women" and "woman" can match the same products.
+
 The inverted index maps each term to the product IDs
 containing that term.
+
+
+The default `search_tokens` representation combines the
+processed title, description, category, sub-category and
+product details.
+
+Brand and seller tokens are preserved separately but
+excluded from the default searchable representation.
+This avoids introducing irrelevant matches or giving
+unnecessary importance to brand and seller names
+during TF-IDF ranking.
+
+The original fields remain available for future
+field-specific searches and filtering.
 
 Boolean AND retrieval requires every processed query
 term to appear in the searchable document representation.
@@ -377,9 +402,9 @@ This produces:
 - `test_queries_metrics.csv`
 - `test_queries_summary.csv`
 
-Do not rerun `prepare_test_queries.py` after manually
-labeling the products because it overwrites the
-relevance judgments.
+The query candidate exporter refuses to overwrite an
+existing judgments file, preventing accidental loss
+of manual relevance labels.
 
 ## Evaluation Metrics
 
@@ -415,8 +440,8 @@ Run all Part 1 and Part 2 tests:
 python -m pytest project_progress/part_1/test_preprocessing.py project_progress/part_2/test_part_2.py -v
 ```
 
-The verified test run passed all 31 tests:
-24 preprocessing tests and 7 Part 2 tests.
+The verified test run passed all 33 tests:
+26 preprocessing tests and 7 Part 2 tests.
 
 # Part 3 — Ranking and Filtering
 

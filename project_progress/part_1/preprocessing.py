@@ -86,13 +86,23 @@ def remove_stopwords(tokens: list[str]) -> list[str]:
     ]
 
 
+
 def stem_tokens(tokens: list[str]) -> list[str]:
     """
     Stem tokens using the English Snowball stemmer.
 
-    Stemming reduces related words to a shared representation.
+    Irregular plurals are normalized explicitly because
+    Snowball does not handle all of them.
     """
-    return [STEMMER.stem(token) for token in tokens]
+    irregular_plurals = {
+        "women": "woman",
+    }
+
+    return [
+        STEMMER.stem(irregular_plurals.get(token, token))
+        for token in tokens
+    ]
+
 
 
 def preprocess_text(text: Any) -> list[str]:
@@ -198,29 +208,27 @@ def parse_discount(value: Any) -> float | None:
 
 # Combined retrieval representation
 
+
 SEARCHABLE_TOKEN_FIELDS = [
     "title_tokens",
     "description_tokens",
-    "brand_tokens",
     "category_tokens",
     "sub_category_tokens",
     "product_details_tokens",
 ]
 
 
+
 def combine_search_tokens(row: pd.Series) -> list[str]:
     """
     Combine descriptive token fields into one searchable representation.
 
-    Separate processed fields are preserved so that later ranking algorithms
-    can assign different weights depending on where a query term appears.
+    Brand and seller tokens are preserved separately but excluded
+    from the default search representation to avoid introducing
+    irrelevant matches or bias into TF-IDF ranking.
 
-    Seller tokens are intentionally excluded from the default combined search
-    representation because seller names usually describe the merchant rather
-    than the product itself.
-
-    Token duplicates are deliberately preserved because term frequency will
-    be useful for TF-IDF and BM25 ranking in later project stages.
+    Token duplicates are preserved because term frequency
+    is needed for ranking.
     """
     combined = []
 

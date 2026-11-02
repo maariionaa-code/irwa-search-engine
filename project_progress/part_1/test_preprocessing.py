@@ -11,6 +11,7 @@ from preprocessing import (
     product_details_to_text,
     parse_numeric_value,
     parse_discount,
+    combine_search_tokens,
 )
 
 
@@ -125,12 +126,17 @@ def test_complete_preprocessing():
         "Women's Full-Sleeve Cotton Sweatshirts!"
     )
 
-    assert "women" in result
+    assert "woman" in result
     assert "full" in result
     assert "sleev" in result
     assert "cotton" in result
     assert "sweatshirt" in result
 
+
+def test_irregular_plural_women():
+    result = preprocess_text("Women woman women's")
+
+    assert result == ["woman", "woman", "woman"]
 
 def test_complete_preprocessing_missing():
     assert preprocess_text(None) == []
@@ -217,3 +223,30 @@ def test_parse_missing_numeric():
 
 def test_parse_empty_numeric():
     assert parse_numeric_value("") is None
+    
+
+
+def test_brand_and_seller_excluded_from_default_search():
+    row = {
+        "title_tokens": ["cotton", "shirt"],
+        "description_tokens": ["soft"],
+        "brand_tokens": ["examplebrand"],
+        "category_tokens": ["clothing"],
+        "sub_category_tokens": ["topwear"],
+        "product_details_tokens": ["blue"],
+        "seller_tokens": ["exampleseller"],
+    }
+
+    result = combine_search_tokens(row)
+
+    assert "examplebrand" not in result
+    assert "exampleseller" not in result
+
+    assert result == [
+        "cotton",
+        "shirt",
+        "soft",
+        "clothing",
+        "topwear",
+        "blue",
+    ]
