@@ -51,8 +51,39 @@ irwa-search-engine/
 │   │   └── figures/
 │   │
 │   ├── part_2/
+│   │   ├── indexing.py
+│   │   ├── ranking.py
+│   │   ├── evaluation.py
+│   │   ├── evaluate_validation.py
+│   │   ├── evaluate_validation_ranked.py
+│   │   ├── prepare_test_queries.py
+│   │   ├── evaluate_test_queries.py
+│   │   ├── recalculate_tfidf_scores.py
+│   │   ├── test_part_2.py
+│   │   ├── test_queries_judgments.csv
+│   │   ├── test_queries_metrics.csv
+│   │   ├── test_queries_summary.csv
+│   │   └── validation_ranked_metrics.csv
+│   │
 │   └── part_3/
-│
+│       ├── corpus.py
+│       ├── ranking_methods.py
+│       ├── embedded_ranking.py
+│       ├── pipeline.py
+│       ├── queries.py
+│       ├── query_term_stats.py
+│       ├── run_rankings.py
+│       ├── export_judgment_pool.py
+│       ├── evaluate_methods.py
+│       ├── compare_rankings.py
+│       ├── make_figures.py
+│       ├── test_part_3.py
+│       ├── judgments_pool.csv
+│       ├── README.md
+│       ├── results/                  
+│       ├── figures/                  
+│       └── models/           
+│ 
 ├── static/
 ├── templates/
 ├── .gitignore
@@ -72,7 +103,7 @@ The `project_progress/` directory contains the implementation and report materia
 |---|---|---|
 | Part 1 | Text Processing and Exploratory Data Analysis | Complete |
 | Part 2 | Indexing and Evaluation | Complete |
-| Part 3 | Ranking and Filtering | Not completed yet |
+| Part 3 | Ranking and Filtering | Complete |
 | Part 4 | RAG, Web Interface and Web Analytics | Not completed yet |
 
 ---
@@ -445,10 +476,46 @@ The verified test run passed all 33 tests:
 
 # Part 3 — Ranking and Filtering
 
-Part 3 will extend the retrieval system with additional
-ranking algorithms, filtering capabilities and other
-improvements specified in the next assignment.
+Part 3 keeps the conjunctive (AND) retrieval of Part 2 fixed and compares different ways of ordering the same matching products. Every method ranks exactly the same candidates, so differences between methods come only from the scoring function.
 
+## Ranking methods
+- TF-IDF + cosine (ranking_methods.rank_tfidf): Same formulation as Part 2 - (verified by a test).
+- BM25 (ranking_methods.rank_bm25):Saturated term frequency (k1=1.2) and length normalization relative to the average (b = 0.75).
+- Our score (ranking_methods.rank_our_score): 
+- word2vec + cosine (embedded_ranking.rank_word2vec): Average of word vectors trained on our corpus, cosine with the query
+- Doc2Vec + cosine (embedded_ranking.rank_doc2vec): Additional experiment, learned document vectors (PV-DBOW)
+
+## Implementation
+The implementation is located in project_progress/part3/:
+- corpus.py: loads the dataset with Part1 preprocessing and builds the shared index statistics (term frequencies, document frequencies, document lengths)
+- ranking_methods.py: TF-IDF, BM25 and our own score.
+- embedded_ranking.py: trains word2vec and Doc2Vec (fixed seed, single worker for reproducibility) and ranks with them.
+- pipeline.py: Search Engine class exposing every method, plus a command-line search.
+- queries.py: the five Part 2 queries (Q1-Q5) and three gender neutral queries (Q6-Q8).
+- query_term_stats.py: doucment frequency and IDF of every query term.
+- run_rankings.py: top-20 list per query and method.
+- export_judgment_pool.py: builds the judgment pool (union of all methods top 20), reusing Part 2 labels and never overwriting existing ones.
+- evaluate_methods.py: all evaluation metrics per method, reusing the Part 2 metric functions.
+- compare_renking.py: agreement between methods (overlap@10, Jaccard@20, Kendalls tau) and the products whose rank changes most between TF-IDF and BM25.
+- make_figures.py: figures for the report
+- test_part_3.py: automated tests for Part 3, including hand-computed BM25 values.
+
+Detailed Part 3 documentation is available in project_progress/part_3/README.md
+
+## Running Part 3
+Run all commands from the repository root, in this order:
+python -m project_progress.part_3.query_term_stats      # 1. query term statistics
+python -m project_progress.part_3.run_rankings          # 2. top-20 lists (trains the embeddings on first run)
+python -m project_progress.part_3.export_judgment_pool  # 3. judgment pool to label
+python -m project_progress.part_3.evaluate_methods      # 4. evaluation metrics per method
+python -m project_progress.part_3.compare_rankings      # 5. agreement between methods
+python -m project_progress.part_3.make_figures          # 6. figures
+
+To search with any query and method:
+python -m project_progress.part_3.pipeline "men slim fit jeans" --method our_score --top-k 10
+
+Available methods: tfidf, bm25, our_score, word2vec, doc2vec.
+The trained models are saved in project_progress/pert3/models/, which is not committed because the models can be reproduced with the same seed. Use python -m project_progress.part_3.run_rankings --retrain to rebuild them.
 ---
 
 # Part 4 — Web Application and RAG
