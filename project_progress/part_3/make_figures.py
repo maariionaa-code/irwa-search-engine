@@ -17,8 +17,8 @@ from project_progress.part_3.run_rankings import RESULTS_DIR  # noqa: E402
 
 
 FIGURES_DIR = RESULTS_DIR.parent / "figures"
-METHOD_ORDER = ["tfidf", "bm25", "our_score", "word2vec", "doc2vec"]
-LABELS = {"tfidf": "TF-IDF", "bm25": "BM25", "our_score": "Our score",
+METHOD_ORDER = ["tfidf", "bm25", "our_score", "intent_score", "word2vec", "doc2vec"]
+LABELS = {"tfidf": "TF-IDF", "bm25": "BM25", "our_score": "Our score", "intent_score": "Intent score",
           "word2vec": "word2vec", "doc2vec": "Doc2Vec"}
 
 
@@ -67,10 +67,28 @@ def kendall_heatmap(agreement: pd.DataFrame):
     plt.close(fig)
 
 
+def map_by_k(metrics: pd.DataFrame):
+    """MAP@K (pool) of every method for K = 5, 10, 15, 20, all queries."""
+    data = metrics.groupby(["method", "k"])["AP@K_pool"].mean().unstack("method")
+    fig, ax = plt.subplots(figsize=(7, 4.5))
+    for method in [m for m in METHOD_ORDER if m in data.columns]:
+        ax.plot(data.index, data[method], marker="o", label=LABELS[method])
+    ax.set_xticks(list(data.index))
+    ax.set_xlabel("K (cut-off)")
+    ax.set_ylabel("MAP@K (pool)")
+    ax.set_ylim(0, 1.05)
+    ax.legend(frameon=False)
+    fig.tight_layout()
+    fig.savefig(FIGURES_DIR / "map_by_k.png", dpi=200)
+    plt.close(fig)
+
+
 def main():
     """Write all figures to ``figures/``."""
     FIGURES_DIR.mkdir(exist_ok=True)
-    p_at_10_by_query(pd.read_csv(METRICS_CSV))
+    metrics = pd.read_csv(METRICS_CSV)
+    p_at_10_by_query(metrics)
+    map_by_k(metrics)
     kendall_heatmap(pd.read_csv(AGREEMENT_CSV))
     print(f"Figures saved in {FIGURES_DIR}")
 

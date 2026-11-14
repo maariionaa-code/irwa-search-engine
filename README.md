@@ -66,23 +66,31 @@ irwa-search-engine/
 │   │   └── validation_ranked_metrics.csv
 │   │
 │   └── part_3/
-│       ├── corpus.py
-│       ├── ranking_methods.py
-│       ├── embedded_ranking.py
-│       ├── pipeline.py
+│       ├── corpus.py                      # dataset loading + shared index statistics
+│       ├── ranking_methods.py             # TF-IDF, BM25, our score
+│       ├── intent_score.py                # intent-aware score (second original score)
+│       ├── embedded_ranking.py            # word2vec and Doc2Vec
+│       ├── pipeline.py                    # SearchEngine class + command-line search
 │       ├── queries.py
 │       ├── query_term_stats.py
 │       ├── run_rankings.py
 │       ├── export_judgment_pool.py
 │       ├── evaluate_methods.py
+│       ├── evaluate_validation_methods.py
 │       ├── compare_rankings.py
+│       ├── ablation.py
+│       ├── explain_scores.py
+│       ├── inspect_embeddings.py
+│       ├── rank_statistics.py             # significance test and rank-biased overlap
 │       ├── make_figures.py
 │       ├── test_part_3.py
-│       ├── judgments_pool.csv
+│       ├── test_intent_score.py
+│       ├── test_extras.py
+│       ├── judgments_pool.csv             # pooled relevance judgments
 │       ├── README.md
-│       ├── results/                  
-│       ├── figures/                  
-│       └── models/           
+│       ├── results/                       # CSV outputs of the experiments
+│       ├── figures/                       # report figures
+│       └── models/                        # trained embeddings (not committed)
 │ 
 ├── static/
 ├── templates/
@@ -284,12 +292,11 @@ A combined `search_tokens` representation is constructed using:
 
 - title
 - description
-- brand
 - category
 - sub-category
 - product details
 
-The seller field is retained separately but is not included in the default combined representation.
+**Brand and seller** tokens are retained separately but are **not** included in the default combined representation. Brand was removed after the Part 1 feedback: it describes who makes the product, not what the product is, and it created false matches (e.g. the brand "True Blue" matching the query word "blue") and gave some brands an advantage unrelated to the user's need.
 
 Numerical and boolean attributes such as:
 
@@ -299,7 +306,7 @@ Numerical and boolean attributes such as:
 - average rating
 - stock availability
 
-are maintained as structured values rather than being indexed as ordinary textual terms.
+are maintained as structured values rather than being indexed as ordinary textual terms. Part 3 uses rating, discount and stock in its own ranking score.
 
 These decisions provide the basis for the indexing and ranking methods implemented in later parts of the project.
 
@@ -476,46 +483,72 @@ The verified test run passed all 33 tests:
 
 # Part 3 — Ranking and Filtering
 
-Part 3 keeps the conjunctive (AND) retrieval of Part 2 fixed and compares different ways of ordering the same matching products. Every method ranks exactly the same candidates, so differences between methods come only from the scoring function.
+Part 3 keeps the conjunctive (AND) retrieval of Part 2 fixed and compares different ways of **ordering** the same matching products. Every method ranks exactly the same candidates, so differences between methods come only from the scoring function.
 
 ## Ranking methods
-- TF-IDF + cosine (ranking_methods.rank_tfidf): Same formulation as Part 2 - (verified by a test).
-- BM25 (ranking_methods.rank_bm25):Saturated term frequency (k1=1.2) and length normalization relative to the average (b = 0.75).
-- Our score (ranking_methods.rank_our_score): 
-- word2vec + cosine (embedded_ranking.rank_word2vec): Average of word vectors trained on our corpus, cosine with the query
-- Doc2Vec + cosine (embedded_ranking.rank_doc2vec): Additional experiment, learned document vectors (PV-DBOW)
+
+| Method | Function | Idea |
+|---|---|---|
+| TF-IDF + cosine | `ranking_methods.rank_tfidf` | Same formulation as Part 2 (verified by a test) |
+| BM25 | `ranking_methods.rank_bm25` | Saturated term frequency (k1 = 1.2) and length normalization relative to the average length (b = 0.75) |
+| Our score | `ranking_methods.rank_our_score` | Relevance + product quality: `stock × (0.55·T + 0.25·C + 0.15·R + 0.05·D)` with T = BM25 / best BM25 of the query, C = share of query terms in the title, R = rating rescaled to [0, 1] (missing → median), D = discount / 100, stock = 1 (in stock) or 0.5 (out of stock) |
+| Intent score | `intent_score.IntentScorer.rank` | Relevance + query intent: `T × K × G × A × S` with K = category coherence (pseudo-relevance feedback on the top-20 BM25 sub-categories), G = gender consistency with the query ("Ideal For" or title), A = agreement of structured attributes (Fit, Fabric, Sleeve, Color, Generic Name, Hooded…) with the query words, S = stock factor |
+| word2vec + cosine | `embedded_ranking.rank_word2vec` | Average of word vectors trained on our corpus, cosine with the query |
+| Doc2Vec + cosine | `embedded_ranking.rank_doc2vec` | Additional experiment: learned document vectors (PV-DBOW) |
 
 ## Implementation
-The implementation is located in project_progress/part3/:
-- corpus.py: loads the dataset with Part1 preprocessing and builds the shared index statistics (term frequencies, document frequencies, document lengths)
-- ranking_methods.py: TF-IDF, BM25 and our own score.
-- embedded_ranking.py: trains word2vec and Doc2Vec (fixed seed, single worker for reproducibility) and ranks with them.
-- pipeline.py: Search Engine class exposing every method, plus a command-line search.
-- queries.py: the five Part 2 queries (Q1-Q5) and three gender neutral queries (Q6-Q8).
-- query_term_stats.py: doucment frequency and IDF of every query term.
-- run_rankings.py: top-20 list per query and method.
-- export_judgment_pool.py: builds the judgment pool (union of all methods top 20), reusing Part 2 labels and never overwriting existing ones.
-- evaluate_methods.py: all evaluation metrics per method, reusing the Part 2 metric functions.
-- compare_renking.py: agreement between methods (overlap@10, Jaccard@20, Kendalls tau) and the products whose rank changes most between TF-IDF and BM25.
-- make_figures.py: figures for the report
-- test_part_3.py: automated tests for Part 3, including hand-computed BM25 values.
 
-Detailed Part 3 documentation is available in project_progress/part_3/README.md
+The implementation is located in `project_progress/part_3/`:
+
+- `corpus.py`: loads the dataset with the Part 1 preprocessing and builds the shared index statistics (term frequencies, document frequencies, document lengths).
+- `ranking_methods.py`: TF-IDF, BM25 and our score.
+- `intent_score.py`: the intent-aware score (category, gender and attribute signals).
+- `embedded_ranking.py`: trains word2vec and Doc2Vec (fixed seed, single worker for reproducibility) and ranks with them.
+- `pipeline.py`: `SearchEngine` class exposing every method, plus a command-line search.
+- `queries.py`: the five Part 2 queries (Q1–Q5) and three gender-neutral queries (Q6–Q8).
+- `query_term_stats.py`: document frequency and IDF of every query term.
+- `run_rankings.py`: top-20 list per query and method.
+- `export_judgment_pool.py`: builds the judgment pool (union of all methods' top 20), reusing Part 2 labels and never overwriting existing ones.
+- `evaluate_methods.py`: all evaluation metrics per method at K = 5, 10, 15, 20 (reusing the Part 2 metric functions) and paired significance tests against BM25 and TF-IDF.
+- `evaluate_validation_methods.py`: every method evaluated on the professor's validation labels (judged-pool view and full top-K view).
+- `compare_rankings.py`: agreement between methods (overlap@5/10/20, Jaccard@20, rank-biased overlap, Kendall's tau), score spread near the top, and the products whose rank changes most between TF-IDF and BM25.
+- `ablation.py`: removes one component at a time from each original score, and runs a BM25 parameter grid (k1, b).
+- `explain_scores.py`: every component of both original scores for each top-20 product, with its BM25 rank.
+- `inspect_embeddings.py`: sanity checks of the trained word2vec model (nearest neighbours, related vs random pairs, degenerate vectors).
+- `rank_statistics.py`: paired randomisation test and rank-biased overlap.
+- `make_figures.py`: figures for the report.
+- `test_part_3.py`, `test_intent_score.py`, `test_extras.py`: automated tests, including hand-computed BM25 values.
+
+Detailed Part 3 documentation is available in `project_progress/part_3/README.md`.
 
 ## Running Part 3
+
 Run all commands from the repository root, in this order:
-python -m project_progress.part_3.query_term_stats      # 1. query term statistics
-python -m project_progress.part_3.run_rankings          # 2. top-20 lists (trains the embeddings on first run)
-python -m project_progress.part_3.export_judgment_pool  # 3. judgment pool to label
-python -m project_progress.part_3.evaluate_methods      # 4. evaluation metrics per method
-python -m project_progress.part_3.compare_rankings      # 5. agreement between methods
-python -m project_progress.part_3.make_figures          # 6. figures
+
+```bash
+python -m project_progress.part_3.query_term_stats             # 1. query term statistics
+python -m project_progress.part_3.run_rankings                 # 2. top-20 lists (trains the embeddings on first run)
+python -m project_progress.part_3.inspect_embeddings           # 3. check the word2vec model
+python -m project_progress.part_3.export_judgment_pool         # 4. judgment pool to label
+#    -> label the empty 'relevance' cells of judgments_pool.csv (1 or 0)
+python -m project_progress.part_3.evaluate_methods             # 5. metrics + significance tests
+python -m project_progress.part_3.evaluate_validation_methods  # 6. professor's validation labels
+python -m project_progress.part_3.compare_rankings             # 7. agreement between methods
+python -m project_progress.part_3.ablation                     # 8. ablations + BM25 grid
+python -m project_progress.part_3.explain_scores               # 9. score components
+python -m project_progress.part_3.make_figures                 # 10. figures
+```
 
 To search with any query and method:
-python -m project_progress.part_3.pipeline "men slim fit jeans" --method our_score --top-k 10
 
-Available methods: tfidf, bm25, our_score, word2vec, doc2vec.
-The trained models are saved in project_progress/pert3/models/, which is not committed because the models can be reproduced with the same seed. Use python -m project_progress.part_3.run_rankings --retrain to rebuild them.
+```bash
+python -m project_progress.part_3.pipeline "men slim fit jeans" --method intent_score --top-k 10
+```
+
+Available methods: `tfidf`, `bm25`, `our_score`, `intent_score`, `word2vec`, `doc2vec`.
+
+The trained models are saved in `project_progress/part_3/models/`, which is not committed because the models can be reproduced with the same seed. Use `python -m project_progress.part_3.run_rankings --retrain` to rebuild them.
+
 ---
 
 # Part 4 — Web Application and RAG
@@ -548,64 +581,37 @@ Detailed execution instructions for the final application will be added once Par
 
 # Testing
 
-Part 1 preprocessing tests can be executed from the repository root with:
+Run every test from the repository root:
 
 ```bash
-python -m pytest project_progress/part_1/test_preprocessing.py -v
+python -m pytest project_progress/part_1/test_preprocessing.py project_progress/part_2/test_part_2.py project_progress/part_3 -v
 ```
 
-Additional tests may be added as later parts of the project are implemented.
+The suite contains 64 tests: 26 preprocessing tests (Part 1), 7 Part 2 tests and 31 Part 3 tests (15 ranking, 8 intent score, 8 extra analyses). The tests use small toy collections, so they do not need the dataset.
 
 ---
 
 # Reproducibility
 
-To reproduce the current Part 1 results:
-
 ```bash
 git clone https://github.com/maariionaa-code/irwa-search-engine.git
 cd irwa-search-engine
-
 python -m venv .venv
-```
-
-Activate the environment.
-
-### Windows PowerShell
-
-```powershell
-.\.venv\Scripts\Activate.ps1
-```
-
-### macOS / Linux
-
-```bash
-source .venv/bin/activate
-```
-
-Then run:
-
-```bash
+source .venv/bin/activate            # Windows: .\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
 pip install -r requirements.txt
 python -m nltk.downloader stopwords
 ```
 
-Add:
+Add `data/fashion_products_dataset.json` and `data/validation_labels.csv`, then:
 
-```text
-data/fashion_products_dataset.json
-data/validation_labels.csv
-```
+| Part | How to reproduce |
+|---|---|
+| Part 1 | Run `project_progress/part_1/part_1.ipynb` from top to bottom |
+| Part 2 | Run the Part 2 commands listed above |
+| Part 3 | Run the ten Part 3 commands listed above |
 
-Then:
-
-```bash
-python -m pytest project_progress/part_1/test_preprocessing.py -v
-jupyter lab project_progress/part_1/part_1.ipynb
-```
-
-Run the notebook from beginning to end to reproduce the preprocessing results, statistics and EDA figures.
+All results are deterministic: ties are broken by product ID, the embedding models use a fixed seed with a single worker, significance tests enumerate every sign assignment, and the judgment files are never overwritten automatically.
 
 ---
 

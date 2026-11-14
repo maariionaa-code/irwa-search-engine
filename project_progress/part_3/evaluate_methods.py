@@ -4,6 +4,10 @@ For each query, the set of known relevant products is the same for all
 methods (the relevant products in the pool), so recall, AP and NDCG are
 comparable across methods. The Part 2 metric functions are reused.
 
+It also tests whether the differences between methods are statistically
+significant (paired randomisation test over queries, see rank_statistics.py)
+and writes them to results/significance.csv.
+
 Usage from the repository root (after labelling judgments_pool.csv):
     python -m project_progress.part_3.evaluate_methods
 """
@@ -22,12 +26,17 @@ from project_progress.part_2.evaluation import (
 )
 from project_progress.part_3.export_judgment_pool import POOL_CSV
 from project_progress.part_3.queries import PART2_QUERIES
+from project_progress.part_3.rank_statistics import paired_permutation_test
 from project_progress.part_3.run_rankings import RANKINGS_CSV, RESULTS_DIR
 
 
-K_VALUES = (5, 10, 20)
+K_VALUES = (5, 10, 15, 20)
 METRICS_CSV = RESULTS_DIR / "method_metrics.csv"
 SUMMARY_CSV = RESULTS_DIR / "method_summary.csv"
+SIGNIFICANCE_CSV = RESULTS_DIR / "significance.csv"
+BASELINES = ("bm25", "tfidf")           # every method is compared with these
+TESTED_METRICS = ("AP@K_pool", "NDCG@K_pool", "P@K")
+SIGNIFICANCE_K = 10
 
 
 def load_labels() -> pd.DataFrame:
@@ -114,6 +123,42 @@ def summarise(metrics: pd.DataFrame, query_ids) -> pd.DataFrame:
     return summary
 
 
+def significance_table(metrics: pd.DataFrame, k: int = SIGNIFICANCE_K) -> pd.DataFrame:
+    """Paired randomisation tests of every method against each baseline.
+
+    Each test pairs the two methods' scores on the SAME queries, so query
+    difficulty cancels out. With 8 queries all 2^8 = 256 sign flips are
+    enumerated (exact p-value); the smallest possible p-value is 2/256.
+
+    Args:
+        metrics: Output of :func:`evaluate`.
+        k: Cut-off at which the metrics are compared.
+
+    Returns:
+        One row per (baseline, method, metric) with the mean difference
+        (method - baseline), the p-value and whether p < 0.05.
+    """
+    at_k = metrics[metrics["k"] == k]
+    rows = []
+    for baseline in BASELINES:
+        for method in sorted(set(at_k["method"]) - {baseline}):
+            for metric in TESTED_METRICS:
+                table = at_k.pivot(index="query_id", columns="method", values=metric)
+                if baseline not in table or method not in table:
+                    continue
+                diff, p_value = paired_permutation_test(table[method], table[baseline])
+                rows.append({
+                    "baseline": baseline,
+                    "method": method,
+                    "metric": metric.replace("K", str(k)),
+                    "queries": len(table),
+                    "mean_difference": diff,
+                    "p_value": p_value,
+                    "significant_5pct": p_value < 0.05,
+                })
+    return pd.DataFrame(rows)
+
+
 def main():
     """Evaluate all methods and write the metrics CSV files."""
     rankings = pd.read_csv(RANKINGS_CSV, encoding="utf-8-sig",
@@ -131,11 +176,16 @@ def main():
     summary = pd.concat(summaries, ignore_index=True)
     summary.to_csv(SUMMARY_CSV, index=False, float_format="%.3f")
 
+    significance = significance_table(metrics)
+    significance.to_csv(SIGNIFICANCE_CSV, index=False, float_format="%.4f")
+
     fmt = lambda x: f"{x:.3f}"  # noqa: E731
     print("Per query, K = 10:")
     print(metrics[metrics["k"] == 10].to_string(index=False, float_format=fmt))
     print("\nSummary:")
     print(summary.to_string(index=False, float_format=fmt))
+    print(f"\nSignificance (K = {SIGNIFICANCE_K}, paired randomisation test):")
+    print(significance.to_string(index=False, float_format=lambda x: f"{x:.4f}"))
 
 
 if __name__ == "__main__":

@@ -13,6 +13,7 @@ from project_progress.part_3.embedded_ranking import (
     rank_doc2vec,
     rank_word2vec,
 )
+from project_progress.part_3.intent_score import IntentScorer
 from project_progress.part_3.ranking_methods import (
     rank_bm25,
     rank_our_score,
@@ -20,7 +21,8 @@ from project_progress.part_3.ranking_methods import (
 )
 
 
-METHODS = ["tfidf", "bm25", "our_score", "word2vec", "doc2vec"]
+METHODS = ["tfidf", "bm25", "our_score", "intent_score", "word2vec", "doc2vec"]
+LEXICAL_METHODS = METHODS[:4]  # methods that do not need gensim
 
 
 class SearchEngine:
@@ -39,6 +41,9 @@ class SearchEngine:
               f"{len(self.index.inverted_index):,} terms, "
               f"average length {self.index.avg_doc_len:.1f} tokens")
 
+        # Second original score: precomputes product attributes and genders.
+        self.intent = IntentScorer(self.index, self.products)
+
         self.word_vectors = None
         self.doc2vec = None
         self._doc_vectors = {}
@@ -51,7 +56,7 @@ class SearchEngine:
 
     def methods(self) -> list[str]:
         """Return the names of the rankers that are available."""
-        return METHODS if self.word_vectors is not None else METHODS[:3]
+        return METHODS if self.word_vectors is not None else LEXICAL_METHODS
 
     def rank(self, query: str, method: str, top_k: int | None = None):
         """Rank the AND results of ``query`` with one method.
@@ -70,6 +75,8 @@ class SearchEngine:
             return rank_bm25(query, self.index, top_k)
         if method == "our_score":
             return rank_our_score(query, self.index, self.products, top_k)
+        if method == "intent_score":
+            return self.intent.rank(query, top_k)
         if method == "word2vec":
             return rank_word2vec(query, self.index, self.word_vectors, top_k,
                                  self._doc_vectors)
