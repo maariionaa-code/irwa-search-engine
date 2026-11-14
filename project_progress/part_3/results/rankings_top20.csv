@@ -59,6 +59,26 @@ Q1,women cotton kurta,our_score,17,KTAFDVG49KPUAJEN,0.933654,"Women Solid Cotton
 Q1,women cotton kurta,our_score,18,KTAFDVG4RGUFGNKU,0.933654,"Women Solid Cotton Blend Straight Kurta  (Black, Yellow)",4.5,72.0,False,90
 Q1,women cotton kurta,our_score,19,KTAF85TUHDNZCU3P,0.933229,Women Solid Cotton Blend Straight Kurta  (Purple),4.0,79.0,False,87
 Q1,women cotton kurta,our_score,20,KTAFPTMZFXMKYHYE,0.932276,"Women Self Design Cotton Linen Blend, Pure Cotton Straight Kurta  (White)",4.1,73.0,False,73
+Q1,women cotton kurta,intent_score,1,KTAFZPA5GRMYWAJ9,0.982644,Women Striped Cotton Blend Straight Kurta  (Yellow),4.3,70.0,False,70
+Q1,women cotton kurta,intent_score,2,ETHFVVZRBSXSEU7A,0.981743,Women Kurta and Churidar Set Cotton Blend,3.4,46.0,False,61
+Q1,women cotton kurta,intent_score,3,ETHFVVZRZYBXZB7A,0.981743,Women Kurta and Churidar Set Cotton Blend,3.4,46.0,False,61
+Q1,women cotton kurta,intent_score,4,ETHFZDS5FXFK9W9X,0.980265,"Women Kurta and Pyjama Set Cambric, Cambric",,16.0,False,46
+Q1,women cotton kurta,intent_score,5,ETHFUYQWUPWYP6KZ,0.979539,Women Kurta and Churidar Set Cotton Blend,3.4,46.0,False,62
+Q1,women cotton kurta,intent_score,6,ETHFVVZR4UPF3Z7Q,0.979539,Women Kurta and Churidar Set Cotton Blend,3.4,53.0,False,62
+Q1,women cotton kurta,intent_score,7,ETHFVVZREVPNSKW6,0.979539,Women Kurta and Churidar Set Cotton Blend,3.4,46.0,False,62
+Q1,women cotton kurta,intent_score,8,ETHFVVZRMARGQAHJ,0.979539,Women Kurta and Churidar Set Cotton Blend,3.4,46.0,False,62
+Q1,women cotton kurta,intent_score,9,ETHFVVZRZMFZD3CB,0.979539,Women Kurta and Churidar Set Cotton Blend,3.4,46.0,False,62
+Q1,women cotton kurta,intent_score,10,ETHFFNRG9JKZFMPN,0.976081,Women Kurta and Churidar Set Cotton Blend,3.7,26.0,False,91
+Q1,women cotton kurta,intent_score,11,ETHFFNRGAHZFAY2P,0.976081,Women Kurta and Churidar Set Cotton Blend,3.7,26.0,False,91
+Q1,women cotton kurta,intent_score,12,ETHFFNRGNKGFZEXD,0.976081,Women Kurta and Churidar Set Cotton Blend,1.0,34.0,False,91
+Q1,women cotton kurta,intent_score,13,ETHFUYQWAKHCPDHV,0.975976,Women Kurta and Churidar Set Cotton Blend,3.4,46.0,False,62
+Q1,women cotton kurta,intent_score,14,KTAFZPMDTGFHZM7F,0.97365,"Women Self Design Cotton Linen Blend, Pure Cotton Straight Kurta  (Blue)",4.1,73.0,False,80
+Q1,women cotton kurta,intent_score,15,KTAFZJX6ACH2QQ2S,0.970761,"Women Self Design Cotton Linen Blend, Cotton Blend Straight Kurta  (Pink)",3.5,62.0,False,80
+Q1,women cotton kurta,intent_score,16,ETHFPDUMCGRRZVAD,0.970217,Women Kurta and Pyjama Set Pure Cotton,3.9,43.0,False,40
+Q1,women cotton kurta,intent_score,17,ETHFPDUMFGZDJUMY,0.970217,Women Kurta and Pyjama Set Pure Cotton,3.9,43.0,False,40
+Q1,women cotton kurta,intent_score,18,ETHFPDUMHKVRQYWX,0.970217,Women Kurta and Pyjama Set Pure Cotton,3.9,43.0,False,40
+Q1,women cotton kurta,intent_score,19,ETHFPDUMNKJYR8E7,0.970217,Women Kurta and Pyjama Set Pure Cotton,3.9,43.0,False,40
+Q1,women cotton kurta,intent_score,20,ETHFPDUMRFKZ4DTW,0.970217,Women Kurta and Pyjama Set Pure Cotton,3.9,43.0,False,40
 Q1,women cotton kurta,word2vec,1,ETHFFNRG9JKZFMPN,0.827123,Women Kurta and Churidar Set Cotton Blend,3.7,26.0,False,91
 Q1,women cotton kurta,word2vec,2,ETHFFNRGAHZFAY2P,0.827123,Women Kurta and Churidar Set Cotton Blend,3.7,26.0,False,91
 Q1,women cotton kurta,word2vec,3,ETHFFNRGNKGFZEXD,0.827123,Women Kurta and Churidar Set Cotton Blend,1.0,34.0,False,91
@@ -79,26 +99,26 @@ Q1,women cotton kurta,word2vec,17,ETHFT9HQNKWEF2EH,0.811652,Women Kurta and Pyja
 Q1,women cotton kurta,word2vec,18,ETHFVPUVNZVHRDSW,0.811233,Women Kurta and Pyjama Set Pure Cotton,,34.0,False,97
 Q1,women cotton kurta,word2vec,19,ETHFVPUVE5VSHZAM,0.810372,Women Kurta and Pyjama Set Pure Cotton,,34.0,False,97
 Q1,women cotton kurta,word2vec,20,ETHFVPUVWNFZZS7W,0.810372,Women Kurta and Pyjama Set Pure Cotton,,34.0,False,97
-Q1,women cotton kurta,doc2vec,1,ETHFYY5KY9ZMEZKX,0.727889,Women Kurta and Pyjama Set Pure Cotton,2.9,41.0,False,40
-Q1,women cotton kurta,doc2vec,2,ETHFPDUMNKJYR8E7,0.726813,Women Kurta and Pyjama Set Pure Cotton,3.9,43.0,False,40
-Q1,women cotton kurta,doc2vec,3,ETHFPDUMHKVRQYWX,0.725144,Women Kurta and Pyjama Set Pure Cotton,3.9,43.0,False,40
-Q1,women cotton kurta,doc2vec,4,ETHFPDUMRFKZ4DTW,0.724811,Women Kurta and Pyjama Set Pure Cotton,3.9,43.0,False,40
-Q1,women cotton kurta,doc2vec,5,ETHFPDUMUDJ9U5HM,0.712152,Women Kurta and Pyjama Set Pure Cotton,3.9,43.0,False,40
-Q1,women cotton kurta,doc2vec,6,ETHFPDUMVYNFBMGJ,0.710232,Women Kurta and Pyjama Set Pure Cotton,3.9,43.0,False,41
-Q1,women cotton kurta,doc2vec,7,DHTFZNTHEQGG9WDJ,0.709238,Vairavaa Tex Women Dhoti,4.2,35.0,False,18
-Q1,women cotton kurta,doc2vec,8,ETHFPDUMCGRRZVAD,0.705837,Women Kurta and Pyjama Set Pure Cotton,3.9,43.0,False,40
-Q1,women cotton kurta,doc2vec,9,DHTFWNT67TSKCV82,0.705038,SIVAA TEX Women Dhoti,,,False,20
-Q1,women cotton kurta,doc2vec,10,ETHFPDUMKPXKU3BG,0.704784,Women Kurta and Pyjama Set Pure Cotton,3.9,43.0,False,42
-Q1,women cotton kurta,doc2vec,11,DHTFHBCZ3SZYWUPH,0.703973,ADITYA TEX Women Dhoti,4.0,47.0,False,26
-Q1,women cotton kurta,doc2vec,12,ETHFPDUMFGZDJUMY,0.703519,Women Kurta and Pyjama Set Pure Cotton,3.9,43.0,False,40
-Q1,women cotton kurta,doc2vec,13,DHTFSJFES6GE5BJP,0.703443,Mps Women Dhoti,3.8,51.0,False,19
-Q1,women cotton kurta,doc2vec,14,ETHFPDUMAEGUYTCR,0.701025,Women Kurta and Pyjama Set Pure Cotton,3.9,43.0,False,42
-Q1,women cotton kurta,doc2vec,15,DHTFHA8BGRWQDUZ3,0.700891,ADITYA TEX Women Dhoti,4.0,47.0,False,24
-Q1,women cotton kurta,doc2vec,16,ETHFYY5JJ2R3ZHXH,0.699416,Women Kurta and Pyjama Set Pure Cotton,2.9,41.0,False,41
-Q1,women cotton kurta,doc2vec,17,DHTFKKTCZGSZWYEX,0.699368,ADITYA TEX Women Dhoti,2.3,50.0,False,26
-Q1,women cotton kurta,doc2vec,18,DHTFVH5H5KQYGPBW,0.699173,sudharsana Women Dhoti,1.8,38.0,False,26
-Q1,women cotton kurta,doc2vec,19,DHTFVH7GVH82SDHG,0.698653,sudharsana Orange dhoti Pack of 2 Solid Women Dhoti,1.8,34.0,False,34
-Q1,women cotton kurta,doc2vec,20,DHTFHA8BVZXAQTTE,0.696733,ADITYA TEX Women Dhoti,4.0,52.0,False,24
+Q1,women cotton kurta,doc2vec,1,ETHFYY5KY9ZMEZKX,0.727894,Women Kurta and Pyjama Set Pure Cotton,2.9,41.0,False,40
+Q1,women cotton kurta,doc2vec,2,ETHFPDUMNKJYR8E7,0.724939,Women Kurta and Pyjama Set Pure Cotton,3.9,43.0,False,40
+Q1,women cotton kurta,doc2vec,3,ETHFPDUMRFKZ4DTW,0.723407,Women Kurta and Pyjama Set Pure Cotton,3.9,43.0,False,40
+Q1,women cotton kurta,doc2vec,4,ETHFPDUMHKVRQYWX,0.723167,Women Kurta and Pyjama Set Pure Cotton,3.9,43.0,False,40
+Q1,women cotton kurta,doc2vec,5,ETHFPDUMUDJ9U5HM,0.710404,Women Kurta and Pyjama Set Pure Cotton,3.9,43.0,False,40
+Q1,women cotton kurta,doc2vec,6,ETHFPDUMVYNFBMGJ,0.707877,Women Kurta and Pyjama Set Pure Cotton,3.9,43.0,False,41
+Q1,women cotton kurta,doc2vec,7,DHTFZNTHEQGG9WDJ,0.706895,Vairavaa Tex Women Dhoti,4.2,35.0,False,18
+Q1,women cotton kurta,doc2vec,8,ETHFPDUMCGRRZVAD,0.704526,Women Kurta and Pyjama Set Pure Cotton,3.9,43.0,False,40
+Q1,women cotton kurta,doc2vec,9,ETHFPDUMKPXKU3BG,0.70303,Women Kurta and Pyjama Set Pure Cotton,3.9,43.0,False,42
+Q1,women cotton kurta,doc2vec,10,DHTFHBCZ3SZYWUPH,0.702534,ADITYA TEX Women Dhoti,4.0,47.0,False,26
+Q1,women cotton kurta,doc2vec,11,DHTFWNT67TSKCV82,0.702399,SIVAA TEX Women Dhoti,,,False,20
+Q1,women cotton kurta,doc2vec,12,ETHFPDUMFGZDJUMY,0.701893,Women Kurta and Pyjama Set Pure Cotton,3.9,43.0,False,40
+Q1,women cotton kurta,doc2vec,13,DHTFSJFES6GE5BJP,0.701292,Mps Women Dhoti,3.8,51.0,False,19
+Q1,women cotton kurta,doc2vec,14,ETHFYY5JJ2R3ZHXH,0.699838,Women Kurta and Pyjama Set Pure Cotton,2.9,41.0,False,41
+Q1,women cotton kurta,doc2vec,15,DHTFHA8BGRWQDUZ3,0.698792,ADITYA TEX Women Dhoti,4.0,47.0,False,24
+Q1,women cotton kurta,doc2vec,16,ETHFPDUMAEGUYTCR,0.698771,Women Kurta and Pyjama Set Pure Cotton,3.9,43.0,False,42
+Q1,women cotton kurta,doc2vec,17,DHTFVH5H5KQYGPBW,0.698208,sudharsana Women Dhoti,1.8,38.0,False,26
+Q1,women cotton kurta,doc2vec,18,DHTFKKTCZGSZWYEX,0.697974,ADITYA TEX Women Dhoti,2.3,50.0,False,26
+Q1,women cotton kurta,doc2vec,19,DHTFVH7GVH82SDHG,0.697933,sudharsana Orange dhoti Pack of 2 Solid Women Dhoti,1.8,34.0,False,34
+Q1,women cotton kurta,doc2vec,20,DHTFHA8BVZXAQTTE,0.69592,ADITYA TEX Women Dhoti,4.0,52.0,False,24
 Q2,men slim fit jeans,tfidf,1,JEAEVJGUSXRNSHRY,0.375332,Slim Men Dark Blue Jeans,3.8,53.0,False,68
 Q2,men slim fit jeans,tfidf,2,JEAFUZXS49NSRFQV,0.356854,Jogger Fit Men Grey Jeans,2.5,23.0,False,59
 Q2,men slim fit jeans,tfidf,3,JEAFUZXTZCYTZZ8M,0.356854,Jogger Fit Men Grey Jeans,2.5,25.0,False,59
@@ -159,6 +179,26 @@ Q2,men slim fit jeans,our_score,17,JEAFEC2GDNKAA2X9,0.855071,Slim Men Multicolor
 Q2,men slim fit jeans,our_score,18,JEAFEC2GUPAPCTUZ,0.855071,Slim Men Multicolor Jeans  (Pack of 2),3.9,57.0,False,152
 Q2,men slim fit jeans,our_score,19,JEAFEC2GZDSHD789,0.855071,Slim Men Multicolor Jeans  (Pack of 2),3.9,57.0,False,152
 Q2,men slim fit jeans,our_score,20,JEAFDWCPDCVQAA3T,0.852922,"Slim Men Green, Blue Jeans  (Pack of 2)",3.7,57.0,False,146
+Q2,men slim fit jeans,intent_score,1,JEAEVJGUSXRNSHRY,0.982106,Slim Men Dark Blue Jeans,3.8,53.0,False,68
+Q2,men slim fit jeans,intent_score,2,JEAF2QF6HNZHDXVX,0.958393,Slim Men Dark Blue Jeans,3.8,57.0,False,91
+Q2,men slim fit jeans,intent_score,3,JEAF5669KNZZZJXS,0.952007,Slim Men Brown Jeans,3.3,67.0,False,43
+Q2,men slim fit jeans,intent_score,4,JEAEHGRJSGGYEYYX,0.875,Slim Men Light Blue Jeans,3.0,30.0,False,63
+Q2,men slim fit jeans,intent_score,5,JEAEJYZ8KAGSABDQ,0.868616,Slim Men Dark Blue Jeans,3.0,57.0,False,88
+Q2,men slim fit jeans,intent_score,6,JEAFVMMSRYBGDQQ2,0.850291,Slim Men White Jeans,4.1,36.0,False,68
+Q2,men slim fit jeans,intent_score,7,JEAFJA4M7SMZN2XJ,0.810467,Slim Men Black Jeans,3.8,64.0,False,81
+Q2,men slim fit jeans,intent_score,8,JEAFUZXS49NSRFQV,0.807074,Jogger Fit Men Grey Jeans,2.5,23.0,False,59
+Q2,men slim fit jeans,intent_score,9,JEAFUZXTN3KBGPMS,0.807074,Jogger Fit Men Black Jeans,2.5,15.0,False,59
+Q2,men slim fit jeans,intent_score,10,JEAFUZXTZCYTZZ8M,0.807074,Jogger Fit Men Grey Jeans,2.5,25.0,False,59
+Q2,men slim fit jeans,intent_score,11,JEAFUZXUGWXHUF5F,0.807074,Jogger Fit Men Blue Jeans,2.5,15.0,False,59
+Q2,men slim fit jeans,intent_score,12,JEAFJM2P2FQQJF3C,0.804563,Slim Men Dark Blue Jeans,4.1,61.0,False,87
+Q2,men slim fit jeans,intent_score,13,JEAF8HYN5B9ZU6FP,0.803261,Slim Men Blue Jeans,3.8,64.0,False,84
+Q2,men slim fit jeans,intent_score,14,JEAF8HYNUMGZMQU5,0.803261,Slim Men Blue Jeans,3.8,64.0,False,84
+Q2,men slim fit jeans,intent_score,15,JEAFJZ4Y7YYXCD43,0.8023,Slim Men Black Jeans,3.8,46.0,False,47
+Q2,men slim fit jeans,intent_score,16,JEAFUZXZHHXDFFHH,0.798299,Jogger Fit Men Grey Jeans,2.5,23.0,False,62
+Q2,men slim fit jeans,intent_score,17,JEAFUZXS4SFKEV3U,0.797343,Tapered Fit Men Grey Jeans,2.5,20.0,False,57
+Q2,men slim fit jeans,intent_score,18,JEAFUZXSEAMNNGNG,0.797343,Tapered Fit Men Blue Jeans,2.5,20.0,False,57
+Q2,men slim fit jeans,intent_score,19,JEAFUZXSNGYAXHJM,0.797343,Tapered Fit Men Black Jeans,2.5,20.0,False,57
+Q2,men slim fit jeans,intent_score,20,JEAFUZXSSFYGHYDP,0.797343,Tapered Fit Men Blue Jeans,2.5,20.0,False,57
 Q2,men slim fit jeans,word2vec,1,SHTFTGKHHPUGUXRV,0.797945,Men Slim Fit Solid Spread Collar Casual Shirt  (Pack of 2),3.3,56.0,False,69
 Q2,men slim fit jeans,word2vec,2,SHTFTGKG5RERUZVK,0.79714,Men Slim Fit Solid Spread Collar Casual Shirt  (Pack of 2),3.3,56.0,False,69
 Q2,men slim fit jeans,word2vec,3,SHTFTGKGUMYDMMPC,0.797019,Men Slim Fit Solid Spread Collar Casual Shirt  (Pack of 2),3.3,56.0,False,69
@@ -179,26 +219,26 @@ Q2,men slim fit jeans,word2vec,17,SHTFVPJYHDDEGUAV,0.758762,Men Slim Fit Printed
 Q2,men slim fit jeans,word2vec,18,TSHEHU3QX3HWMMQM,0.757981,Solid Men Round Neck Black T-Shirt,3.9,68.0,False,88
 Q2,men slim fit jeans,word2vec,19,TSHFVJU3XHYFR2SZ,0.757481,Solid Men Collared Neck Reversible Red T-Shirt,3.3,62.0,False,98
 Q2,men slim fit jeans,word2vec,20,TSHEXH594YXPYNEQ,0.753002,"Solid Men Round Neck Black, Grey T-Shirt",2.6,78.0,False,96
-Q2,men slim fit jeans,doc2vec,1,JEAFHEZHRSTZQ82C,0.679607,Slim Men Blue Jeans,3.6,36.0,False,47
-Q2,men slim fit jeans,doc2vec,2,JEAFHEZGXFH8WZQR,0.663678,Slim Men Blue Jeans,3.6,35.0,True,48
-Q2,men slim fit jeans,doc2vec,3,JEAF5669KNZZZJXS,0.662831,Slim Men Brown Jeans,3.3,67.0,False,43
-Q2,men slim fit jeans,doc2vec,4,JEAFUZXTBPEXBZN4,0.659741,Tapered Fit Men Blue Jeans,2.5,21.0,False,57
-Q2,men slim fit jeans,doc2vec,5,JEAFUZXT6BYHVNF2,0.6486,Tapered Fit Men Blue Jeans,2.5,18.0,False,57
-Q2,men slim fit jeans,doc2vec,6,JEAFUZXTN7W8ZSEN,0.646748,Tapered Fit Men Blue Jeans,2.5,23.0,False,58
-Q2,men slim fit jeans,doc2vec,7,JEAFUZXTKHGUUGTB,0.638672,Tapered Fit Men Blue Jeans,2.5,20.0,False,57
-Q2,men slim fit jeans,doc2vec,8,JEAFUZXSEAMNNGNG,0.638524,Tapered Fit Men Blue Jeans,2.5,20.0,False,57
-Q2,men slim fit jeans,doc2vec,9,JEAFUZXS4SFKEV3U,0.637266,Tapered Fit Men Grey Jeans,2.5,20.0,False,57
-Q2,men slim fit jeans,doc2vec,10,JEAFUZXPUWKSKGVD,0.633567,Tapered Fit Men Blue Jeans,2.5,23.0,False,58
-Q2,men slim fit jeans,doc2vec,11,JEAFUZXSSFYGHYDP,0.627454,Tapered Fit Men Blue Jeans,2.5,20.0,False,57
-Q2,men slim fit jeans,doc2vec,12,JEAFSKYH539HTZB8,0.627123,Tapered Fit Men Blue Jeans,3.9,35.0,False,58
-Q2,men slim fit jeans,doc2vec,13,JEAFUZXTZBKRT6EB,0.625716,Tapered Fit Men Blue Jeans,2.5,20.0,False,57
-Q2,men slim fit jeans,doc2vec,14,JEAFUZXSHCZNHQE4,0.624035,Tapered Fit Men Light Blue Jeans,2.5,18.0,False,61
-Q2,men slim fit jeans,doc2vec,15,JEAFUZXTXAP7HF4X,0.623937,Tapered Fit Men Blue Jeans,2.5,10.0,False,58
-Q2,men slim fit jeans,doc2vec,16,JEAFSKYHHWSGEDHP,0.621797,Tapered Fit Men White Jeans,3.8,40.0,False,58
-Q2,men slim fit jeans,doc2vec,17,JEAFUZXUSW8UHHPG,0.618806,Tapered Fit Men Blue Jeans,2.5,20.0,False,57
-Q2,men slim fit jeans,doc2vec,18,JEAFUZXTZCYTZZ8M,0.616402,Jogger Fit Men Grey Jeans,2.5,25.0,False,59
-Q2,men slim fit jeans,doc2vec,19,JEAFSKYHHDQ2SDZQ,0.612321,Tapered Fit Men Light Blue Jeans,4.7,10.0,False,61
-Q2,men slim fit jeans,doc2vec,20,JEAFUZXRDZWSYWGG,0.611895,Tapered Fit Men Blue Jeans,2.5,18.0,False,58
+Q2,men slim fit jeans,doc2vec,1,JEAFHEZHRSTZQ82C,0.678877,Slim Men Blue Jeans,3.6,36.0,False,47
+Q2,men slim fit jeans,doc2vec,2,JEAF5669KNZZZJXS,0.663048,Slim Men Brown Jeans,3.3,67.0,False,43
+Q2,men slim fit jeans,doc2vec,3,JEAFHEZGXFH8WZQR,0.662877,Slim Men Blue Jeans,3.6,35.0,True,48
+Q2,men slim fit jeans,doc2vec,4,JEAFUZXTBPEXBZN4,0.659877,Tapered Fit Men Blue Jeans,2.5,21.0,False,57
+Q2,men slim fit jeans,doc2vec,5,JEAFUZXT6BYHVNF2,0.648659,Tapered Fit Men Blue Jeans,2.5,18.0,False,57
+Q2,men slim fit jeans,doc2vec,6,JEAFUZXTN7W8ZSEN,0.646599,Tapered Fit Men Blue Jeans,2.5,23.0,False,58
+Q2,men slim fit jeans,doc2vec,7,JEAFUZXTKHGUUGTB,0.638829,Tapered Fit Men Blue Jeans,2.5,20.0,False,57
+Q2,men slim fit jeans,doc2vec,8,JEAFUZXSEAMNNGNG,0.638568,Tapered Fit Men Blue Jeans,2.5,20.0,False,57
+Q2,men slim fit jeans,doc2vec,9,JEAFUZXS4SFKEV3U,0.637614,Tapered Fit Men Grey Jeans,2.5,20.0,False,57
+Q2,men slim fit jeans,doc2vec,10,JEAFUZXPUWKSKGVD,0.634456,Tapered Fit Men Blue Jeans,2.5,23.0,False,58
+Q2,men slim fit jeans,doc2vec,11,JEAFUZXSSFYGHYDP,0.627974,Tapered Fit Men Blue Jeans,2.5,20.0,False,57
+Q2,men slim fit jeans,doc2vec,12,JEAFSKYH539HTZB8,0.627722,Tapered Fit Men Blue Jeans,3.9,35.0,False,58
+Q2,men slim fit jeans,doc2vec,13,JEAFUZXTZBKRT6EB,0.625479,Tapered Fit Men Blue Jeans,2.5,20.0,False,57
+Q2,men slim fit jeans,doc2vec,14,JEAFUZXSHCZNHQE4,0.624296,Tapered Fit Men Light Blue Jeans,2.5,18.0,False,61
+Q2,men slim fit jeans,doc2vec,15,JEAFUZXTXAP7HF4X,0.623689,Tapered Fit Men Blue Jeans,2.5,10.0,False,58
+Q2,men slim fit jeans,doc2vec,16,JEAFSKYHHWSGEDHP,0.622199,Tapered Fit Men White Jeans,3.8,40.0,False,58
+Q2,men slim fit jeans,doc2vec,17,JEAFUZXUSW8UHHPG,0.619008,Tapered Fit Men Blue Jeans,2.5,20.0,False,57
+Q2,men slim fit jeans,doc2vec,18,JEAFUZXTZCYTZZ8M,0.615936,Jogger Fit Men Grey Jeans,2.5,25.0,False,59
+Q2,men slim fit jeans,doc2vec,19,JEAFSKYHHDQ2SDZQ,0.61258,Tapered Fit Men Light Blue Jeans,4.7,10.0,False,61
+Q2,men slim fit jeans,doc2vec,20,JEAFUZXRDZWSYWGG,0.612176,Tapered Fit Men Blue Jeans,2.5,18.0,False,58
 Q3,men running shoes,tfidf,1,SHOESS9ZEZ6TEQUJ,0.588385,Running Shoes For Men  (Multicolor),4.3,9.0,False,24
 Q3,men running shoes,tfidf,2,SHOESS9ZGMH7CURM,0.588385,Running Shoes For Men  (Multicolor),3.7,9.0,False,24
 Q3,men running shoes,tfidf,3,SHOEP5GUQYYFKYSN,0.549607,Running Shoes For Women  (White),4.1,9.0,False,26
@@ -259,6 +299,26 @@ Q3,men running shoes,our_score,17,SHOFJ35P5UDK744S,0.799392,Running Shoes For Me
 Q3,men running shoes,our_score,18,SHOE9A6GF4ZF6EHZ,0.786836,"Marathon Running Shoes For Men  (Blue, Grey)",3.5,9.0,False,70
 Q3,men running shoes,our_score,19,SHOF34H3GMHM9VNB,0.783836,"Running Shoes For Men  (Black, Grey)",4.0,9.0,False,65
 Q3,men running shoes,our_score,20,SHOEYF5UH4GPCETN,0.777568,"Running Shoes For Men  (Green, Blue)",4.3,,False,72
+Q3,men running shoes,intent_score,1,SHOESS9ZEZ6TEQUJ,0.855892,Running Shoes For Men  (Multicolor),4.3,9.0,False,24
+Q3,men running shoes,intent_score,2,SHOESS9ZGMH7CURM,0.855892,Running Shoes For Men  (Multicolor),3.7,9.0,False,24
+Q3,men running shoes,intent_score,3,SHOEKNRJ34UCMAPA,0.826642,"SPRINT Running Shoes For Men  (Black, Grey)",3.7,1.0,False,31
+Q3,men running shoes,intent_score,4,SHOEKNRJGEYJCDQK,0.826642,"SPRINT Running Shoes For Men  (Blue, Grey)",3.7,1.0,False,31
+Q3,men running shoes,intent_score,5,SHOEWQKVSGFGXPQF,0.79678,Running Shoes For Men  (Blue),3.3,1.0,False,29
+Q3,men running shoes,intent_score,6,SHOFN3EJVGC9VXYT,0.795912,RS-7200 Running Shoes For Men  (Navy),3.9,9.0,False,39
+Q3,men running shoes,intent_score,7,SHOFN3EJHXHGSGUC,0.792254,RS-7250 Running Shoes For Men  (Black),3.9,9.0,False,40
+Q3,men running shoes,intent_score,8,SHOFN3EFNYGBKZT7,0.788634,"RS-7050 Running Shoes For Men  (Blue, Navy)",3.9,9.0,False,41
+Q3,men running shoes,intent_score,9,SHOF5BDSWHAMZHSU,0.755042,Running Shoes For Men  (White),4.1,9.0,False,60
+Q3,men running shoes,intent_score,10,SHOE9A6HHNQUGQ7C,0.738511,"Rs-5014 Running Shoes For Men  (Red, Grey)",1.0,9.0,False,56
+Q3,men running shoes,intent_score,11,SHOFTZFPNCU4VWHK,0.735423,Running Shoes For Men  (Black),4.1,62.0,False,57
+Q3,men running shoes,intent_score,12,SHOFTZFQQYKC8HY6,0.735423,Running Shoes For Men  (Yellow),4.1,65.0,False,57
+Q3,men running shoes,intent_score,13,SHOFUH52V5AVNHMN,0.718012,Loafers For Men  (Black),3.9,52.0,False,94
+Q3,men running shoes,intent_score,14,SHOFVJX2TP8FRR7P,0.712365,Lace Up For Men  (Black),3.8,52.0,False,111
+Q3,men running shoes,intent_score,15,SHOFVGHH9YGKTX4J,0.704487,Sneakers For Men  (Orange),3.7,52.0,False,109
+Q3,men running shoes,intent_score,16,SHOFVXGRUGGSKCSU,0.704448,Party Wear For Men  (Blue),4.0,52.0,False,128
+Q3,men running shoes,intent_score,17,SHOE9A6GF4ZF6EHZ,0.697751,"Marathon Running Shoes For Men  (Blue, Grey)",3.5,9.0,False,70
+Q3,men running shoes,intent_score,18,SHOFVHY8MAYUPTZF,0.69676,Loafers For Men  (Black),3.8,52.0,False,121
+Q3,men running shoes,intent_score,19,SHOFVHY9PKJZH3ND,0.69676,Loafers For Men  (Brown),3.8,52.0,False,121
+Q3,men running shoes,intent_score,20,SHOFKH9ZNNNWCHGC,0.694977,Running Shoes For Men  (Blue),3.9,52.0,False,97
 Q3,men running shoes,word2vec,1,SHOFC585JH9RGXWG,0.817344,Cricket Shoes For Women  (White),4.2,6.0,True,67
 Q3,men running shoes,word2vec,2,SHOFVXGR2CZRYY7W,0.758172,Party Wear For Men  (Red),4.0,52.0,True,128
 Q3,men running shoes,word2vec,3,SHOFVXGRUGGSKCSU,0.757992,Party Wear For Men  (Blue),4.0,52.0,False,128
@@ -279,26 +339,26 @@ Q3,men running shoes,word2vec,17,SHOFVJX2TP8FRR7P,0.746572,Lace Up For Men  (B
 Q3,men running shoes,word2vec,18,SHOFVGHHVVUZGFA6,0.746305,Sneakers For Women  (White),3.7,52.0,False,109
 Q3,men running shoes,word2vec,19,SHOFVXG5XR59AFTH,0.744994,Lace Up For Men  (Black),3.6,52.0,False,134
 Q3,men running shoes,word2vec,20,SHOFX2G6FHVNAHZN,0.744416,Loafers For Women  (Black),4.0,52.0,False,93
-Q3,men running shoes,doc2vec,1,SHOESS9ZGMH7CURM,0.694119,Running Shoes For Men  (Multicolor),3.7,9.0,False,24
-Q3,men running shoes,doc2vec,2,SHOEKNRJGEYJCDQK,0.687477,"SPRINT Running Shoes For Men  (Blue, Grey)",3.7,1.0,False,31
-Q3,men running shoes,doc2vec,3,SHOEP5GUQYYFKYSN,0.681712,Running Shoes For Women  (White),4.1,9.0,False,26
-Q3,men running shoes,doc2vec,4,SHOESS9ZEZ6TEQUJ,0.677227,Running Shoes For Men  (Multicolor),4.3,9.0,False,24
-Q3,men running shoes,doc2vec,5,SHOEWQKVSGFGXPQF,0.676008,Running Shoes For Men  (Blue),3.3,1.0,False,29
-Q3,men running shoes,doc2vec,6,SHOEKNRJ34UCMAPA,0.669946,"SPRINT Running Shoes For Men  (Black, Grey)",3.7,1.0,False,31
-Q3,men running shoes,doc2vec,7,SHOFN3EJZVGC6GH8,0.664381,RS-7250 Running Shoes For Women  (Navy),3.9,9.0,False,40
-Q3,men running shoes,doc2vec,8,SHOFN3EFNYGBKZT7,0.662122,"RS-7050 Running Shoes For Men  (Blue, Navy)",3.9,9.0,False,41
-Q3,men running shoes,doc2vec,9,SHOFN3EJVGC9VXYT,0.657009,RS-7200 Running Shoes For Men  (Navy),3.9,9.0,False,39
-Q3,men running shoes,doc2vec,10,SHOEYF5UHUUH5ADZ,0.648099,"Running Shoes For Women  (Blue, Orange)",4.3,,False,33
-Q3,men running shoes,doc2vec,11,SHOFN3EJHXHGSGUC,0.647904,RS-7250 Running Shoes For Men  (Black),3.9,9.0,False,40
-Q3,men running shoes,doc2vec,12,SHOECNBPVVMRCE8G,0.63929,"RS-3005 Running Shoes For Men  (Green, Blue)",4.2,9.0,False,77
-Q3,men running shoes,doc2vec,13,SHOF3A22AAGWGGMU,0.628769,"Running Shoes For Men  (Navy, Orange)",4.1,10.0,False,56
-Q3,men running shoes,doc2vec,14,SHOEYF5UUUHKHN9X,0.627949,Running Shoes For Women  (Black),2.9,1.0,False,71
-Q3,men running shoes,doc2vec,15,SHOE9A6GVTWMZ5WX,0.626953,"Marathon Running Shoes For Women  (White, Blue)",3.3,9.0,False,70
-Q3,men running shoes,doc2vec,16,SHOE9A6GF4ZF6EHZ,0.624806,"Marathon Running Shoes For Men  (Blue, Grey)",3.5,9.0,False,70
-Q3,men running shoes,doc2vec,17,SHOE9A6HKZGDAHYH,0.622889,"Rs-4001 Running Shoes For Women  (White, Blue)",4.3,7.0,False,72
-Q3,men running shoes,doc2vec,18,SHOECNBPE5XPUWVX,0.612751,"RS-3010 Running Shoes For Women  (Black, Grey)",3.0,10.0,False,71
-Q3,men running shoes,doc2vec,19,SHOE9R2HZDSZZZKD,0.611705,Bolt Spike Running Shoes For Women  (Multicolor),3.9,7.0,False,56
-Q3,men running shoes,doc2vec,20,SHOF34H376KMSK9Y,0.607745,"Running Shoes For Women  (Black, Grey)",4.0,9.0,False,71
+Q3,men running shoes,doc2vec,1,SHOESS9ZGMH7CURM,0.693311,Running Shoes For Men  (Multicolor),3.7,9.0,False,24
+Q3,men running shoes,doc2vec,2,SHOEKNRJGEYJCDQK,0.686716,"SPRINT Running Shoes For Men  (Blue, Grey)",3.7,1.0,False,31
+Q3,men running shoes,doc2vec,3,SHOEP5GUQYYFKYSN,0.680693,Running Shoes For Women  (White),4.1,9.0,False,26
+Q3,men running shoes,doc2vec,4,SHOESS9ZEZ6TEQUJ,0.676347,Running Shoes For Men  (Multicolor),4.3,9.0,False,24
+Q3,men running shoes,doc2vec,5,SHOEWQKVSGFGXPQF,0.675741,Running Shoes For Men  (Blue),3.3,1.0,False,29
+Q3,men running shoes,doc2vec,6,SHOEKNRJ34UCMAPA,0.66864,"SPRINT Running Shoes For Men  (Black, Grey)",3.7,1.0,False,31
+Q3,men running shoes,doc2vec,7,SHOFN3EJZVGC6GH8,0.662487,RS-7250 Running Shoes For Women  (Navy),3.9,9.0,False,40
+Q3,men running shoes,doc2vec,8,SHOFN3EFNYGBKZT7,0.660662,"RS-7050 Running Shoes For Men  (Blue, Navy)",3.9,9.0,False,41
+Q3,men running shoes,doc2vec,9,SHOFN3EJVGC9VXYT,0.654966,RS-7200 Running Shoes For Men  (Navy),3.9,9.0,False,39
+Q3,men running shoes,doc2vec,10,SHOEYF5UHUUH5ADZ,0.647575,"Running Shoes For Women  (Blue, Orange)",4.3,,False,33
+Q3,men running shoes,doc2vec,11,SHOFN3EJHXHGSGUC,0.646459,RS-7250 Running Shoes For Men  (Black),3.9,9.0,False,40
+Q3,men running shoes,doc2vec,12,SHOECNBPVVMRCE8G,0.638669,"RS-3005 Running Shoes For Men  (Green, Blue)",4.2,9.0,False,77
+Q3,men running shoes,doc2vec,13,SHOF3A22AAGWGGMU,0.627044,"Running Shoes For Men  (Navy, Orange)",4.1,10.0,False,56
+Q3,men running shoes,doc2vec,14,SHOEYF5UUUHKHN9X,0.62669,Running Shoes For Women  (Black),2.9,1.0,False,71
+Q3,men running shoes,doc2vec,15,SHOE9A6GVTWMZ5WX,0.625246,"Marathon Running Shoes For Women  (White, Blue)",3.3,9.0,False,70
+Q3,men running shoes,doc2vec,16,SHOE9A6GF4ZF6EHZ,0.623636,"Marathon Running Shoes For Men  (Blue, Grey)",3.5,9.0,False,70
+Q3,men running shoes,doc2vec,17,SHOE9A6HKZGDAHYH,0.621406,"Rs-4001 Running Shoes For Women  (White, Blue)",4.3,7.0,False,72
+Q3,men running shoes,doc2vec,18,SHOECNBPE5XPUWVX,0.611224,"RS-3010 Running Shoes For Women  (Black, Grey)",3.0,10.0,False,71
+Q3,men running shoes,doc2vec,19,SHOE9R2HZDSZZZKD,0.610585,Bolt Spike Running Shoes For Women  (Multicolor),3.9,7.0,False,56
+Q3,men running shoes,doc2vec,20,SHOF34H376KMSK9Y,0.606092,"Running Shoes For Women  (Black, Grey)",4.0,9.0,False,71
 Q4,women full sleeve jacket,tfidf,1,JCKFZ33GHPEXHFUZ,0.656453,Full Sleeve Solid Women Jacket,,23.0,False,44
 Q4,women full sleeve jacket,tfidf,2,JCKFY8K8Q3CHZDUF,0.60623,Full Sleeve Self Design Women Casual Jacket,3.1,55.0,False,49
 Q4,women full sleeve jacket,tfidf,3,JCKFWWT5HZMFXYRW,0.569846,Full Sleeve Solid Women Casual Jacket,3.3,57.0,False,53
@@ -359,6 +419,26 @@ Q4,women full sleeve jacket,our_score,17,JCKFVVHNUHUHMYSN,0.892311,Full Sleeve S
 Q4,women full sleeve jacket,our_score,18,JCKFMV5WAAXE6BWT,0.891239,Full Sleeve Printed Women Casual Jacket,3.9,53.0,False,47
 Q4,women full sleeve jacket,our_score,19,JCKFJ3AZRGTGTTBD,0.890999,Full Sleeve Solid Women Bomber Jacket,4.0,69.0,False,50
 Q4,women full sleeve jacket,our_score,20,JCKF7EBGWC49PTKX,0.889461,Full Sleeve Solid Women Bomber Jacket,3.6,69.0,False,53
+Q4,women full sleeve jacket,intent_score,1,JCKFMV5WTASYK4Y2,1.0,Full Sleeve Solid Women Casual Jacket,2.3,69.0,False,72
+Q4,women full sleeve jacket,intent_score,2,JCKFUUSN3YZPEJXP,0.990802,Full Sleeve Solid Women Casual Jacket,4.3,63.0,False,78
+Q4,women full sleeve jacket,intent_score,3,JCKFUUSPZCTSACGH,0.985344,Full Sleeve Solid Women Casual Jacket,3.8,55.0,False,81
+Q4,women full sleeve jacket,intent_score,4,JCKFYQGKUNHTVXCF,0.961999,Full Sleeve Solid Women Casual Jacket,3.2,50.0,False,63
+Q4,women full sleeve jacket,intent_score,5,JCKFYQGXDVYFKU3P,0.961999,Full Sleeve Solid Women Casual Jacket,3.2,50.0,False,63
+Q4,women full sleeve jacket,intent_score,6,JCKEAMZNPZBAQY3Y,0.955679,Full Sleeve Self Design Women Bodycon Jacket,2.3,50.0,False,42
+Q4,women full sleeve jacket,intent_score,7,JCKFXQWYXH5QPSXV,0.944555,Full Sleeve Colorblock Women Sports Jacket,3.4,40.0,False,84
+Q4,women full sleeve jacket,intent_score,8,JCKFVVHNFANGGWNP,0.944149,Full Sleeve Solid Women Casual Jacket,3.3,76.0,False,69
+Q4,women full sleeve jacket,intent_score,9,JCKFVVHNUHUHMYSN,0.941929,Full Sleeve Solid Women Casual Jacket,3.3,76.0,False,70
+Q4,women full sleeve jacket,intent_score,10,JCKFDXGZGQK5WSHK,0.937998,Full Sleeve Checkered Women Casual Jacket,3.7,54.0,False,52
+Q4,women full sleeve jacket,intent_score,11,JCKFY4B2XYFTKYWX,0.93778,Full Sleeve Solid Women Leather Jacket,2.1,,False,98
+Q4,women full sleeve jacket,intent_score,12,JCKFY4B2ZXXFUBEH,0.93778,Full Sleeve Solid Women Leather Jacket,2.1,,False,98
+Q4,women full sleeve jacket,intent_score,13,JCKFKGR4FADV7SZS,0.936588,Full Sleeve Colorblock Women Sports Jacket,2.3,50.0,False,63
+Q4,women full sleeve jacket,intent_score,14,JCKFY4B3YKRV82EH,0.936058,Full Sleeve Solid Women Leather Jacket,2.1,,False,99
+Q4,women full sleeve jacket,intent_score,15,JCKFWYTHH3B5GKWS,0.935342,Full Sleeve Colorblock Women Casual Jacket,4.1,76.0,False,73
+Q4,women full sleeve jacket,intent_score,16,JCKFRP3HNRDBD3Z9,0.934191,Full Sleeve Solid Women Casual Jacket,2.7,23.0,False,64
+Q4,women full sleeve jacket,intent_score,17,JCKFM9TQZBYECNBT,0.932234,Full Sleeve Solid Women Padded Jacket,2.2,53.0,False,60
+Q4,women full sleeve jacket,intent_score,18,JCKF7KY5KKUKYSGY,0.931959,Full Sleeve Solid Women Bomber Jacket,4.1,69.0,False,58
+Q4,women full sleeve jacket,intent_score,19,JCKFRP3GMEQ2JVEU,0.931809,Full Sleeve Self Design Women Casual Jacket,3.0,25.0,False,65
+Q4,women full sleeve jacket,intent_score,20,JCKFU9APAQJBN23B,0.931008,Full Sleeve Solid Women Casual Jacket,4.3,76.0,False,75
 Q4,women full sleeve jacket,word2vec,1,JCKEAMZNPZBAQY3Y,0.866164,Full Sleeve Self Design Women Bodycon Jacket,2.3,50.0,False,42
 Q4,women full sleeve jacket,word2vec,2,JCKFMV5WTASYK4Y2,0.857204,Full Sleeve Solid Women Casual Jacket,2.3,69.0,False,72
 Q4,women full sleeve jacket,word2vec,3,JCKFWYNCWEHNZCTJ,0.851857,Full Sleeve Striped Women Casual Jacket,3.4,76.0,True,73
@@ -379,26 +459,26 @@ Q4,women full sleeve jacket,word2vec,17,JCKFUUSN3YZPEJXP,0.838084,Full Sleeve So
 Q4,women full sleeve jacket,word2vec,18,JCKFUUSPZCTSACGH,0.836199,Full Sleeve Solid Women Casual Jacket,3.8,55.0,False,81
 Q4,women full sleeve jacket,word2vec,19,JCKFKYUZQ4B5ZHZT,0.834323,Full Sleeve Striped Women Casual Jacket,3.6,53.0,False,46
 Q4,women full sleeve jacket,word2vec,20,JCKFW7ERKBA4BHY3,0.832923,Full Sleeve Solid Women Casual Jacket,3.9,75.0,False,77
-Q4,women full sleeve jacket,doc2vec,1,JCKFYPMYKQTAPDGF,0.72345,Full Sleeve Colorblock Women Jacket,3.8,40.0,False,37
-Q4,women full sleeve jacket,doc2vec,2,JCKFYQGXDVYFKU3P,0.718389,Full Sleeve Solid Women Casual Jacket,3.2,50.0,False,63
-Q4,women full sleeve jacket,doc2vec,3,JCKFUZWSXNJREE9G,0.711272,Full Sleeve Solid Women Casual Jacket,2.5,23.0,False,55
-Q4,women full sleeve jacket,doc2vec,4,JCKFPDRSUGRT9QU7,0.703305,Full Sleeve Solid Women Bomber Jacket,2.6,,False,45
-Q4,women full sleeve jacket,doc2vec,5,JCKFX4GJFFHYBQTD,0.69702,Full Sleeve Solid Women Quilted Jacket,4.4,35.0,True,46
-Q4,women full sleeve jacket,doc2vec,6,JCKFM76BHGFDHJAX,0.696927,Full Sleeve Solid Women Bomber Jacket,3.9,60.0,False,43
-Q4,women full sleeve jacket,doc2vec,7,JCKFY8K8Q3CHZDUF,0.694691,Full Sleeve Self Design Women Casual Jacket,3.1,55.0,False,49
-Q4,women full sleeve jacket,doc2vec,8,JCKFX4PUHCC2AVJY,0.687189,Full Sleeve Solid Women Casual Jacket,4.3,50.0,True,47
-Q4,women full sleeve jacket,doc2vec,9,JCKFM76BVQZQBZCJ,0.685625,Full Sleeve Solid Women Bomber Jacket,3.3,60.0,False,46
-Q4,women full sleeve jacket,doc2vec,10,JCKFX4VP62ZVQGM6,0.681703,Full Sleeve Solid Women Jacket,3.8,40.0,False,37
-Q4,women full sleeve jacket,doc2vec,11,JCKFX4VPBAC2MCSJ,0.681451,Full Sleeve Solid Women Jacket,5.0,40.0,False,37
-Q4,women full sleeve jacket,doc2vec,12,JCKFRP3HE52AHB8C,0.680187,Full Sleeve Solid Women Jacket,2.5,25.0,False,56
-Q4,women full sleeve jacket,doc2vec,13,JCKFQF3FXSKHTVKJ,0.676708,Full Sleeve Colorblock Women Jacket,4.0,45.0,False,45
-Q4,women full sleeve jacket,doc2vec,14,JCKFPDRSTYJW3KVK,0.67501,Full Sleeve Solid Women Riding Jacket,2.6,,False,42
-Q4,women full sleeve jacket,doc2vec,15,JCKFWWT5HZMFXYRW,0.674967,Full Sleeve Solid Women Casual Jacket,3.3,57.0,False,53
-Q4,women full sleeve jacket,doc2vec,16,JCKFKYUZQ4B5ZHZT,0.674799,Full Sleeve Striped Women Casual Jacket,3.6,53.0,False,46
-Q4,women full sleeve jacket,doc2vec,17,JCKFX4SAGAF6H8ZG,0.674638,Full Sleeve Solid Women Bomber Jacket,3.6,35.0,True,46
-Q4,women full sleeve jacket,doc2vec,18,JCKFX4PUM6HDQH6V,0.674554,Full Sleeve Solid Women Casual Jacket,4.4,50.0,True,46
-Q4,women full sleeve jacket,doc2vec,19,JCKFWWT5EYVHRSHS,0.673738,Full Sleeve Solid Women Casual Jacket,3.3,57.0,False,53
-Q4,women full sleeve jacket,doc2vec,20,JCKFQGP9GDVZSGXY,0.672931,Full Sleeve Striped Women Bomber Jacket,3.3,60.0,False,41
+Q4,women full sleeve jacket,doc2vec,1,JCKFYPMYKQTAPDGF,0.721835,Full Sleeve Colorblock Women Jacket,3.8,40.0,False,37
+Q4,women full sleeve jacket,doc2vec,2,JCKFYQGXDVYFKU3P,0.718845,Full Sleeve Solid Women Casual Jacket,3.2,50.0,False,63
+Q4,women full sleeve jacket,doc2vec,3,JCKFUZWSXNJREE9G,0.710318,Full Sleeve Solid Women Casual Jacket,2.5,23.0,False,55
+Q4,women full sleeve jacket,doc2vec,4,JCKFPDRSUGRT9QU7,0.702584,Full Sleeve Solid Women Bomber Jacket,2.6,,False,45
+Q4,women full sleeve jacket,doc2vec,5,JCKFM76BHGFDHJAX,0.696201,Full Sleeve Solid Women Bomber Jacket,3.9,60.0,False,43
+Q4,women full sleeve jacket,doc2vec,6,JCKFX4GJFFHYBQTD,0.695828,Full Sleeve Solid Women Quilted Jacket,4.4,35.0,True,46
+Q4,women full sleeve jacket,doc2vec,7,JCKFY8K8Q3CHZDUF,0.694889,Full Sleeve Self Design Women Casual Jacket,3.1,55.0,False,49
+Q4,women full sleeve jacket,doc2vec,8,JCKFX4PUHCC2AVJY,0.686842,Full Sleeve Solid Women Casual Jacket,4.3,50.0,True,47
+Q4,women full sleeve jacket,doc2vec,9,JCKFM76BVQZQBZCJ,0.684712,Full Sleeve Solid Women Bomber Jacket,3.3,60.0,False,46
+Q4,women full sleeve jacket,doc2vec,10,JCKFX4VP62ZVQGM6,0.680406,Full Sleeve Solid Women Jacket,3.8,40.0,False,37
+Q4,women full sleeve jacket,doc2vec,11,JCKFX4VPBAC2MCSJ,0.680006,Full Sleeve Solid Women Jacket,5.0,40.0,False,37
+Q4,women full sleeve jacket,doc2vec,12,JCKFRP3HE52AHB8C,0.680004,Full Sleeve Solid Women Jacket,2.5,25.0,False,56
+Q4,women full sleeve jacket,doc2vec,13,JCKFWWT5HZMFXYRW,0.675174,Full Sleeve Solid Women Casual Jacket,3.3,57.0,False,53
+Q4,women full sleeve jacket,doc2vec,14,JCKFQF3FXSKHTVKJ,0.674467,Full Sleeve Colorblock Women Jacket,4.0,45.0,False,45
+Q4,women full sleeve jacket,doc2vec,15,JCKFX4PUM6HDQH6V,0.674428,Full Sleeve Solid Women Casual Jacket,4.4,50.0,True,46
+Q4,women full sleeve jacket,doc2vec,16,JCKFPDRSTYJW3KVK,0.67385,Full Sleeve Solid Women Riding Jacket,2.6,,False,42
+Q4,women full sleeve jacket,doc2vec,17,JCKFKYUZQ4B5ZHZT,0.673793,Full Sleeve Striped Women Casual Jacket,3.6,53.0,False,46
+Q4,women full sleeve jacket,doc2vec,18,JCKFX4SAGAF6H8ZG,0.67373,Full Sleeve Solid Women Bomber Jacket,3.6,35.0,True,46
+Q4,women full sleeve jacket,doc2vec,19,JCKFWWT5EYVHRSHS,0.673088,Full Sleeve Solid Women Casual Jacket,3.3,57.0,False,53
+Q4,women full sleeve jacket,doc2vec,20,JCKFRP3GSHZYYRWB,0.672856,Full Sleeve Solid Women Jacket,2.6,18.0,False,56
 Q5,men cotton sports shorts,tfidf,1,DHYFHFUJMNHJCYYR,0.475649,Color Block Men Multicolor Sports Shorts,3.8,34.0,False,26
 Q5,men cotton sports shorts,tfidf,2,SRTFZFYXWSZFEZ8C,0.471054,Solid Men Blue Sports Shorts,4.3,40.0,True,30
 Q5,men cotton sports shorts,tfidf,3,SRTFZFYXJFFJYWDQ,0.451922,Solid Men Black Sports Shorts,4.5,28.0,False,28
@@ -459,6 +539,26 @@ Q5,men cotton sports shorts,our_score,17,JCKFWZ8HDMZZVYNC,0.708772,short_sleeve 
 Q5,men cotton sports shorts,our_score,18,JCKFWZ8HBF7C3HM3,0.706272,short_sleeve Solid Men Sports Jacket,2.2,10.0,False,57
 Q5,men cotton sports shorts,our_score,19,TSHFVEV3EFDMDS4Y,0.673195,Sports Men Round Neck Red T-Shirt,4.5,33.0,False,77
 Q5,men cotton sports shorts,our_score,20,SRTFWAT2ZVYTNVYH,0.670157,Solid Men Khaki Bermuda Shorts,4.1,58.0,False,77
+Q5,men cotton sports shorts,intent_score,1,SRTEQ4873ZRGBPYJ,1.0,Solid Men White Sports Shorts,2.3,50.0,False,33
+Q5,men cotton sports shorts,intent_score,2,SRTFZFYXJFFJYWDQ,0.992831,Solid Men Black Sports Shorts,4.5,28.0,False,28
+Q5,men cotton sports shorts,intent_score,3,SRTFZ3KE4QTYBZGU,0.967168,Solid Men Dark Blue Sports Shorts,4.5,42.0,False,34
+Q5,men cotton sports shorts,intent_score,4,DHYFHFUJMNHJCYYR,0.958708,Color Block Men Multicolor Sports Shorts,3.8,34.0,False,26
+Q5,men cotton sports shorts,intent_score,5,SRTESGHGHQVJC77H,0.947787,Solid Men Blue Sports Shorts,2.3,50.0,False,53
+Q5,men cotton sports shorts,intent_score,6,SRTFZYYXKPMGCRDJ,0.946895,Solid Men Black Sports Shorts,3.5,25.0,False,39
+Q5,men cotton sports shorts,intent_score,7,SRTFDT7FAGUTMSVY,0.934807,Solid Men Blue Sports Shorts,4.5,30.0,False,44
+Q5,men cotton sports shorts,intent_score,8,SRTFDT7F8K7VAFWA,0.927158,Self Design Men Grey Sports Shorts,2.7,30.0,False,46
+Q5,men cotton sports shorts,intent_score,9,TKPF7NWYGHPBVFMA,0.915504,Solid Men Blue Sports Shorts,4.0,25.0,False,35
+Q5,men cotton sports shorts,intent_score,10,SRTEHZFHNM2MKMM3,0.890386,"Solid Men Red Basic Shorts, Sports Shorts",3.0,55.0,False,114
+Q5,men cotton sports shorts,intent_score,11,SRTEHZFHVH6A9XHC,0.88639,"Solid Men Dark Blue Basic Shorts, Sports Shorts",3.0,55.0,False,116
+Q5,men cotton sports shorts,intent_score,12,SRTF9FCRBFV27UGK,0.790672,Solid Men Grey Sports Shorts,4.1,30.0,False,88
+Q5,men cotton sports shorts,intent_score,13,SRTEQKY62CMVFZNY,0.716963,"Solid Men Black Beach Shorts, Gym Shorts, Night Shorts, Basic Shorts, Running Shorts, Boxer Shorts, Sports Shorts, Cycling Shorts",3.9,72.0,False,91
+Q5,men cotton sports shorts,intent_score,14,SRTESGH8B6STFGTF,0.71132,Solid Men Black Sports Shorts,2.3,50.0,False,70
+Q5,men cotton sports shorts,intent_score,15,SRTFWYYDASDR42FF,0.694566,Solid Men Black Sports Shorts,3.7,10.0,False,93
+Q5,men cotton sports shorts,intent_score,16,SRTEDGDPDSMJNJFW,0.653646,Solid Men White Running Shorts,4.9,52.0,False,54
+Q5,men cotton sports shorts,intent_score,17,SRTFW4GC2JQEGDAC,0.617831,Solid Men Black Swim Shorts,3.4,33.0,False,60
+Q5,men cotton sports shorts,intent_score,18,SRTFW4GC5YHGZY3A,0.617831,Solid Men Black Swim Shorts,3.4,33.0,False,60
+Q5,men cotton sports shorts,intent_score,19,SRTFW4GCTGA3BEZ8,0.617831,Solid Men Black Swim Shorts,3.4,33.0,False,60
+Q5,men cotton sports shorts,intent_score,20,SRTFWAT2ZVYTNVYH,0.605919,Solid Men Khaki Bermuda Shorts,4.1,58.0,False,77
 Q5,men cotton sports shorts,word2vec,1,SRTEQKY62CMVFZNY,0.819867,"Solid Men Black Beach Shorts, Gym Shorts, Night Shorts, Basic Shorts, Running Shorts, Boxer Shorts, Sports Shorts, Cycling Shorts",3.9,72.0,False,91
 Q5,men cotton sports shorts,word2vec,2,SRTEQ4873ZRGBPYJ,0.806731,Solid Men White Sports Shorts,2.3,50.0,False,33
 Q5,men cotton sports shorts,word2vec,3,SRTFZFYXWSZFEZ8C,0.806261,Solid Men Blue Sports Shorts,4.3,40.0,True,30
@@ -479,26 +579,26 @@ Q5,men cotton sports shorts,word2vec,17,TKPF7NWYGHPBVFMA,0.732354,Solid Men Blue
 Q5,men cotton sports shorts,word2vec,18,SRTF9FCRBFV27UGK,0.729712,Solid Men Grey Sports Shorts,4.1,30.0,False,88
 Q5,men cotton sports shorts,word2vec,19,TSHFVEV3RXUZFAYC,0.718807,Sports Men Polo Neck Blue T-Shirt,4.5,33.0,False,82
 Q5,men cotton sports shorts,word2vec,20,SRTFWATFKZ5TE5EA,0.716857,Solid Men White Bermuda Shorts,4.1,53.0,False,77
-Q5,men cotton sports shorts,doc2vec,1,DHYFHFUJMNHJCYYR,0.692941,Color Block Men Multicolor Sports Shorts,3.8,34.0,False,26
-Q5,men cotton sports shorts,doc2vec,2,SRTFZFYXJFFJYWDQ,0.686141,Solid Men Black Sports Shorts,4.5,28.0,False,28
-Q5,men cotton sports shorts,doc2vec,3,SRTFZFYXWSZFEZ8C,0.683883,Solid Men Blue Sports Shorts,4.3,40.0,True,30
-Q5,men cotton sports shorts,doc2vec,4,SRTFZ3KE4QTYBZGU,0.653646,Solid Men Dark Blue Sports Shorts,4.5,42.0,False,34
-Q5,men cotton sports shorts,doc2vec,5,SRTEQ4873ZRGBPYJ,0.604127,Solid Men White Sports Shorts,2.3,50.0,False,33
-Q5,men cotton sports shorts,doc2vec,6,SRTFW4GC2JQEGDAC,0.56548,Solid Men Black Swim Shorts,3.4,33.0,False,60
-Q5,men cotton sports shorts,doc2vec,7,SRTFW4GCTGA3BEZ8,0.553256,Solid Men Black Swim Shorts,3.4,33.0,False,60
-Q5,men cotton sports shorts,doc2vec,8,SRTFWAT2ZVYTNVYH,0.548804,Solid Men Khaki Bermuda Shorts,4.1,58.0,False,77
-Q5,men cotton sports shorts,doc2vec,9,SRTFW4GC5YHGZY3A,0.537526,Solid Men Black Swim Shorts,3.4,33.0,False,60
-Q5,men cotton sports shorts,doc2vec,10,SRTFWATFKZ5TE5EA,0.530602,Solid Men White Bermuda Shorts,4.1,53.0,False,77
-Q5,men cotton sports shorts,doc2vec,11,SRTFZYYXKPMGCRDJ,0.525992,Solid Men Black Sports Shorts,3.5,25.0,False,39
-Q5,men cotton sports shorts,doc2vec,12,TSHFYQMYGXDR2RXK,0.511995,Printed Men Round Neck Black T-Shirt,4.5,76.0,False,105
-Q5,men cotton sports shorts,doc2vec,13,SRTESGH8B6STFGTF,0.506274,Solid Men Black Sports Shorts,2.3,50.0,False,70
-Q5,men cotton sports shorts,doc2vec,14,SRTEQKY62CMVFZNY,0.501567,"Solid Men Black Beach Shorts, Gym Shorts, Night Shorts, Basic Shorts, Running Shorts, Boxer Shorts, Sports Shorts, Cycling Shorts",3.9,72.0,False,91
-Q5,men cotton sports shorts,doc2vec,15,SRTEHZFHNM2MKMM3,0.496545,"Solid Men Red Basic Shorts, Sports Shorts",3.0,55.0,False,114
-Q5,men cotton sports shorts,doc2vec,16,SRTESGHGHQVJC77H,0.496515,Solid Men Blue Sports Shorts,2.3,50.0,False,53
-Q5,men cotton sports shorts,doc2vec,17,SRTEDGDPDSMJNJFW,0.49543,Solid Men White Running Shorts,4.9,52.0,False,54
-Q5,men cotton sports shorts,doc2vec,18,JCKFWZ8HBF7C3HM3,0.493125,short_sleeve Solid Men Sports Jacket,2.2,10.0,False,57
-Q5,men cotton sports shorts,doc2vec,19,SRTFGY773H5DUEWZ,0.479872,Solid Men Grey Cargo Shorts,4.0,58.0,False,100
-Q5,men cotton sports shorts,doc2vec,20,JCKFWZ8HDMZZVYNC,0.476314,short_sleeve Solid Men Sports Jacket,2.2,15.0,False,57
+Q5,men cotton sports shorts,doc2vec,1,DHYFHFUJMNHJCYYR,0.692797,Color Block Men Multicolor Sports Shorts,3.8,34.0,False,26
+Q5,men cotton sports shorts,doc2vec,2,SRTFZFYXJFFJYWDQ,0.686927,Solid Men Black Sports Shorts,4.5,28.0,False,28
+Q5,men cotton sports shorts,doc2vec,3,SRTFZFYXWSZFEZ8C,0.684802,Solid Men Blue Sports Shorts,4.3,40.0,True,30
+Q5,men cotton sports shorts,doc2vec,4,SRTFZ3KE4QTYBZGU,0.654376,Solid Men Dark Blue Sports Shorts,4.5,42.0,False,34
+Q5,men cotton sports shorts,doc2vec,5,SRTEQ4873ZRGBPYJ,0.60524,Solid Men White Sports Shorts,2.3,50.0,False,33
+Q5,men cotton sports shorts,doc2vec,6,SRTFW4GC2JQEGDAC,0.565965,Solid Men Black Swim Shorts,3.4,33.0,False,60
+Q5,men cotton sports shorts,doc2vec,7,SRTFW4GCTGA3BEZ8,0.553772,Solid Men Black Swim Shorts,3.4,33.0,False,60
+Q5,men cotton sports shorts,doc2vec,8,SRTFWAT2ZVYTNVYH,0.552078,Solid Men Khaki Bermuda Shorts,4.1,58.0,False,77
+Q5,men cotton sports shorts,doc2vec,9,SRTFW4GC5YHGZY3A,0.538081,Solid Men Black Swim Shorts,3.4,33.0,False,60
+Q5,men cotton sports shorts,doc2vec,10,SRTFWATFKZ5TE5EA,0.533958,Solid Men White Bermuda Shorts,4.1,53.0,False,77
+Q5,men cotton sports shorts,doc2vec,11,SRTFZYYXKPMGCRDJ,0.526591,Solid Men Black Sports Shorts,3.5,25.0,False,39
+Q5,men cotton sports shorts,doc2vec,12,TSHFYQMYGXDR2RXK,0.513307,Printed Men Round Neck Black T-Shirt,4.5,76.0,False,105
+Q5,men cotton sports shorts,doc2vec,13,SRTESGH8B6STFGTF,0.506943,Solid Men Black Sports Shorts,2.3,50.0,False,70
+Q5,men cotton sports shorts,doc2vec,14,SRTEQKY62CMVFZNY,0.503335,"Solid Men Black Beach Shorts, Gym Shorts, Night Shorts, Basic Shorts, Running Shorts, Boxer Shorts, Sports Shorts, Cycling Shorts",3.9,72.0,False,91
+Q5,men cotton sports shorts,doc2vec,15,SRTEHZFHNM2MKMM3,0.496906,"Solid Men Red Basic Shorts, Sports Shorts",3.0,55.0,False,114
+Q5,men cotton sports shorts,doc2vec,16,SRTEDGDPDSMJNJFW,0.496857,Solid Men White Running Shorts,4.9,52.0,False,54
+Q5,men cotton sports shorts,doc2vec,17,SRTESGHGHQVJC77H,0.496482,Solid Men Blue Sports Shorts,2.3,50.0,False,53
+Q5,men cotton sports shorts,doc2vec,18,JCKFWZ8HBF7C3HM3,0.494711,short_sleeve Solid Men Sports Jacket,2.2,10.0,False,57
+Q5,men cotton sports shorts,doc2vec,19,SRTFGY773H5DUEWZ,0.481073,Solid Men Grey Cargo Shorts,4.0,58.0,False,100
+Q5,men cotton sports shorts,doc2vec,20,SRTFWYYDASDR42FF,0.478954,Solid Men Black Sports Shorts,3.7,10.0,False,93
 Q6,black track pants,tfidf,1,TKPFYHVE7SZNHTMR,0.752751,"Solid Men Black, Blue Track Pants",3.9,63.0,False,35
 Q6,black track pants,tfidf,2,TKPFZG5ZGSZZGR5F,0.747537,Striped Women Black Track Pants,3.5,62.0,False,27
 Q6,black track pants,tfidf,3,TKPFZZB2TUEGQQSF,0.742709,Solid Men Black Track Pants,2.2,54.0,False,25
@@ -559,6 +659,26 @@ Q6,black track pants,our_score,17,TKPEYQ6YNHW8FV5R,0.911063,"Solid Men Black, Or
 Q6,black track pants,our_score,18,TKPFXNPJNWUWAHSK,0.910257,"Solid Women Black, Grey Track Pants",3.9,66.0,False,41
 Q6,black track pants,our_score,19,TKPFXNPJTQ6DWU8M,0.910257,"Solid Men Blue, Black Track Pants",3.9,66.0,False,41
 Q6,black track pants,our_score,20,TKPFXSZNBYTGZMWY,0.908008,Solid Men Black Track Pants,4.1,57.0,False,26
+Q6,black track pants,intent_score,1,TKPFZMQ8YMWNGXEU,0.997128,Solid Men Black Track Pants,,60.0,False,96
+Q6,black track pants,intent_score,2,TKPFZG5ZGSZZGR5F,0.991972,Striped Women Black Track Pants,3.5,62.0,False,27
+Q6,black track pants,intent_score,3,TKPEYQ6YNHW8FV5R,0.989661,"Solid Men Black, Orange Track Pants",3.5,46.0,False,71
+Q6,black track pants,intent_score,4,TKPFZMZSWZN5HKEZ,0.98462,Solid Men Black Track Pants,2.1,50.0,False,29
+Q6,black track pants,intent_score,5,TKPFNWG6GVFNXUVG,0.982155,Solid Men Black Track Pants,3.4,50.0,False,39
+Q6,black track pants,intent_score,6,TKPFRR83HRGAYYJ6,0.980985,Solid Men Black Track Pants,2.5,30.0,False,30
+Q6,black track pants,intent_score,7,TKPFRR83TFTU9TDV,0.980985,Solid Men Black Track Pants,2.5,30.0,False,30
+Q6,black track pants,intent_score,8,TKPFRR83YNVYCUPN,0.980985,Solid Men Black Track Pants,3.4,30.0,False,30
+Q6,black track pants,intent_score,9,TKPF3FPJNVVBKPRG,0.973386,"Solid Men Blue, Black Track Pants",2.6,51.0,False,67
+Q6,black track pants,intent_score,10,TKPF3FPKHNWZ3UMG,0.973386,"Solid Men Blue, Black Track Pants",2.6,58.0,False,67
+Q6,black track pants,intent_score,11,TKPF3FPKTYM55SAV,0.973386,"Solid Men Black, Grey Track Pants",2.6,58.0,False,67
+Q6,black track pants,intent_score,12,TKPF3FPMC6PGGGYH,0.973386,"Solid Women Black, Grey Track Pants",2.6,58.0,False,67
+Q6,black track pants,intent_score,13,TKPF3FPNZ5XCHZ6R,0.973386,"Solid Men Black, Grey Track Pants",2.6,58.0,False,67
+Q6,black track pants,intent_score,14,TKPF3FPQGCHXHGRM,0.973386,"Solid Men Black, Grey Track Pants",2.6,58.0,False,67
+Q6,black track pants,intent_score,15,TKPF3FPZRRJUWTAZ,0.973386,"Solid Men Blue, Black Track Pants",2.6,58.0,False,67
+Q6,black track pants,intent_score,16,TKPFYHVE7SZNHTMR,0.963216,"Solid Men Black, Blue Track Pants",3.9,63.0,False,35
+Q6,black track pants,intent_score,17,TKPFYVRNGSKYPGT3,0.956291,Solid Men Black Track Pants,3.2,60.0,False,37
+Q6,black track pants,intent_score,18,TKPFXZQ4EJ5G42FT,0.955502,Solid Women Black Track Pants,,12.0,False,28
+Q6,black track pants,intent_score,19,TKPFUF3VTZ5CUS2Y,0.951367,Solid Men Black Track Pants,4.2,66.0,False,79
+Q6,black track pants,intent_score,20,TKPFXNPJTHFD5YEY,0.949466,Solid Women Black Track Pants,3.9,66.0,False,39
 Q6,black track pants,word2vec,1,TKPFGGWJMDQFKZ5Y,0.831436,Solid Women Black Track Pants,,60.0,True,30
 Q6,black track pants,word2vec,2,TKPF3FPMC6PGGGYH,0.812843,"Solid Women Black, Grey Track Pants",2.6,58.0,False,67
 Q6,black track pants,word2vec,3,TKPF3FPKTYM55SAV,0.812739,"Solid Men Black, Grey Track Pants",2.6,58.0,False,67
@@ -579,26 +699,26 @@ Q6,black track pants,word2vec,17,TKPFYVRNGSKYPGT3,0.760199,Solid Men Black Track
 Q6,black track pants,word2vec,18,TKPFGP48RBBKAGSZ,0.757553,Striped Men Black Track Pants,4.0,28.0,False,34
 Q6,black track pants,word2vec,19,TKPFRR83W2WEQGV3,0.757514,Solid Women Black Track Pants,,30.0,True,30
 Q6,black track pants,word2vec,20,TKPFRR83HRGAYYJ6,0.75745,Solid Men Black Track Pants,2.5,30.0,False,30
-Q6,black track pants,doc2vec,1,TKPFRDMYZQGEFPXV,0.796908,Solid Women Black Track Pants,4.2,55.0,True,18
-Q6,black track pants,doc2vec,2,TKPFRR83TFTU9TDV,0.776126,Solid Men Black Track Pants,2.5,30.0,False,30
-Q6,black track pants,doc2vec,3,TKPFGZYSCE255DSF,0.775842,Solid Women Black Track Pants,3.5,37.0,False,17
-Q6,black track pants,doc2vec,4,TKPFRR83HRGAYYJ6,0.762302,Solid Men Black Track Pants,2.5,30.0,False,30
-Q6,black track pants,doc2vec,5,TKPFRR83W2WEQGV3,0.758173,Solid Women Black Track Pants,,30.0,True,30
-Q6,black track pants,doc2vec,6,TKPFJQEMYRQUV8XD,0.757212,Solid Men Black Track Pants,3.7,76.0,False,25
-Q6,black track pants,doc2vec,7,TKPFRR83YNVYCUPN,0.756188,Solid Men Black Track Pants,3.4,30.0,False,30
-Q6,black track pants,doc2vec,8,TKPFGGWJMDQFKZ5Y,0.755851,Solid Women Black Track Pants,,60.0,True,30
-Q6,black track pants,doc2vec,9,TKPFYGF3S3DHNCDB,0.745423,Solid Women Black Track Pants,,30.0,False,25
-Q6,black track pants,doc2vec,10,TKPFJQBHZK4QG8GY,0.739535,Solid Women Black Track Pants,3.7,76.0,False,25
-Q6,black track pants,doc2vec,11,TKPFZHC8PZZEAPWN,0.737562,"Solid Men Black, Grey Track Pants",3.7,18.0,False,26
-Q6,black track pants,doc2vec,12,TKPFWCVUMWW96BEY,0.735083,Solid Men Black Track Pants,2.8,50.0,False,23
-Q6,black track pants,doc2vec,13,TKPESZFKCMCZQEYR,0.733524,Solid Women Black Track Pants,3.8,48.0,False,26
-Q6,black track pants,doc2vec,14,TKPFYHVE7SZNHTMR,0.73244,"Solid Men Black, Blue Track Pants",3.9,63.0,False,35
-Q6,black track pants,doc2vec,15,TKPFVZZ94MMYUKPV,0.72977,Printed Women Black Track Pants,2.5,60.0,False,19
-Q6,black track pants,doc2vec,16,TKPFZ3JRST9YCECV,0.729488,Solid Men Black Track Pants,4.0,30.0,False,24
-Q6,black track pants,doc2vec,17,TKPFMYETZHMYY5KG,0.728893,"Solid Women White, Blue, Black Track Pants",3.4,76.0,False,36
-Q6,black track pants,doc2vec,18,TKPFXS5ZFKNUZQEG,0.728754,"Solid Women Black, Blue Track Pants",2.7,63.0,False,40
-Q6,black track pants,doc2vec,19,TKPFXS5ZEYHHHCHQ,0.728662,"Solid Women Grey, Black Track Pants",2.7,63.0,False,40
-Q6,black track pants,doc2vec,20,TKPFJQBGEZZWPUET,0.727717,Solid Men Black Track Pants,3.7,76.0,False,25
+Q6,black track pants,doc2vec,1,TKPFRDMYZQGEFPXV,0.795702,Solid Women Black Track Pants,4.2,55.0,True,18
+Q6,black track pants,doc2vec,2,TKPFRR83TFTU9TDV,0.776437,Solid Men Black Track Pants,2.5,30.0,False,30
+Q6,black track pants,doc2vec,3,TKPFGZYSCE255DSF,0.775257,Solid Women Black Track Pants,3.5,37.0,False,17
+Q6,black track pants,doc2vec,4,TKPFRR83HRGAYYJ6,0.762297,Solid Men Black Track Pants,2.5,30.0,False,30
+Q6,black track pants,doc2vec,5,TKPFRR83W2WEQGV3,0.758856,Solid Women Black Track Pants,,30.0,True,30
+Q6,black track pants,doc2vec,6,TKPFRR83YNVYCUPN,0.757024,Solid Men Black Track Pants,3.4,30.0,False,30
+Q6,black track pants,doc2vec,7,TKPFJQEMYRQUV8XD,0.756643,Solid Men Black Track Pants,3.7,76.0,False,25
+Q6,black track pants,doc2vec,8,TKPFGGWJMDQFKZ5Y,0.756078,Solid Women Black Track Pants,,60.0,True,30
+Q6,black track pants,doc2vec,9,TKPFYGF3S3DHNCDB,0.745586,Solid Women Black Track Pants,,30.0,False,25
+Q6,black track pants,doc2vec,10,TKPFJQBHZK4QG8GY,0.739271,Solid Women Black Track Pants,3.7,76.0,False,25
+Q6,black track pants,doc2vec,11,TKPFZHC8PZZEAPWN,0.737163,"Solid Men Black, Grey Track Pants",3.7,18.0,False,26
+Q6,black track pants,doc2vec,12,TKPFWCVUMWW96BEY,0.735541,Solid Men Black Track Pants,2.8,50.0,False,23
+Q6,black track pants,doc2vec,13,TKPESZFKCMCZQEYR,0.733506,Solid Women Black Track Pants,3.8,48.0,False,26
+Q6,black track pants,doc2vec,14,TKPFYHVE7SZNHTMR,0.731329,"Solid Men Black, Blue Track Pants",3.9,63.0,False,35
+Q6,black track pants,doc2vec,15,TKPFZ3JRST9YCECV,0.729921,Solid Men Black Track Pants,4.0,30.0,False,24
+Q6,black track pants,doc2vec,16,TKPFMYETZHMYY5KG,0.729138,"Solid Women White, Blue, Black Track Pants",3.4,76.0,False,36
+Q6,black track pants,doc2vec,17,TKPFXS5ZEYHHHCHQ,0.728603,"Solid Women Grey, Black Track Pants",2.7,63.0,False,40
+Q6,black track pants,doc2vec,18,TKPFXS5ZFKNUZQEG,0.728221,"Solid Women Black, Blue Track Pants",2.7,63.0,False,40
+Q6,black track pants,doc2vec,19,TKPFVZZ94MMYUKPV,0.727823,Printed Women Black Track Pants,2.5,60.0,False,19
+Q6,black track pants,doc2vec,20,TKPFJQBGEZZWPUET,0.727585,Solid Men Black Track Pants,3.7,76.0,False,25
 Q7,hooded sweatshirt,tfidf,1,SWSFZ2H5XK7TJZRS,0.535393,Full Sleeve Solid Men Sweatshirt,,66.0,True,48
 Q7,hooded sweatshirt,tfidf,2,SWSFXV6GGZWJEDKJ,0.534694,Full Sleeve Solid Men Sweatshirt,3.5,67.0,True,48
 Q7,hooded sweatshirt,tfidf,3,SWSFZ2H3CXFAWYPH,0.534616,Full Sleeve Solid Women Sweatshirt,2.5,65.0,False,48
@@ -659,6 +779,26 @@ Q7,hooded sweatshirt,our_score,17,SWSFXZWGGJYSWYK2,0.784548,Full Sleeve Printed 
 Q7,hooded sweatshirt,our_score,18,SWSFXZWGSKPYAMHR,0.784548,Full Sleeve Solid Women Sweatshirt,3.2,63.0,False,54
 Q7,hooded sweatshirt,our_score,19,SWSFXZWHCDGSHDUP,0.784548,Full Sleeve Solid Women Sweatshirt,3.2,63.0,False,54
 Q7,hooded sweatshirt,our_score,20,SWSFXZWHHTZHZG6V,0.784548,Full Sleeve Solid Women Sweatshirt,3.2,63.0,False,54
+Q7,hooded sweatshirt,intent_score,1,SWSFXZWGFKHNG88S,1.0,Full Sleeve Solid Men Sweatshirt,3.2,63.0,False,60
+Q7,hooded sweatshirt,intent_score,2,SWSFXZWGMGVDUCXA,1.0,Full Sleeve Printed Women Sweatshirt,3.2,63.0,False,60
+Q7,hooded sweatshirt,intent_score,3,SWSFXZWWYXPZXPTY,1.0,Full Sleeve Printed Men Sweatshirt,3.2,63.0,False,60
+Q7,hooded sweatshirt,intent_score,4,SWSFYFFFMWQMAPJJ,0.995493,Full Sleeve Printed Men Sweatshirt,3.2,63.0,False,62
+Q7,hooded sweatshirt,intent_score,5,SWSFYFFYJCSGNGD8,0.995493,Full Sleeve Printed Men Sweatshirt,3.2,63.0,False,62
+Q7,hooded sweatshirt,intent_score,6,SWSFXZWUMUXNUHSZ,0.991027,Full Sleeve Solid Men Sweatshirt,3.2,66.0,False,64
+Q7,hooded sweatshirt,intent_score,7,SWSFYFFFZBZKUQUS,0.991027,Full Sleeve Printed Men Sweatshirt,3.2,66.0,False,64
+Q7,hooded sweatshirt,intent_score,8,SWSFYFFYFXCMPBDZ,0.991027,Full Sleeve Printed Women Sweatshirt,3.2,66.0,False,64
+Q7,hooded sweatshirt,intent_score,9,SWSFYFFYQ7Z3ZKN6,0.991027,Full Sleeve Printed Women Sweatshirt,3.2,66.0,False,64
+Q7,hooded sweatshirt,intent_score,10,SWSFYFFYCFJEYYTU,0.9866,Full Sleeve Printed Women Sweatshirt,3.2,63.0,False,66
+Q7,hooded sweatshirt,intent_score,11,SWSFYFFYHHDFZBRM,0.984402,Full Sleeve Printed Women Sweatshirt,3.2,66.0,False,67
+Q7,hooded sweatshirt,intent_score,12,SWSFXMFP2RUM86QD,0.958335,Full Sleeve Printed Women Sweatshirt,3.7,42.0,False,56
+Q7,hooded sweatshirt,intent_score,13,SWSFXMFPRTY4GKGF,0.958335,Full Sleeve Printed Men Sweatshirt,3.7,50.0,False,56
+Q7,hooded sweatshirt,intent_score,14,SWSFXMFPVYZ2YGGQ,0.958335,Full Sleeve Embroidered Men Sweatshirt,3.7,59.0,False,56
+Q7,hooded sweatshirt,intent_score,15,SWSFXMFPYYTZUZ3Z,0.955665,Full Sleeve Printed Men Sweatshirt,3.7,60.0,False,57
+Q7,hooded sweatshirt,intent_score,16,SWSFPHFFKEGXGVHW,0.942154,Full Sleeve Solid Men Sweatshirt,4.0,65.0,False,72
+Q7,hooded sweatshirt,intent_score,17,SWSFYV4N7HJ8BHWM,0.939782,Full Sleeve Solid Men Sweatshirt,3.2,63.0,False,51
+Q7,hooded sweatshirt,intent_score,18,SWSFYV4NUHK8YPR9,0.939782,Full Sleeve Solid Men Sweatshirt,3.2,66.0,False,51
+Q7,hooded sweatshirt,intent_score,19,SWSFYV85ZTT9H7ZY,0.927932,Full Sleeve Solid Men Sweatshirt,3.2,66.0,False,55
+Q7,hooded sweatshirt,intent_score,20,SWSFYNF2Z6A6NGFT,0.919239,Full Sleeve Solid Women Sweatshirt,3.2,66.0,False,58
 Q7,hooded sweatshirt,word2vec,1,SWSFXZWRDCTXHSHP,0.76512,Full Sleeve Printed Women Sweatshirt,3.2,63.0,False,54
 Q7,hooded sweatshirt,word2vec,2,SWSFXZWGGJYSWYK2,0.764335,Full Sleeve Printed Men Sweatshirt,3.2,63.0,False,54
 Q7,hooded sweatshirt,word2vec,3,SWSFXZWWZ8QKXY6Y,0.760939,Full Sleeve Solid Men Sweatshirt,3.2,63.0,False,54
@@ -679,26 +819,26 @@ Q7,hooded sweatshirt,word2vec,17,SWSFXZWGCNDAPG5H,0.753554,Full Sleeve Solid Wom
 Q7,hooded sweatshirt,word2vec,18,SWSFXZWGDH7E2QNC,0.752655,Full Sleeve Printed Men Sweatshirt,3.2,66.0,False,60
 Q7,hooded sweatshirt,word2vec,19,SWSFXZWGBS5UDZ7D,0.750521,Full Sleeve Printed Men Sweatshirt,3.2,66.0,False,60
 Q7,hooded sweatshirt,word2vec,20,SWSFXZWGGKRDZZ5D,0.750275,Full Sleeve Solid Men Sweatshirt,3.2,66.0,False,58
-Q7,hooded sweatshirt,doc2vec,1,SWSFZ2H5ZGRP6DY2,0.743078,Full Sleeve Solid Men Sweatshirt,4.7,67.0,True,48
-Q7,hooded sweatshirt,doc2vec,2,SWSFJFV4ZKWUX2FP,0.740921,Full Sleeve Solid Men Sweatshirt,3.9,45.0,False,42
-Q7,hooded sweatshirt,doc2vec,3,SWSEMKACG89EQBG6,0.732577,Full Sleeve Solid Women Sweatshirt,1.0,40.0,False,34
-Q7,hooded sweatshirt,doc2vec,4,SWSFYE8BSGHCMCCG,0.731668,Full Sleeve Printed Men Sweatshirt,4.1,65.0,False,41
-Q7,hooded sweatshirt,doc2vec,5,SWSFZ2H5XK7TJZRS,0.729097,Full Sleeve Solid Men Sweatshirt,,66.0,True,48
-Q7,hooded sweatshirt,doc2vec,6,SWSFV5JNFW5HZQWY,0.726223,Full Sleeve Printed Women Sweatshirt,2.5,33.0,False,48
-Q7,hooded sweatshirt,doc2vec,7,SWSFZ2H3CXFAWYPH,0.725285,Full Sleeve Solid Women Sweatshirt,2.5,65.0,False,48
-Q7,hooded sweatshirt,doc2vec,8,SWSFZ2HJXN9HNG7E,0.725035,Full Sleeve Solid Men Sweatshirt,,66.0,True,48
-Q7,hooded sweatshirt,doc2vec,9,SWSFXV6FKYFF35EW,0.724427,Full Sleeve Printed Women Sweatshirt,4.6,67.0,True,48
-Q7,hooded sweatshirt,doc2vec,10,SWSFY382ZD3YXMVP,0.722636,Full Sleeve Solid Men Sweatshirt,3.8,68.0,False,48
-Q7,hooded sweatshirt,doc2vec,11,SWSFZ2H4PW2GHY9H,0.722313,Full Sleeve Solid Men Sweatshirt,,68.0,True,48
-Q7,hooded sweatshirt,doc2vec,12,SWSFQM6ZVS4H3ZFP,0.720706,Full Sleeve Color Block Women Sweatshirt,3.6,60.0,False,38
-Q7,hooded sweatshirt,doc2vec,13,SWSFZ2H2T8SEC45H,0.720477,Full Sleeve Solid Men Sweatshirt,2.5,66.0,False,48
-Q7,hooded sweatshirt,doc2vec,14,SWSFXV6GFYTRSZJA,0.719,Full Sleeve Printed Men Sweatshirt,2.5,50.0,False,47
-Q7,hooded sweatshirt,doc2vec,15,SWSFYTVTJHEYHQMM,0.718475,Full Sleeve Printed Men Sweatshirt,2.4,60.0,False,45
-Q7,hooded sweatshirt,doc2vec,16,SWSFY37UKWPG4AZ2,0.717616,Full Sleeve Solid Women Sweatshirt,2.5,67.0,False,47
-Q7,hooded sweatshirt,doc2vec,17,SWSFQM6ZJCTWJXRF,0.716799,Full Sleeve Printed Men Sweatshirt,3.6,60.0,False,36
-Q7,hooded sweatshirt,doc2vec,18,SWSFYE8DVWRPTQWH,0.716687,Full Sleeve Printed Men Sweatshirt,4.1,65.0,False,41
-Q7,hooded sweatshirt,doc2vec,19,SWSFQHFRKZEMFAQY,0.716467,Full Sleeve Printed Men Sweatshirt,4.1,60.0,False,37
-Q7,hooded sweatshirt,doc2vec,20,SWSFYE8HGBSPAYES,0.713267,Full Sleeve Printed Women Sweatshirt,4.0,65.0,False,42
+Q7,hooded sweatshirt,doc2vec,1,SWSFZ2H5ZGRP6DY2,0.744108,Full Sleeve Solid Men Sweatshirt,4.7,67.0,True,48
+Q7,hooded sweatshirt,doc2vec,2,SWSFJFV4ZKWUX2FP,0.741121,Full Sleeve Solid Men Sweatshirt,3.9,45.0,False,42
+Q7,hooded sweatshirt,doc2vec,3,SWSFYE8BSGHCMCCG,0.731618,Full Sleeve Printed Men Sweatshirt,4.1,65.0,False,41
+Q7,hooded sweatshirt,doc2vec,4,SWSEMKACG89EQBG6,0.731556,Full Sleeve Solid Women Sweatshirt,1.0,40.0,False,34
+Q7,hooded sweatshirt,doc2vec,5,SWSFZ2H5XK7TJZRS,0.729361,Full Sleeve Solid Men Sweatshirt,,66.0,True,48
+Q7,hooded sweatshirt,doc2vec,6,SWSFV5JNFW5HZQWY,0.726397,Full Sleeve Printed Women Sweatshirt,2.5,33.0,False,48
+Q7,hooded sweatshirt,doc2vec,7,SWSFZ2H3CXFAWYPH,0.725593,Full Sleeve Solid Women Sweatshirt,2.5,65.0,False,48
+Q7,hooded sweatshirt,doc2vec,8,SWSFZ2HJXN9HNG7E,0.725532,Full Sleeve Solid Men Sweatshirt,,66.0,True,48
+Q7,hooded sweatshirt,doc2vec,9,SWSFXV6FKYFF35EW,0.724668,Full Sleeve Printed Women Sweatshirt,4.6,67.0,True,48
+Q7,hooded sweatshirt,doc2vec,10,SWSFY382ZD3YXMVP,0.723132,Full Sleeve Solid Men Sweatshirt,3.8,68.0,False,48
+Q7,hooded sweatshirt,doc2vec,11,SWSFZ2H4PW2GHY9H,0.722802,Full Sleeve Solid Men Sweatshirt,,68.0,True,48
+Q7,hooded sweatshirt,doc2vec,12,SWSFZ2H2T8SEC45H,0.72063,Full Sleeve Solid Men Sweatshirt,2.5,66.0,False,48
+Q7,hooded sweatshirt,doc2vec,13,SWSFQM6ZVS4H3ZFP,0.720371,Full Sleeve Color Block Women Sweatshirt,3.6,60.0,False,38
+Q7,hooded sweatshirt,doc2vec,14,SWSFXV6GFYTRSZJA,0.719087,Full Sleeve Printed Men Sweatshirt,2.5,50.0,False,47
+Q7,hooded sweatshirt,doc2vec,15,SWSFYTVTJHEYHQMM,0.718213,Full Sleeve Printed Men Sweatshirt,2.4,60.0,False,45
+Q7,hooded sweatshirt,doc2vec,16,SWSFY37UKWPG4AZ2,0.71798,Full Sleeve Solid Women Sweatshirt,2.5,67.0,False,47
+Q7,hooded sweatshirt,doc2vec,17,SWSFYE8DVWRPTQWH,0.716585,Full Sleeve Printed Men Sweatshirt,4.1,65.0,False,41
+Q7,hooded sweatshirt,doc2vec,18,SWSFQM6ZJCTWJXRF,0.716533,Full Sleeve Printed Men Sweatshirt,3.6,60.0,False,36
+Q7,hooded sweatshirt,doc2vec,19,SWSFQHFRKZEMFAQY,0.716337,Full Sleeve Printed Men Sweatshirt,4.1,60.0,False,37
+Q7,hooded sweatshirt,doc2vec,20,SWSFYE8HGBSPAYES,0.713352,Full Sleeve Printed Women Sweatshirt,4.0,65.0,False,42
 Q8,denim jacket,tfidf,1,JCKFZJWZBZCCTYXM,0.714153,Full Sleeve Washed Men Denim Jacket,2.9,50.0,False,46
 Q8,denim jacket,tfidf,2,JCKFZJWZNCGGZGSE,0.714153,Full Sleeve Washed Men Denim Jacket,2.9,50.0,True,46
 Q8,denim jacket,tfidf,3,JCKFZZN6AWQZ8FC2,0.696928,Full Sleeve Solid Men Denim Jacket,,53.0,False,44
@@ -759,6 +899,26 @@ Q8,denim jacket,our_score,17,JCKFXNVMC435YMSU,0.877565,Full Sleeve Solid Men Den
 Q8,denim jacket,our_score,18,JCKFXNVMP5XZZNHA,0.877565,Full Sleeve Solid Men Denim Jacket,3.6,53.0,False,51
 Q8,denim jacket,our_score,19,JCKFXNVMUPHVEQ7F,0.877565,Full Sleeve Solid Women Denim Jacket,3.6,53.0,False,51
 Q8,denim jacket,our_score,20,JCKFYY7WKSXSSUUA,0.877565,Full Sleeve Solid Women Denim Jacket,3.6,53.0,False,51
+Q8,denim jacket,intent_score,1,JCKFVJ54N4NZGPTP,0.970658,Full Sleeve Washed Men Denim Riding Jacket,3.3,65.0,False,84
+Q8,denim jacket,intent_score,2,JCKFKKFZ7QB2KUQV,0.969708,Full Sleeve Washed Men Denim Jacket,3.8,63.0,False,81
+Q8,denim jacket,intent_score,3,JCKFZZN6AWQZ8FC2,0.963948,Full Sleeve Solid Men Denim Jacket,,53.0,False,44
+Q8,denim jacket,intent_score,4,JCKFMHS8ANSPXK72,0.958238,Full Sleeve Printed Women Jacket,4.4,48.0,False,104
+Q8,denim jacket,intent_score,5,JCKFZJWZBZCCTYXM,0.957693,Full Sleeve Washed Men Denim Jacket,2.9,50.0,False,46
+Q8,denim jacket,intent_score,6,JCKFVDPW4WNPBGS2,0.953416,Full Sleeve Solid Men Denim Jacket,3.7,53.0,False,57
+Q8,denim jacket,intent_score,7,JCKFWC5YW4Z3YYZX,0.953416,Full Sleeve Solid Women Denim Jacket,4.0,53.0,False,57
+Q8,denim jacket,intent_score,8,JCKFWC5YZKFWXGEB,0.953416,Full Sleeve Solid Men Denim Jacket,4.0,53.0,False,57
+Q8,denim jacket,intent_score,9,JCKFXAKEY2ANHJGW,0.953416,Full Sleeve Solid Women Denim Jacket,3.7,53.0,False,57
+Q8,denim jacket,intent_score,10,JCKFYY97BC7KWPM4,0.953416,Full Sleeve Solid Men Denim Jacket,3.7,53.0,False,57
+Q8,denim jacket,intent_score,11,JCKFWC5YGQENYT6B,0.95072,Full Sleeve Solid Women Denim Jacket,4.0,53.0,False,58
+Q8,denim jacket,intent_score,12,JCKFWC5ZKPYQ6ZGH,0.945424,Full Sleeve Solid Women Denim Jacket,3.7,53.0,False,50
+Q8,denim jacket,intent_score,13,JCKFWC5ZQ8QVSETD,0.945424,Full Sleeve Solid Women Denim Jacket,3.7,53.0,False,50
+Q8,denim jacket,intent_score,14,JCKFMHS84AARPB4E,0.933538,Full Sleeve Printed Men Casual Jacket,3.0,48.0,False,104
+Q8,denim jacket,intent_score,15,JCKFMHS8TFBUJHAJ,0.933538,Full Sleeve Printed Women Casual Jacket,4.0,48.0,False,104
+Q8,denim jacket,intent_score,16,JCKFMHS8X5MYGQHS,0.933538,Full Sleeve Printed Women Casual Jacket,3.0,35.0,False,104
+Q8,denim jacket,intent_score,17,JCKFZKQGXJYHY9V7,0.924693,Full Sleeve Solid Men Jacket,3.4,56.0,False,57
+Q8,denim jacket,intent_score,18,JCKFZ33GHPEXHFUZ,0.919769,Full Sleeve Solid Women Jacket,,23.0,False,44
+Q8,denim jacket,intent_score,19,JCKFUCYG2GKYHYWN,0.91734,Full Sleeve Self Design Women Denim Jacket,3.4,71.0,False,99
+Q8,denim jacket,intent_score,20,JCKFVDPY9QR8UKKZ,0.915572,Full Sleeve Solid Women Denim Jacket,3.7,53.0,False,51
 Q8,denim jacket,word2vec,1,JCKFMHKMYEWHQFNU,0.767,Full Sleeve Printed Men Denim Casual Jacket,3.3,71.0,True,105
 Q8,denim jacket,word2vec,2,JCKFKKFZ7QB2KUQV,0.746444,Full Sleeve Washed Men Denim Jacket,3.8,63.0,False,81
 Q8,denim jacket,word2vec,3,JCKFKKFZMDEHEZQS,0.74361,Full Sleeve Washed Men Denim Jacket,2.4,64.0,True,82
@@ -779,23 +939,23 @@ Q8,denim jacket,word2vec,17,JCKFVDPY9QR8UKKZ,0.692705,Full Sleeve Solid Women De
 Q8,denim jacket,word2vec,18,JCKFYY7WKSXSSUUA,0.692587,Full Sleeve Solid Women Denim Jacket,3.6,53.0,False,51
 Q8,denim jacket,word2vec,19,JCKFVY24ABNYZXFH,0.691647,Full Sleeve Solid Men Padded Jacket,3.9,,True,94
 Q8,denim jacket,word2vec,20,JCKFXNVMQMZYDZFY,0.691543,Full Sleeve Solid Women Denim Jacket,4.3,53.0,False,51
-Q8,denim jacket,doc2vec,1,JCKFZJWZBZCCTYXM,0.71394,Full Sleeve Washed Men Denim Jacket,2.9,50.0,False,46
-Q8,denim jacket,doc2vec,2,JCKFZZN6AWQZ8FC2,0.702385,Full Sleeve Solid Men Denim Jacket,,53.0,False,44
-Q8,denim jacket,doc2vec,3,JCKFZJWZNCGGZGSE,0.702108,Full Sleeve Washed Men Denim Jacket,2.9,50.0,True,46
-Q8,denim jacket,doc2vec,4,JCKFXUDRFRJJ6XUH,0.699982,Full Sleeve Solid Men Casual Jacket,2.5,22.0,False,65
-Q8,denim jacket,doc2vec,5,JCKFZ33GHPEXHFUZ,0.688168,Full Sleeve Solid Women Jacket,,23.0,False,44
-Q8,denim jacket,doc2vec,6,JCKFX4PUHCC2AVJY,0.681033,Full Sleeve Solid Women Casual Jacket,4.3,50.0,True,47
-Q8,denim jacket,doc2vec,7,JCKFRP3HNRDBD3Z9,0.664595,Full Sleeve Solid Women Casual Jacket,2.7,23.0,False,64
-Q8,denim jacket,doc2vec,8,JCKFRP3GHXJBUFZP,0.656985,Full Sleeve Solid Men Casual Jacket,4.2,23.0,False,65
-Q8,denim jacket,doc2vec,9,JCKFXNVMGBYGXKHN,0.656549,Full Sleeve Solid Women Denim Jacket,4.3,53.0,True,52
-Q8,denim jacket,doc2vec,10,JCKFWPYG3NYFKVGV,0.655999,Full Sleeve Solid Women Puffer Jacket,2.1,35.0,False,48
-Q8,denim jacket,doc2vec,11,JCKFWC5ZHSAEVYMS,0.644629,Full Sleeve Solid Men Denim Jacket,3.7,53.0,True,50
-Q8,denim jacket,doc2vec,12,JCKFXAKSEGEGGGEY,0.64385,Full Sleeve Solid Men Jacket,3.6,53.0,False,46
-Q8,denim jacket,doc2vec,13,JCKFSHEZUYMTUDH7,0.641179,Full Sleeve Solid Men Denim Jacket,3.9,66.0,True,46
-Q8,denim jacket,doc2vec,14,JCKFWPYGQCMHDSG5,0.639778,Full Sleeve Solid Women Puffer Jacket,2.1,35.0,False,49
-Q8,denim jacket,doc2vec,15,JCKFXNVMCH9Q9GWE,0.639265,Full Sleeve Solid Women Denim Jacket,,53.0,True,51
-Q8,denim jacket,doc2vec,16,JCKF7KY3NQUGDHE2,0.634759,Full Sleeve Solid Women Denim Casual Jacket,1.0,69.0,True,59
-Q8,denim jacket,doc2vec,17,JCKFYY7WKSXSSUUA,0.631914,Full Sleeve Solid Women Denim Jacket,3.6,53.0,False,51
-Q8,denim jacket,doc2vec,18,JCKFWC5YW4Z3YYZX,0.62951,Full Sleeve Solid Women Denim Jacket,4.0,53.0,False,57
-Q8,denim jacket,doc2vec,19,JCKFYNA3BD33EJF2,0.629286,Full Sleeve Solid Women Jacket,2.2,35.0,False,44
-Q8,denim jacket,doc2vec,20,JCKFXNVMQMZYDZFY,0.628749,Full Sleeve Solid Women Denim Jacket,4.3,53.0,False,51
+Q8,denim jacket,doc2vec,1,JCKFZJWZBZCCTYXM,0.712695,Full Sleeve Washed Men Denim Jacket,2.9,50.0,False,46
+Q8,denim jacket,doc2vec,2,JCKFZJWZNCGGZGSE,0.70112,Full Sleeve Washed Men Denim Jacket,2.9,50.0,True,46
+Q8,denim jacket,doc2vec,3,JCKFZZN6AWQZ8FC2,0.700711,Full Sleeve Solid Men Denim Jacket,,53.0,False,44
+Q8,denim jacket,doc2vec,4,JCKFXUDRFRJJ6XUH,0.698475,Full Sleeve Solid Men Casual Jacket,2.5,22.0,False,65
+Q8,denim jacket,doc2vec,5,JCKFZ33GHPEXHFUZ,0.686213,Full Sleeve Solid Women Jacket,,23.0,False,44
+Q8,denim jacket,doc2vec,6,JCKFX4PUHCC2AVJY,0.679982,Full Sleeve Solid Women Casual Jacket,4.3,50.0,True,47
+Q8,denim jacket,doc2vec,7,JCKFRP3HNRDBD3Z9,0.662816,Full Sleeve Solid Women Casual Jacket,2.7,23.0,False,64
+Q8,denim jacket,doc2vec,8,JCKFXNVMGBYGXKHN,0.655744,Full Sleeve Solid Women Denim Jacket,4.3,53.0,True,52
+Q8,denim jacket,doc2vec,9,JCKFRP3GHXJBUFZP,0.65537,Full Sleeve Solid Men Casual Jacket,4.2,23.0,False,65
+Q8,denim jacket,doc2vec,10,JCKFWPYG3NYFKVGV,0.655139,Full Sleeve Solid Women Puffer Jacket,2.1,35.0,False,48
+Q8,denim jacket,doc2vec,11,JCKFWC5ZHSAEVYMS,0.643696,Full Sleeve Solid Men Denim Jacket,3.7,53.0,True,50
+Q8,denim jacket,doc2vec,12,JCKFXAKSEGEGGGEY,0.64236,Full Sleeve Solid Men Jacket,3.6,53.0,False,46
+Q8,denim jacket,doc2vec,13,JCKFSHEZUYMTUDH7,0.640941,Full Sleeve Solid Men Denim Jacket,3.9,66.0,True,46
+Q8,denim jacket,doc2vec,14,JCKFWPYGQCMHDSG5,0.638612,Full Sleeve Solid Women Puffer Jacket,2.1,35.0,False,49
+Q8,denim jacket,doc2vec,15,JCKFXNVMCH9Q9GWE,0.638445,Full Sleeve Solid Women Denim Jacket,,53.0,True,51
+Q8,denim jacket,doc2vec,16,JCKF7KY3NQUGDHE2,0.633049,Full Sleeve Solid Women Denim Casual Jacket,1.0,69.0,True,59
+Q8,denim jacket,doc2vec,17,JCKFYY7WKSXSSUUA,0.630712,Full Sleeve Solid Women Denim Jacket,3.6,53.0,False,51
+Q8,denim jacket,doc2vec,18,JCKFWC5YW4Z3YYZX,0.628304,Full Sleeve Solid Women Denim Jacket,4.0,53.0,False,57
+Q8,denim jacket,doc2vec,19,JCKFXNVMQMZYDZFY,0.627859,Full Sleeve Solid Women Denim Jacket,4.3,53.0,False,51
+Q8,denim jacket,doc2vec,20,JCKFYNA3BD33EJF2,0.62765,Full Sleeve Solid Women Jacket,2.2,35.0,False,44
