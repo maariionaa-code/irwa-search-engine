@@ -1,0 +1,13 @@
+group,method,queries,mean_P@10,MAP@10_pool,mean_relevant_in_pool
+gender_stated,bm25,5,0.960,0.910,42.600
+gender_stated,doc2vec,5,0.660,0.627,42.600
+gender_stated,intent_score,5,0.940,0.940,42.600
+gender_stated,our_score,5,1.000,1.000,42.600
+gender_stated,tfidf,5,0.780,0.715,42.600
+gender_stated,word2vec,5,0.640,0.607,42.600
+gender_unstated,bm25,3,1.000,1.000,60.000
+gender_unstated,doc2vec,3,0.933,0.917,60.000
+gender_unstated,intent_score,3,1.000,1.000,60.000
+gender_unstated,our_score,3,0.967,0.902,60.000
+gender_unstated,tfidf,3,1.000,1.000,60.000
+gender_unstated,word2vec,3,0.967,0.967,60.000

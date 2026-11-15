@@ -126,7 +126,7 @@ def rank_shifts(engine: SearchEngine, query_id: str, query: str,
     pos_b = {pid: i + 1 for i, pid in enumerate(bm25)}
     terms = sorted(set(preprocess_text(query)))
     shown = set(tfidf[:20]) | set(bm25[:20])
-    moves = sorted(shown, key=lambda pid: -abs(pos_t[pid] - pos_b[pid]))[:n]
+    moves = sorted(shown, key=lambda pid: (-abs(pos_t[pid] - pos_b[pid]), pid))[:n]
     rows = []
     for pid in moves:
         tf = engine.index.term_freqs[pid]

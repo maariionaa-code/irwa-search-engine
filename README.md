@@ -464,6 +464,16 @@ documents and 0 for non-relevant documents.
 Recall and related metrics for the custom queries are
 relative to the 20 labeled candidates per query.
 They should not be interpreted as full-corpus recall.
+In particular, R@20 = 1 whenever a query has at least one
+relevant product, because only that top 20 was judged.
+
+Average Precision is truncated:
+AP@K = Σ_{i≤K} P@i · rel_i / min(R, K), where R is the
+number of judged relevant products for the query.
+
+The Part 2 reciprocal-rank columns are RR@20 / MRR@20:
+they are repeated on every K row but do not change with K.
+Part 3 computes RR@K truncated at each K instead.
 
 For the professor's validation queries, TF-IDF is also
 evaluated within the available labeled pool. Unjudged
@@ -508,8 +518,8 @@ The implementation is located in `project_progress/part_3/`:
 - `queries.py`: the five Part 2 queries (Q1–Q5) and three gender-neutral queries (Q6–Q8).
 - `query_term_stats.py`: document frequency and IDF of every query term.
 - `run_rankings.py`: top-20 list per query and method.
-- `export_judgment_pool.py`: builds the judgment pool (union of all methods' top 20), reusing Part 2 labels and never overwriting existing ones.
-- `evaluate_methods.py`: all evaluation metrics per method at K = 5, 10, 15, 20 (reusing the Part 2 metric functions) and paired significance tests against BM25 and TF-IDF.
+- `export_judgment_pool.py`: builds the judgment pool (existing pool ∪ all methods' current top 20), reusing Part 2 labels, never dropping or overwriting existing ones, and reporting labels that conflict with Part 2.
+- `evaluate_methods.py`: all evaluation metrics per method at K = 5, 10, 15, 20 (reusing the Part 2 metric functions), means for queries with and without a gender, and paired significance tests against BM25 and TF-IDF.
 - `evaluate_validation_methods.py`: every method evaluated on the professor's validation labels (judged-pool view and full top-K view).
 - `compare_rankings.py`: agreement between methods (overlap@5/10/20, Jaccard@20, rank-biased overlap, Kendall's tau), score spread near the top, and the products whose rank changes most between TF-IDF and BM25.
 - `ablation.py`: removes one component at a time from each original score, and runs a BM25 parameter grid (k1, b).
@@ -587,7 +597,7 @@ Run every test from the repository root:
 python -m pytest project_progress/part_1/test_preprocessing.py project_progress/part_2/test_part_2.py project_progress/part_3 -v
 ```
 
-The suite contains 64 tests: 26 preprocessing tests (Part 1), 7 Part 2 tests and 31 Part 3 tests (15 ranking, 8 intent score, 8 extra analyses). The tests use small toy collections, so they do not need the dataset.
+The suite contains 75 tests: 26 preprocessing tests (Part 1), 7 Part 2 tests and 42 Part 3 tests (16 ranking, 8 intent score, 18 evaluation and extra analyses). The tests use small toy collections, so they do not need the dataset.
 
 ---
 
@@ -611,7 +621,7 @@ Add `data/fashion_products_dataset.json` and `data/validation_labels.csv`, then:
 | Part 2 | Run the Part 2 commands listed above |
 | Part 3 | Run the ten Part 3 commands listed above |
 
-All results are deterministic: ties are broken by product ID, the embedding models use a fixed seed with a single worker, significance tests enumerate every sign assignment, and the judgment files are never overwritten automatically.
+All results are deterministic: ties are broken by product ID, the embedding models use a fixed seed with a single worker, significance tests enumerate every sign assignment, and existing judgment labels are never dropped or overwritten automatically. Tested with Python 3.13.3.
 
 ---
 

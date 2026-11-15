@@ -13,9 +13,27 @@ from pathlib import Path
 import pandas as pd
 import pytest
 
+from project_progress.part_2.evaluation import (
+    average_precision_at_k,
+    mean_average_precision,
+    precision_at_k,
+)
 from project_progress.part_3.ablation import evaluate_ranking
 from project_progress.part_3.compare_rankings import score_spread
-from project_progress.part_3.evaluate_methods import significance_table
+from project_progress.part_3.corpus import check_product_ids
+from project_progress.part_3.embedded_ranking import fingerprint
+from project_progress.part_3.evaluate_methods import (
+    check_rankings,
+    load_labels,
+    significance_table,
+)
+from project_progress.part_3.export_judgment_pool import (
+    build_pool,
+    label_conflicts,
+    read_pool,
+)
+from project_progress.part_3.queries import ALL_QUERIES
+from project_progress.part_3.run_rankings import check_same_candidates
 from project_progress.part_3.rank_statistics import (
     paired_permutation_test,
     rank_biased_overlap,
@@ -76,6 +94,10 @@ def test_evaluate_ranking_treats_unjudged_as_non_relevant():
     result = evaluate_ranking(["a", "x", "c", "b"], labels)
     assert result["P@10"] == 0.2          # 2 relevant in the top 10
     assert result["judged@10"] == 3       # "x" was never judged
+    # Condensed list drops "x": a, c, b -> 2 relevant out of 10 positions,
+    # AP = (1/1 + 2/2) / min(2, 10) = 1.
+    assert result["P@10_condensed"] == 0.2
+    assert result["AP@10_condensed"] == 1.0
 
 
 # --- significance table -----------------------------------------------------------
@@ -119,3 +141,123 @@ def test_embeddings_do_not_depend_on_python_hash_seed():
                                 check=True)
         outputs.append(result.stdout)
     assert outputs[0] == outputs[1]
+
+
+# --- metric conventions ----------------------------------------------------------
+
+def test_ap_at_k_is_truncated_by_min_r_k():
+    # R = 30 judged relevant but K = 5: a perfect top 5 must score 1.
+    assert average_precision_at_k([1] * 5, 5, 30) == 1.0
+    # [1, 0, 1], R = 3, K = 3 -> (1/1 + 2/3) / min(3, 3)
+    assert math.isclose(average_precision_at_k([1, 0, 1], 3, 3), (1 + 2 / 3) / 3)
+
+
+def test_metrics_reject_bad_k_and_mismatched_lists():
+    for bad in (0, -1, 2.5, True):
+        with pytest.raises(ValueError):
+            precision_at_k([1, 0], bad)
+    with pytest.raises(ValueError):
+        mean_average_precision([[1, 0], [0, 1]], [1], 2)
+
+
+# --- judgment pool ------------------------------------------------------------------
+
+def _products(pids):
+    return pd.DataFrame({
+        "pid": pids, "title": pids, "brand": "b", "category": "c",
+        "sub_category": "s", "description": "d", "product_details": "[]",
+        "url": "u",
+    }).set_index("pid")
+
+
+def test_pool_keeps_judged_product_that_left_the_rankings():
+    existing = pd.DataFrame([
+        {"query_id": "Q1", "query": "q", "pid": "old", "relevance": 1,
+         "label_source": "part3", "found_by": "bm25", "reason": "exact match"},
+        {"query_id": "Q1", "query": "q", "pid": "kept", "relevance": 0,
+         "label_source": "part2", "found_by": "bm25", "reason": "wrong gender"},
+    ])
+    rankings = pd.DataFrame([
+        {"query_id": "Q1", "query": "q", "method": "tfidf", "pid": "kept"},
+        {"query_id": "Q1", "query": "q", "method": "bm25", "pid": "new"},
+    ])
+    pool = build_pool(rankings, _products(["old", "kept", "new"]), existing,
+                      part2={("Q1", "new"): 1}).set_index("pid")
+
+    assert set(pool.index) == {"old", "kept", "new"}
+    assert pool.loc["old", "relevance"] == 1                  # label survives
+    assert pool.loc["old", "reason"] == "exact match"        # extra column kept
+    assert not pool.loc["old", "in_current_top20"]
+    assert pool.loc["old", "found_by"] == ""
+    assert pool.loc["kept", "found_by"] == "tfidf"           # provenance refreshed
+    assert pool.loc["kept", "label_source"] == "part2"       # label provenance kept
+    assert pool.loc["new", "relevance"] == 1                 # reused Part 2 label
+    assert pool.loc["new", "label_source"] == "part2"
+
+
+def test_pool_reports_conflicts_and_rejects_duplicates(tmp_path):
+    pool = pd.DataFrame([
+        {"query_id": "Q1", "pid": "a", "relevance": 1, "label_source": "part2"},
+        {"query_id": "Q1", "pid": "b", "relevance": 1, "label_source": "part2_corrected"},
+    ])
+    conflicts = label_conflicts(pool, {("Q1", "a"): 0, ("Q1", "b"): 0})
+    assert conflicts["pid"].tolist() == ["a"]      # "b" is an acknowledged fix
+
+    path = tmp_path / "pool.csv"
+    pd.concat([pool, pool.head(1)]).to_csv(path, index=False)
+    with pytest.raises(ValueError, match="Duplicate"):
+        read_pool(path)
+
+
+def test_load_labels_validates_the_pool(tmp_path):
+    rows = [{"query_id": q, "pid": "p", "relevance": 1} for q in ALL_QUERIES]
+    path = tmp_path / "pool.csv"
+    pd.DataFrame(rows).to_csv(path, index=False)
+    assert len(load_labels(path)) == len(ALL_QUERIES)
+
+    pd.DataFrame(rows + rows[:1]).to_csv(path, index=False)
+    with pytest.raises(ValueError, match="Repeated"):
+        load_labels(path)
+    pd.DataFrame(rows[1:]).to_csv(path, index=False)
+    with pytest.raises(ValueError, match="No judgments"):
+        load_labels(path)
+    pd.DataFrame([{**rows[0], "relevance": 2}] + rows[1:]).to_csv(path, index=False)
+    with pytest.raises(ValueError, match="0 or 1"):
+        load_labels(path)
+
+
+def test_check_rankings_rejects_gaps_and_repeats():
+    good = pd.DataFrame([{"query_id": q, "method": "bm25", "rank": r, "pid": f"p{r}"}
+                         for q in ALL_QUERIES for r in (1, 2)])
+    check_rankings(good)
+    gap = good.copy()
+    gap.loc[1, "rank"] = 3
+    with pytest.raises(ValueError, match="ranks"):
+        check_rankings(gap)
+    repeat = good.copy()
+    repeat.loc[1, "pid"] = "p1"
+    with pytest.raises(ValueError, match="twice"):
+        check_rankings(repeat)
+
+
+def test_candidate_set_check():
+    check_same_candidates("Q1", "bm25", [("a", 1.0), ("b", 0.5)], {"a", "b"})
+    with pytest.raises(ValueError):
+        check_same_candidates("Q1", "bm25", [("a", 1.0)], {"a", "b"})
+    with pytest.raises(ValueError):
+        check_same_candidates("Q1", "bm25", [("a", 1.0), ("a", 0.5)], {"a"})
+
+
+def test_product_ids_must_be_unique_and_present():
+    check_product_ids(pd.Series(["a", "b"]))
+    for bad in (["a", "a"], ["a", None], ["a", " "]):
+        with pytest.raises(ValueError):
+            check_product_ids(pd.Series(bad))
+
+
+def test_model_fingerprint_changes_with_data_or_parameters():
+    docs = {"a": ["blue", "jean"], "b": ["red", "shirt"]}
+    base = fingerprint(docs, {"vector_size": 100})
+    assert base == fingerprint(dict(reversed(docs.items())), {"vector_size": 100})
+    assert base != fingerprint({**docs, "b": ["red"]}, {"vector_size": 100})
+    assert base != fingerprint(docs, {"vector_size": 50})

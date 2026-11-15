@@ -1,15 +1,34 @@
-"""Part 2: Information Retrieval evaluation metrics."""
+"""Part 2: Information Retrieval evaluation metrics.
+
+Conventions (also reused by Part 3):
+
+* ``labels`` is the 0/1 relevance of a ranked list, best first.
+* ``total_relevant`` (R) is the number of judged relevant products for the
+  query in the pool being used, NOT the number of relevant products in the
+  whole corpus (which is unknown).
+* AP@K is truncated: sum over i <= K of P@i * rel_i, divided by min(R, K),
+  so a list that puts min(R, K) relevant products first scores 1.
+"""
 
 import math
+from numbers import Integral
+
+
+def _check_k(k):
+    """Reject cut-offs that would silently give meaningless values."""
+    if isinstance(k, bool) or not isinstance(k, Integral) or k < 1:
+        raise ValueError(f"K must be a positive integer, got {k!r}")
 
 
 def precision_at_k(labels, k):
     """Proportion of relevant documents in the top K."""
+    _check_k(k)
     return sum(labels[:k]) / k
 
 
 def recall_at_k(labels, k, total_relevant):
     """Proportion of all relevant documents retrieved in the top K."""
+    _check_k(k)
     if total_relevant == 0:
         return 0.0
 
@@ -28,7 +47,8 @@ def f1_at_k(labels, k, total_relevant):
 
 
 def average_precision_at_k(labels, k, total_relevant):
-    """Average precision over relevant hits within the top K."""
+    """Truncated AP@K = sum_{i<=K} P@i * rel_i / min(R, K)."""
+    _check_k(k)
     if total_relevant == 0:
         return 0.0
 
@@ -48,9 +68,12 @@ def mean_average_precision(all_labels, total_relevants, k):
     if not all_labels:
         return 0.0
 
+    if len(all_labels) != len(total_relevants):
+        raise ValueError("One total_relevant value is needed per query")
+
     scores = [
         average_precision_at_k(labels, k, total)
-        for labels, total in zip(all_labels, total_relevants)
+        for labels, total in zip(all_labels, total_relevants, strict=True)
     ]
 
     return sum(scores) / len(scores)
@@ -75,6 +98,7 @@ def mean_reciprocal_rank(all_labels):
 
 def ndcg_at_k(labels, k, total_relevant):
     """Normalized Discounted Cumulative Gain at K (binary relevance)."""
+    _check_k(k)
     dcg = sum(
         label / math.log2(rank + 1)
         for rank, label in enumerate(labels[:k], start=1)

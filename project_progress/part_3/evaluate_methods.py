@@ -4,6 +4,17 @@ For each query, the set of known relevant products is the same for all
 methods (the relevant products in the pool), so recall, AP and NDCG are
 comparable across methods. The Part 2 metric functions are reused.
 
+Metric conventions:
+* R (``relevant_in_pool``) is the number of judged relevant products in
+  the pool, not in the whole corpus, so R@K, AP@K and NDCG@K measure how
+  much of the KNOWN relevant set is found. They are not directly comparable
+  with Part 2, whose pool (one method's top 20) was smaller.
+* AP@K = sum_{i<=K} P@i * rel_i / min(R, K) (truncated AP).
+* RR@K = 1 / rank of the first relevant product within the top K, else 0.
+
+It also writes ``query_group_summary.csv``: the means over the queries
+that state a gender (Q1-Q5) and the ones that do not (Q6-Q8).
+
 It also tests whether the differences between methods are statistically
 significant (paired randomisation test over queries, see rank_statistics.py)
 and writes them to results/significance.csv.
@@ -25,7 +36,12 @@ from project_progress.part_2.evaluation import (
     reciprocal_rank,
 )
 from project_progress.part_3.export_judgment_pool import POOL_CSV
-from project_progress.part_3.queries import PART2_QUERIES
+from project_progress.part_3.queries import (
+    ALL_QUERIES,
+    GENDER_NEUTRAL_QUERIES,
+    PART2_QUERIES,
+    TOP_K,
+)
 from project_progress.part_3.rank_statistics import paired_permutation_test
 from project_progress.part_3.run_rankings import RANKINGS_CSV, RESULTS_DIR
 
@@ -34,22 +50,42 @@ K_VALUES = (5, 10, 15, 20)
 METRICS_CSV = RESULTS_DIR / "method_metrics.csv"
 SUMMARY_CSV = RESULTS_DIR / "method_summary.csv"
 SIGNIFICANCE_CSV = RESULTS_DIR / "significance.csv"
+GROUPS_CSV = RESULTS_DIR / "query_group_summary.csv"
+QUERY_GROUPS = {"gender_stated": PART2_QUERIES,
+                "gender_unstated": GENDER_NEUTRAL_QUERIES}
+POOL_REQUIRED = ["query_id", "pid", "relevance"]
+RANKING_REQUIRED = ["query_id", "method", "rank", "pid"]
 BASELINES = ("bm25", "tfidf")           # every method is compared with these
 TESTED_METRICS = ("AP@K_pool", "NDCG@K_pool", "P@K")
 SIGNIFICANCE_K = 10
 
 
-def load_labels() -> pd.DataFrame:
-    """Read the pool and check that every pair has a 0/1 label.
+def _require_columns(table: pd.DataFrame, columns: list[str], name: str):
+    absent = [col for col in columns if col not in table.columns]
+    if absent:
+        raise ValueError(f"{name} is missing the columns {absent}")
+
+
+def load_labels(path=POOL_CSV) -> pd.DataFrame:
+    """Read the pool and check that every pair has exactly one 0/1 label.
 
     Returns:
         The pool with an integer ``relevance`` column.
 
     Raises:
-        ValueError: If labels are missing or not binary.
+        ValueError: If columns, queries or labels are missing, a pair is
+            repeated, or a label is not binary.
     """
-    pool = pd.read_csv(POOL_CSV, encoding="utf-8-sig",
+    pool = pd.read_csv(path, encoding="utf-8-sig",
                        dtype={"pid": str, "query_id": str})
+    _require_columns(pool, POOL_REQUIRED, "The judgment pool")
+    repeated = pool[pool.duplicated(["query_id", "pid"], keep=False)]
+    if not repeated.empty:
+        raise ValueError("Repeated (query_id, pid) pairs:\n"
+                         + repeated[POOL_REQUIRED].to_string(index=False))
+    absent = sorted(set(ALL_QUERIES) - set(pool["query_id"]))
+    if absent:
+        raise ValueError(f"No judgments for the queries {absent}")
     missing = pool[pool["relevance"].isna()]
     if not missing.empty:
         raise ValueError(
@@ -60,6 +96,27 @@ def load_labels() -> pd.DataFrame:
         raise ValueError("Relevance labels must be 0 or 1.")
     pool["relevance"] = pool["relevance"].astype(int)
     return pool
+
+
+def check_rankings(rankings: pd.DataFrame) -> None:
+    """Each (method, query) list must have ranks 1..n, no repeated product,
+    and every method must cover every query.
+
+    Raises:
+        ValueError: On the first inconsistency found.
+    """
+    _require_columns(rankings, RANKING_REQUIRED, "The rankings file")
+    for (method, query_id), group in rankings.groupby(["method", "query_id"]):
+        ranks = sorted(group["rank"])
+        if ranks != list(range(1, len(ranks) + 1)) or len(ranks) > TOP_K:
+            raise ValueError(f"{method}/{query_id}: ranks are not 1..n (n <= {TOP_K})")
+        if group["pid"].duplicated().any():
+            raise ValueError(f"{method}/{query_id}: a product appears twice")
+    coverage = rankings.groupby("method")["query_id"].apply(set)
+    for method, queries in coverage.items():
+        if queries != set(ALL_QUERIES):
+            raise ValueError(f"{method} misses the queries "
+                             f"{sorted(set(ALL_QUERIES) - queries)}")
 
 
 def reciprocal_rank_at_k(labels: list[int], k: int) -> float:
@@ -77,13 +134,19 @@ def evaluate(rankings: pd.DataFrame, pool: pd.DataFrame) -> pd.DataFrame:
     Returns:
         DataFrame with one row per method, query and K.
     """
+    check_rankings(rankings)
     label_of = {(r.query_id, r.pid): r.relevance for r in pool.itertuples()}
     total_relevant = pool.groupby("query_id")["relevance"].sum().to_dict()
 
     rows = []
     for (method, query_id), group in rankings.groupby(["method", "query_id"]):
-        labels = [label_of[(query_id, pid)]
-                  for pid in group.sort_values("rank")["pid"]]
+        ranked = group.sort_values("rank")["pid"]
+        unjudged = [pid for pid in ranked if (query_id, pid) not in label_of]
+        if unjudged:
+            raise ValueError(f"{method}/{query_id}: {len(unjudged)} ranked "
+                             f"products are not in the pool, e.g. {unjudged[0]}; "
+                             "run export_judgment_pool and label them")
+        labels = [label_of[(query_id, pid)] for pid in ranked]
         total = total_relevant[query_id]
         for k in K_VALUES:
             rows.append({
@@ -121,6 +184,31 @@ def summarise(metrics: pd.DataFrame, query_ids) -> pd.DataFrame:
         MRR=("RR@K", "mean"),
     ).reset_index()
     return summary
+
+
+def group_summary(metrics: pd.DataFrame, k: int = SIGNIFICANCE_K) -> pd.DataFrame:
+    """Mean P@K and MAP@K per method for queries with and without a gender.
+
+    The groups also differ in product type, difficulty and pool size, so a
+    difference between them is not caused by gender alone.
+
+    Returns:
+        One row per (group, method) with the number of queries.
+    """
+    at_k = metrics[metrics["k"] == k]
+    rows = []
+    for group, ids in QUERY_GROUPS.items():
+        subset = at_k[at_k["query_id"].isin(list(ids))]
+        for method, scores in subset.groupby("method"):
+            rows.append({
+                "group": group,
+                "method": method,
+                "queries": scores["query_id"].nunique(),
+                f"mean_P@{k}": scores["P@K"].mean(),
+                f"MAP@{k}_pool": scores["AP@K_pool"].mean(),
+                "mean_relevant_in_pool": scores["relevant_in_pool"].mean(),
+            })
+    return pd.DataFrame(rows)
 
 
 def significance_table(metrics: pd.DataFrame, k: int = SIGNIFICANCE_K) -> pd.DataFrame:
@@ -176,6 +264,9 @@ def main():
     summary = pd.concat(summaries, ignore_index=True)
     summary.to_csv(SUMMARY_CSV, index=False, float_format="%.3f")
 
+    groups = group_summary(metrics)
+    groups.to_csv(GROUPS_CSV, index=False, float_format="%.3f")
+
     significance = significance_table(metrics)
     significance.to_csv(SIGNIFICANCE_CSV, index=False, float_format="%.4f")
 
@@ -184,6 +275,8 @@ def main():
     print(metrics[metrics["k"] == 10].to_string(index=False, float_format=fmt))
     print("\nSummary:")
     print(summary.to_string(index=False, float_format=fmt))
+    print(f"\nGender stated (Q1-Q5) vs not stated (Q6-Q8), K = {SIGNIFICANCE_K}:")
+    print(groups.to_string(index=False, float_format=fmt))
     print(f"\nSignificance (K = {SIGNIFICANCE_K}, paired randomisation test):")
     print(significance.to_string(index=False, float_format=lambda x: f"{x:.4f}"))
 

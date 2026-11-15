@@ -6,13 +6,18 @@ independent check of our own judgments.
 
 Two complementary views, as in Part 2:
 
-* ``pool``  - keep only the judged products, in the order the method ranks
-  them (unjudged products are skipped). Measures how well each method
-  ORDERS the judged products.
+* ``pool``  - keep only the judged products that pass the AND filter, in
+  the order the method ranks them (unjudged products are skipped). The
+  denominator R is still EVERY judged relevant product, including those
+  that AND retrieval cannot return. So this view measures retrieval plus
+  ranking within the available judgments, not ordering alone: a relevant
+  product dropped by AND lowers recall, AP and NDCG for every method in the
+  same way. ``relevant_excluded_by_and`` reports how many there are.
 * ``full``  - the method's real top-K over all AND candidates; unjudged
-  products count as non-relevant (a conservative lower bound). The column
-  ``judged@K`` reports how many of the top K were actually judged, so the
-  reader can see how much of the score rests on unknown products.
+  products count as non-relevant. For P@K this is a lower bound (an
+  unjudged product can only add relevance); for R, AP and NDCG it is not a
+  bound, because the true denominator is unknown. The column ``judged@K``
+  reports how many of the top K were actually judged.
 
 Usage from the repository root:
     python -m project_progress.part_3.evaluate_validation_methods [--no-embeddings]
@@ -100,6 +105,9 @@ def evaluate(engine: SearchEngine) -> pd.DataFrame:
     for query_id, query in VALIDATION_QUERIES.items():
         judged = judgments[query_id]
         total = sum(judged.values())
+        candidates = set(engine.index.candidates(query))
+        excluded = sum(1 for pid, rel in judged.items()
+                       if rel and pid not in candidates)
         for method in engine.methods():
             ranking = [pid for pid, _ in engine.rank(query, method)]
 
@@ -107,13 +115,15 @@ def evaluate(engine: SearchEngine) -> pd.DataFrame:
             rows += metric_rows([judged[pid] for pid in in_pool], total,
                                 [True] * len(in_pool), method=method,
                                 query_id=query_id, view="pool",
-                                judged_retrieved=len(in_pool))
+                                judged_retrieved=len(in_pool),
+                                relevant_excluded_by_and=excluded)
 
             top = ranking[:max(K_VALUES)]
             rows += metric_rows([judged.get(pid, 0) for pid in top], total,
                                 [pid in judged for pid in top], method=method,
                                 query_id=query_id, view="full",
-                                judged_retrieved=len(in_pool))
+                                judged_retrieved=len(in_pool),
+                                relevant_excluded_by_and=excluded)
     return pd.DataFrame(rows)
 
 
@@ -138,7 +148,8 @@ def main():
     fmt = lambda x: f"{x:.3f}"  # noqa: E731
     print("Judged products that pass the AND filter (same for every method):")
     first = results[(results["view"] == "pool") & (results["k"] == 5)]
-    print(first[["method", "query_id", "judged_retrieved"]]
+    print(first[["method", "query_id", "judged_retrieved",
+                 "relevant_excluded_by_and"]]
           .drop_duplicates("query_id").to_string(index=False))
     print("\nMeans over the two validation queries, K = 10:")
     print(summary[summary["k"] == 10].to_string(index=False, float_format=fmt))

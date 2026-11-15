@@ -16,6 +16,9 @@ stable hash function (gensim uses Python's ``hash`` by default, which is
 randomised in every new process unless PYTHONHASHSEED is set).
 """
 
+import hashlib
+import json
+import math
 import zlib
 from functools import partial
 from pathlib import Path
@@ -97,8 +100,33 @@ def train_doc2vec(documents: dict[str, list[str]], params: dict = D2V_PARAMS):
     return Doc2Vec(documents=corpus, **params)
 
 
+def fingerprint(documents: dict[str, list[str]], params: dict) -> str:
+    """SHA-256 of the training corpus and parameters.
+
+    Saved next to each model, so a model trained on other data or with
+    other parameters is detected as stale and retrained.
+    """
+    digest = hashlib.sha256()
+    settings = {k: v.__name__ if callable(v) else v for k, v in params.items()}
+    digest.update(json.dumps(settings, sort_keys=True).encode("utf-8"))
+    for pid in sorted(documents):
+        digest.update(pid.encode("utf-8"))
+        digest.update(b"\0" + " ".join(documents[pid]).encode("utf-8") + b"\n")
+    return digest.hexdigest()
+
+
+def _is_fresh(path: Path, expected: str) -> bool:
+    """True if ``path`` exists and was trained on the expected fingerprint."""
+    stamp = path.with_suffix(".fingerprint")
+    return (path.exists() and stamp.exists()
+            and stamp.read_text().strip() == expected)
+
+
 def load_or_train_word2vec(documents: dict[str, list[str]], retrain=False):
     """Load the saved word2vec model, or train and save it.
+
+    The saved model is reused only if its fingerprint (corpus + parameters)
+    matches; otherwise it is retrained.
 
     Args:
         documents: ``{pid: tokens}``.
@@ -110,16 +138,20 @@ def load_or_train_word2vec(documents: dict[str, list[str]], retrain=False):
     from gensim.models import Word2Vec
 
     path = MODELS_DIR / "word2vec.model"
-    if path.exists() and not retrain:
+    expected = fingerprint(documents, W2V_PARAMS)
+    if _is_fresh(path, expected) and not retrain:
         return Word2Vec.load(str(path)).wv
     MODELS_DIR.mkdir(exist_ok=True)
     model = train_word2vec(documents)
     model.save(str(path))
+    path.with_suffix(".fingerprint").write_text(expected + "\n")
     return model.wv
 
 
 def load_or_train_doc2vec(documents: dict[str, list[str]], retrain=False):
     """Load the saved Doc2Vec model, or train and save it.
+
+    As for word2vec, a model whose fingerprint does not match is retrained.
 
     Args:
         documents: ``{pid: tokens}``.
@@ -131,11 +163,13 @@ def load_or_train_doc2vec(documents: dict[str, list[str]], retrain=False):
     from gensim.models.doc2vec import Doc2Vec
 
     path = MODELS_DIR / "doc2vec.model"
-    if path.exists() and not retrain:
+    expected = fingerprint(documents, D2V_PARAMS)
+    if _is_fresh(path, expected) and not retrain:
         return Doc2Vec.load(str(path))
     MODELS_DIR.mkdir(exist_ok=True)
     model = train_doc2vec(documents)
     model.save(str(path))
+    path.with_suffix(".fingerprint").write_text(expected + "\n")
     return model
 
 
@@ -203,6 +237,13 @@ def cosine(u: np.ndarray, v: np.ndarray) -> float:
     return float(np.dot(u, v) / norm) if norm else 0.0
 
 
+def _vector_order(item: tuple[str, float]):
+    """Sort key: scored products by descending cosine, then NaN, ties by pid."""
+    pid, score = item
+    missing = math.isnan(score)
+    return (missing, 0.0 if missing else -score, pid)
+
+
 def rank_by_vectors(candidates, query_vec, doc_vector, top_k=None):
     """Rank candidates by cosine(query vector, document vector).
 
@@ -213,16 +254,16 @@ def rank_by_vectors(candidates, query_vec, doc_vector, top_k=None):
         top_k: Number of results to return (``None`` = all).
 
     Returns:
-        List of ``(pid, score)``; products without a vector score 0.0.
+        List of ``(pid, score)``. Products without a vector get score NaN
+        and are placed AFTER every product that has one (a cosine can be
+        negative, so giving them 0.0 could rank them above real matches).
+        If the query has no vector, all candidates get NaN (pid order).
     """
-    if query_vec is None:
-        scored = [(pid, 0.0) for pid in candidates]
-    else:
-        scored = []
-        for pid in candidates:
-            vec = doc_vector(pid)
-            scored.append((pid, cosine(query_vec, vec) if vec is not None else 0.0))
-    scored.sort(key=lambda item: (-item[1], item[0]))
+    scored = []
+    for pid in candidates:
+        vec = doc_vector(pid) if query_vec is not None else None
+        scored.append((pid, cosine(query_vec, vec) if vec is not None else float("nan")))
+    scored.sort(key=_vector_order)
     return scored[:top_k] if top_k is not None else scored
 
 

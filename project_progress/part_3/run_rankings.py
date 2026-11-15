@@ -1,7 +1,7 @@
 """Rank every query with every method and save the top-20 lists.
 
 Usage from the repository root:
-    python -m project_progress.part_3.run_rankings            # all 5 methods
+    python -m project_progress.part_3.run_rankings            # all 6 methods
     python -m project_progress.part_3.run_rankings --no-embeddings
 
 Output: ``results/rankings_top20.csv`` (one row per query x method x rank)
@@ -22,6 +22,20 @@ RANKINGS_CSV = RESULTS_DIR / "rankings_top20.csv"
 COUNTS_CSV = RESULTS_DIR / "candidate_counts.csv"
 
 
+def check_same_candidates(query_id: str, method: str, ranking, candidates: set):
+    """Every method must rank exactly the AND candidates, each once.
+
+    Raises:
+        ValueError: If a method drops, adds or repeats a product.
+    """
+    pids = [pid for pid, _ in ranking]
+    if len(pids) != len(set(pids)) or set(pids) != candidates:
+        raise ValueError(
+            f"{method} on {query_id} ranks {len(set(pids))} distinct products "
+            f"({len(pids)} rows) instead of the {len(candidates)} AND candidates"
+        )
+
+
 def run(engine: SearchEngine, queries: dict[str, str] = ALL_QUERIES,
         top_k: int = TOP_K) -> pd.DataFrame:
     """Rank each query with each available method.
@@ -31,16 +45,20 @@ def run(engine: SearchEngine, queries: dict[str, str] = ALL_QUERIES,
         queries: ``{query_id: query text}``.
         top_k: Length of each ranked list.
 
+    Before truncating to ``top_k``, each full ranking is checked against
+    the AND candidate set (see :func:`check_same_candidates`).
+
     Returns:
         DataFrame with columns query_id, query, method, rank, pid, score,
         title, rating, discount_pct, out_of_stock, doc_len.
     """
     rows = []
     for query_id, query in queries.items():
+        candidates = set(engine.index.candidates(query))
         for method in engine.methods():
-            for rank, (pid, score) in enumerate(
-                engine.rank(query, method, top_k), start=1
-            ):
+            full = engine.rank(query, method)
+            check_same_candidates(query_id, method, full, candidates)
+            for rank, (pid, score) in enumerate(full[:top_k], start=1):
                 product = engine.products.loc[pid]
                 rows.append({
                     "query_id": query_id,

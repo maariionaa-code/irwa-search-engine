@@ -34,6 +34,7 @@ def load_products(path: Path = DATASET_PATH) -> pd.DataFrame:
         ``discount_pct``, ``price`` and ``out_of_stock``.
     """
     df = pd.read_json(path, dtype={"pid": str})
+    check_product_ids(df["pid"])
 
     for field in TEXT_FIELDS:
         df[f"{field}_tokens"] = df[field].apply(preprocess_text)
@@ -48,6 +49,23 @@ def load_products(path: Path = DATASET_PATH) -> pd.DataFrame:
     df["out_of_stock"] = df["out_of_stock"].fillna(False).astype(bool)
 
     return df.set_index("pid", drop=False)
+
+
+def check_product_ids(pids: pd.Series) -> None:
+    """Every product must have a unique, non-empty string id.
+
+    The index and all rankers use ``{pid: ...}`` dictionaries, so a missing
+    or repeated id would silently merge two products.
+
+    Raises:
+        ValueError: If an id is missing, empty, not a string or repeated.
+    """
+    bad = pids[pids.isna() | ~pids.map(lambda pid: isinstance(pid, str) and pid.strip() != "")]
+    if not bad.empty:
+        raise ValueError(f"{len(bad)} products have a missing or empty pid")
+    repeated = pids[pids.duplicated(keep=False)]
+    if not repeated.empty:
+        raise ValueError(f"Repeated pids: {sorted(set(repeated))[:10]}")
 
 
 class SearchIndex:

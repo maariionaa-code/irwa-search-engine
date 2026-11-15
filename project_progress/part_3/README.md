@@ -41,13 +41,16 @@ Part 3 keeps the conjunctive (AND) search of Part 2 fixed and compares six ways 
 ## Evaluation design
 
 - **Queries:** Q1–Q5 from Part 2, plus Q6 "black track pants", Q7 "hooded sweatshirt" and Q8 "denim jacket". Q6–Q8 mention no gender; they were added after the Part 2 feedback.
-- **Pooling:** for each query, the union of every method's top 20 is judged. Part 2 labels are reused automatically, and existing labels are never overwritten. All methods are evaluated against the same set of judged relevant products, so recall, AP and NDCG are comparable across methods.
+- **Pooling:** for each query, the union of every method's top 20 is judged. Part 2 labels are reused automatically. `export_judgment_pool.py` writes the union of the existing pool and the current top-20 pairs, so a judged product that no method retrieves any more keeps its label (`in_current_top20` = False) and still counts in the denominators. Only `found_by` / `in_current_top20` are refreshed. A pool label that differs from Part 2 is printed until it is marked `label_source = part2_corrected` (one such case: Q5 `SRTFWYYDASDR42FF`, fabric "Hosiery" is a knit, the description says cotton).
+- **Same denominators for all methods:** R is the number of judged relevant products in the pool, so recall, AP and NDCG are comparable across the six methods. They are *not* directly comparable with the Part 2 numbers, whose pool (one method's top 20) was smaller.
 - **Judging rules:**
     - A product is relevant if it matches the product type, the audience (if stated) and every stated attribute.
     - When fields conflict, they are trusted in this order: title > structured attributes > description > category/URL.
     - A blend counts as the material ("cotton blend" satisfies "cotton").
 - **Metrics:**
     - Computed at K = 5, 10, 15 and 20: P@K, R@K, F1@K, AP@K/MAP@K, NDCG@K and RR@K/MRR@K.
+    - AP@K = Σ_{i≤K} P@i · rel_i / min(R, K) (truncated AP, as in Part 2). RR@K is truncated at K.
+    - Unjudged products count as non-relevant. This makes P@K a lower bound, but not R, AP or NDCG (the true R is unknown).
     - Paired randomisation tests against BM25 and TF-IDF (exact over all 2^8 sign assignments).
 - **Independent check:** every method is also evaluated on the professor's validation labels (`evaluate_validation_methods.py`).
 
@@ -89,24 +92,31 @@ python -m project_progress.part_3.pipeline "men running shoes" --method intent_s
 | `results/rankings_top20.csv` | top 20 per query and method, with score, rating, discount, stock and length |
 | `judgments_pool.csv` | pooled relevance labels (`label_source` = part2 or part3, `found_by` = methods) |
 | `results/method_metrics.csv`, `results/method_summary.csv` | metrics per method/query/K and their means |
+| `results/query_group_summary.csv` | mean P@10 and MAP@10 for queries with a gender (Q1–Q5) and without (Q6–Q8) |
 | `results/significance.csv` | paired randomisation tests (K = 10) against BM25 and TF-IDF |
 | `results/validation_methods*.csv` | every method on the professor's validation labels |
 | `results/method_agreement.csv` | overlap@5/10/20, Jaccard@20, RBO@20 and Kendall's tau per method pair |
 | `results/score_spread.csv` | scores at ranks 1/10/20 and near-ties around rank 10 |
 | `results/tfidf_vs_bm25_rank_shifts.csv` | products that move most between TF-IDF and BM25, with length and term frequencies |
-| `results/ablation.csv`, `results/bm25_grid.csv` | ablations of both original scores; BM25 k1 × b grid |
+| `results/ablation.csv`, `results/bm25_grid.csv` | ablations of both original scores; BM25 k1 × b grid; each with `judged@10` and judged-only ("condensed") P@10 / AP@10 |
 | `results/score_components.csv` | every component of both original scores for each top-20 product |
 | `results/word2vec_neighbours.csv` | nearest neighbours of every query term |
 | `figures/*.png` | P@10 by query, MAP@K by K, Kendall's tau heatmap |
 
-The trained models are stored in `models/`, which is git-ignored because they can be rebuilt with the same seed (`run_rankings --retrain`). gensim seeds its initial vectors with Python's `hash`, which changes in every new process, so `embedded_ranking.py` passes a stable hash (`stable_hash`) for training and for Doc2Vec query inference. This makes the vectors identical in every run (tested in `test_extras.py`).
+The trained models are stored in `models/`, which is git-ignored because they can be rebuilt with the same seed (`run_rankings --retrain`). gensim seeds its initial vectors with Python's `hash`, which changes in every new process, so `embedded_ranking.py` passes a stable hash (`stable_hash`) for training and for Doc2Vec query inference. This makes the vectors identical in every run (tested in `test_extras.py`). Each model is saved with a `.fingerprint` file (SHA-256 of the corpus and the parameters); if the data or the parameters change, the stale model is retrained automatically.
+
+The Doc2Vec query inference temporarily patches a gensim function and resets the model's random state. This is fine for the sequential scripts here, but it is not thread-safe: a web server (Part 4) should infer query vectors under a lock or in a single worker.
+
+Tested with Python 3.13.3 and the exact versions in `requirements.txt`.
 
 ---
 
 ## Tests
 
-There are 32 Part 3 tests, and none of them needs the dataset:
+There are 42 Part 3 tests, and none of them needs the dataset:
 
-- `test_part_3.py` (15): AND candidates shared by all methods; TF-IDF identical to Part 2; BM25 against hand-computed values; BM25 saturation and length normalisation; our score; word2vec averaging and cosine; agreement measures.
+- `test_part_3.py` (16): AND candidates shared by all methods; TF-IDF identical to Part 2; BM25 against hand-computed values; BM25 saturation and length normalisation; our score; word2vec averaging and cosine; products without a vector ranked last; agreement measures.
 - `test_intent_score.py` (8): attribute parsing, gender detection, query intent, penalties for each kind of contradiction, the product of factors, gender-neutral queries.
-- `test_extras.py` (9): exact permutation-test p-values, RBO values computed by hand, near-tie counting, unjudged products in the ablation, the significance table, and embeddings that do not depend on Python's hash seed (needs gensim).
+- `test_extras.py` (18): exact permutation-test p-values, RBO values computed by hand, near-tie counting, unjudged products and condensed lists in the ablation, the significance table, embeddings that do not depend on Python's hash seed (needs gensim), the truncated AP@K convention, rejection of invalid K and mismatched lists, judgment-pool preservation (a judged product that leaves every top 20 keeps its label), label-conflict detection, pool and ranking validation, the candidate-set check, unique product IDs, and model fingerprints.
+
+Passing tests check the code, not the quality of the relevance judgments.

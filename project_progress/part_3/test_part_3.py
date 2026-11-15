@@ -19,6 +19,7 @@ from project_progress.part_3.compare_rankings import (
 from project_progress.part_3.corpus import SearchIndex
 from project_progress.part_3.embedded_ranking import (
     cosine,
+    rank_by_vectors,
     rank_word2vec,
     text_vector,
 )
@@ -199,3 +200,10 @@ def test_agreement_measures():
     assert math.isclose(jaccard_at_k(a, ["p1", "p5"], 2), 1 / 3)
     assert math.isclose(kendall_tau_full(a, a), 1.0)
     assert math.isclose(kendall_tau_full(a, list(reversed(a))), -1.0)
+
+def test_products_without_vector_rank_last():
+    vectors = {"q": np.array([1.0, 0.0]), "a": np.array([-1.0, 0.0]),
+               "b": np.array([1.0, 1.0])}
+    ranking = rank_by_vectors(["c", "a", "b"], vectors["q"], vectors.get)
+    assert [pid for pid, _ in ranking] == ["b", "a", "c"]
+    assert ranking[1][1] < 0 and math.isnan(ranking[2][1])

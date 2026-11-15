@@ -11,9 +11,12 @@ Every variant is evaluated on two label sets:
 * ``validation`` - the professor's labels (independent of our judgments);
 * ``pool``       - our judged pool for Q1-Q8.
 Variants can surface products that nobody judged. Those count as
-non-relevant (a conservative choice) and ``judged@10`` shows how many of the
-top 10 were actually judged, so the reader can see when a score is
-uncertain.
+non-relevant (conservative for P@10 only) and ``judged@10`` shows how many
+of the top 10 were actually judged. Because the variants do not have equal
+judgment coverage, the ``*_condensed`` columns repeat P@10 and AP@10 on the
+"condensed" list (unjudged products removed, Sakai 2007), which compares the
+variants only on what was judged. Both views are reported; a conclusion is
+treated as provisional unless they agree.
 
 Usage from the repository root (after labelling judgments_pool.csv):
     python -m project_progress.part_3.ablation
@@ -109,16 +112,20 @@ def evaluate_ranking(ranking: list[str], labels: dict[str, int]) -> dict:
         labels: ``{pid: 0/1}`` for the judged products of this query.
 
     Returns:
-        Metrics at ``K`` plus ``judged@K``.
+        Metrics at ``K``, ``judged@K``, and P@K / AP@K on the condensed
+        list (only judged products, in the same order).
     """
     top = ranking[:K]
     rel = [labels.get(pid, 0) for pid in top]
+    condensed = [labels[pid] for pid in ranking if pid in labels][:K]
     total = sum(labels.values())
     return {
         f"P@{K}": precision_at_k(rel, K),
         f"AP@{K}": average_precision_at_k(rel, K, total),
         f"NDCG@{K}": ndcg_at_k(rel, K, total),
         f"judged@{K}": sum(pid in labels for pid in top),
+        f"P@{K}_condensed": precision_at_k(condensed, K),
+        f"AP@{K}_condensed": average_precision_at_k(condensed, K, total),
     }
 
 
@@ -172,11 +179,12 @@ def main():
     print(f"Ablation, mean over queries (K = {K}):")
     print(ablation.groupby(["label_set", "method", "variant"])
           .mean(numeric_only=True).to_string(float_format=fmt))
-    print(f"\nBM25 grid, mean AP@{K} (rows = k1, columns = b):")
+    print(f"\nBM25 grid, mean AP@{K} / mean judged@{K} (rows = k1, columns = b):")
     for set_name, group in grid.groupby("label_set"):
-        print(f"\n[{set_name}]")
-        print(group.pivot_table(index="k1", columns="b", values=f"AP@{K}")
-              .to_string(float_format=fmt))
+        for value in (f"AP@{K}", f"judged@{K}", f"AP@{K}_condensed"):
+            print(f"\n[{set_name}] {value}")
+            print(group.pivot_table(index="k1", columns="b", values=value)
+                  .to_string(float_format=fmt))
     print(f"\nSaved {ABLATION_CSV.name} and {BM25_GRID_CSV.name}")
 
 
