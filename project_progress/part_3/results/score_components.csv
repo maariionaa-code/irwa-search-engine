@@ -1,0 +1,321 @@
+﻿query_id,pid,rank,method,bm25,T_text,C_title,R_rating,D_discount,in_stock,score,T,K,G,A,S,sub_category,gender,attr_agree,attr_contradict,attr_unknown,bm25_rank,title_text
+Q1,KTAFZ9KFEAFVMWFN,1,our_score,7.2268,0.9765,1.0000,0.9000,0.6200,True,0.9531,,,,,,,,,,,21,Women Polka Print Cotton Blend A-line Kurta  (White)
+Q1,ETHFSRVEUG9Q4HTE,2,our_score,7.0291,0.9498,1.0000,1.0000,0.5500,True,0.9499,,,,,,,,,,,112,Women Kurta and Pyjama Set Cotton Blend
+Q1,KTAFZPA5GRMYWAJ9,3,our_score,7.2722,0.9826,1.0000,0.8250,0.7000,True,0.9492,,,,,,,,,,,9,Women Striped Cotton Blend Straight Kurta  (Yellow)
+Q1,KTAFZFX7HTMGQCG6,4,our_score,6.9062,0.9332,1.0000,1.0000,0.6400,True,0.9453,,,,,,,,,,,197,Women Solid Cotton Blend Straight Kurta  (Black)
+Q1,KTAFZFX7MGG3ZTYP,5,our_score,6.9062,0.9332,1.0000,1.0000,0.6400,True,0.9453,,,,,,,,,,,198,Women Solid Cotton Blend Straight Kurta  (Red)
+Q1,KTAFWKJYFQBAAAQC,6,our_score,7.1075,0.9604,1.0000,0.9000,0.6200,True,0.9442,,,,,,,,,,,74,Women Polka Print Cotton Blend A-line Kurta  (Green)
+Q1,KTAFWKJYBGSFZHHR,7,our_score,7.0708,0.9554,1.0000,0.9000,0.6200,True,0.9415,,,,,,,,,,,90,Women Polka Print Cotton Blend A-line Kurta  (Light Blue)
+Q1,KTAFZFX7Y5UJGF8Y,8,our_score,6.8488,0.9254,1.0000,1.0000,0.6400,True,0.9410,,,,,,,,,,,210,Women Solid Cotton Blend Straight Kurta  (Light Blue)
+Q1,KTAFZ8JECS48J3AG,9,our_score,7.4007,1.0000,1.0000,0.7250,0.6200,True,0.9398,,,,,,,,,,,1,Women Solid Cotton Blend Straight Kurta  (Beige)
+Q1,ETHF25572QHXAGEQ,10,our_score,7.1185,0.9619,1.0000,0.9500,0.3600,True,0.9395,,,,,,,,,,,63,Women Kurta and Pyjama Set Cotton Blend
+Q1,ETHF2557SGSWZEVH,11,our_score,7.1185,0.9619,1.0000,0.9500,0.3400,True,0.9385,,,,,,,,,,,65,Women Kurta and Pyjama Set Cotton Blend
+Q1,KTAFZPMDTGFHZM7F,12,our_score,7.2056,0.9736,1.0000,0.7750,0.7300,True,0.9383,,,,,,,,,,,26,"Women Self Design Cotton Linen Blend, Pure Cotton Straight Kurta  (Blue)"
+Q1,KTAFZ8JEBG2NZBPA,13,our_score,7.3753,0.9966,1.0000,0.7250,0.6200,True,0.9379,,,,,,,,,,,2,Women Solid Cotton Blend Straight Kurta  (Yellow)
+Q1,KTAFZ8JENRH668GH,14,our_score,7.3753,0.9966,1.0000,0.7250,0.6200,True,0.9379,,,,,,,,,,,3,Women Solid Cotton Blend Straight Kurta  (Blue)
+Q1,KTAFDVG4HGJQMZQK,15,our_score,6.9486,0.9389,1.0000,0.8750,0.7700,True,0.9362,,,,,,,,,,,176,"Women Solid Cotton Blend Straight Kurta  (Black, Yellow)"
+Q1,KTAFZ8JETTV87AZD,16,our_score,7.3501,0.9932,1.0000,0.7250,0.6200,True,0.9360,,,,,,,,,,,4,Women Solid Cotton Blend Straight Kurta  (Light Green)
+Q1,KTAFDVG49KPUAJEN,17,our_score,6.9486,0.9389,1.0000,0.8750,0.7200,True,0.9337,,,,,,,,,,,174,"Women Solid Cotton Blend Straight Kurta  (Black, Yellow)"
+Q1,KTAFDVG4RGUFGNKU,18,our_score,6.9486,0.9389,1.0000,0.8750,0.7200,True,0.9337,,,,,,,,,,,177,"Women Solid Cotton Blend Straight Kurta  (Black, Yellow)"
+Q1,KTAF85TUHDNZCU3P,19,our_score,7.1481,0.9659,1.0000,0.7500,0.7900,True,0.9332,,,,,,,,,,,53,Women Solid Cotton Blend Straight Kurta  (Purple)
+Q1,KTAFPTMZFXMKYHYE,20,our_score,7.1252,0.9628,1.0000,0.7750,0.7300,True,0.9323,,,,,,,,,,,62,"Women Self Design Cotton Linen Blend, Pure Cotton Straight Kurta  (White)"
+Q1,KTAFZPA5GRMYWAJ9,1,intent_score,,,,,,,0.9826,0.9826,1.0000,1.0000,1.0000,1.0000,"Kurtas, Ethnic Sets and Bottoms",match,2.0000,0.0000,0.0000,9,Women Striped Cotton Blend Straight Kurta  (Yellow)
+Q1,ETHFVVZRBSXSEU7A,2,intent_score,,,,,,,0.9817,0.9817,1.0000,1.0000,1.0000,1.0000,"Kurtas, Ethnic Sets and Bottoms",match,2.0000,0.0000,0.0000,10,Women Kurta and Churidar Set Cotton Blend
+Q1,ETHFVVZRZYBXZB7A,3,intent_score,,,,,,,0.9817,0.9817,1.0000,1.0000,1.0000,1.0000,"Kurtas, Ethnic Sets and Bottoms",match,2.0000,0.0000,0.0000,11,Women Kurta and Churidar Set Cotton Blend
+Q1,ETHFZDS5FXFK9W9X,4,intent_score,,,,,,,0.9803,0.9803,1.0000,1.0000,1.0000,1.0000,"Kurtas, Ethnic Sets and Bottoms",match,2.0000,0.0000,0.0000,15,"Women Kurta and Pyjama Set Cambric, Cambric"
+Q1,ETHFUYQWUPWYP6KZ,5,intent_score,,,,,,,0.9795,0.9795,1.0000,1.0000,1.0000,1.0000,"Kurtas, Ethnic Sets and Bottoms",match,2.0000,0.0000,0.0000,16,Women Kurta and Churidar Set Cotton Blend
+Q1,ETHFVVZR4UPF3Z7Q,6,intent_score,,,,,,,0.9795,0.9795,1.0000,1.0000,1.0000,1.0000,"Kurtas, Ethnic Sets and Bottoms",match,2.0000,0.0000,0.0000,17,Women Kurta and Churidar Set Cotton Blend
+Q1,ETHFVVZREVPNSKW6,7,intent_score,,,,,,,0.9795,0.9795,1.0000,1.0000,1.0000,1.0000,"Kurtas, Ethnic Sets and Bottoms",match,2.0000,0.0000,0.0000,18,Women Kurta and Churidar Set Cotton Blend
+Q1,ETHFVVZRMARGQAHJ,8,intent_score,,,,,,,0.9795,0.9795,1.0000,1.0000,1.0000,1.0000,"Kurtas, Ethnic Sets and Bottoms",match,2.0000,0.0000,0.0000,19,Women Kurta and Churidar Set Cotton Blend
+Q1,ETHFVVZRZMFZD3CB,9,intent_score,,,,,,,0.9795,0.9795,1.0000,1.0000,1.0000,1.0000,"Kurtas, Ethnic Sets and Bottoms",match,2.0000,0.0000,0.0000,20,Women Kurta and Churidar Set Cotton Blend
+Q1,ETHFFNRG9JKZFMPN,10,intent_score,,,,,,,0.9761,0.9761,1.0000,1.0000,1.0000,1.0000,"Kurtas, Ethnic Sets and Bottoms",match,2.0000,0.0000,0.0000,22,Women Kurta and Churidar Set Cotton Blend
+Q1,ETHFFNRGAHZFAY2P,11,intent_score,,,,,,,0.9761,0.9761,1.0000,1.0000,1.0000,1.0000,"Kurtas, Ethnic Sets and Bottoms",match,2.0000,0.0000,0.0000,23,Women Kurta and Churidar Set Cotton Blend
+Q1,ETHFFNRGNKGFZEXD,12,intent_score,,,,,,,0.9761,0.9761,1.0000,1.0000,1.0000,1.0000,"Kurtas, Ethnic Sets and Bottoms",match,2.0000,0.0000,0.0000,24,Women Kurta and Churidar Set Cotton Blend
+Q1,ETHFUYQWAKHCPDHV,13,intent_score,,,,,,,0.9760,0.9760,1.0000,1.0000,1.0000,1.0000,"Kurtas, Ethnic Sets and Bottoms",match,2.0000,0.0000,0.0000,25,Women Kurta and Churidar Set Cotton Blend
+Q1,KTAFZPMDTGFHZM7F,14,intent_score,,,,,,,0.9736,0.9736,1.0000,1.0000,1.0000,1.0000,"Kurtas, Ethnic Sets and Bottoms",match,2.0000,0.0000,0.0000,26,"Women Self Design Cotton Linen Blend, Pure Cotton Straight Kurta  (Blue)"
+Q1,KTAFZJX6ACH2QQ2S,15,intent_score,,,,,,,0.9708,0.9708,1.0000,1.0000,1.0000,1.0000,"Kurtas, Ethnic Sets and Bottoms",match,2.0000,0.0000,0.0000,27,"Women Self Design Cotton Linen Blend, Cotton Blend Straight Kurta  (Pink)"
+Q1,ETHFPDUMCGRRZVAD,16,intent_score,,,,,,,0.9702,0.9702,1.0000,1.0000,1.0000,1.0000,"Kurtas, Ethnic Sets and Bottoms",match,2.0000,0.0000,0.0000,28,Women Kurta and Pyjama Set Pure Cotton
+Q1,ETHFPDUMFGZDJUMY,17,intent_score,,,,,,,0.9702,0.9702,1.0000,1.0000,1.0000,1.0000,"Kurtas, Ethnic Sets and Bottoms",match,2.0000,0.0000,0.0000,29,Women Kurta and Pyjama Set Pure Cotton
+Q1,ETHFPDUMHKVRQYWX,18,intent_score,,,,,,,0.9702,0.9702,1.0000,1.0000,1.0000,1.0000,"Kurtas, Ethnic Sets and Bottoms",match,2.0000,0.0000,0.0000,30,Women Kurta and Pyjama Set Pure Cotton
+Q1,ETHFPDUMNKJYR8E7,19,intent_score,,,,,,,0.9702,0.9702,1.0000,1.0000,1.0000,1.0000,"Kurtas, Ethnic Sets and Bottoms",match,2.0000,0.0000,0.0000,31,Women Kurta and Pyjama Set Pure Cotton
+Q1,ETHFPDUMRFKZ4DTW,20,intent_score,,,,,,,0.9702,0.9702,1.0000,1.0000,1.0000,1.0000,"Kurtas, Ethnic Sets and Bottoms",match,2.0000,0.0000,0.0000,32,Women Kurta and Pyjama Set Pure Cotton
+Q2,JEAFDWG9K7KPKHS8,1,our_score,8.0755,0.9875,0.7500,0.7750,0.6000,True,0.8769,,,,,,,,,,,8,Slim Men Blue Jeans
+Q2,JEAFEC2GUMAQWGFB,2,our_score,8.0755,0.9875,0.7500,0.7500,0.5700,True,0.8716,,,,,,,,,,,10,Slim Men Multicolor Jeans  (Pack of 2)
+Q2,JEAFGKA5JZKHHFPT,3,our_score,8.1312,0.9943,0.7500,0.7250,0.5700,True,0.8716,,,,,,,,,,,2,Slim Men Multicolor Jeans  (Pack of 2)
+Q2,JEAFGKAYFHRPXFXZ,4,our_score,8.1312,0.9943,0.7500,0.7250,0.5700,True,0.8716,,,,,,,,,,,3,Slim Men Multicolor Jeans  (Pack of 2)
+Q2,JEAFDZRVABZZ2PQ3,5,our_score,8.1145,0.9923,0.7500,0.7250,0.5700,True,0.8705,,,,,,,,,,,5,Stretchable Slim Men Blue Jeans  (Pack of 2)
+Q2,JEAFEC2GEMGBWHA5,6,our_score,8.0755,0.9875,0.7500,0.7250,0.5800,True,0.8684,,,,,,,,,,,9,Slim Men Light Blue Jeans
+Q2,JEAFEC2HCNHW8V3K,7,our_score,8.0755,0.9875,0.7500,0.7250,0.5700,True,0.8679,,,,,,,,,,,11,Slim Men Multicolor Jeans  (Pack of 2)
+Q2,JEAFEC2HZZPPTFNJ,8,our_score,8.1015,0.9907,0.7500,0.7250,0.5300,True,0.8676,,,,,,,,,,,7,Slim Men Green Jeans
+Q2,JEAFEC2HNSNFUWQ8,9,our_score,8.0626,0.9860,0.7500,0.7250,0.5700,True,0.8670,,,,,,,,,,,13,Slim Men Multicolor Jeans  (Pack of 2)
+Q2,JEAF6VAUCH2HCSSD,10,our_score,7.9778,0.9756,0.7500,0.7500,0.5300,True,0.8631,,,,,,,,,,,15,Stretchable Slim Men Black Jeans
+Q2,JEAEVJGUSXRNSHRY,11,our_score,8.0311,0.9821,0.7500,0.7000,0.5300,True,0.8592,,,,,,,,,,,14,Slim Men Dark Blue Jeans
+Q2,JEAFEC2HZNJ6ERBY,12,our_score,8.1015,0.9907,0.7500,0.6500,0.5300,True,0.8564,,,,,,,,,,,6,Slim Men Black Jeans
+Q2,JEAFVMMSRYBGDQQ2,13,our_score,7.9465,0.9718,0.7500,0.7750,0.3600,True,0.8562,,,,,,,,,,,18,Slim Men White Jeans
+Q2,JEAFEC2GEYFEWMVM,14,our_score,7.8980,0.9658,0.7500,0.7250,0.5700,True,0.8560,,,,,,,,,,,20,Slim Men Multicolor Jeans  (Pack of 2)
+Q2,JEAFEC2GQFVWQQFY,15,our_score,7.8980,0.9658,0.7500,0.7250,0.5700,True,0.8560,,,,,,,,,,,21,Slim Men Multicolor Jeans  (Pack of 2)
+Q2,JEAFDWC8NGRWDHRS,16,our_score,7.9510,0.9723,0.7500,0.7000,0.5600,True,0.8553,,,,,,,,,,,17,Slim Men Blue Jeans
+Q2,JEAFEC2GDNKAA2X9,17,our_score,7.8848,0.9642,0.7500,0.7250,0.5700,True,0.8551,,,,,,,,,,,22,Slim Men Multicolor Jeans  (Pack of 2)
+Q2,JEAFEC2GUPAPCTUZ,18,our_score,7.8848,0.9642,0.7500,0.7250,0.5700,True,0.8551,,,,,,,,,,,23,Slim Men Multicolor Jeans  (Pack of 2)
+Q2,JEAFEC2GZDSHD789,19,our_score,7.8848,0.9642,0.7500,0.7250,0.5700,True,0.8551,,,,,,,,,,,24,Slim Men Multicolor Jeans  (Pack of 2)
+Q2,JEAFDWCPDCVQAA3T,20,our_score,7.9644,0.9739,0.7500,0.6750,0.5700,True,0.8529,,,,,,,,,,,16,"Slim Men Green, Blue Jeans  (Pack of 2)"
+Q2,JEAEVJGUSXRNSHRY,1,intent_score,,,,,,,0.9821,0.9821,1.0000,1.0000,1.0000,1.0000,Bottomwear,match,2.0000,0.0000,0.0000,14,Slim Men Dark Blue Jeans
+Q2,JEAF2QF6HNZHDXVX,2,intent_score,,,,,,,0.9584,0.9584,1.0000,1.0000,1.0000,1.0000,Bottomwear,match,2.0000,0.0000,0.0000,25,Slim Men Dark Blue Jeans
+Q2,JEAF5669KNZZZJXS,3,intent_score,,,,,,,0.9520,0.9520,1.0000,1.0000,1.0000,1.0000,Bottomwear,match,2.0000,0.0000,0.0000,26,Slim Men Brown Jeans
+Q2,JEAEHGRJSGGYEYYX,4,intent_score,,,,,,,0.8750,1.0000,1.0000,1.0000,0.8750,1.0000,Bottomwear,match,1.0000,0.0000,1.0000,1,Slim Men Light Blue Jeans
+Q2,JEAEJYZ8KAGSABDQ,5,intent_score,,,,,,,0.8686,0.9927,1.0000,1.0000,0.8750,1.0000,Bottomwear,match,1.0000,0.0000,1.0000,4,Slim Men Dark Blue Jeans
+Q2,JEAFVMMSRYBGDQQ2,6,intent_score,,,,,,,0.8503,0.9718,1.0000,1.0000,0.8750,1.0000,Bottomwear,match,1.0000,0.0000,1.0000,18,Slim Men White Jeans
+Q2,JEAFJA4M7SMZN2XJ,7,intent_score,,,,,,,0.8105,0.9262,1.0000,1.0000,0.8750,1.0000,Bottomwear,match,1.0000,0.0000,1.0000,29,Slim Men Black Jeans
+Q2,JEAFUZXS49NSRFQV,8,intent_score,,,,,,,0.8071,0.9224,1.0000,1.0000,0.8750,1.0000,Bottomwear,match,1.0000,0.0000,1.0000,30,Jogger Fit Men Grey Jeans
+Q2,JEAFUZXTN3KBGPMS,9,intent_score,,,,,,,0.8071,0.9224,1.0000,1.0000,0.8750,1.0000,Bottomwear,match,1.0000,0.0000,1.0000,31,Jogger Fit Men Black Jeans
+Q2,JEAFUZXTZCYTZZ8M,10,intent_score,,,,,,,0.8071,0.9224,1.0000,1.0000,0.8750,1.0000,Bottomwear,match,1.0000,0.0000,1.0000,32,Jogger Fit Men Grey Jeans
+Q2,JEAFUZXUGWXHUF5F,11,intent_score,,,,,,,0.8071,0.9224,1.0000,1.0000,0.8750,1.0000,Bottomwear,match,1.0000,0.0000,1.0000,33,Jogger Fit Men Blue Jeans
+Q2,JEAFJM2P2FQQJF3C,12,intent_score,,,,,,,0.8046,0.9195,1.0000,1.0000,0.8750,1.0000,Bottomwear,match,1.0000,0.0000,1.0000,34,Slim Men Dark Blue Jeans
+Q2,JEAF8HYN5B9ZU6FP,13,intent_score,,,,,,,0.8033,0.9180,1.0000,1.0000,0.8750,1.0000,Bottomwear,match,1.0000,0.0000,1.0000,36,Slim Men Blue Jeans
+Q2,JEAF8HYNUMGZMQU5,14,intent_score,,,,,,,0.8033,0.9180,1.0000,1.0000,0.8750,1.0000,Bottomwear,match,1.0000,0.0000,1.0000,37,Slim Men Blue Jeans
+Q2,JEAFJZ4Y7YYXCD43,15,intent_score,,,,,,,0.8023,0.9169,1.0000,1.0000,0.8750,1.0000,Bottomwear,match,1.0000,0.0000,1.0000,38,Slim Men Black Jeans
+Q2,JEAFUZXZHHXDFFHH,16,intent_score,,,,,,,0.7983,0.9123,1.0000,1.0000,0.8750,1.0000,Bottomwear,match,1.0000,0.0000,1.0000,39,Jogger Fit Men Grey Jeans
+Q2,JEAFUZXS4SFKEV3U,17,intent_score,,,,,,,0.7973,0.9112,1.0000,1.0000,0.8750,1.0000,Bottomwear,match,1.0000,0.0000,1.0000,40,Tapered Fit Men Grey Jeans
+Q2,JEAFUZXSEAMNNGNG,18,intent_score,,,,,,,0.7973,0.9112,1.0000,1.0000,0.8750,1.0000,Bottomwear,match,1.0000,0.0000,1.0000,41,Tapered Fit Men Blue Jeans
+Q2,JEAFUZXSNGYAXHJM,19,intent_score,,,,,,,0.7973,0.9112,1.0000,1.0000,0.8750,1.0000,Bottomwear,match,1.0000,0.0000,1.0000,42,Tapered Fit Men Black Jeans
+Q2,JEAFUZXSSFYGHYDP,20,intent_score,,,,,,,0.7973,0.9112,1.0000,1.0000,0.8750,1.0000,Bottomwear,match,1.0000,0.0000,1.0000,43,Tapered Fit Men Blue Jeans
+Q3,SHOESS9ZEZ6TEQUJ,1,our_score,13.4098,0.9782,1.0000,0.8250,0.0900,True,0.9162,,,,,,,,,,,2,Running Shoes For Men  (Multicolor)
+Q3,SHOESS9ZGMH7CURM,2,our_score,13.4098,0.9782,1.0000,0.6750,0.0900,True,0.8937,,,,,,,,,,,3,Running Shoes For Men  (Multicolor)
+Q3,SHOEKNRJ34UCMAPA,3,our_score,12.9515,0.9447,1.0000,0.6750,0.0100,True,0.8714,,,,,,,,,,,5,"SPRINT Running Shoes For Men  (Black, Grey)"
+Q3,SHOEKNRJGEYJCDQK,4,our_score,12.9515,0.9447,1.0000,0.6750,0.0100,True,0.8714,,,,,,,,,,,6,"SPRINT Running Shoes For Men  (Blue, Grey)"
+Q3,SHOFN3EJVGC9VXYT,5,our_score,12.4701,0.9096,1.0000,0.7250,0.0900,True,0.8635,,,,,,,,,,,8,RS-7200 Running Shoes For Men  (Navy)
+Q3,SHOFN3EJHXHGSGUC,6,our_score,12.4128,0.9054,1.0000,0.7250,0.0900,True,0.8612,,,,,,,,,,,9,RS-7250 Running Shoes For Men  (Black)
+Q3,SHOFTZFQQYKC8HY6,7,our_score,11.5224,0.8405,1.0000,0.7750,0.6500,True,0.8610,,,,,,,,,,,18,Running Shoes For Men  (Yellow)
+Q3,SHOFTZFPNCU4VWHK,8,our_score,11.5224,0.8405,1.0000,0.7750,0.6200,True,0.8595,,,,,,,,,,,17,Running Shoes For Men  (Black)
+Q3,SHOFN3EFNYGBKZT7,9,our_score,12.3560,0.9013,1.0000,0.7250,0.0900,True,0.8590,,,,,,,,,,,10,"RS-7050 Running Shoes For Men  (Blue, Navy)"
+Q3,SHOF5BDSWHAMZHSU,10,our_score,11.8297,0.8629,1.0000,0.7750,0.0900,True,0.8453,,,,,,,,,,,14,Running Shoes For Men  (White)
+Q3,SHOEWQKVSGFGXPQF,11,our_score,12.4837,0.9106,1.0000,0.5750,0.0100,True,0.8376,,,,,,,,,,,7,Running Shoes For Men  (Blue)
+Q3,SHOFKH9ZNNNWCHGC,12,our_score,10.8887,0.7943,1.0000,0.7250,0.5200,True,0.8216,,,,,,,,,,,32,Running Shoes For Men  (Blue)
+Q3,SHOF3A22BBDQQY8F,13,our_score,10.8410,0.7908,1.0000,0.7750,0.3100,True,0.8167,,,,,,,,,,,34,"Running Shoes For Men  (Black, Grey)"
+Q3,SHOEP5GUQYYFKYSN,14,our_score,12.9587,0.9453,0.6667,0.7750,0.0900,True,0.8073,,,,,,,,,,,4,Running Shoes For Women  (White)
+Q3,SHOF3A22AAGWGGMU,15,our_score,10.8410,0.7908,1.0000,0.7750,0.1000,True,0.8062,,,,,,,,,,,33,"Running Shoes For Men  (Navy, Orange)"
+Q3,SHOECNBPVVMRCE8G,16,our_score,10.6412,0.7762,1.0000,0.8000,0.0900,True,0.8014,,,,,,,,,,,40,"RS-3005 Running Shoes For Men  (Green, Blue)"
+Q3,SHOFJ35P5UDK744S,17,our_score,10.4288,0.7607,1.0000,0.7000,0.5200,True,0.7994,,,,,,,,,,,52,Running Shoes For Men  (Grey)
+Q3,SHOE9A6GF4ZF6EHZ,18,our_score,10.9321,0.7974,1.0000,0.6250,0.0900,True,0.7868,,,,,,,,,,,29,"Marathon Running Shoes For Men  (Blue, Grey)"
+Q3,SHOF34H3GMHM9VNB,19,our_score,10.3900,0.7579,1.0000,0.7500,0.0900,True,0.7838,,,,,,,,,,,54,"Running Shoes For Men  (Black, Grey)"
+Q3,SHOEYF5UH4GPCETN,20,our_score,10.0655,0.7342,1.0000,0.8250,0.0000,True,0.7776,,,,,,,,,,,55,"Running Shoes For Men  (Green, Blue)"
+Q3,SHOESS9ZEZ6TEQUJ,1,intent_score,,,,,,,0.8559,0.9782,1.0000,1.0000,0.8750,1.0000,Men's Footwear,match,1.0000,0.0000,1.0000,2,Running Shoes For Men  (Multicolor)
+Q3,SHOESS9ZGMH7CURM,2,intent_score,,,,,,,0.8559,0.9782,1.0000,1.0000,0.8750,1.0000,Men's Footwear,match,1.0000,0.0000,1.0000,3,Running Shoes For Men  (Multicolor)
+Q3,SHOEKNRJ34UCMAPA,3,intent_score,,,,,,,0.8266,0.9447,1.0000,1.0000,0.8750,1.0000,Men's Footwear,match,1.0000,0.0000,1.0000,5,"SPRINT Running Shoes For Men  (Black, Grey)"
+Q3,SHOEKNRJGEYJCDQK,4,intent_score,,,,,,,0.8266,0.9447,1.0000,1.0000,0.8750,1.0000,Men's Footwear,match,1.0000,0.0000,1.0000,6,"SPRINT Running Shoes For Men  (Blue, Grey)"
+Q3,SHOEWQKVSGFGXPQF,5,intent_score,,,,,,,0.7968,0.9106,1.0000,1.0000,0.8750,1.0000,Men's Footwear,match,1.0000,0.0000,1.0000,7,Running Shoes For Men  (Blue)
+Q3,SHOFN3EJVGC9VXYT,6,intent_score,,,,,,,0.7959,0.9096,1.0000,1.0000,0.8750,1.0000,Men's Footwear,match,1.0000,0.0000,1.0000,8,RS-7200 Running Shoes For Men  (Navy)
+Q3,SHOFN3EJHXHGSGUC,7,intent_score,,,,,,,0.7923,0.9054,1.0000,1.0000,0.8750,1.0000,Men's Footwear,match,1.0000,0.0000,1.0000,9,RS-7250 Running Shoes For Men  (Black)
+Q3,SHOFN3EFNYGBKZT7,8,intent_score,,,,,,,0.7886,0.9013,1.0000,1.0000,0.8750,1.0000,Men's Footwear,match,1.0000,0.0000,1.0000,10,"RS-7050 Running Shoes For Men  (Blue, Navy)"
+Q3,SHOF5BDSWHAMZHSU,9,intent_score,,,,,,,0.7550,0.8629,1.0000,1.0000,0.8750,1.0000,Men's Footwear,match,1.0000,0.0000,1.0000,14,Running Shoes For Men  (White)
+Q3,SHOE9A6HHNQUGQ7C,10,intent_score,,,,,,,0.7385,0.8440,1.0000,1.0000,0.8750,1.0000,Men's Footwear,match,1.0000,0.0000,1.0000,16,"Rs-5014 Running Shoes For Men  (Red, Grey)"
+Q3,SHOFTZFPNCU4VWHK,11,intent_score,,,,,,,0.7354,0.8405,1.0000,1.0000,0.8750,1.0000,Men's Footwear,match,1.0000,0.0000,1.0000,17,Running Shoes For Men  (Black)
+Q3,SHOFTZFQQYKC8HY6,12,intent_score,,,,,,,0.7354,0.8405,1.0000,1.0000,0.8750,1.0000,Men's Footwear,match,1.0000,0.0000,1.0000,18,Running Shoes For Men  (Yellow)
+Q3,SHOFUH52V5AVNHMN,13,intent_score,,,,,,,0.7180,0.8206,1.0000,1.0000,0.8750,1.0000,Men's Footwear,match,1.0000,0.0000,1.0000,19,Loafers For Men  (Black)
+Q3,SHOFVJX2TP8FRR7P,14,intent_score,,,,,,,0.7124,0.8141,1.0000,1.0000,0.8750,1.0000,Men's Footwear,match,1.0000,0.0000,1.0000,21,Lace Up For Men  (Black)
+Q3,SHOFVGHH9YGKTX4J,15,intent_score,,,,,,,0.7045,0.8051,1.0000,1.0000,0.8750,1.0000,Men's Footwear,match,1.0000,0.0000,1.0000,25,Sneakers For Men  (Orange)
+Q3,SHOFVXGRUGGSKCSU,16,intent_score,,,,,,,0.7044,0.8051,1.0000,1.0000,0.8750,1.0000,Men's Footwear,match,1.0000,0.0000,1.0000,27,Party Wear For Men  (Blue)
+Q3,SHOE9A6GF4ZF6EHZ,17,intent_score,,,,,,,0.6978,0.7974,1.0000,1.0000,0.8750,1.0000,Men's Footwear,match,1.0000,0.0000,1.0000,29,"Marathon Running Shoes For Men  (Blue, Grey)"
+Q3,SHOFVHY8MAYUPTZF,18,intent_score,,,,,,,0.6968,0.7963,1.0000,1.0000,0.8750,1.0000,Men's Footwear,match,1.0000,0.0000,1.0000,30,Loafers For Men  (Black)
+Q3,SHOFVHY9PKJZH3ND,19,intent_score,,,,,,,0.6968,0.7963,1.0000,1.0000,0.8750,1.0000,Men's Footwear,match,1.0000,0.0000,1.0000,31,Loafers For Men  (Brown)
+Q3,SHOFKH9ZNNNWCHGC,20,intent_score,,,,,,,0.6950,0.7943,1.0000,1.0000,0.8750,1.0000,Men's Footwear,match,1.0000,0.0000,1.0000,32,Running Shoes For Men  (Blue)
+Q4,JCKFUUSN3YZPEJXP,1,our_score,10.1381,0.9908,1.0000,0.8250,0.6300,True,0.9502,,,,,,,,,,,2,Full Sleeve Solid Women Casual Jacket
+Q4,JCKFUUSPZCTSACGH,2,our_score,10.0822,0.9853,1.0000,0.7000,0.5500,True,0.9244,,,,,,,,,,,3,Full Sleeve Solid Women Casual Jacket
+Q4,JCKFU9APAQJBN23B,3,our_score,9.5262,0.9310,1.0000,0.8250,0.7600,True,0.9238,,,,,,,,,,,28,Full Sleeve Solid Women Casual Jacket
+Q4,JCKFWYTHH3B5GKWS,4,our_score,9.5706,0.9353,1.0000,0.7750,0.7600,True,0.9187,,,,,,,,,,,23,Full Sleeve Colorblock Women Casual Jacket
+Q4,JCKFRP3GZBHP574R,5,our_score,9.3820,0.9169,1.0000,1.0000,0.2500,True,0.9168,,,,,,,,,,,48,Full Sleeve Solid Women Jacket
+Q4,JCKF7KY5KKUKYSGY,6,our_score,9.5360,0.9320,1.0000,0.7750,0.6900,True,0.9133,,,,,,,,,,,26,Full Sleeve Solid Women Bomber Jacket
+Q4,JCKFRP3G5YG9CVFZ,7,our_score,9.4113,0.9198,1.0000,0.9500,0.2300,True,0.9099,,,,,,,,,,,44,Full Sleeve Solid Women Jacket
+Q4,JCKFH8JZNGQFG55Y,8,our_score,9.1268,0.8920,1.0000,0.9000,0.6500,True,0.9081,,,,,,,,,,,145,"Full Sleeve Self Design, Color Block Women Padded Jacket"
+Q4,JCKFW7ERKBA4BHY3,9,our_score,9.4823,0.9267,1.0000,0.7250,0.7500,True,0.9059,,,,,,,,,,,36,Full Sleeve Solid Women Casual Jacket
+Q4,JCKF744NYSUFDXAH,10,our_score,9.3240,0.9112,1.0000,0.7250,0.6900,True,0.8944,,,,,,,,,,,67,Full Sleeve Solid Women Quilted Jacket
+Q4,JCKFDXGZGQK5WSHK,11,our_score,9.5978,0.9380,1.0000,0.6750,0.5400,True,0.8941,,,,,,,,,,,14,Full Sleeve Checkered Women Casual Jacket
+Q4,JCKFV2N9WSSPRZWZ,12,our_score,8.8415,0.8641,1.0000,0.9250,0.6000,True,0.8940,,,,,,,,,,,208,Full Sleeve Colorblock Women Sports Jacket
+Q4,JCKFHUDH42QEWHEZ,13,our_score,9.3519,0.9140,1.0000,0.7500,0.5700,True,0.8937,,,,,,,,,,,57,Full Sleeve Solid Women Padded Jacket
+Q4,JCKFHUDHKGQZXGZZ,14,our_score,9.3519,0.9140,1.0000,0.7500,0.5700,True,0.8937,,,,,,,,,,,58,Full Sleeve Solid Women Padded Jacket
+Q4,JCKFVVHNFANGGWNP,15,our_score,9.6607,0.9441,1.0000,0.5750,0.7600,True,0.8935,,,,,,,,,,,9,Full Sleeve Solid Women Casual Jacket
+Q4,JCKFQGP9RR28PFWB,16,our_score,8.9576,0.8754,1.0000,0.8750,0.6000,True,0.8927,,,,,,,,,,,182,Full Sleeve Colorblock Women Sports Jacket
+Q4,JCKFVVHNUHUHMYSN,17,our_score,9.6380,0.9419,1.0000,0.5750,0.7600,True,0.8923,,,,,,,,,,,10,Full Sleeve Solid Women Casual Jacket
+Q4,JCKFMV5WAAXE6BWT,18,our_score,9.4134,0.9200,1.0000,0.7250,0.5300,True,0.8912,,,,,,,,,,,43,Full Sleeve Printed Women Casual Jacket
+Q4,JCKFJ3AZRGTGTTBD,19,our_score,9.1903,0.8982,1.0000,0.7500,0.6900,True,0.8910,,,,,,,,,,,123,Full Sleeve Solid Women Bomber Jacket
+Q4,JCKF7EBGWC49PTKX,20,our_score,9.4408,0.9227,1.0000,0.6500,0.6900,True,0.8895,,,,,,,,,,,39,Full Sleeve Solid Women Bomber Jacket
+Q4,JCKFMV5WTASYK4Y2,1,intent_score,,,,,,,1.0000,1.0000,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,1,Full Sleeve Solid Women Casual Jacket
+Q4,JCKFUUSN3YZPEJXP,2,intent_score,,,,,,,0.9908,0.9908,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,2,Full Sleeve Solid Women Casual Jacket
+Q4,JCKFUUSPZCTSACGH,3,intent_score,,,,,,,0.9853,0.9853,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,3,Full Sleeve Solid Women Casual Jacket
+Q4,JCKFYQGKUNHTVXCF,4,intent_score,,,,,,,0.9620,0.9620,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,4,Full Sleeve Solid Women Casual Jacket
+Q4,JCKFYQGXDVYFKU3P,5,intent_score,,,,,,,0.9620,0.9620,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,5,Full Sleeve Solid Women Casual Jacket
+Q4,JCKEAMZNPZBAQY3Y,6,intent_score,,,,,,,0.9557,0.9557,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,7,Full Sleeve Self Design Women Bodycon Jacket
+Q4,JCKFXQWYXH5QPSXV,7,intent_score,,,,,,,0.9446,0.9446,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,8,Full Sleeve Colorblock Women Sports Jacket
+Q4,JCKFVVHNFANGGWNP,8,intent_score,,,,,,,0.9441,0.9441,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,9,Full Sleeve Solid Women Casual Jacket
+Q4,JCKFVVHNUHUHMYSN,9,intent_score,,,,,,,0.9419,0.9419,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,10,Full Sleeve Solid Women Casual Jacket
+Q4,JCKFDXGZGQK5WSHK,10,intent_score,,,,,,,0.9380,0.9380,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,14,Full Sleeve Checkered Women Casual Jacket
+Q4,JCKFY4B2XYFTKYWX,11,intent_score,,,,,,,0.9378,0.9378,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,15,Full Sleeve Solid Women Leather Jacket
+Q4,JCKFY4B2ZXXFUBEH,12,intent_score,,,,,,,0.9378,0.9378,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,16,Full Sleeve Solid Women Leather Jacket
+Q4,JCKFKGR4FADV7SZS,13,intent_score,,,,,,,0.9366,0.9366,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,20,Full Sleeve Colorblock Women Sports Jacket
+Q4,JCKFY4B3YKRV82EH,14,intent_score,,,,,,,0.9361,0.9361,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,21,Full Sleeve Solid Women Leather Jacket
+Q4,JCKFWYTHH3B5GKWS,15,intent_score,,,,,,,0.9353,0.9353,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,23,Full Sleeve Colorblock Women Casual Jacket
+Q4,JCKFRP3HNRDBD3Z9,16,intent_score,,,,,,,0.9342,0.9342,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,24,Full Sleeve Solid Women Casual Jacket
+Q4,JCKFM9TQZBYECNBT,17,intent_score,,,,,,,0.9322,0.9322,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,25,Full Sleeve Solid Women Padded Jacket
+Q4,JCKF7KY5KKUKYSGY,18,intent_score,,,,,,,0.9320,0.9320,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,26,Full Sleeve Solid Women Bomber Jacket
+Q4,JCKFRP3GMEQ2JVEU,19,intent_score,,,,,,,0.9318,0.9318,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,27,Full Sleeve Self Design Women Casual Jacket
+Q4,JCKFU9APAQJBN23B,20,intent_score,,,,,,,0.9310,0.9310,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,28,Full Sleeve Solid Women Casual Jacket
+Q5,SRTFZFYXJFFJYWDQ,1,our_score,9.0729,0.9928,0.7500,0.8750,0.2800,True,0.8788,,,,,,,,,,,2,Solid Men Black Sports Shorts
+Q5,SRTFZ3KE4QTYBZGU,2,our_score,8.8383,0.9672,0.7500,0.8750,0.4200,True,0.8717,,,,,,,,,,,4,Solid Men Dark Blue Sports Shorts
+Q5,SRTFDT7FAGUTMSVY,3,our_score,8.5426,0.9348,0.7500,0.8750,0.3000,True,0.8479,,,,,,,,,,,8,Solid Men Blue Sports Shorts
+Q5,DHYFHFUJMNHJCYYR,4,our_score,8.7610,0.9587,0.7500,0.7000,0.3400,True,0.8368,,,,,,,,,,,5,Color Block Men Multicolor Sports Shorts
+Q5,TKPF7NWYGHPBVFMA,5,our_score,8.3662,0.9155,0.7500,0.7500,0.2500,True,0.8160,,,,,,,,,,,10,Solid Men Blue Sports Shorts
+Q5,SRTFZYYXKPMGCRDJ,6,our_score,8.6531,0.9469,0.7500,0.6250,0.2500,True,0.8145,,,,,,,,,,,7,Solid Men Black Sports Shorts
+Q5,SRTEQ4873ZRGBPYJ,7,our_score,9.1384,1.0000,0.7500,0.3250,0.5000,True,0.8113,,,,,,,,,,,1,Solid Men White Sports Shorts
+Q5,SRTEQKY62CMVFZNY,8,our_score,7.8622,0.8604,0.7500,0.7250,0.7200,True,0.8054,,,,,,,,,,,13,"Solid Men Black Beach Shorts, Gym Shorts, Night Shorts, Basic Shorts, Running Shorts, Boxer Shorts, Sports Shorts, Cycling Shorts"
+Q5,SRTESGHGHQVJC77H,9,our_score,8.6612,0.9478,0.7500,0.3250,0.5000,True,0.7825,,,,,,,,,,,6,Solid Men Blue Sports Shorts
+Q5,SRTEHZFHNM2MKMM3,10,our_score,8.1367,0.8904,0.7500,0.5000,0.5500,True,0.7797,,,,,,,,,,,11,"Solid Men Red Basic Shorts, Sports Shorts"
+Q5,SRTEHZFHVH6A9XHC,11,our_score,8.1002,0.8864,0.7500,0.5000,0.5500,True,0.7775,,,,,,,,,,,12,"Solid Men Dark Blue Basic Shorts, Sports Shorts"
+Q5,SRTFDT7F8K7VAFWA,12,our_score,8.4727,0.9272,0.7500,0.4250,0.3000,True,0.7762,,,,,,,,,,,9,Self Design Men Grey Sports Shorts
+Q5,SRTF9FCRBFV27UGK,13,our_score,7.2255,0.7907,0.7500,0.7750,0.3000,True,0.7536,,,,,,,,,,,18,Solid Men Grey Sports Shorts
+Q5,SRTFWYYDASDR42FF,14,our_score,7.6166,0.8335,0.7500,0.6750,0.1000,True,0.7522,,,,,,,,,,,17,Solid Men Black Sports Shorts
+Q5,SRTESGH8B6STFGTF,15,our_score,7.8004,0.8536,0.7500,0.3250,0.5000,True,0.7307,,,,,,,,,,,14,Solid Men Black Sports Shorts
+Q5,SRTEDGDPDSMJNJFW,16,our_score,7.1679,0.7844,0.5000,0.9750,0.5200,True,0.7287,,,,,,,,,,,19,Solid Men White Running Shorts
+Q5,JCKFWZ8HDMZZVYNC,17,our_score,7.7887,0.8523,0.7500,0.3000,0.1500,True,0.7088,,,,,,,,,,,16,short_sleeve Solid Men Sports Jacket
+Q5,JCKFWZ8HBF7C3HM3,18,our_score,7.7887,0.8523,0.7500,0.3000,0.1000,True,0.7063,,,,,,,,,,,15,short_sleeve Solid Men Sports Jacket
+Q5,TSHFVEV3EFDMDS4Y,19,our_score,6.6535,0.7281,0.5000,0.8750,0.3300,True,0.6732,,,,,,,,,,,23,Sports Men Round Neck Red T-Shirt
+Q5,SRTFWAT2ZVYTNVYH,20,our_score,6.6445,0.7271,0.5000,0.7750,0.5800,True,0.6702,,,,,,,,,,,24,Solid Men Khaki Bermuda Shorts
+Q5,SRTEQ4873ZRGBPYJ,1,intent_score,,,,,,,1.0000,1.0000,1.0000,1.0000,1.0000,1.0000,Bottomwear,match,3.0000,0.0000,0.0000,1,Solid Men White Sports Shorts
+Q5,SRTFZFYXJFFJYWDQ,2,intent_score,,,,,,,0.9928,0.9928,1.0000,1.0000,1.0000,1.0000,Bottomwear,match,3.0000,0.0000,0.0000,2,Solid Men Black Sports Shorts
+Q5,SRTFZ3KE4QTYBZGU,3,intent_score,,,,,,,0.9672,0.9672,1.0000,1.0000,1.0000,1.0000,Bottomwear,match,3.0000,0.0000,0.0000,4,Solid Men Dark Blue Sports Shorts
+Q5,DHYFHFUJMNHJCYYR,4,intent_score,,,,,,,0.9587,0.9587,1.0000,1.0000,1.0000,1.0000,Bottomwear,match,3.0000,0.0000,0.0000,5,Color Block Men Multicolor Sports Shorts
+Q5,SRTESGHGHQVJC77H,5,intent_score,,,,,,,0.9478,0.9478,1.0000,1.0000,1.0000,1.0000,Bottomwear,match,3.0000,0.0000,0.0000,6,Solid Men Blue Sports Shorts
+Q5,SRTFZYYXKPMGCRDJ,6,intent_score,,,,,,,0.9469,0.9469,1.0000,1.0000,1.0000,1.0000,Bottomwear,match,3.0000,0.0000,0.0000,7,Solid Men Black Sports Shorts
+Q5,SRTFDT7FAGUTMSVY,7,intent_score,,,,,,,0.9348,0.9348,1.0000,1.0000,1.0000,1.0000,Bottomwear,match,3.0000,0.0000,0.0000,8,Solid Men Blue Sports Shorts
+Q5,SRTFDT7F8K7VAFWA,8,intent_score,,,,,,,0.9272,0.9272,1.0000,1.0000,1.0000,1.0000,Bottomwear,match,3.0000,0.0000,0.0000,9,Self Design Men Grey Sports Shorts
+Q5,TKPF7NWYGHPBVFMA,9,intent_score,,,,,,,0.9155,0.9155,1.0000,1.0000,1.0000,1.0000,Bottomwear,match,3.0000,0.0000,0.0000,10,Solid Men Blue Sports Shorts
+Q5,SRTEHZFHNM2MKMM3,10,intent_score,,,,,,,0.8904,0.8904,1.0000,1.0000,1.0000,1.0000,Bottomwear,match,3.0000,0.0000,0.0000,11,"Solid Men Red Basic Shorts, Sports Shorts"
+Q5,SRTEHZFHVH6A9XHC,11,intent_score,,,,,,,0.8864,0.8864,1.0000,1.0000,1.0000,1.0000,Bottomwear,match,3.0000,0.0000,0.0000,12,"Solid Men Dark Blue Basic Shorts, Sports Shorts"
+Q5,SRTF9FCRBFV27UGK,12,intent_score,,,,,,,0.7907,0.7907,1.0000,1.0000,1.0000,1.0000,Bottomwear,match,3.0000,0.0000,0.0000,18,Solid Men Grey Sports Shorts
+Q5,SRTEQKY62CMVFZNY,13,intent_score,,,,,,,0.7170,0.8604,1.0000,1.0000,0.8333,1.0000,Bottomwear,match,2.0000,1.0000,0.0000,13,"Solid Men Black Beach Shorts, Gym Shorts, Night Shorts, Basic Shorts, Running Shorts, Boxer Shorts, Sports Shorts, Cycling Shorts"
+Q5,SRTESGH8B6STFGTF,14,intent_score,,,,,,,0.7113,0.8536,1.0000,1.0000,0.8333,1.0000,Bottomwear,match,2.0000,1.0000,0.0000,14,Solid Men Black Sports Shorts
+Q5,SRTFWYYDASDR42FF,15,intent_score,,,,,,,0.6946,0.8335,1.0000,1.0000,0.8333,1.0000,Bottomwear,match,2.0000,1.0000,0.0000,17,Solid Men Black Sports Shorts
+Q5,SRTEDGDPDSMJNJFW,16,intent_score,,,,,,,0.6536,0.7844,1.0000,1.0000,0.8333,1.0000,Bottomwear,match,2.0000,1.0000,0.0000,19,Solid Men White Running Shorts
+Q5,SRTFW4GC2JQEGDAC,17,intent_score,,,,,,,0.6178,0.7414,1.0000,1.0000,0.8333,1.0000,Bottomwear,match,2.0000,1.0000,0.0000,20,Solid Men Black Swim Shorts
+Q5,SRTFW4GC5YHGZY3A,18,intent_score,,,,,,,0.6178,0.7414,1.0000,1.0000,0.8333,1.0000,Bottomwear,match,2.0000,1.0000,0.0000,21,Solid Men Black Swim Shorts
+Q5,SRTFW4GCTGA3BEZ8,19,intent_score,,,,,,,0.6178,0.7414,1.0000,1.0000,0.8333,1.0000,Bottomwear,match,2.0000,1.0000,0.0000,22,Solid Men Black Swim Shorts
+Q5,SRTFWAT2ZVYTNVYH,20,intent_score,,,,,,,0.6059,0.7271,1.0000,1.0000,0.8333,1.0000,Bottomwear,match,2.0000,1.0000,0.0000,24,Solid Men Khaki Bermuda Shorts
+Q6,TKPFYTQEUHRYQRZY,1,our_score,11.7083,0.9461,1.0000,0.9250,0.6800,True,0.9431,,,,,,,,,,,28,"Solid Women Black, Blue Track Pants"
+Q6,TKPFZMQ8YMWNGXEU,2,our_score,12.3399,0.9971,1.0000,0.7000,0.6000,True,0.9334,,,,,,,,,,,2,Solid Men Black Track Pants
+Q6,TKPFSMZ7SGZTHNJW,3,our_score,12.2331,0.9885,1.0000,0.6500,0.8000,True,0.9312,,,,,,,,,,,5,Color Block Women Black Track Pants
+Q6,TKPFZAZ55MKVASFR,4,our_score,11.1740,0.9029,1.0000,1.0000,0.6500,True,0.9291,,,,,,,,,,,87,Solid Women Black Track Pants
+Q6,TKPFZAZ5KPGRVYXY,5,our_score,11.2261,0.9071,1.0000,1.0000,0.5500,True,0.9264,,,,,,,,,,,85,Solid Women Black Track Pants
+Q6,TKPFUF3VTZ5CUS2Y,6,our_score,11.7736,0.9514,1.0000,0.8000,0.6600,True,0.9263,,,,,,,,,,,23,Solid Men Black Track Pants
+Q6,TKPFZYS9FBE5S8VZ,7,our_score,11.6257,0.9394,1.0000,0.8250,0.6900,True,0.9249,,,,,,,,,,,37,Solid Men Black Track Pants
+Q6,TKPFZGQVUAJBZFDM,8,our_score,11.5487,0.9332,1.0000,1.0000,0.1800,True,0.9223,,,,,,,,,,,55,Solid Women Black Track Pants
+Q6,TKPFZG5ZGSZZGR5F,9,our_score,12.2761,0.9920,1.0000,0.6250,0.6200,True,0.9203,,,,,,,,,,,3,Striped Women Black Track Pants
+Q6,TKPFZAZ4QCAZFAGA,10,our_score,10.9707,0.8865,1.0000,1.0000,0.6500,True,0.9201,,,,,,,,,,,100,"Solid Men Black, Dark Blue Track Pants"
+Q6,TKPFYHVE7SZNHTMR,11,our_score,11.9202,0.9632,1.0000,0.7250,0.6300,True,0.9200,,,,,,,,,,,20,"Solid Men Black, Blue Track Pants"
+Q6,TKPFWGWBQY8UZZUB,12,our_score,11.9684,0.9671,1.0000,0.7000,0.6300,True,0.9184,,,,,,,,,,,19,Solid Women Black Track Pants
+Q6,TKPFXNPJTHFD5YEY,13,our_score,11.7501,0.9495,1.0000,0.7250,0.6600,True,0.9140,,,,,,,,,,,24,Solid Women Black Track Pants
+Q6,TKPFWXYGBQBAUHJE,14,our_score,11.2838,0.9118,1.0000,0.8750,0.6200,True,0.9137,,,,,,,,,,,70,Solid Men Black Track Pants
+Q6,TKPFWXYHRW2ZCXXZ,15,our_score,11.2838,0.9118,1.0000,0.8750,0.6200,True,0.9137,,,,,,,,,,,71,Solid Women Black Track Pants
+Q6,TKPFZHZ4QQNSNYNK,16,our_score,11.6668,0.9427,1.0000,0.7250,0.6800,True,0.9113,,,,,,,,,,,35,"Solid Men Maroon, Black Track Pants"
+Q6,TKPEYQ6YNHW8FV5R,17,our_score,12.2475,0.9897,1.0000,0.6250,0.4600,True,0.9111,,,,,,,,,,,4,"Solid Men Black, Orange Track Pants"
+Q6,TKPFXNPJNWUWAHSK,18,our_score,11.6668,0.9427,1.0000,0.7250,0.6600,True,0.9103,,,,,,,,,,,33,"Solid Women Black, Grey Track Pants"
+Q6,TKPFXNPJTQ6DWU8M,19,our_score,11.6668,0.9427,1.0000,0.7250,0.6600,True,0.9103,,,,,,,,,,,34,"Solid Men Blue, Black Track Pants"
+Q6,TKPFXSZNBYTGZMWY,20,our_score,11.5487,0.9332,1.0000,0.7750,0.5700,True,0.9080,,,,,,,,,,,54,Solid Men Black Track Pants
+Q6,TKPFZMQ8YMWNGXEU,1,intent_score,,,,,,,0.9971,0.9971,1.0000,1.0000,1.0000,1.0000,Bottomwear,match,3.0000,0.0000,0.0000,2,Solid Men Black Track Pants
+Q6,TKPFZG5ZGSZZGR5F,2,intent_score,,,,,,,0.9920,0.9920,1.0000,1.0000,1.0000,1.0000,Bottomwear,match,3.0000,0.0000,0.0000,3,Striped Women Black Track Pants
+Q6,TKPEYQ6YNHW8FV5R,3,intent_score,,,,,,,0.9897,0.9897,1.0000,1.0000,1.0000,1.0000,Bottomwear,match,3.0000,0.0000,0.0000,4,"Solid Men Black, Orange Track Pants"
+Q6,TKPFZMZSWZN5HKEZ,4,intent_score,,,,,,,0.9846,0.9846,1.0000,1.0000,1.0000,1.0000,Bottomwear,match,3.0000,0.0000,0.0000,6,Solid Men Black Track Pants
+Q6,TKPFNWG6GVFNXUVG,5,intent_score,,,,,,,0.9822,0.9822,1.0000,1.0000,1.0000,1.0000,Bottomwear,match,3.0000,0.0000,0.0000,7,Solid Men Black Track Pants
+Q6,TKPFRR83HRGAYYJ6,6,intent_score,,,,,,,0.9810,0.9810,1.0000,1.0000,1.0000,1.0000,Bottomwear,match,3.0000,0.0000,0.0000,8,Solid Men Black Track Pants
+Q6,TKPFRR83TFTU9TDV,7,intent_score,,,,,,,0.9810,0.9810,1.0000,1.0000,1.0000,1.0000,Bottomwear,match,3.0000,0.0000,0.0000,9,Solid Men Black Track Pants
+Q6,TKPFRR83YNVYCUPN,8,intent_score,,,,,,,0.9810,0.9810,1.0000,1.0000,1.0000,1.0000,Bottomwear,match,3.0000,0.0000,0.0000,11,Solid Men Black Track Pants
+Q6,TKPF3FPJNVVBKPRG,9,intent_score,,,,,,,0.9734,0.9734,1.0000,1.0000,1.0000,1.0000,Bottomwear,match,3.0000,0.0000,0.0000,12,"Solid Men Blue, Black Track Pants"
+Q6,TKPF3FPKHNWZ3UMG,10,intent_score,,,,,,,0.9734,0.9734,1.0000,1.0000,1.0000,1.0000,Bottomwear,match,3.0000,0.0000,0.0000,13,"Solid Men Blue, Black Track Pants"
+Q6,TKPF3FPKTYM55SAV,11,intent_score,,,,,,,0.9734,0.9734,1.0000,1.0000,1.0000,1.0000,Bottomwear,match,3.0000,0.0000,0.0000,14,"Solid Men Black, Grey Track Pants"
+Q6,TKPF3FPMC6PGGGYH,12,intent_score,,,,,,,0.9734,0.9734,1.0000,1.0000,1.0000,1.0000,Bottomwear,match,3.0000,0.0000,0.0000,15,"Solid Women Black, Grey Track Pants"
+Q6,TKPF3FPNZ5XCHZ6R,13,intent_score,,,,,,,0.9734,0.9734,1.0000,1.0000,1.0000,1.0000,Bottomwear,match,3.0000,0.0000,0.0000,16,"Solid Men Black, Grey Track Pants"
+Q6,TKPF3FPQGCHXHGRM,14,intent_score,,,,,,,0.9734,0.9734,1.0000,1.0000,1.0000,1.0000,Bottomwear,match,3.0000,0.0000,0.0000,17,"Solid Men Black, Grey Track Pants"
+Q6,TKPF3FPZRRJUWTAZ,15,intent_score,,,,,,,0.9734,0.9734,1.0000,1.0000,1.0000,1.0000,Bottomwear,match,3.0000,0.0000,0.0000,18,"Solid Men Blue, Black Track Pants"
+Q6,TKPFYHVE7SZNHTMR,16,intent_score,,,,,,,0.9632,0.9632,1.0000,1.0000,1.0000,1.0000,Bottomwear,match,3.0000,0.0000,0.0000,20,"Solid Men Black, Blue Track Pants"
+Q6,TKPFYVRNGSKYPGT3,17,intent_score,,,,,,,0.9563,0.9563,1.0000,1.0000,1.0000,1.0000,Bottomwear,match,3.0000,0.0000,0.0000,21,Solid Men Black Track Pants
+Q6,TKPFXZQ4EJ5G42FT,18,intent_score,,,,,,,0.9555,0.9555,1.0000,1.0000,1.0000,1.0000,Bottomwear,match,3.0000,0.0000,0.0000,22,Solid Women Black Track Pants
+Q6,TKPFUF3VTZ5CUS2Y,19,intent_score,,,,,,,0.9514,0.9514,1.0000,1.0000,1.0000,1.0000,Bottomwear,match,3.0000,0.0000,0.0000,23,Solid Men Black Track Pants
+Q6,TKPFXNPJTHFD5YEY,20,intent_score,,,,,,,0.9495,0.9495,1.0000,1.0000,1.0000,1.0000,Bottomwear,match,3.0000,0.0000,0.0000,24,Solid Women Black Track Pants
+Q7,SWSFVNAYAGBGKAPZ,1,our_score,9.5870,0.9701,0.5000,0.9000,0.5000,True,0.8186,,,,,,,,,,,32,Full Sleeve Ombre Men Sweatshirt
+Q7,SWSFY5ZHUEZPZZYV,2,our_score,9.1954,0.9305,0.5000,0.9000,0.7300,True,0.8083,,,,,,,,,,,46,Full Sleeve Printed Women Sweatshirt
+Q7,SWSFY5ZHEJ2HYWDG,3,our_score,9.1954,0.9305,0.5000,0.8750,0.7300,True,0.8045,,,,,,,,,,,45,Full Sleeve Printed Men Sweatshirt
+Q7,SWSFJE3V7A8FHGNG,4,our_score,8.7581,0.8863,0.5000,1.0000,0.6000,True,0.7925,,,,,,,,,,,94,Sleeveless Printed Men Sweatshirt
+Q7,SWSFXZWGFKHNG88S,5,our_score,9.8820,1.0000,0.5000,0.5500,0.6300,True,0.7890,,,,,,,,,,,1,Full Sleeve Solid Men Sweatshirt
+Q7,SWSFXZWGMGVDUCXA,6,our_score,9.8820,1.0000,0.5000,0.5500,0.6300,True,0.7890,,,,,,,,,,,2,Full Sleeve Printed Women Sweatshirt
+Q7,SWSFXZWWYXPZXPTY,7,our_score,9.8820,1.0000,0.5000,0.5500,0.6300,True,0.7890,,,,,,,,,,,3,Full Sleeve Printed Men Sweatshirt
+Q7,SWSFPHFFKEGXGVHW,8,our_score,9.3103,0.9422,0.5000,0.7500,0.6500,True,0.7882,,,,,,,,,,,40,Full Sleeve Solid Men Sweatshirt
+Q7,SWSFYFFFMWQMAPJJ,9,our_score,9.8374,0.9955,0.5000,0.5500,0.6300,True,0.7865,,,,,,,,,,,4,Full Sleeve Printed Men Sweatshirt
+Q7,SWSFYFFYJCSGNGD8,10,our_score,9.8374,0.9955,0.5000,0.5500,0.6300,True,0.7865,,,,,,,,,,,5,Full Sleeve Printed Men Sweatshirt
+Q7,SWSFXZWUMUXNUHSZ,11,our_score,9.7933,0.9910,0.5000,0.5500,0.6600,True,0.7856,,,,,,,,,,,16,Full Sleeve Solid Men Sweatshirt
+Q7,SWSFYFFFZBZKUQUS,12,our_score,9.7933,0.9910,0.5000,0.5500,0.6600,True,0.7856,,,,,,,,,,,17,Full Sleeve Printed Men Sweatshirt
+Q7,SWSFYFFYFXCMPBDZ,13,our_score,9.7933,0.9910,0.5000,0.5500,0.6600,True,0.7856,,,,,,,,,,,18,Full Sleeve Printed Women Sweatshirt
+Q7,SWSFYFFYQ7Z3ZKN6,14,our_score,9.7933,0.9910,0.5000,0.5500,0.6600,True,0.7856,,,,,,,,,,,19,Full Sleeve Printed Women Sweatshirt
+Q7,SWSFXZWGAFH4WFHV,15,our_score,9.8020,0.9919,0.5000,0.5500,0.6300,True,0.7845,,,,,,,,,,,6,Full Sleeve Solid Women Sweatshirt
+Q7,SWSFXZWGE4HCKG86,16,our_score,9.8020,0.9919,0.5000,0.5500,0.6300,True,0.7845,,,,,,,,,,,7,Full Sleeve Solid Men Sweatshirt
+Q7,SWSFXZWGGJYSWYK2,17,our_score,9.8020,0.9919,0.5000,0.5500,0.6300,True,0.7845,,,,,,,,,,,8,Full Sleeve Printed Men Sweatshirt
+Q7,SWSFXZWGSKPYAMHR,18,our_score,9.8020,0.9919,0.5000,0.5500,0.6300,True,0.7845,,,,,,,,,,,9,Full Sleeve Solid Women Sweatshirt
+Q7,SWSFXZWHCDGSHDUP,19,our_score,9.8020,0.9919,0.5000,0.5500,0.6300,True,0.7845,,,,,,,,,,,10,Full Sleeve Solid Women Sweatshirt
+Q7,SWSFXZWHHTZHZG6V,20,our_score,9.8020,0.9919,0.5000,0.5500,0.6300,True,0.7845,,,,,,,,,,,11,Full Sleeve Solid Women Sweatshirt
+Q7,SWSFXZWGFKHNG88S,1,intent_score,,,,,,,1.0000,1.0000,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,1,Full Sleeve Solid Men Sweatshirt
+Q7,SWSFXZWGMGVDUCXA,2,intent_score,,,,,,,1.0000,1.0000,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,2,Full Sleeve Printed Women Sweatshirt
+Q7,SWSFXZWWYXPZXPTY,3,intent_score,,,,,,,1.0000,1.0000,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,3,Full Sleeve Printed Men Sweatshirt
+Q7,SWSFYFFFMWQMAPJJ,4,intent_score,,,,,,,0.9955,0.9955,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,4,Full Sleeve Printed Men Sweatshirt
+Q7,SWSFYFFYJCSGNGD8,5,intent_score,,,,,,,0.9955,0.9955,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,5,Full Sleeve Printed Men Sweatshirt
+Q7,SWSFXZWUMUXNUHSZ,6,intent_score,,,,,,,0.9910,0.9910,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,16,Full Sleeve Solid Men Sweatshirt
+Q7,SWSFYFFFZBZKUQUS,7,intent_score,,,,,,,0.9910,0.9910,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,17,Full Sleeve Printed Men Sweatshirt
+Q7,SWSFYFFYFXCMPBDZ,8,intent_score,,,,,,,0.9910,0.9910,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,18,Full Sleeve Printed Women Sweatshirt
+Q7,SWSFYFFYQ7Z3ZKN6,9,intent_score,,,,,,,0.9910,0.9910,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,19,Full Sleeve Printed Women Sweatshirt
+Q7,SWSFYFFYCFJEYYTU,10,intent_score,,,,,,,0.9866,0.9866,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,24,Full Sleeve Printed Women Sweatshirt
+Q7,SWSFYFFYHHDFZBRM,11,intent_score,,,,,,,0.9844,0.9844,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,25,Full Sleeve Printed Women Sweatshirt
+Q7,SWSFXMFP2RUM86QD,12,intent_score,,,,,,,0.9583,0.9583,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,33,Full Sleeve Printed Women Sweatshirt
+Q7,SWSFXMFPRTY4GKGF,13,intent_score,,,,,,,0.9583,0.9583,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,34,Full Sleeve Printed Men Sweatshirt
+Q7,SWSFXMFPVYZ2YGGQ,14,intent_score,,,,,,,0.9583,0.9583,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,35,Full Sleeve Embroidered Men Sweatshirt
+Q7,SWSFXMFPYYTZUZ3Z,15,intent_score,,,,,,,0.9557,0.9557,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,37,Full Sleeve Printed Men Sweatshirt
+Q7,SWSFPHFFKEGXGVHW,16,intent_score,,,,,,,0.9422,0.9422,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,40,Full Sleeve Solid Men Sweatshirt
+Q7,SWSFYV4N7HJ8BHWM,17,intent_score,,,,,,,0.9398,0.9398,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,41,Full Sleeve Solid Men Sweatshirt
+Q7,SWSFYV4NUHK8YPR9,18,intent_score,,,,,,,0.9398,0.9398,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,42,Full Sleeve Solid Men Sweatshirt
+Q7,SWSFYV85ZTT9H7ZY,19,intent_score,,,,,,,0.9279,0.9279,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,48,Full Sleeve Solid Men Sweatshirt
+Q7,SWSFYNF2Z6A6NGFT,20,intent_score,,,,,,,0.9192,0.9192,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,50,Full Sleeve Solid Women Sweatshirt
+Q8,JCKFKKFZ7QB2KUQV,1,our_score,10.2728,0.9697,1.0000,0.7000,0.6300,True,0.9198,,,,,,,,,,,4,Full Sleeve Washed Men Denim Jacket
+Q8,JCKFWC5YW4Z3YYZX,2,our_score,10.1002,0.9534,1.0000,0.7500,0.5300,True,0.9134,,,,,,,,,,,12,Full Sleeve Solid Women Denim Jacket
+Q8,JCKFWC5YZKFWXGEB,3,our_score,10.1002,0.9534,1.0000,0.7500,0.5300,True,0.9134,,,,,,,,,,,13,Full Sleeve Solid Men Denim Jacket
+Q8,JCKFWC5YGQENYT6B,4,our_score,10.0716,0.9507,1.0000,0.7500,0.5300,True,0.9119,,,,,,,,,,,16,Full Sleeve Solid Women Denim Jacket
+Q8,JCKFZZN6AWQZ8FC2,5,our_score,10.2117,0.9639,1.0000,0.7000,0.5300,True,0.9117,,,,,,,,,,,6,Full Sleeve Solid Men Denim Jacket
+Q8,JCKFXNVM5FVS294R,6,our_score,9.6993,0.9156,1.0000,0.8250,0.5300,True,0.9038,,,,,,,,,,,33,Full Sleeve Solid Women Denim Jacket
+Q8,JCKFXNVMQMZYDZFY,7,our_score,9.6993,0.9156,1.0000,0.8250,0.5300,True,0.9038,,,,,,,,,,,37,Full Sleeve Solid Women Denim Jacket
+Q8,JCKFVJ54N4NZGPTP,8,our_score,10.2828,0.9707,1.0000,0.5750,0.6500,True,0.9026,,,,,,,,,,,2,Full Sleeve Washed Men Denim Riding Jacket
+Q8,JCKFVDPW4WNPBGS2,9,our_score,10.1002,0.9534,1.0000,0.6750,0.5300,True,0.9021,,,,,,,,,,,10,Full Sleeve Solid Men Denim Jacket
+Q8,JCKFXAKEY2ANHJGW,10,our_score,10.1002,0.9534,1.0000,0.6750,0.5300,True,0.9021,,,,,,,,,,,14,Full Sleeve Solid Women Denim Jacket
+Q8,JCKFYY97BC7KWPM4,11,our_score,10.1002,0.9534,1.0000,0.6750,0.5300,True,0.9021,,,,,,,,,,,15,Full Sleeve Solid Men Denim Jacket
+Q8,JCKFWC5ZKPYQ6ZGH,12,our_score,10.0155,0.9454,1.0000,0.6750,0.5300,True,0.8977,,,,,,,,,,,18,Full Sleeve Solid Women Denim Jacket
+Q8,JCKFWC5ZQ8QVSETD,13,our_score,10.0155,0.9454,1.0000,0.6750,0.5300,True,0.8977,,,,,,,,,,,19,Full Sleeve Solid Women Denim Jacket
+Q8,JCKFVDPY9QR8UKKZ,14,our_score,9.6993,0.9156,1.0000,0.6750,0.5300,True,0.8813,,,,,,,,,,,32,Full Sleeve Solid Women Denim Jacket
+Q8,JCKFUCYG2GKYHYWN,15,our_score,9.7180,0.9173,1.0000,0.6000,0.7100,True,0.8800,,,,,,,,,,,31,Full Sleeve Self Design Women Denim Jacket
+Q8,JCKFVDPXFVQBGME7,16,our_score,9.6663,0.9125,1.0000,0.6750,0.5300,True,0.8796,,,,,,,,,,,40,Full Sleeve Solid Women Denim Jacket
+Q8,JCKFXNVMC435YMSU,17,our_score,9.6993,0.9156,1.0000,0.6500,0.5300,True,0.8776,,,,,,,,,,,34,Full Sleeve Solid Men Denim Jacket
+Q8,JCKFXNVMP5XZZNHA,18,our_score,9.6993,0.9156,1.0000,0.6500,0.5300,True,0.8776,,,,,,,,,,,36,Full Sleeve Solid Men Denim Jacket
+Q8,JCKFXNVMUPHVEQ7F,19,our_score,9.6993,0.9156,1.0000,0.6500,0.5300,True,0.8776,,,,,,,,,,,38,Full Sleeve Solid Women Denim Jacket
+Q8,JCKFYY7WKSXSSUUA,20,our_score,9.6993,0.9156,1.0000,0.6500,0.5300,True,0.8776,,,,,,,,,,,39,Full Sleeve Solid Women Denim Jacket
+Q8,JCKFVJ54N4NZGPTP,1,intent_score,,,,,,,0.9707,0.9707,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,2,Full Sleeve Washed Men Denim Riding Jacket
+Q8,JCKFKKFZ7QB2KUQV,2,intent_score,,,,,,,0.9697,0.9697,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,4,Full Sleeve Washed Men Denim Jacket
+Q8,JCKFZZN6AWQZ8FC2,3,intent_score,,,,,,,0.9639,0.9639,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,6,Full Sleeve Solid Men Denim Jacket
+Q8,JCKFMHS8ANSPXK72,4,intent_score,,,,,,,0.9582,0.9582,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,7,Full Sleeve Printed Women Jacket
+Q8,JCKFZJWZBZCCTYXM,5,intent_score,,,,,,,0.9577,0.9577,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,8,Full Sleeve Washed Men Denim Jacket
+Q8,JCKFVDPW4WNPBGS2,6,intent_score,,,,,,,0.9534,0.9534,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,10,Full Sleeve Solid Men Denim Jacket
+Q8,JCKFWC5YW4Z3YYZX,7,intent_score,,,,,,,0.9534,0.9534,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,12,Full Sleeve Solid Women Denim Jacket
+Q8,JCKFWC5YZKFWXGEB,8,intent_score,,,,,,,0.9534,0.9534,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,13,Full Sleeve Solid Men Denim Jacket
+Q8,JCKFXAKEY2ANHJGW,9,intent_score,,,,,,,0.9534,0.9534,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,14,Full Sleeve Solid Women Denim Jacket
+Q8,JCKFYY97BC7KWPM4,10,intent_score,,,,,,,0.9534,0.9534,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,15,Full Sleeve Solid Men Denim Jacket
+Q8,JCKFWC5YGQENYT6B,11,intent_score,,,,,,,0.9507,0.9507,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,16,Full Sleeve Solid Women Denim Jacket
+Q8,JCKFWC5ZKPYQ6ZGH,12,intent_score,,,,,,,0.9454,0.9454,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,18,Full Sleeve Solid Women Denim Jacket
+Q8,JCKFWC5ZQ8QVSETD,13,intent_score,,,,,,,0.9454,0.9454,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,19,Full Sleeve Solid Women Denim Jacket
+Q8,JCKFMHS84AARPB4E,14,intent_score,,,,,,,0.9335,0.9335,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,21,Full Sleeve Printed Men Casual Jacket
+Q8,JCKFMHS8TFBUJHAJ,15,intent_score,,,,,,,0.9335,0.9335,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,23,Full Sleeve Printed Women Casual Jacket
+Q8,JCKFMHS8X5MYGQHS,16,intent_score,,,,,,,0.9335,0.9335,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,24,Full Sleeve Printed Women Casual Jacket
+Q8,JCKFZKQGXJYHY9V7,17,intent_score,,,,,,,0.9247,0.9247,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,28,Full Sleeve Solid Men Jacket
+Q8,JCKFZ33GHPEXHFUZ,18,intent_score,,,,,,,0.9198,0.9198,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,30,Full Sleeve Solid Women Jacket
+Q8,JCKFUCYG2GKYHYWN,19,intent_score,,,,,,,0.9173,0.9173,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,31,Full Sleeve Self Design Women Denim Jacket
+Q8,JCKFVDPY9QR8UKKZ,20,intent_score,,,,,,,0.9156,0.9156,1.0000,1.0000,1.0000,1.0000,Winter Wear,match,2.0000,0.0000,0.0000,32,Full Sleeve Solid Women Denim Jacket

@@ -5,8 +5,13 @@ Run from the repository root:
 """
 
 import math
+import os
+import subprocess
+import sys
+from pathlib import Path
 
 import pandas as pd
+import pytest
 
 from project_progress.part_3.ablation import evaluate_ranking
 from project_progress.part_3.compare_rankings import score_spread
@@ -86,3 +91,31 @@ def test_significance_table_compares_with_baselines():
                 & (table["metric"] == "AP@10_pool")].iloc[0]
     assert math.isclose(row["mean_difference"], 0.4)
     assert row["significant_5pct"]
+
+
+# --- reproducible embeddings ------------------------------------------------------
+
+EMBEDDING_SCRIPT = """
+from project_progress.part_3.embedded_ranking import (
+    infer_query_vector, train_doc2vec, train_word2vec)
+docs = {str(i): ["blue", "jean", "slim", "fit", "cotton", "shirt"][i % 3:] * 3
+        for i in range(30)}
+w2v = train_word2vec(docs)
+d2v = train_doc2vec(docs)
+print(w2v.wv["jean"][:3].tolist(), d2v.dv["0"][:3].tolist(),
+      infer_query_vector(d2v, ["slim", "jean"])[:3].tolist())
+"""
+
+
+def test_embeddings_do_not_depend_on_python_hash_seed():
+    """Same vectors even when Python's string hash differs between runs."""
+    pytest.importorskip("gensim")
+    outputs = []
+    for seed in ("1", "2"):
+        env = {**os.environ, "PYTHONHASHSEED": seed}
+        result = subprocess.run([sys.executable, "-c", EMBEDDING_SCRIPT],
+                                capture_output=True, text=True, env=env,
+                                cwd=Path(__file__).resolve().parents[2],
+                                check=True)
+        outputs.append(result.stdout)
+    assert outputs[0] == outputs[1]

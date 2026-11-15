@@ -11,9 +11,13 @@ not a pre-trained model, because:
     such as Google News would miss most of them;
   * fashion vocabulary ("kurta", "churidar", "jogger") is domain-specific.
 
-Training is made reproducible with a fixed seed and a single worker.
+Training is made reproducible with a fixed seed, a single worker and a
+stable hash function (gensim uses Python's ``hash`` by default, which is
+randomised in every new process unless PYTHONHASHSEED is set).
 """
 
+import zlib
+from functools import partial
 from pathlib import Path
 
 import numpy as np
@@ -24,6 +28,12 @@ from project_progress.part_3.corpus import SearchIndex
 
 MODELS_DIR = Path(__file__).resolve().parent / "models"
 
+
+def stable_hash(text: str) -> int:
+    """Hash that is the same in every Python process (unlike ``hash``)."""
+    return zlib.crc32(text.encode("utf-8"))
+
+
 W2V_PARAMS = {
     "vector_size": 100,  # dimensions of each word vector
     "window": 5,         # context words on each side
@@ -32,6 +42,7 @@ W2V_PARAMS = {
     "epochs": 10,
     "seed": 42,
     "workers": 1,        # one thread -> reproducible vectors
+    "hashfxn": stable_hash,  # same initial vectors in every process
 }
 
 D2V_PARAMS = {
@@ -43,6 +54,7 @@ D2V_PARAMS = {
     "epochs": 20,
     "seed": 42,
     "workers": 1,
+    "hashfxn": stable_hash,
 }
 
 
@@ -125,6 +137,32 @@ def load_or_train_doc2vec(documents: dict[str, list[str]], retrain=False):
     model = train_doc2vec(documents)
     model.save(str(path))
     return model
+
+
+def infer_query_vector(model, tokens: list[str], epochs: int = 100) -> np.ndarray:
+    """Infer a Doc2Vec vector that is identical in every Python process.
+
+    ``infer_vector`` starts from a random vector seeded with Python's
+    ``hash`` of the text, so the result changed between runs. We swap in
+    :func:`stable_hash` for that call and reset the model's random state.
+
+    Args:
+        model: A trained gensim Doc2Vec model.
+        tokens: Processed query tokens.
+        epochs: Inference epochs.
+
+    Returns:
+        The inferred vector.
+    """
+    from gensim.models import doc2vec
+
+    original = doc2vec.pseudorandom_weak_vector
+    doc2vec.pseudorandom_weak_vector = partial(original, hashfxn=stable_hash)
+    try:
+        model.random.seed(42)
+        return model.infer_vector(tokens, epochs=epochs)
+    finally:
+        doc2vec.pseudorandom_weak_vector = original
 
 
 # ---------------------------------------------------------------------------
@@ -224,7 +262,7 @@ def rank_doc2vec(query: str, index: SearchIndex, model, top_k: int | None = None
     """Rank the AND results by Doc2Vec + cosine similarity.
 
     Product vectors are the ones learned during training; the query vector
-    is inferred with ``model.infer_vector`` (fixed seed for repeatability).
+    is inferred with :func:`infer_query_vector` (same vector in every run).
 
     Args:
         query: Raw query text.
@@ -238,8 +276,7 @@ def rank_doc2vec(query: str, index: SearchIndex, model, top_k: int | None = None
     candidates = index.candidates(query)
     if not candidates:
         return []
-    model.random.seed(42)
-    query_vec = model.infer_vector(preprocess_text(query), epochs=100)
+    query_vec = infer_query_vector(model, preprocess_text(query))
 
     def doc_vector(pid):
         return model.dv[pid] if pid in model.dv else None

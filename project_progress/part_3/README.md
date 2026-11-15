@@ -99,14 +99,14 @@ python -m project_progress.part_3.pipeline "men running shoes" --method intent_s
 | `results/word2vec_neighbours.csv` | nearest neighbours of every query term |
 | `figures/*.png` | P@10 by query, MAP@K by K, Kendall's tau heatmap |
 
-The trained models are stored in `models/`, which is git-ignored because they can be rebuilt with the same seed (`run_rankings --retrain`).
+The trained models are stored in `models/`, which is git-ignored because they can be rebuilt with the same seed (`run_rankings --retrain`). gensim seeds its initial vectors with Python's `hash`, which changes in every new process, so `embedded_ranking.py` passes a stable hash (`stable_hash`) for training and for Doc2Vec query inference. This makes the vectors identical in every run (tested in `test_extras.py`).
 
 ---
 
 ## Tests
 
-There are 31 Part 3 tests, and none of them needs the dataset:
+There are 32 Part 3 tests, and none of them needs the dataset:
 
 - `test_part_3.py` (15): AND candidates shared by all methods; TF-IDF identical to Part 2; BM25 against hand-computed values; BM25 saturation and length normalisation; our score; word2vec averaging and cosine; agreement measures.
 - `test_intent_score.py` (8): attribute parsing, gender detection, query intent, penalties for each kind of contradiction, the product of factors, gender-neutral queries.
-- `test_extras.py` (8): exact permutation-test p-values, RBO values computed by hand, near-tie counting, unjudged products in the ablation, and the significance table.
+- `test_extras.py` (9): exact permutation-test p-values, RBO values computed by hand, near-tie counting, unjudged products in the ablation, the significance table, and embeddings that do not depend on Python's hash seed (needs gensim).
