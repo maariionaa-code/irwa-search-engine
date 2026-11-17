@@ -42,7 +42,7 @@ from project_progress.part_3.queries import (
     PART2_QUERIES,
     TOP_K,
 )
-from project_progress.part_3.rank_statistics import paired_permutation_test
+from project_progress.part_3.rank_statistics import holm_adjust, paired_permutation_test
 from project_progress.part_3.run_rankings import RANKINGS_CSV, RESULTS_DIR
 
 
@@ -224,7 +224,10 @@ def significance_table(metrics: pd.DataFrame, k: int = SIGNIFICANCE_K) -> pd.Dat
 
     Returns:
         One row per (baseline, method, metric) with the mean difference
-        (method - baseline), the p-value and whether p < 0.05.
+        (method - baseline), the raw p-value, the Holm-adjusted p-value over
+        ALL the tests in the table, and whether each is below 0.05. The tests
+        are exploratory: only the adjusted column controls the family-wise
+        error of running many comparisons.
     """
     at_k = metrics[metrics["k"] == k]
     rows = []
@@ -244,7 +247,11 @@ def significance_table(metrics: pd.DataFrame, k: int = SIGNIFICANCE_K) -> pd.Dat
                     "p_value": p_value,
                     "significant_5pct": p_value < 0.05,
                 })
-    return pd.DataFrame(rows)
+    table = pd.DataFrame(rows)
+    if not table.empty:
+        table["p_holm"] = holm_adjust(table["p_value"])
+        table["significant_5pct_holm"] = table["p_holm"] < 0.05
+    return table
 
 
 def main():

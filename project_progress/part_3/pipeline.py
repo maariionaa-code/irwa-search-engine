@@ -6,7 +6,7 @@ Usage from the repository root (search with any method and query):
 
 import argparse
 
-from project_progress.part_3.corpus import build_search_index, load_products
+from project_progress.part_3.corpus import build_search_index, check_top_k, load_products
 from project_progress.part_3.embedded_ranking import (
     load_or_train_doc2vec,
     load_or_train_word2vec,
@@ -68,7 +68,12 @@ class SearchEngine:
 
         Returns:
             List of ``(pid, score)`` sorted by descending score.
+
+        Raises:
+            ValueError: If ``method`` is unknown or ``top_k`` is not None
+                and not a positive integer.
         """
+        check_top_k(top_k)
         if method == "tfidf":
             return rank_tfidf(query, self.index, top_k)
         if method == "bm25":
@@ -85,12 +90,20 @@ class SearchEngine:
         raise ValueError(f"Unknown method {method!r}; choose from {METHODS}")
 
 
+def _positive_int(text: str) -> int:
+    """argparse type: a positive integer (rejects 0 and negatives)."""
+    value = int(text)
+    if value < 1:
+        raise argparse.ArgumentTypeError("must be a positive integer")
+    return value
+
+
 def main():
     """Command-line search: print the top results of one method."""
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("query", help="query text, e.g. 'men slim fit jeans'")
     parser.add_argument("--method", default="bm25", choices=METHODS)
-    parser.add_argument("--top-k", type=int, default=10)
+    parser.add_argument("--top-k", type=_positive_int, default=10)
     args = parser.parse_args()
 
     engine = SearchEngine(use_embeddings=args.method in ("word2vec", "doc2vec"))

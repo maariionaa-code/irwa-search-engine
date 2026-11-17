@@ -51,7 +51,9 @@ Part 3 keeps the conjunctive (AND) search of Part 2 fixed and compares six ways 
     - Computed at K = 5, 10, 15 and 20: P@K, R@K, F1@K, AP@K/MAP@K, NDCG@K and RR@K/MRR@K.
     - AP@K = Σ_{i≤K} P@i · rel_i / min(R, K) (truncated AP, as in Part 2). RR@K is truncated at K.
     - Unjudged products count as non-relevant. This makes P@K a lower bound, but not R, AP or NDCG (the true R is unknown).
-    - Paired randomisation tests against BM25 and TF-IDF (exact over all 2^8 sign assignments).
+    - Paired randomisation tests against BM25 and TF-IDF (exact over all 2^8 sign assignments). The 30 tests are exploratory; `significance.csv` reports both the raw p-values and Holm-adjusted ones over the whole family.
+- **Ablation judgments:** products that only an ablation variant or a BM25 grid cell puts in its top 10 are judged in a separate file, `judgments_ablation.csv`, so the method comparison is unchanged. The ablation uses the pool plus these labels, so every variant is evaluated with judged@10 = 10.
+- **Label agreement:** `label_agreement.py` draws a blind, stratified sample of 100 pool pairs (no proposed labels, no `found_by`, no URL) for a second group member, and computes observed agreement and Cohen's kappa.
 - **Independent check:** every method is also evaluated on the professor's validation labels (`evaluate_validation_methods.py`).
 
 ---
@@ -70,7 +72,10 @@ python -m project_progress.part_3.export_judgment_pool      # then label judgmen
 python -m project_progress.part_3.evaluate_methods
 python -m project_progress.part_3.evaluate_validation_methods
 python -m project_progress.part_3.compare_rankings
+python -m project_progress.part_3.ablation --export-unjudged   # then label judgments_ablation.csv
 python -m project_progress.part_3.ablation
+python -m project_progress.part_3.label_agreement --export     # a second person labels agreement_sample.csv
+python -m project_progress.part_3.label_agreement
 python -m project_progress.part_3.explain_scores
 python -m project_progress.part_3.make_figures
 ```
@@ -98,6 +103,8 @@ python -m project_progress.part_3.pipeline "men running shoes" --method intent_s
 | `results/method_agreement.csv` | overlap@5/10/20, Jaccard@20, RBO@20 and Kendall's tau per method pair |
 | `results/score_spread.csv` | scores at ranks 1/10/20 and near-ties around rank 10 |
 | `results/tfidf_vs_bm25_rank_shifts.csv` | products that move most between TF-IDF and BM25, with length and term frequencies |
+| `judgments_ablation.csv` | labels for products that only the ablation variants / BM25 grid put in a top 10 (`surfaced_by` = which ones) |
+| `agreement_sample.csv` | blind sample of 100 pool pairs for a second annotator |
 | `results/ablation.csv`, `results/bm25_grid.csv` | ablations of both original scores; BM25 k1 × b grid; each with `judged@10` and judged-only ("condensed") P@10 / AP@10 |
 | `results/score_components.csv` | every component of both original scores for each top-20 product |
 | `results/word2vec_neighbours.csv` | nearest neighbours of every query term |
@@ -105,7 +112,9 @@ python -m project_progress.part_3.pipeline "men running shoes" --method intent_s
 
 The trained models are stored in `models/`, which is git-ignored because they can be rebuilt with the same seed (`run_rankings --retrain`). gensim seeds its initial vectors with Python's `hash`, which changes in every new process, so `embedded_ranking.py` passes a stable hash (`stable_hash`) for training and for Doc2Vec query inference. This makes the vectors identical in every run (tested in `test_extras.py`). Each model is saved with a `.fingerprint` file (SHA-256 of the corpus and the parameters); if the data or the parameters change, the stale model is retrained automatically.
 
-The Doc2Vec query inference temporarily patches a gensim function and resets the model's random state. This is fine for the sequential scripts here, but it is not thread-safe: a web server (Part 4) should infer query vectors under a lock or in a single worker.
+The Doc2Vec query inference (`infer_query_vector`) runs the same algorithm as gensim's `infer_vector` (a test checks that the two give the same vector) but builds the initial vector with the stable hash itself, so it changes no global state. It does reseed `model.random`, so concurrent web requests (Part 4) should not share one model object between threads at the same time. The fingerprint hashes the documents in training order, because training order changes the model.
+
+Every ranker rejects `top_k` values that are not `None` or a positive integer (e.g. `0`, `-1`, `2.5`), and the command line accepts only positive `--top-k` values.
 
 Tested with Python 3.13.3 and the exact versions in `requirements.txt`.
 
@@ -113,10 +122,10 @@ Tested with Python 3.13.3 and the exact versions in `requirements.txt`.
 
 ## Tests
 
-There are 42 Part 3 tests, and none of them needs the dataset:
+There are 48 Part 3 tests, and none of them needs the dataset:
 
-- `test_part_3.py` (16): AND candidates shared by all methods; TF-IDF identical to Part 2; BM25 against hand-computed values; BM25 saturation and length normalisation; our score; word2vec averaging and cosine; products without a vector ranked last; agreement measures.
+- `test_part_3.py` (17): AND candidates shared by all methods; invalid `top_k` rejected by every ranker; TF-IDF identical to Part 2; BM25 against hand-computed values; BM25 saturation and length normalisation; our score; word2vec averaging and cosine; products without a vector ranked last; agreement measures.
 - `test_intent_score.py` (8): attribute parsing, gender detection, query intent, penalties for each kind of contradiction, the product of factors, gender-neutral queries.
-- `test_extras.py` (18): exact permutation-test p-values, RBO values computed by hand, near-tie counting, unjudged products and condensed lists in the ablation, the significance table, embeddings that do not depend on Python's hash seed (needs gensim), the truncated AP@K convention, rejection of invalid K and mismatched lists, judgment-pool preservation (a judged product that leaves every top 20 keeps its label), label-conflict detection, pool and ranking validation, the candidate-set check, unique product IDs, and model fingerprints.
+- `test_extras.py` (23): exact permutation-test p-values, Holm adjustment (hand values, and the column in the significance table), Doc2Vec inference identical to gensim's with a stable hash (needs gensim), Cohen's kappa and the blind agreement sample, RBO values computed by hand, near-tie counting, unjudged products and condensed lists in the ablation, the significance table, embeddings that do not depend on Python's hash seed (needs gensim), the truncated AP@K convention, rejection of invalid K and mismatched lists, judgment-pool preservation (a judged product that leaves every top 20 keeps its label), label-conflict detection, pool and ranking validation, the candidate-set check, unique product IDs, and model fingerprints.
 
 Passing tests check the code, not the quality of the relevance judgments.

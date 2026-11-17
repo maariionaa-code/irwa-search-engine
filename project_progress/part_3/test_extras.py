@@ -32,9 +32,11 @@ from project_progress.part_3.export_judgment_pool import (
     label_conflicts,
     read_pool,
 )
+from project_progress.part_3.label_agreement import cohen_kappa, draw_sample
 from project_progress.part_3.queries import ALL_QUERIES
 from project_progress.part_3.run_rankings import check_same_candidates
 from project_progress.part_3.rank_statistics import (
+    holm_adjust,
     paired_permutation_test,
     rank_biased_overlap,
 )
@@ -115,6 +117,26 @@ def test_significance_table_compares_with_baselines():
     assert row["significant_5pct"]
 
 
+def test_holm_adjustment_hand_values():
+    # m = 3: sorted p = 0.01, 0.03, 0.04 -> 3*0.01, max(0.03, 2*0.03), max(0.06, 1*0.04)
+    assert holm_adjust([0.04, 0.01, 0.03]) == pytest.approx([0.06, 0.03, 0.06])
+    # 30 tests: the smallest possible 8-query p-value (2/256) is no longer significant
+    adjusted = holm_adjust([2 / 256] + [1.0] * 29)
+    assert adjusted[0] == pytest.approx(30 * 2 / 256) and adjusted[0] > 0.05
+    assert max(holm_adjust([0.5, 0.9])) <= 1.0
+
+
+def test_significance_table_reports_holm_adjusted_p_values():
+    rows = []
+    for q in range(8):
+        for method, ap in (("bm25", 0.5), ("tfidf", 0.4), ("our_score", 0.9)):
+            rows.append({"method": method, "query_id": f"Q{q}", "k": 10,
+                         "AP@K_pool": ap, "NDCG@K_pool": ap, "P@K": ap})
+    table = significance_table(pd.DataFrame(rows))
+    assert (table["p_holm"] >= table["p_value"]).all()
+    assert table["p_holm"].tolist() == pytest.approx(holm_adjust(table["p_value"]))
+
+
 # --- reproducible embeddings ------------------------------------------------------
 
 EMBEDDING_SCRIPT = """
@@ -141,6 +163,31 @@ def test_embeddings_do_not_depend_on_python_hash_seed():
                                 check=True)
         outputs.append(result.stdout)
     assert outputs[0] == outputs[1]
+
+
+def test_query_inference_equals_gensim_with_a_stable_hash():
+    """infer_query_vector runs gensim's own algorithm, only with a stable seed."""
+    pytest.importorskip("gensim")
+    from functools import partial
+
+    from gensim.models import doc2vec
+
+    from project_progress.part_3.embedded_ranking import (
+        infer_query_vector, stable_hash, train_doc2vec)
+
+    docs = {str(i): ["blue", "jean", "slim", "fit", "cotton", "shirt"][i % 3:] * 3
+            for i in range(30)}
+    model = train_doc2vec(docs)
+    ours = infer_query_vector(model, ["slim", "jean"], epochs=20)
+    original = doc2vec.pseudorandom_weak_vector
+    doc2vec.pseudorandom_weak_vector = partial(original, hashfxn=stable_hash)
+    try:
+        model.random.seed(42)
+        reference = model.infer_vector(["slim", "jean"], epochs=20)
+    finally:
+        doc2vec.pseudorandom_weak_vector = original
+    assert ours == pytest.approx(reference)
+    assert doc2vec.pseudorandom_weak_vector is original  # no global state left
 
 
 # --- metric conventions ----------------------------------------------------------
@@ -258,6 +305,31 @@ def test_product_ids_must_be_unique_and_present():
 def test_model_fingerprint_changes_with_data_or_parameters():
     docs = {"a": ["blue", "jean"], "b": ["red", "shirt"]}
     base = fingerprint(docs, {"vector_size": 100})
-    assert base == fingerprint(dict(reversed(docs.items())), {"vector_size": 100})
+    # training order changes the model, so it changes the fingerprint too
+    assert base != fingerprint(dict(reversed(docs.items())), {"vector_size": 100})
     assert base != fingerprint({**docs, "b": ["red"]}, {"vector_size": 100})
     assert base != fingerprint(docs, {"vector_size": 50})
+
+
+# --- inter-annotator agreement -----------------------------------------------------
+
+def test_cohen_kappa_hand_values():
+    assert cohen_kappa([1, 0, 1, 0], [1, 0, 1, 0]) == 1.0
+    # p_o = 0.5, p_e = 0.5 -> kappa = 0
+    assert cohen_kappa([1, 1, 0, 0], [1, 0, 1, 0]) == 0.0
+    # p_o = 0.8, pa = 0.6, pb = 0.4 -> p_e = 0.48, kappa = 0.32 / 0.52
+    assert math.isclose(cohen_kappa([1, 1, 1, 0, 0], [1, 1, 0, 0, 0]), 0.32 / 0.52)
+
+
+def test_agreement_sample_is_blind_stratified_and_reproducible():
+    pool = pd.DataFrame({
+        "query_id": ["Q1"] * 30 + ["Q2"] * 10, "query": "q",
+        "pid": [f"p{i}" for i in range(40)], "title": "t", "sub_category": "s",
+        "description": "d", "product_details": "[]", "relevance": 1,
+        "found_by": "bm25", "url": "u",
+    })
+    sample = draw_sample(pool, size=8)
+    assert sample.groupby("query_id").size().to_dict() == {"Q1": 6, "Q2": 2}
+    assert sample["relevance"].isna().all()
+    assert not {"found_by", "url"} & set(sample.columns)
+    assert sample.equals(draw_sample(pool, size=8))

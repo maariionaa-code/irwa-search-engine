@@ -51,6 +51,22 @@ def load_products(path: Path = DATASET_PATH) -> pd.DataFrame:
     return df.set_index("pid", drop=False)
 
 
+def check_top_k(top_k) -> None:
+    """``top_k`` must be ``None`` (all results) or a positive integer.
+
+    Every ranker calls this, so ``top_k = 0``, a negative number or ``2.5``
+    raise the same error instead of silently returning a sliced list
+    (``results[:-1]`` would drop the last product without warning).
+
+    Raises:
+        ValueError: If ``top_k`` is not None and not a positive integer.
+    """
+    if top_k is None:
+        return
+    if isinstance(top_k, bool) or not isinstance(top_k, int) or top_k < 1:
+        raise ValueError(f"top_k must be a positive integer or None, got {top_k!r}")
+
+
 def check_product_ids(pids: pd.Series) -> None:
     """Every product must have a unique, non-empty string id.
 

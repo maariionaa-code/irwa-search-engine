@@ -17,7 +17,7 @@ from collections import Counter
 import pandas as pd
 
 from project_progress.part_1.preprocessing import preprocess_text
-from project_progress.part_3.corpus import SearchIndex
+from project_progress.part_3.corpus import SearchIndex, check_top_k
 
 
 # BM25 parameters: the usual defaults (Robertson & Zaragoza; Lucene).
@@ -36,6 +36,7 @@ OUT_OF_STOCK_FACTOR = 0.5  # demote, but keep, products that cannot be bought
 
 def _sort(results: list[tuple[str, float]], top_k: int | None):
     """Sort by descending score, then pid, and cut to ``top_k``."""
+    check_top_k(top_k)
     results.sort(key=lambda item: (-item[1], item[0]))
     return results[:top_k] if top_k is not None else results
 

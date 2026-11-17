@@ -35,7 +35,7 @@ from functools import lru_cache
 import pandas as pd
 
 from project_progress.part_1.preprocessing import preprocess_text
-from project_progress.part_3.corpus import SearchIndex
+from project_progress.part_3.corpus import SearchIndex, check_top_k
 from project_progress.part_3.ranking_methods import (
     OUT_OF_STOCK_FACTOR,
     bm25_scores,
@@ -273,6 +273,7 @@ class IntentScorer:
         Returns:
             List of ``(pid, score)`` sorted by descending score, ties by pid.
         """
+        check_top_k(top_k)
         table = self.components(query)
         if table.empty:
             return []

@@ -3,6 +3,9 @@
 * ``paired_permutation_test`` - is the difference between two methods,
   measured on the SAME queries, larger than chance? (randomisation test,
   the standard significance test in IR evaluation; Smucker et al., 2007)
+* ``holm_adjust`` - Holm-Bonferroni adjustment of several p-values, so
+  that running many tests does not inflate the false-positive rate
+  (Holm, 1979).
 * ``rank_biased_overlap`` - similarity of two rankings that gives more
   weight to the top positions (Webber et al., 2010). It complements
   Kendall's tau, which weights every position equally.
@@ -45,12 +48,37 @@ def paired_permutation_test(a, b, n_resamples: int = 100_000, seed: int = 42):
     return float(diff.mean()), p_value
 
 
+def holm_adjust(p_values) -> list[float]:
+    """Holm-Bonferroni adjusted p-values (step-down, family-wise error).
+
+    Sort the m p-values increasingly; the i-th smallest (i = 0, 1, ...) is
+    multiplied by (m - i), adjusted values are made non-decreasing in that
+    order and capped at 1. A test is significant at level alpha if its
+    adjusted p-value is below alpha.
+
+    Args:
+        p_values: Raw p-values of all the tests in the family.
+
+    Returns:
+        Adjusted p-values, in the same order as the input.
+    """
+    p = list(map(float, p_values))
+    m = len(p)
+    adjusted = [0.0] * m
+    running = 0.0
+    for i, idx in enumerate(sorted(range(m), key=lambda j: p[j])):
+        running = max(running, min(1.0, (m - i) * p[idx]))
+        adjusted[idx] = running
+    return adjusted
+
+
 def rank_biased_overlap(a: list, b: list, p: float = 0.9, depth: int = 20) -> float:
     """Rank-biased overlap (RBO) of two rankings, truncated at ``depth``.
 
     ``RBO = (1 - p) * sum_{d=1..depth} p^(d-1) * |A_d n B_d| / d``, where
-    A_d is the top-d of ranking a. With p = 0.9 the top 10 positions carry
-    about 86% of the weight. The truncated value is a lower bound in [0, 1).
+    A_d is the top-d of ranking a. The weight of depth d is (1 - p) p^(d-1),
+    so with p = 0.9 the first 10 depths carry 1 - 0.9^10 = 65.1% of the
+    total weight. The truncated value is a lower bound in [0, 1).
 
     Args:
         a: First ranked list.

@@ -18,9 +18,18 @@ judgment coverage, the ``*_condensed`` columns repeat P@10 and AP@10 on the
 variants only on what was judged. Both views are reported; a conclusion is
 treated as provisional unless they agree.
 
+Products that only an ablation variant or a BM25 grid cell puts in its
+top 10 are not in the method pool. They are judged separately, in
+``judgments_ablation.csv``, so that the method comparison (which uses the
+pool only) does not change. The ablation uses the union of both files.
+
 Usage from the repository root (after labelling judgments_pool.csv):
-    python -m project_progress.part_3.ablation
+    python -m project_progress.part_3.ablation --export-unjudged   # 1. list them
+    # 2. fill the empty ``relevance`` cells of judgments_ablation.csv
+    python -m project_progress.part_3.ablation                     # 3. evaluate
 """
+
+import argparse
 
 import pandas as pd
 
@@ -46,6 +55,7 @@ from project_progress.part_3.run_rankings import RESULTS_DIR
 
 
 ABLATION_CSV = RESULTS_DIR / "ablation.csv"
+EXTRA_LABELS_CSV = POOL_CSV.parent / "judgments_ablation.csv"
 BM25_GRID_CSV = RESULTS_DIR / "bm25_grid.csv"
 K = 10
 
@@ -129,22 +139,99 @@ def evaluate_ranking(ranking: list[str], labels: dict[str, int]) -> dict:
     }
 
 
+def _read_labels(path) -> dict[str, dict[str, int]]:
+    """``{query_id: {pid: 0/1}}`` from a judgment file (unlabelled rows skipped)."""
+    table = pd.read_csv(path, encoding="utf-8-sig",
+                        dtype={"pid": str, "query_id": str})
+    table = table.dropna(subset=["relevance"])
+    return {qid: dict(zip(g["pid"], g["relevance"].astype(int)))
+            for qid, g in table.groupby("query_id")}
+
+
 def label_sets() -> list[tuple[str, dict[str, str], dict]]:
-    """The two label sets: (name, {query_id: query}, {query_id: {pid: 0/1}})."""
+    """The two label sets: (name, {query_id: query}, {query_id: {pid: 0/1}}).
+
+    The ``pool`` set is the method pool plus the extra ablation judgments
+    (``judgments_ablation.csv``, if present); a pool label always wins.
+    """
     sets = [("validation", VALIDATION_QUERIES, load_validation_labels())]
     if POOL_CSV.exists():
-        pool = pd.read_csv(POOL_CSV, encoding="utf-8-sig",
-                           dtype={"pid": str, "query_id": str})
-        pool = pool.dropna(subset=["relevance"])
-        labels = {qid: dict(zip(g["pid"], g["relevance"].astype(int)))
-                  for qid, g in pool.groupby("query_id")}
+        labels = _read_labels(POOL_CSV)
+        if EXTRA_LABELS_CSV.exists():
+            for qid, extra in _read_labels(EXTRA_LABELS_CSV).items():
+                labels[qid] = {**extra, **labels.get(qid, {})}
         sets.append(("pool", ALL_QUERIES, labels))
     return sets
 
 
+def all_variant_rankings(engine: SearchEngine, query: str) -> dict[str, list[str]]:
+    """Every ranking the ablation evaluates for one query, by a readable name."""
+    rankings = {}
+    for method, variants in (("our_score", our_score_variants(engine, query)),
+                             ("intent_score", intent_variants(engine, query))):
+        for variant, ranking in variants.items():
+            rankings[f"{method}:{variant}"] = ranking
+    for k1 in K1_VALUES:
+        for b in B_VALUES:
+            rankings[f"bm25:k1={k1},b={b}"] = [
+                pid for pid, _ in rank_bm25(query, engine.index, k1=k1, b=b)]
+    return rankings
+
+
+def export_unjudged(engine: SearchEngine) -> pd.DataFrame:
+    """Write the top-K products of any variant that have no pool label.
+
+    Existing rows of ``judgments_ablation.csv`` (and their labels) are kept,
+    so the file can be re-exported safely after labelling.
+
+    Returns:
+        The table written, one row per (query_id, pid).
+    """
+    pool = _read_labels(POOL_CSV)
+    old = (pd.read_csv(EXTRA_LABELS_CSV, encoding="utf-8-sig",
+                       dtype={"pid": str, "query_id": str})
+           if EXTRA_LABELS_CSV.exists() else pd.DataFrame())
+    kept = {(r.query_id, r.pid): r.relevance for r in old.itertuples()} if not old.empty else {}
+    rows = {}
+    for query_id, query in ALL_QUERIES.items():
+        judged = pool.get(query_id, {})
+        for name, ranking in all_variant_rankings(engine, query).items():
+            for pid in ranking[:K]:
+                if pid in judged:
+                    continue
+                key = (query_id, pid)
+                if key not in rows:
+                    product = engine.products.loc[pid]
+                    rows[key] = {
+                        "query_id": query_id, "query": query, "pid": pid,
+                        "relevance": kept.get(key), "surfaced_by": [],
+                        "title": product["title"],
+                        "product_details": product["product_details"],
+                        "description": product["description"],
+                    }
+                rows[key]["surfaced_by"].append(name)
+    table = pd.DataFrame(rows.values())
+    if not table.empty:
+        table["surfaced_by"] = table["surfaced_by"].map(";".join)
+        table = table.sort_values(["query_id", "pid"])
+    table.to_csv(EXTRA_LABELS_CSV, index=False, encoding="utf-8-sig")
+    return table
+
+
 def main():
     """Run the ablations and the BM25 grid; write two CSV files."""
+    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    parser.add_argument("--export-unjudged", action="store_true",
+                        help="write judgments_ablation.csv and stop")
+    args = parser.parse_args()
+
     engine = SearchEngine(use_embeddings=False)
+    if args.export_unjudged:
+        table = export_unjudged(engine)
+        missing = table["relevance"].isna().sum() if not table.empty else 0
+        print(f"{len(table)} products outside the pool; {missing} still need a label "
+              f"-> {EXTRA_LABELS_CSV.name}")
+        return
     RESULTS_DIR.mkdir(exist_ok=True)
 
     ablation_rows, grid_rows = [], []

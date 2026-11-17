@@ -69,6 +69,18 @@ def test_all_methods_rank_the_same_and_candidates(toy):
         assert {pid for pid, _ in ranking} == expected
 
 
+def test_every_ranker_rejects_a_non_positive_top_k(toy):
+    index, products = toy
+    for bad in (0, -1, 2.5, True):
+        for rank in (lambda k: rank_tfidf("blue jeans", index, k),
+                     lambda k: rank_bm25("blue jeans", index, k),
+                     lambda k: rank_our_score("blue jeans", index, products, k),
+                     lambda k: rank_by_vectors(["a"], None, lambda pid: None, k)):
+            with pytest.raises(ValueError):
+                rank(bad)
+    assert len(rank_bm25("blue jeans", index, 2)) == 2
+
+
 def test_unknown_or_stopword_query_returns_nothing(toy):
     index, products = toy
     assert rank_bm25("zzzunknown", index) == []

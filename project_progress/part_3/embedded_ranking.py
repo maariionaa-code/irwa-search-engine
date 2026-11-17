@@ -20,13 +20,12 @@ import hashlib
 import json
 import math
 import zlib
-from functools import partial
 from pathlib import Path
 
 import numpy as np
 
 from project_progress.part_1.preprocessing import preprocess_text
-from project_progress.part_3.corpus import SearchIndex
+from project_progress.part_3.corpus import SearchIndex, check_top_k
 
 
 MODELS_DIR = Path(__file__).resolve().parent / "models"
@@ -104,12 +103,15 @@ def fingerprint(documents: dict[str, list[str]], params: dict) -> str:
     """SHA-256 of the training corpus and parameters.
 
     Saved next to each model, so a model trained on other data or with
-    other parameters is detected as stale and retrained.
+    other parameters is detected as stale and retrained. The documents are
+    hashed in the order in which they are passed, because that is also the
+    order in which they are trained on, and training order changes the
+    model. Same fingerprint therefore means same training input.
     """
     digest = hashlib.sha256()
     settings = {k: v.__name__ if callable(v) else v for k, v in params.items()}
     digest.update(json.dumps(settings, sort_keys=True).encode("utf-8"))
-    for pid in sorted(documents):
+    for pid in documents:
         digest.update(pid.encode("utf-8"))
         digest.update(b"\0" + " ".join(documents[pid]).encode("utf-8") + b"\n")
     return digest.hexdigest()
@@ -174,29 +176,49 @@ def load_or_train_doc2vec(documents: dict[str, list[str]], retrain=False):
 
 
 def infer_query_vector(model, tokens: list[str], epochs: int = 100) -> np.ndarray:
-    """Infer a Doc2Vec vector that is identical in every Python process.
+    """Infer a PV-DBOW query vector that is identical in every Python process.
 
-    ``infer_vector`` starts from a random vector seeded with Python's
-    ``hash`` of the text, so the result changed between runs. We swap in
-    :func:`stable_hash` for that call and reset the model's random state.
+    gensim's ``Doc2Vec.infer_vector`` starts from a pseudo-random vector
+    seeded with Python's built-in ``hash`` of the text, which is randomised
+    in every new process, so the inferred vector changed between runs.
+
+    This function runs the same algorithm as ``infer_vector`` (same initial
+    vector formula, same linearly decaying learning rate, same gensim
+    training routine), but builds the initial vector with
+    :func:`stable_hash`. Unlike swapping gensim's module-level function, it
+    changes no global state, so it is safe to call from concurrent requests
+    (e.g. a web server) as long as each thread uses its own model copy or the
+    calls do not share ``model.random``.
 
     Args:
-        model: A trained gensim Doc2Vec model.
+        model: A trained gensim Doc2Vec model in PV-DBOW mode (``dm=0``).
         tokens: Processed query tokens.
         epochs: Inference epochs.
 
     Returns:
         The inferred vector.
     """
-    from gensim.models import doc2vec
+    from gensim.models.doc2vec import train_document_dbow
+    from gensim.models.keyedvectors import pseudorandom_weak_vector
 
-    original = doc2vec.pseudorandom_weak_vector
-    doc2vec.pseudorandom_weak_vector = partial(original, hashfxn=stable_hash)
-    try:
-        model.random.seed(42)
-        return model.infer_vector(tokens, epochs=epochs)
-    finally:
-        doc2vec.pseudorandom_weak_vector = original
+    if not model.sg:
+        raise ValueError("infer_query_vector supports PV-DBOW models (dm=0) only")
+    size = model.dv.vector_size
+    doctag_vectors = pseudorandom_weak_vector(
+        size, seed_string=" ".join(tokens), hashfxn=stable_hash
+    ).reshape(1, size)
+    doctags_lockf = np.ones(1, dtype=np.float32)
+    work = np.zeros(model.layer1_size, dtype=np.float32)
+    alpha, min_alpha = model.alpha, model.min_alpha
+    alpha_delta = (alpha - min_alpha) / max(epochs - 1, 1)
+    model.random.seed(42)  # negative sampling draws from model.random
+    for _ in range(epochs):
+        train_document_dbow(model, tokens, [0], alpha, work,
+                            learn_words=False, learn_hidden=False,
+                            doctag_vectors=doctag_vectors,
+                            doctags_lockf=doctags_lockf)
+        alpha -= alpha_delta
+    return doctag_vectors[0]
 
 
 # ---------------------------------------------------------------------------
@@ -259,6 +281,7 @@ def rank_by_vectors(candidates, query_vec, doc_vector, top_k=None):
         negative, so giving them 0.0 could rank them above real matches).
         If the query has no vector, all candidates get NaN (pid order).
     """
+    check_top_k(top_k)
     scored = []
     for pid in candidates:
         vec = doc_vector(pid) if query_vec is not None else None
