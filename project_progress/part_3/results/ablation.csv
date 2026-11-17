@@ -20,7 +20,7 @@ validation,2,intent_score,without_K,0.100,0.033,0.110,1,0.600,0.549
 validation,2,intent_score,without_G,0.100,0.033,0.110,1,0.600,0.549
 validation,2,intent_score,without_A,0.100,0.050,0.139,1,0.600,0.549
 pool,Q1,our_score,full,1.000,1.000,1.000,10,1.000,1.000
-pool,Q1,our_score,without_text,0.600,0.516,0.694,6,1.000,1.000
+pool,Q1,our_score,without_text,1.000,1.000,1.000,10,1.000,1.000
 pool,Q1,our_score,without_title,1.000,1.000,1.000,10,1.000,1.000
 pool,Q1,our_score,without_rating,1.000,1.000,1.000,10,1.000,1.000
 pool,Q1,our_score,without_discount,1.000,1.000,1.000,10,1.000,1.000
@@ -30,7 +30,7 @@ pool,Q1,intent_score,without_K,1.000,1.000,1.000,10,1.000,1.000
 pool,Q1,intent_score,without_G,1.000,1.000,1.000,10,1.000,1.000
 pool,Q1,intent_score,without_A,1.000,1.000,1.000,10,1.000,1.000
 pool,Q2,our_score,full,1.000,1.000,1.000,10,1.000,1.000
-pool,Q2,our_score,without_text,0.200,0.042,0.148,3,0.900,0.790
+pool,Q2,our_score,without_text,0.700,0.550,0.722,10,0.700,0.550
 pool,Q2,our_score,without_title,1.000,1.000,1.000,10,1.000,1.000
 pool,Q2,our_score,without_rating,1.000,1.000,1.000,10,1.000,1.000
 pool,Q2,our_score,without_discount,1.000,1.000,1.000,10,1.000,1.000
@@ -40,7 +40,7 @@ pool,Q2,intent_score,without_K,0.700,0.700,0.801,10,0.700,0.700
 pool,Q2,intent_score,without_G,0.700,0.700,0.801,10,0.700,0.700
 pool,Q2,intent_score,without_A,1.000,1.000,1.000,10,1.000,1.000
 pool,Q3,our_score,full,1.000,1.000,1.000,10,1.000,1.000
-pool,Q3,our_score,without_text,0.900,0.815,0.905,9,1.000,1.000
+pool,Q3,our_score,without_text,1.000,1.000,1.000,10,1.000,1.000
 pool,Q3,our_score,without_title,0.700,0.506,0.710,10,0.700,0.506
 pool,Q3,our_score,without_rating,1.000,1.000,1.000,10,1.000,1.000
 pool,Q3,our_score,without_discount,1.000,1.000,1.000,10,1.000,1.000
@@ -50,11 +50,11 @@ pool,Q3,intent_score,without_K,1.000,1.000,1.000,10,1.000,1.000
 pool,Q3,intent_score,without_G,0.800,0.700,0.826,10,0.800,0.700
 pool,Q3,intent_score,without_A,1.000,1.000,1.000,10,1.000,1.000
 pool,Q4,our_score,full,1.000,1.000,1.000,10,1.000,1.000
-pool,Q4,our_score,without_text,0.600,0.455,0.646,6,1.000,1.000
+pool,Q4,our_score,without_text,1.000,1.000,1.000,10,1.000,1.000
 pool,Q4,our_score,without_title,1.000,1.000,1.000,10,1.000,1.000
 pool,Q4,our_score,without_rating,1.000,1.000,1.000,10,1.000,1.000
-pool,Q4,our_score,without_discount,0.900,0.879,0.931,9,1.000,1.000
-pool,Q4,our_score,without_stock,0.900,0.900,0.936,9,1.000,1.000
+pool,Q4,our_score,without_discount,1.000,1.000,1.000,10,1.000,1.000
+pool,Q4,our_score,without_stock,1.000,1.000,1.000,10,1.000,1.000
 pool,Q4,intent_score,full,1.000,1.000,1.000,10,1.000,1.000
 pool,Q4,intent_score,without_K,1.000,1.000,1.000,10,1.000,1.000
 pool,Q4,intent_score,without_G,1.000,1.000,1.000,10,1.000,1.000
@@ -70,7 +70,7 @@ pool,Q5,intent_score,without_K,1.000,1.000,1.000,10,1.000,1.000
 pool,Q5,intent_score,without_G,1.000,1.000,1.000,10,1.000,1.000
 pool,Q5,intent_score,without_A,1.000,1.000,1.000,10,1.000,1.000
 pool,Q6,our_score,full,1.000,1.000,1.000,10,1.000,1.000
-pool,Q6,our_score,without_text,0.400,0.342,0.532,4,1.000,1.000
+pool,Q6,our_score,without_text,1.000,1.000,1.000,10,1.000,1.000
 pool,Q6,our_score,without_title,1.000,1.000,1.000,10,1.000,1.000
 pool,Q6,our_score,without_rating,1.000,1.000,1.000,10,1.000,1.000
 pool,Q6,our_score,without_discount,1.000,1.000,1.000,10,1.000,1.000
@@ -80,7 +80,7 @@ pool,Q6,intent_score,without_K,1.000,1.000,1.000,10,1.000,1.000
 pool,Q6,intent_score,without_G,1.000,1.000,1.000,10,1.000,1.000
 pool,Q6,intent_score,without_A,1.000,1.000,1.000,10,1.000,1.000
 pool,Q7,our_score,full,0.900,0.707,0.780,10,0.900,0.707
-pool,Q7,our_score,without_text,0.200,0.125,0.290,2,0.900,0.815
+pool,Q7,our_score,without_text,0.800,0.716,0.841,10,0.800,0.716
 pool,Q7,our_score,without_title,0.900,0.707,0.780,10,0.900,0.707
 pool,Q7,our_score,without_rating,1.000,1.000,1.000,10,1.000,1.000
 pool,Q7,our_score,without_discount,0.900,0.707,0.780,10,0.900,0.707
@@ -90,7 +90,7 @@ pool,Q7,intent_score,without_K,1.000,1.000,1.000,10,1.000,1.000
 pool,Q7,intent_score,without_G,1.000,1.000,1.000,10,1.000,1.000
 pool,Q7,intent_score,without_A,1.000,1.000,1.000,10,1.000,1.000
 pool,Q8,our_score,full,1.000,1.000,1.000,10,1.000,1.000
-pool,Q8,our_score,without_text,0.700,0.663,0.789,7,1.000,1.000
+pool,Q8,our_score,without_text,1.000,1.000,1.000,10,1.000,1.000
 pool,Q8,our_score,without_title,1.000,1.000,1.000,10,1.000,1.000
 pool,Q8,our_score,without_rating,1.000,1.000,1.000,10,1.000,1.000
 pool,Q8,our_score,without_discount,1.000,1.000,1.000,10,1.000,1.000
