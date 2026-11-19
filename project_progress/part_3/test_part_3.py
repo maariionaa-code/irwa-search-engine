@@ -79,6 +79,12 @@ def test_every_ranker_rejects_a_non_positive_top_k(toy):
             with pytest.raises(ValueError):
                 rank(bad)
     assert len(rank_bm25("blue jeans", index, 2)) == 2
+    # the check comes before any early return (query with no candidates)
+    for rank in (lambda: rank_tfidf("zzzunknown", index, -1),
+                 lambda: rank_bm25("zzzunknown", index, -1),
+                 lambda: rank_our_score("zzzunknown", index, products, -1)):
+        with pytest.raises(ValueError):
+            rank()
 
 
 def test_unknown_or_stopword_query_returns_nothing(toy):

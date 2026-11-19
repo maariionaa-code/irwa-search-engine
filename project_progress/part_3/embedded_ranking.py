@@ -306,6 +306,7 @@ def rank_word2vec(
     Returns:
         List of ``(pid, score)``.
     """
+    check_top_k(top_k)
     candidates = index.candidates(query)
     if not candidates:
         return []
@@ -337,6 +338,7 @@ def rank_doc2vec(query: str, index: SearchIndex, model, top_k: int | None = None
     Returns:
         List of ``(pid, score)``.
     """
+    check_top_k(top_k)
     candidates = index.candidates(query)
     if not candidates:
         return []

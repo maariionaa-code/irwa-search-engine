@@ -597,7 +597,7 @@ Run every test from the repository root:
 python -m pytest project_progress/part_1/test_preprocessing.py project_progress/part_2/test_part_2.py project_progress/part_3 -v
 ```
 
-The suite contains 81 tests: 26 preprocessing tests (Part 1), 7 Part 2 tests and 48 Part 3 tests (17 ranking, 8 intent score, 23 evaluation and extra analyses). The tests use small toy collections, so they do not need the dataset.
+The suite contains 82 tests: 26 preprocessing tests (Part 1), 7 Part 2 tests and 49 Part 3 tests (17 ranking, 8 intent score, 24 evaluation and extra analyses). The tests use small toy collections, so they do not need the dataset.
 
 ---
 

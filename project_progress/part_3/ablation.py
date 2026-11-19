@@ -27,6 +27,8 @@ Usage from the repository root (after labelling judgments_pool.csv):
     python -m project_progress.part_3.ablation --export-unjudged   # 1. list them
     # 2. fill the empty ``relevance`` cells of judgments_ablation.csv
     python -m project_progress.part_3.ablation                     # 3. evaluate
+    python -m project_progress.part_3.ablation --pool-only         # pool labels only:
+    # reproduces the "unjudged = non-relevant" and "condensed" views
 """
 
 import argparse
@@ -148,16 +150,20 @@ def _read_labels(path) -> dict[str, dict[str, int]]:
             for qid, g in table.groupby("query_id")}
 
 
-def label_sets() -> list[tuple[str, dict[str, str], dict]]:
+def label_sets(include_extra: bool = True) -> list[tuple[str, dict[str, str], dict]]:
     """The two label sets: (name, {query_id: query}, {query_id: {pid: 0/1}}).
 
-    The ``pool`` set is the method pool plus the extra ablation judgments
-    (``judgments_ablation.csv``, if present); a pool label always wins.
+    Args:
+        include_extra: If True (default), the ``pool`` set is the method pool
+            plus the extra ablation judgments (``judgments_ablation.csv``, if
+            present; a pool label always wins). If False, it is the method
+            pool only, which reproduces the "unjudged = non-relevant" and
+            "condensed" views of the report.
     """
     sets = [("validation", VALIDATION_QUERIES, load_validation_labels())]
     if POOL_CSV.exists():
         labels = _read_labels(POOL_CSV)
-        if EXTRA_LABELS_CSV.exists():
+        if include_extra and EXTRA_LABELS_CSV.exists():
             for qid, extra in _read_labels(EXTRA_LABELS_CSV).items():
                 labels[qid] = {**extra, **labels.get(qid, {})}
         sets.append(("pool", ALL_QUERIES, labels))
@@ -181,8 +187,11 @@ def all_variant_rankings(engine: SearchEngine, query: str) -> dict[str, list[str
 def export_unjudged(engine: SearchEngine) -> pd.DataFrame:
     """Write the top-K products of any variant that have no pool label.
 
-    Existing rows of ``judgments_ablation.csv`` (and their labels) are kept,
-    so the file can be re-exported safely after labelling.
+    Re-exporting never loses work: every existing row of
+    ``judgments_ablation.csv`` is kept with ALL its columns (labels and
+    annotations such as ``confidence`` or ``reason``), even if no variant
+    surfaces it any more. Only ``surfaced_by`` and ``in_current_variants``
+    are refreshed, and new products are appended with an empty label.
 
     Returns:
         The table written, one row per (query_id, pid).
@@ -191,7 +200,6 @@ def export_unjudged(engine: SearchEngine) -> pd.DataFrame:
     old = (pd.read_csv(EXTRA_LABELS_CSV, encoding="utf-8-sig",
                        dtype={"pid": str, "query_id": str})
            if EXTRA_LABELS_CSV.exists() else pd.DataFrame())
-    kept = {(r.query_id, r.pid): r.relevance for r in old.itertuples()} if not old.empty else {}
     rows = {}
     for query_id, query in ALL_QUERIES.items():
         judged = pool.get(query_id, {})
@@ -204,18 +212,48 @@ def export_unjudged(engine: SearchEngine) -> pd.DataFrame:
                     product = engine.products.loc[pid]
                     rows[key] = {
                         "query_id": query_id, "query": query, "pid": pid,
-                        "relevance": kept.get(key), "surfaced_by": [],
+                        "relevance": pd.NA, "surfaced_by": [],
                         "title": product["title"],
                         "product_details": product["product_details"],
                         "description": product["description"],
                     }
                 rows[key]["surfaced_by"].append(name)
-    table = pd.DataFrame(rows.values())
-    if not table.empty:
-        table["surfaced_by"] = table["surfaced_by"].map(";".join)
-        table = table.sort_values(["query_id", "pid"])
+    current = pd.DataFrame(rows.values())
+    if not current.empty:
+        current["surfaced_by"] = current["surfaced_by"].map(";".join)
+    table = merge_extra_labels(old, current)
     table.to_csv(EXTRA_LABELS_CSV, index=False, encoding="utf-8-sig")
     return table
+
+
+def merge_extra_labels(old: pd.DataFrame, current: pd.DataFrame) -> pd.DataFrame:
+    """Merge the existing ablation-judgment file with the products surfaced now.
+
+    Args:
+        old: The existing file (may be empty).
+        current: One row per (query_id, pid) surfaced now, with an empty
+            ``relevance`` and a ``surfaced_by`` column.
+
+    Returns:
+        Every old row (all columns kept) plus the new pairs, with
+        ``surfaced_by`` / ``in_current_variants`` refreshed, sorted by
+        query and pid.
+    """
+    key = ["query_id", "pid"]
+    if old.empty:
+        table = current.copy()
+    else:
+        old = old.copy()
+        now = current.set_index(key)["surfaced_by"] if not current.empty else pd.Series(dtype=str)
+        old["surfaced_by"] = [now.get((q, p), "") for q, p in zip(old["query_id"], old["pid"])]
+        known = set(zip(old["query_id"], old["pid"]))
+        new = current[[(q, p) not in known for q, p in zip(current["query_id"], current["pid"])]] \
+            if not current.empty else current
+        table = pd.concat([old, new], ignore_index=True)
+    if table.empty:
+        return table
+    table["in_current_variants"] = table["surfaced_by"].fillna("").ne("")
+    return table.sort_values(key).reset_index(drop=True)
 
 
 def main():
@@ -223,6 +261,9 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--export-unjudged", action="store_true",
                         help="write judgments_ablation.csv and stop")
+    parser.add_argument("--pool-only", action="store_true",
+                        help="ignore judgments_ablation.csv (method pool only) and "
+                             "write results/*_pool_only.csv")
     args = parser.parse_args()
 
     engine = SearchEngine(use_embeddings=False)
@@ -235,7 +276,7 @@ def main():
     RESULTS_DIR.mkdir(exist_ok=True)
 
     ablation_rows, grid_rows = [], []
-    for set_name, queries, labels in label_sets():
+    for set_name, queries, labels in label_sets(include_extra=not args.pool_only):
         for query_id, query in queries.items():
             if query_id not in labels:
                 continue
@@ -259,8 +300,12 @@ def main():
 
     ablation = pd.DataFrame(ablation_rows)
     grid = pd.DataFrame(grid_rows)
-    ablation.to_csv(ABLATION_CSV, index=False, float_format="%.3f")
-    grid.to_csv(BM25_GRID_CSV, index=False, float_format="%.3f")
+    ablation_csv, grid_csv = ABLATION_CSV, BM25_GRID_CSV
+    if args.pool_only:
+        ablation_csv = ABLATION_CSV.with_name("ablation_pool_only.csv")
+        grid_csv = BM25_GRID_CSV.with_name("bm25_grid_pool_only.csv")
+    ablation.to_csv(ablation_csv, index=False, float_format="%.3f")
+    grid.to_csv(grid_csv, index=False, float_format="%.3f")
 
     fmt = lambda x: f"{x:.3f}"  # noqa: E731
     print(f"Ablation, mean over queries (K = {K}):")
@@ -272,7 +317,7 @@ def main():
             print(f"\n[{set_name}] {value}")
             print(group.pivot_table(index="k1", columns="b", values=value)
                   .to_string(float_format=fmt))
-    print(f"\nSaved {ABLATION_CSV.name} and {BM25_GRID_CSV.name}")
+    print(f"\nSaved {ablation_csv.name} and {grid_csv.name}")
 
 
 if __name__ == "__main__":

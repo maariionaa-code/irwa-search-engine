@@ -18,7 +18,7 @@ from project_progress.part_2.evaluation import (
     mean_average_precision,
     precision_at_k,
 )
-from project_progress.part_3.ablation import evaluate_ranking
+from project_progress.part_3.ablation import evaluate_ranking, merge_extra_labels
 from project_progress.part_3.compare_rankings import score_spread
 from project_progress.part_3.corpus import check_product_ids
 from project_progress.part_3.embedded_ranking import fingerprint
@@ -333,3 +333,22 @@ def test_agreement_sample_is_blind_stratified_and_reproducible():
     assert sample["relevance"].isna().all()
     assert not {"found_by", "url"} & set(sample.columns)
     assert sample.equals(draw_sample(pool, size=8))
+
+
+def test_reexporting_ablation_labels_keeps_old_rows_and_columns():
+    old = pd.DataFrame({
+        "query_id": ["Q1", "Q1"], "pid": ["a", "b"], "relevance": [1, 0],
+        "confidence": ["high", "low"], "reason": ["x", "y"],
+        "surfaced_by": ["v1", "v2"],
+    })
+    current = pd.DataFrame({
+        "query_id": ["Q1", "Q1"], "pid": ["a", "c"], "relevance": [pd.NA, pd.NA],
+        "surfaced_by": ["v3", "v4"],
+    })
+    table = merge_extra_labels(old, current).set_index("pid")
+    assert list(table.index) == ["a", "b", "c"]          # b kept although not surfaced now
+    assert table.loc["a", "relevance"] == 1 and table.loc["b", "relevance"] == 0
+    assert table.loc["b", "reason"] == "y"                # annotation columns kept
+    assert table.loc["a", "surfaced_by"] == "v3"          # provenance refreshed
+    assert not table.loc["b", "in_current_variants"] and table.loc["c", "in_current_variants"]
+    assert pd.isna(table.loc["c", "relevance"])           # new pair still needs a label

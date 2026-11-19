@@ -24,9 +24,11 @@ The final score is a PRODUCT of evidence factors, each in (0, 1]:
 
 T = BM25 / best BM25 for the query; K, G, A as above; S = stock factor.
 A product that agrees with every inferred intent keeps its text score T;
-each contradiction multiplies it by a penalty. The product form means a
-strong text match cannot compensate for, e.g., the wrong gender: every
-condition must hold, like the conjunctive (AND) logic of the retrieval.
+each contradiction multiplies it by a penalty. The product form REDUCES
+(but does not remove) compensation between signals: a wrong-gender product
+with T = 1 and G = 0.3 scores 0.3, so it still beats a correct-gender
+product with T = 0.2 and G = 1 (score 0.2). It follows the spirit of the
+conjunctive (AND) logic of the retrieval, applied softly.
 """
 
 from collections import Counter, defaultdict

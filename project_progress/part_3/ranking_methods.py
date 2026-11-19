@@ -73,6 +73,7 @@ def rank_tfidf(query: str, index: SearchIndex, top_k: int | None = None):
     Returns:
         List of ``(pid, score)`` with scores in [0, 1].
     """
+    check_top_k(top_k)
     candidates = index.candidates(query)
     if not candidates:
         return []
@@ -194,6 +195,7 @@ def rank_bm25(
     Returns:
         List of ``(pid, score)``; scores are unbounded and positive.
     """
+    check_top_k(top_k)
     scores = bm25_scores(query, index, k1, b)
     return _sort(list(scores.items()), top_k)
 
@@ -329,6 +331,7 @@ def rank_our_score(
     Returns:
         List of ``(pid, score)`` with scores in [0, 1].
     """
+    check_top_k(top_k)
     components = our_score_components(query, index, products)
     if components.empty:
         return []
