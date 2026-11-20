@@ -53,7 +53,7 @@ Part 3 keeps the conjunctive (AND) search of Part 2 fixed and compares six ways 
     - Unjudged products count as non-relevant. This makes P@K a lower bound, but not R, AP or NDCG (the true R is unknown).
     - Paired randomisation tests against BM25 and TF-IDF (exact over all 2^8 sign assignments). The 30 tests are exploratory; `significance.csv` reports both the raw p-values and Holm-adjusted ones over the whole family.
 - **Ablation judgments:** products that only an ablation variant or a BM25 grid cell puts in its top 10 are judged in a separate file, `judgments_ablation.csv`, so the method comparison is unchanged. The ablation uses the pool plus these labels, so every variant is evaluated with judged@10 = 10; `--pool-only` reproduces the pool-only views (unjudged = non-relevant, and condensed). Re-exporting keeps every existing row, label and annotation column.
-- **Label agreement (prepared, not yet run):** `label_agreement.py` draws a blind, stratified sample of 100 pool pairs (no proposed labels, no `found_by`, no URL) for a second group member, and computes observed agreement and Cohen's kappa.
+- **Label agreement (prepared, not yet run):** `label_agreement.py` draws a blind, stratified sample of 100 pool pairs (no existing labels, no `found_by`, no URL) for a second group member, and computes observed agreement and Cohen's kappa.
 - **Independent check:** every method is also evaluated on the professor's validation labels (`evaluate_validation_methods.py`).
 
 ---

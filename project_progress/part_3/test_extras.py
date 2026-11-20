@@ -338,7 +338,7 @@ def test_agreement_sample_is_blind_stratified_and_reproducible():
 def test_reexporting_ablation_labels_keeps_old_rows_and_columns():
     old = pd.DataFrame({
         "query_id": ["Q1", "Q1"], "pid": ["a", "b"], "relevance": [1, 0],
-        "confidence": ["high", "low"], "reason": ["x", "y"],
+        "note": ["x", "y"],
         "surfaced_by": ["v1", "v2"],
     })
     current = pd.DataFrame({
@@ -348,7 +348,7 @@ def test_reexporting_ablation_labels_keeps_old_rows_and_columns():
     table = merge_extra_labels(old, current).set_index("pid")
     assert list(table.index) == ["a", "b", "c"]          # b kept although not surfaced now
     assert table.loc["a", "relevance"] == 1 and table.loc["b", "relevance"] == 0
-    assert table.loc["b", "reason"] == "y"                # annotation columns kept
+    assert table.loc["b", "note"] == "y"                # annotation columns kept
     assert table.loc["a", "surfaced_by"] == "v3"          # provenance refreshed
     assert not table.loc["b", "in_current_variants"] and table.loc["c", "in_current_variants"]
     assert pd.isna(table.loc["c", "relevance"])           # new pair still needs a label

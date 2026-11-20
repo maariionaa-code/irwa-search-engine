@@ -1,11 +1,10 @@
 """Inter-annotator agreement on a blind sample of the judgment pool.
 
-Why: our pool labels were proposed by a rule-based script and reviewed by
-one group member. The rules read the title and structured attributes,
-which the intent score also reads, so the labels could share assumptions
-(and mistakes) with that ranker. A second group member who sees neither
-the proposed labels nor which method retrieved a product gives an
-independent check.
+Why: our pool labels were assigned manually by the group. The judging
+rules use the title and structured attributes, which the intent score
+also reads, so the labels could share assumptions (and mistakes) with
+that ranker. A second group member who does not see the existing labels
+or which method retrieved a product gives an independent check.
 
 Steps, from the repository root:
     python -m project_progress.part_3.label_agreement --export   # 1. write the sample
@@ -16,7 +15,7 @@ Steps, from the repository root:
 
 The sample is stratified by query (the same share of every query's pool)
 and drawn with a fixed seed, so it is reproducible. It contains no
-proposed label, reason, confidence, ``found_by`` or URL.
+existing label, ``found_by`` or URL.
 """
 
 import argparse

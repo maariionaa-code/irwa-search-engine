@@ -189,7 +189,7 @@ def export_unjudged(engine: SearchEngine) -> pd.DataFrame:
 
     Re-exporting never loses work: every existing row of
     ``judgments_ablation.csv`` is kept with ALL its columns (labels and
-    annotations such as ``confidence`` or ``reason``), even if no variant
+    any annotation columns, such as notes), even if no variant
     surfaces it any more. Only ``surfaced_by`` and ``in_current_variants``
     are refreshed, and new products are appended with an empty label.
 
