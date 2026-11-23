@@ -1,36 +1,75 @@
-import random
-import numpy as np
+"""Expose the Part 3 ranker and product data to the web application."""
 
-from myapp.search.objects import Document
+from urllib.parse import urlsplit
+
+import pandas as pd
+
+from project_progress.part_1.preprocessing import parse_numeric_value
+from project_progress.part_3.pipeline import SearchEngine as RankingEngine
 
 
-def dummy_search(corpus: dict, search_id, num_results=20):
-    """
-    Just a demo method, that returns random <num_results> documents from the corpus
-    :param corpus: the documents corpus
-    :param search_id: the search id
-    :param num_results: number of documents to return
-    :return: a list of random documents from the corpus
-    """
-    res = []
-    doc_ids = list(corpus.keys())
-    docs_to_return = np.random.choice(doc_ids, size=num_results, replace=False)
-    for doc_id in docs_to_return:
-        doc = corpus[doc_id]
-        res.append(Document(pid=doc.pid, title=doc.title, description=doc.description,
-                            url="doc_details?pid={}&search_id={}&param2=2".format(doc.pid, search_id), ranking=random.random()))
-    return res
+def _web_url(value: object) -> str | None:
+    """Return an absolute HTTP(S) URL, if available."""
+    if not isinstance(value, str):
+        return None
+    url = value.strip()
+    try:
+        parts = urlsplit(url)
+    except ValueError:
+        return None
+    return url if parts.scheme in ("http", "https") and parts.hostname else None
+
+
+def _display_product(row: pd.Series) -> dict:
+    """Select the original catalogue fields and normalized prices and ratings."""
+    product = {
+        field: row[field] if pd.notna(row[field]) else None
+        for field in (
+            "pid", "title", "description", "brand", "category",
+            "sub_category", "seller", "out_of_stock",
+        )
+    }
+    for field, column in (
+        ("selling_price", "price"),
+        ("discount", "discount_pct"),
+        ("average_rating", "rating"),
+    ):
+        product[field] = float(row[column]) if pd.notna(row[column]) else None
+
+    product["actual_price"] = parse_numeric_value(row["actual_price"])
+    product["url"] = _web_url(row["url"])
+
+    details = row["product_details"]
+    if isinstance(details, list):
+        details = {
+            label: value
+            for entry in details if isinstance(entry, dict)
+            for label, value in entry.items()
+        }
+    product["product_details"] = details if isinstance(details, dict) else {}
+
+    images = row["images"]
+    product["images"] = (
+        [url for image in images if (url := _web_url(image))]
+        if isinstance(images, list) else []
+    )
+    return product
 
 
 class SearchEngine:
-    """Class that implements the search engine logic"""
+    """Build the Part 3 index once and reuse it for catalogue searches."""
 
-    def search(self, search_query, search_id, corpus):
-        print("Search query:", search_query)
+    def __init__(self):
+        self.ranker = RankingEngine(use_embeddings=False)
 
-        results = []
-        ### You should implement your search logic here:
-        results = dummy_search(corpus, search_id)  # replace with call to search algorithm
+    def search(self, query: str, top_k: int = 20) -> list[dict]:
+        """Return up to top_k products in descending BM25 order."""
+        ranked_products = self.ranker.rank(query, "bm25", top_k=top_k)
+        return [_display_product(self.ranker.products.loc[pid]) for pid, _ in ranked_products]
 
-        # results = search_in_corpus(search_query)
-        return results
+    def get_product(self, pid: str) -> dict | None:
+        """Return a product's display fields, or None for an unknown ID."""
+        products = self.ranker.products
+        if pid not in products.index:
+            return None
+        return _display_product(products.loc[pid])

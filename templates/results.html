@@ -1,27 +1,47 @@
 {% extends "base.html" %}
 {% block page_title %}{{ page_title }}{% endblock %}
 {% block content %}
-    Found <strong>{{ found_counter }}</strong> results...
-    <hr>
-    {% if rag_response %}
-        <div class="mb-4 p-3" style="border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9;">
-            <h5>AI-Generated Summary:</h5>
-            <p>{{ rag_response }}</p>
-        </div>
-    {% endif %}
-    <hr>
-    {% for item in results_list %}
-        <div class="pb-3">
-            <div class="doc-title">
-                <a href="{{ item.url }}">{{ item.title }}...
+<h1>Results for “{{ query }}”</h1>
+<form class="input-group mb-4" action="{{ url_for('search') }}" method="get">
+    <input class="form-control" name="q" type="search"
+           value="{{ query }}" aria-label="Search the catalogue" required>
+    <div class="input-group-append">
+        <button class="btn btn-primary" type="submit">Search</button>
+    </div>
+</form>
+
+{% if results %}
+    <p>Showing {{ results|length }} ranked products.</p>
+    <ol class="pl-4">
+        {% for product in results %}
+        <li class="border-bottom pb-3 mb-3">
+            <h2 class="h5">
+                <a href="{{ url_for('doc_details', pid=product.pid, q=query) }}">
+                    {{ product.title }}
                 </a>
-            </div>
-            <div class="doc-desc">
-                {{ item.doc_date }} — {{ item.description }}
-            </div>
-
-        </div>
-
-    {% endfor %}
+            </h2>
+            <p>{{ product.description or 'Description unavailable.' }}</p>
+            <ul class="list-inline mb-2">
+                <li class="list-inline-item">
+                    <strong>Price</strong>
+                    {{ '{:,.2f}'.format(product.selling_price) if product.selling_price is not none else 'Unavailable' }}
+                </li>
+                <li class="list-inline-item">
+                    <strong>Discount</strong>
+                    {{ '{:g}%'.format(product.discount) if product.discount is not none else 'Unavailable' }}
+                </li>
+                <li class="list-inline-item">
+                    <strong>Rating</strong>
+                    {{ '{:g}'.format(product.average_rating) if product.average_rating is not none else 'Unavailable' }}
+                </li>
+            </ul>
+            {% if product.url %}
+                <a href="{{ product.url }}">Original listing</a>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ol>
+{% else %}
+    <p>No products matched. Try a shorter or more general search.</p>
+{% endif %}
 {% endblock %}
-
