@@ -3,12 +3,14 @@
 from flask import Flask, abort, render_template, request
 
 from myapp.analytics.analytics_data import AnalyticsData
+from myapp.generation.rag import RAGGenerator
 from myapp.search.objects import StatsDocument
 from myapp.search.search_engine import SearchEngine
 
 
 app = Flask(__name__)
 search_engine = SearchEngine()
+rag_generator = RAGGenerator()
 analytics_data = AnalyticsData()
 
 
@@ -26,8 +28,10 @@ def search():
         ), 400
 
     results = search_engine.search(query)
+    summary = rag_generator.generate_response(query, results)
     return render_template(
-        "results.html", page_title="Search results", query=query, results=results
+        "results.html", page_title="Search results", query=query, results=results,
+        summary=summary,
     )
 
 

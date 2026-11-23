@@ -10,6 +10,26 @@
     </div>
 </form>
 
+<section class="alert alert-light border" aria-labelledby="summary-heading">
+    <h2 class="h5" id="summary-heading">AI shopping summary</h2>
+    {% if summary.status == "ok" %}
+        <p>Suggested match:
+            <a href="{{ url_for('doc_details', pid=summary.pid, q=query) }}">
+                {{ summary.title }}
+            </a>
+        </p>
+        <ul class="mb-0">
+            {% for label, value in summary.facts %}
+            <li><strong>{{ label }}</strong> {{ value }}</li>
+            {% endfor %}
+        </ul>
+    {% elif summary.status == "no_match" %}
+        <p class="mb-0">No retrieved product had enough evidence for a recommendation.</p>
+    {% else %}
+        <p class="mb-0">The AI summary is unavailable. You can still browse the search results.</p>
+    {% endif %}
+</section>
+
 {% if results %}
     <p>Showing {{ results|length }} ranked products.</p>
     <ol class="pl-4">
