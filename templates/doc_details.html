@@ -1,18 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document Detail - IRWA Search Engine</title>
-</head>
-<body>
-<div><a href="/" >Home</a></div>
-<div><a href="/stats" >Stats</a></div>
-<div><a href="/dashboard" >Dashboard</a></div>
-<h1>Document Detail Page</h1>
-<p>This is a placeholder for document details.</p>
-<p>Here you can display more information about the document.</p>
-<p>For example, you might show the full text of the document, metadata, or other relevant details.</p>
-<p>You can also include links to related documents or resources.</p>
-<p>Feel free to customize this page to fit the needs of your application.</p>
-</body>
-</html>
+{% extends "base.html" %}
+{% block page_title %}{{ page_title }}{% endblock %}
+{% block content %}
+{% if query %}
+    <p><a href="{{ url_for('search', q=query) }}">Back to results</a></p>
+{% else %}
+    <p><a href="{{ url_for('index') }}">Back to search</a></p>
+{% endif %}
+
+<h1>{{ product.title }}</h1>
+<p>{{ product.description or 'Description unavailable.' }}</p>
+
+<div class="row">
+    {% if product.images %}
+    <div class="col-md-4 mb-3">
+        <img class="img-fluid rounded" src="{{ product.images[0] }}" alt="{{ product.title }}">
+    </div>
+    {% endif %}
+    <div class="col-md">
+        <dl class="row">
+            {% for label, value in [
+                ('Product ID', product.pid),
+                ('Brand', product.brand),
+                ('Category', product.category),
+                ('Subcategory', product.sub_category),
+                ('Seller', product.seller),
+                ('Selling price', '{:,.2f}'.format(product.selling_price) if product.selling_price is not none else none),
+                ('Original price', '{:,.2f}'.format(product.actual_price) if product.actual_price is not none else none),
+                ('Discount', '{:g}%'.format(product.discount) if product.discount is not none else none),
+                ('Average rating', '{:g}'.format(product.average_rating) if product.average_rating is not none else none),
+                ('Availability', 'Out of stock' if product.out_of_stock else 'In stock'),
+            ] %}
+                <dt class="col-sm-4">{{ label }}</dt>
+                <dd class="col-sm-8">{{ value if value is not none and value != '' else 'Unavailable' }}</dd>
+            {% endfor %}
+        </dl>
+        {% if product.url %}
+            <p><a href="{{ product.url }}">View original listing</a></p>
+        {% endif %}
+    </div>
+</div>
+
+{% if product.product_details %}
+    <h2 class="h4">Product specifications</h2>
+    <dl class="row">
+        {% for label, value in product.product_details.items() %}
+            <dt class="col-sm-4">{{ label }}</dt>
+            <dd class="col-sm-8">{{ value }}</dd>
+        {% endfor %}
+    </dl>
+{% endif %}
+{% endblock %}
