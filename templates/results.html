@@ -21,6 +21,9 @@
                 {{ summary.title }}
             </a>
         </p>
+        {% if summary.audience_warning %}
+            <p class="small text-warning">The retailer link conflicts with the catalogue’s audience. Check the original listing before buying.</p>
+        {% endif %}
         <ul class="mb-0">
             {% for label, value in summary.facts %}
             <li><strong>{{ label }}</strong> {{ value }}</li>
@@ -34,10 +37,15 @@
 </section>
 
 {% if results %}
-    <p>Showing {{ results|length }} ranked products.</p>
+    <p>Showing {{ results|length }} ranked products. <span class="badge badge-light">BM25</span></p>
+    <p class="small text-muted">Prices and availability come from the course catalogue.</p>
     <ol class="pl-4">
         {% for product in results %}
         <li class="border-bottom pb-3 mb-3">
+            {% if product.images %}
+                <img class="float-right ml-3 mb-2 rounded" src="{{ product.images[0] }}"
+                     width="76" height="76" style="object-fit: contain" alt="" loading="lazy">
+            {% endif %}
             <h2 class="h5">
                 <a href="{{ url_for('doc_details', pid=product.pid, q=query, search_id=search_id) }}">
                     {{ product.title }}
@@ -45,6 +53,15 @@
             </h2>
             <p>{{ product.description or 'Description unavailable.' }}</p>
             <ul class="list-inline mb-2">
+                <li class="list-inline-item">
+                    {% if product.out_of_stock is none %}
+                        <span class="badge badge-light">Stock unknown</span>
+                    {% elif product.out_of_stock %}
+                        <span class="badge badge-secondary">Out of stock</span>
+                    {% else %}
+                        <span class="badge badge-light">In stock</span>
+                    {% endif %}
+                </li>
                 <li class="list-inline-item">
                     <strong>Price</strong>
                     {{ '{:,.2f}'.format(product.selling_price) if product.selling_price is not none else 'Unavailable' }}
@@ -59,7 +76,7 @@
                 </li>
             </ul>
             {% if product.url %}
-                <a href="{{ product.url }}">Original listing</a>
+                <a href="{{ url_for('original_listing', pid=product.pid, search_id=search_id) }}">Original listing</a>
             {% endif %}
         </li>
         {% endfor %}

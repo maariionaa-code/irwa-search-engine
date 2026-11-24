@@ -32,6 +32,19 @@ The inspect command records which real candidates reach the improved generator w
 
 The tagged project includes the [frozen Groq responses](rag-comparison.json), the [decision rules](rag_evaluation_protocol.md), the [per-query judgements](rag_evaluation.md), and the [data behind Figure 4](figure4_counts.json). These files can be inspected without a Groq key. An unavailable or invalid response is an integration outcome and should be recorded separately from recommendation quality.
 
+## Search and recommendation refinements
+
+The web app defaults to BM25. A query such as `men running shoes under 1000` runs AND retrieval on the product terms, orders the matches with BM25, then filters on selling price before taking the first 20. It supports `under`, `below`, `over`, `above`, `at most` and `at least` in catalogue price units. Strict inequalities exclude the boundary. A missing price cannot satisfy a price constraint.
+
+The default recommendation continues to reject conflicting audience signals. Set `IRWA_RAG_RELAX_URL=1` to try the experimental variant. It allows a conflicting retailer slug when the product title and Ideal For agree, and displays an audience warning for such a recommendation. Strong conflicts between the explicit catalogue fields remain excluded. The summary prioritises verified facts tied to requested attributes such as hood, fit, sleeve, fabric, colour and product type.
+
+```bash
+python -m project_progress.part_4.inspect_refinements
+python -m project_progress.part_4.compare_rag --inspect --relax-url-audience --output data/relaxed-audience.json
+```
+
+The offline check compares the audience policies, price-filtered example and actual top five for BM25 and Our Score. Candidate coverage uses existing Part 3 labels. See the [saved catalogue checks](refinement_checks.json) and [interpretation](refinements.md). The frozen live run predates these refinements. A new run uses the current retrieval and evidence rules and can produce different outputs.
+
 ## Web analytics
 
 Start the app and use the **Analytics** link. The dashboard starts empty. Submit a product search, open a result, and return to the same results with the browser Back button or the product page's **Back to results** link. Submit an unlikely query to exercise the no-result metric. Reload the dashboard to see the recorded activity. Returning to the same results reuses the stored ranking and summary without requesting Groq again.
@@ -49,6 +62,8 @@ Start the app and use the **Analytics** link. The dashboard starts empty. Submit
 The dashboard filters by a search's UTC submission time for search metrics and by request time for HTTP metrics. Clicks belong to the selected search cohort even if the shopper clicked later. Click-through is the share of searches with at least one attributed detail click. No-result rate is the share with zero hits. The dwell median uses completed returns within 30 minutes; a missing return has no dwell value. The rank chart counts detail opens, including reloads, and excludes retailer links. A multi-visit mission has search events in at least two visits within the selected period.
 
 Events and search snapshots live in one Flask process and reset when it restarts. Run the local single-worker app when demonstrating analytics. Device, browser and operating-system labels are inferred from the user agent. The optional setting `IRWA_GEOIP_CSV` accepts a local CSV with `network,country,city` columns and IP networks in CIDR notation. It uses the connection address to look up country and city without saving the address or making an external request. With the setting absent, no location chart is shown.
+
+Original-listing clicks from a known search are counted separately. They do not change detail-click ranks, CTR or dwell and do not measure purchases. For a deployment beyond the local demo, serve the app over HTTPS, set `IRWA_SECURE_COOKIES=1` and set `IRWA_DASHBOARD_PASSWORD` to restrict the analytics views. Use the username `analytics` and the configured password. The password and Groq key belong in the local environment.
 
 ### Verify the shopping and analytics flow
 

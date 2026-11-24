@@ -1,0 +1,390 @@
+{
+  "audience": [
+    {
+      "query": "women cotton kurta",
+      "hits": 20,
+      "strict_eligible": 0,
+      "relaxed_eligible": 12,
+      "url_warnings": 12,
+      "strict_exclusions": {
+        "url_audience_conflict": 20
+      },
+      "judged_relevant_in_retrieved": 20,
+      "strict_existing_judgements": {
+        "judged_kept": 0,
+        "relevant_kept": 0,
+        "precision_on_judged": null,
+        "retained_relevant_share": 0.0
+      },
+      "relaxed_existing_judgements": {
+        "judged_kept": 12,
+        "relevant_kept": 12,
+        "precision_on_judged": 1.0,
+        "retained_relevant_share": 0.6
+      }
+    },
+    {
+      "query": "men running shoes",
+      "hits": 20,
+      "strict_eligible": 14,
+      "relaxed_eligible": 14,
+      "url_warnings": 0,
+      "strict_exclusions": {
+        "out_of_stock": 1,
+        "url_audience_conflict": 5
+      },
+      "judged_relevant_in_retrieved": 12,
+      "strict_existing_judgements": {
+        "judged_kept": 14,
+        "relevant_kept": 12,
+        "precision_on_judged": 0.857,
+        "retained_relevant_share": 1.0
+      },
+      "relaxed_existing_judgements": {
+        "judged_kept": 14,
+        "relevant_kept": 12,
+        "precision_on_judged": 0.857,
+        "retained_relevant_share": 1.0
+      }
+    },
+    {
+      "query": "men slim fit jeans",
+      "hits": 20,
+      "strict_eligible": 20,
+      "relaxed_eligible": 20,
+      "url_warnings": 0,
+      "strict_exclusions": {},
+      "judged_relevant_in_retrieved": 19,
+      "strict_existing_judgements": {
+        "judged_kept": 20,
+        "relevant_kept": 19,
+        "precision_on_judged": 0.95,
+        "retained_relevant_share": 1.0
+      },
+      "relaxed_existing_judgements": {
+        "judged_kept": 20,
+        "relevant_kept": 19,
+        "precision_on_judged": 0.95,
+        "retained_relevant_share": 1.0
+      }
+    },
+    {
+      "query": "zzzxxyynoresults",
+      "hits": 0,
+      "strict_eligible": 0,
+      "relaxed_eligible": 0,
+      "url_warnings": 0,
+      "strict_exclusions": {},
+      "judged_relevant_in_retrieved": null,
+      "strict_existing_judgements": null,
+      "relaxed_existing_judgements": null
+    },
+    {
+      "query": "women full sleeve jacket",
+      "hits": 20,
+      "strict_eligible": 0,
+      "relaxed_eligible": 13,
+      "url_warnings": 13,
+      "strict_exclusions": {
+        "url_audience_conflict": 13,
+        "out_of_stock": 7
+      },
+      "judged_relevant_in_retrieved": 20,
+      "strict_existing_judgements": {
+        "judged_kept": 0,
+        "relevant_kept": 0,
+        "precision_on_judged": null,
+        "retained_relevant_share": 0.0
+      },
+      "relaxed_existing_judgements": {
+        "judged_kept": 13,
+        "relevant_kept": 13,
+        "precision_on_judged": 1.0,
+        "retained_relevant_share": 0.65
+      }
+    },
+    {
+      "query": "men cotton sports shorts",
+      "hits": 20,
+      "strict_eligible": 19,
+      "relaxed_eligible": 19,
+      "url_warnings": 0,
+      "strict_exclusions": {
+        "out_of_stock": 1
+      },
+      "judged_relevant_in_retrieved": 17,
+      "strict_existing_judgements": {
+        "judged_kept": 19,
+        "relevant_kept": 16,
+        "precision_on_judged": 0.842,
+        "retained_relevant_share": 0.941
+      },
+      "relaxed_existing_judgements": {
+        "judged_kept": 19,
+        "relevant_kept": 16,
+        "precision_on_judged": 0.842,
+        "retained_relevant_share": 0.941
+      }
+    },
+    {
+      "query": "black track pants",
+      "hits": 20,
+      "strict_eligible": 14,
+      "relaxed_eligible": 14,
+      "url_warnings": 0,
+      "strict_exclusions": {
+        "out_of_stock": 2,
+        "url_audience_conflict": 4
+      },
+      "judged_relevant_in_retrieved": 20,
+      "strict_existing_judgements": {
+        "judged_kept": 14,
+        "relevant_kept": 14,
+        "precision_on_judged": 1.0,
+        "retained_relevant_share": 0.7
+      },
+      "relaxed_existing_judgements": {
+        "judged_kept": 14,
+        "relevant_kept": 14,
+        "precision_on_judged": 1.0,
+        "retained_relevant_share": 0.7
+      }
+    },
+    {
+      "query": "hooded sweatshirt",
+      "hits": 20,
+      "strict_eligible": 10,
+      "relaxed_eligible": 10,
+      "url_warnings": 0,
+      "strict_exclusions": {
+        "url_audience_conflict": 10
+      },
+      "judged_relevant_in_retrieved": 20,
+      "strict_existing_judgements": {
+        "judged_kept": 10,
+        "relevant_kept": 10,
+        "precision_on_judged": 1.0,
+        "retained_relevant_share": 0.5
+      },
+      "relaxed_existing_judgements": {
+        "judged_kept": 10,
+        "relevant_kept": 10,
+        "precision_on_judged": 1.0,
+        "retained_relevant_share": 0.5
+      }
+    },
+    {
+      "query": "denim jacket",
+      "hits": 20,
+      "strict_eligible": 7,
+      "relaxed_eligible": 13,
+      "url_warnings": 6,
+      "strict_exclusions": {
+        "out_of_stock": 7,
+        "url_audience_conflict": 6
+      },
+      "judged_relevant_in_retrieved": 20,
+      "strict_existing_judgements": {
+        "judged_kept": 7,
+        "relevant_kept": 7,
+        "precision_on_judged": 1.0,
+        "retained_relevant_share": 0.35
+      },
+      "relaxed_existing_judgements": {
+        "judged_kept": 13,
+        "relevant_kept": 13,
+        "precision_on_judged": 1.0,
+        "retained_relevant_share": 0.65
+      }
+    },
+    {
+      "query": "women full sleeve sweatshirt cotton",
+      "hits": 20,
+      "strict_eligible": 0,
+      "relaxed_eligible": 0,
+      "url_warnings": 0,
+      "strict_exclusions": {
+        "url_audience_conflict": 12,
+        "out_of_stock": 3,
+        "audience_mismatch": 5
+      },
+      "judged_relevant_in_retrieved": null,
+      "strict_existing_judgements": null,
+      "relaxed_existing_judgements": null
+    },
+    {
+      "query": "men slim jeans blue",
+      "hits": 20,
+      "strict_eligible": 13,
+      "relaxed_eligible": 13,
+      "url_warnings": 0,
+      "strict_exclusions": {
+        "out_of_stock": 7
+      },
+      "judged_relevant_in_retrieved": null,
+      "strict_existing_judgements": null,
+      "relaxed_existing_judgements": null
+    },
+    {
+      "query": "men running shoes under 1000",
+      "hits": 20,
+      "strict_eligible": 12,
+      "relaxed_eligible": 12,
+      "url_warnings": 0,
+      "strict_exclusions": {
+        "url_audience_conflict": 8
+      },
+      "judged_relevant_in_retrieved": null,
+      "strict_existing_judgements": null,
+      "relaxed_existing_judgements": null
+    }
+  ],
+  "price_results": [
+    {
+      "pid": "SHOEP5GUQYYFKYSN",
+      "title": "Running Shoes For Women\u00a0\u00a0(White)",
+      "price": 990.0
+    },
+    {
+      "pid": "SHOEKNRJ34UCMAPA",
+      "title": "SPRINT Running Shoes For Men\u00a0\u00a0(Black, Grey)",
+      "price": 490.0
+    },
+    {
+      "pid": "SHOEKNRJGEYJCDQK",
+      "title": "SPRINT Running Shoes For Men\u00a0\u00a0(Blue, Grey)",
+      "price": 490.0
+    },
+    {
+      "pid": "SHOFN3EJVGC9VXYT",
+      "title": "RS-7200 Running Shoes For Men\u00a0\u00a0(Navy)",
+      "price": 990.0
+    },
+    {
+      "pid": "SHOFN3EJHXHGSGUC",
+      "title": "RS-7250 Running Shoes For Men\u00a0\u00a0(Black)",
+      "price": 990.0
+    },
+    {
+      "pid": "SHOFN3EFNYGBKZT7",
+      "title": "RS-7050 Running Shoes For Men\u00a0\u00a0(Blue, Navy)",
+      "price": 810.0
+    },
+    {
+      "pid": "SHOFUH9JBHVZC5TU",
+      "title": "Sneakers For Women\u00a0\u00a0(Red)",
+      "price": 404.0
+    },
+    {
+      "pid": "SHOFN3EJZVGC6GH8",
+      "title": "RS-7250 Running Shoes For Women\u00a0\u00a0(Navy)",
+      "price": 990.0
+    },
+    {
+      "pid": "SHOEYF5UHUUH5ADZ",
+      "title": "Running Shoes For Women\u00a0\u00a0(Blue, Orange)",
+      "price": 990.0
+    },
+    {
+      "pid": "SHOF5BDSWHAMZHSU",
+      "title": "Running Shoes For Men\u00a0\u00a0(White)",
+      "price": 720.0
+    },
+    {
+      "pid": "SOCFVYHYZFJ4FFNG",
+      "title": "Men Solid Low Cut, Peds/Footie/No-Show\u00a0\u00a0(Pack of 6)",
+      "price": 249.0
+    },
+    {
+      "pid": "SHOFTZFPNCU4VWHK",
+      "title": "Running Shoes For Men\u00a0\u00a0(Black)",
+      "price": 379.0
+    },
+    {
+      "pid": "SHOFTZFQQYKC8HY6",
+      "title": "Running Shoes For Men\u00a0\u00a0(Yellow)",
+      "price": 341.0
+    },
+    {
+      "pid": "SHOFUH52V5AVNHMN",
+      "title": "Loafers For Men\u00a0\u00a0(Black)",
+      "price": 474.0
+    },
+    {
+      "pid": "SHOE9R2HZDSZZZKD",
+      "title": "Bolt Spike Running Shoes For Women\u00a0\u00a0(Multicolor)",
+      "price": 929.0
+    },
+    {
+      "pid": "SHOFVJX2TP8FRR7P",
+      "title": "Lace Up For Men\u00a0\u00a0(Black)",
+      "price": 474.0
+    },
+    {
+      "pid": "SHOFTZFQP8W9G86F",
+      "title": "Running Shoes For Women\u00a0\u00a0(Black)",
+      "price": 341.0
+    },
+    {
+      "pid": "SHOFTZFQQKDWFYE6",
+      "title": "Running Shoes For Women\u00a0\u00a0(Orange)",
+      "price": 341.0
+    },
+    {
+      "pid": "SHOFWFVWRSNK5AZJ",
+      "title": "Running Shoes For Women\u00a0\u00a0(Multicolor)",
+      "price": 474.0
+    },
+    {
+      "pid": "SHOFVGHH9YGKTX4J",
+      "title": "Sneakers For Men\u00a0\u00a0(Orange)",
+      "price": 474.0
+    }
+  ],
+  "top_five": {
+    "bm25": [
+      {
+        "pid": "SHOFC585JH9RGXWG",
+        "title": "Cricket Shoes For Women\u00a0\u00a0(White)"
+      },
+      {
+        "pid": "SHOESS9ZEZ6TEQUJ",
+        "title": "Running Shoes For Men\u00a0\u00a0(Multicolor)"
+      },
+      {
+        "pid": "SHOESS9ZGMH7CURM",
+        "title": "Running Shoes For Men\u00a0\u00a0(Multicolor)"
+      },
+      {
+        "pid": "SHOEP5GUQYYFKYSN",
+        "title": "Running Shoes For Women\u00a0\u00a0(White)"
+      },
+      {
+        "pid": "SHOEKNRJ34UCMAPA",
+        "title": "SPRINT Running Shoes For Men\u00a0\u00a0(Black, Grey)"
+      }
+    ],
+    "our_score": [
+      {
+        "pid": "SHOESS9ZEZ6TEQUJ",
+        "title": "Running Shoes For Men\u00a0\u00a0(Multicolor)"
+      },
+      {
+        "pid": "SHOESS9ZGMH7CURM",
+        "title": "Running Shoes For Men\u00a0\u00a0(Multicolor)"
+      },
+      {
+        "pid": "SHOEKNRJ34UCMAPA",
+        "title": "SPRINT Running Shoes For Men\u00a0\u00a0(Black, Grey)"
+      },
+      {
+        "pid": "SHOEKNRJGEYJCDQK",
+        "title": "SPRINT Running Shoes For Men\u00a0\u00a0(Blue, Grey)"
+      },
+      {
+        "pid": "SHOFN3EJVGC9VXYT",
+        "title": "RS-7200 Running Shoes For Men\u00a0\u00a0(Navy)"
+      }
+    ]
+  }
+}

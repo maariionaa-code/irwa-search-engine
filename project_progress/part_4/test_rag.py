@@ -55,6 +55,33 @@ def test_excludes_conflicting_mismatched_and_unavailable_products():
     assert prepare_context("cotton kurta", [conflict]) == []
 
 
+def test_experimental_policy_accepts_agreeing_fields_with_url_warning():
+    product = {**WOMENS_KURTA, "url": "https://example.com/men-kurta/p/1"}
+    diagnostics = []
+    assert prepare_context("women cotton kurta", [product], diagnostics=diagnostics) == []
+    assert diagnostics == [{"pid": "KURTA1", "exclusion_reason": "url_audience_conflict"}]
+    context = prepare_context("women cotton kurta", [product], allow_slug_override=True)
+    assert len(context) == 1 and context[0]["audience_warning"]
+
+
+def test_explicit_conflict_stays_excluded_under_experimental_policy():
+    product = {**WOMENS_KURTA, "product_details": {"Ideal For": "Men"}}
+    diagnostics = []
+    assert prepare_context("women kurta", [product], allow_slug_override=True, diagnostics=diagnostics) == []
+    assert diagnostics == [{"pid": "KURTA1", "exclusion_reason": "explicit_audience_conflict"}]
+
+
+def test_prioritises_grounded_hood_attribute(generator_and_completion):
+    generator, complete = generator_and_completion
+    product = {**WOMENS_KURTA, "title": "Women Sweatshirt", "category": "Winter wear",
+               "product_details": {"Hooded": "Yes", "Ideal For": "Women"}}
+    complete.return_value.choices = [
+        Mock(message=Mock(content='{"pid":"KURTA1","evidence":["category"]}'))
+    ]
+    result = generator.generate_response("hooded sweatshirt", [product])
+    assert result.facts == (("Hooded", "Yes"), ("Category", "Winter wear"))
+
+
 def test_no_eligible_product_skips_the_api(generator_and_completion):
     generator, complete = generator_and_completion
     assert generator.generate_response("men cotton kurta", [WOMENS_KURTA]).status == "no_match"

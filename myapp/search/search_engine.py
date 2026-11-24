@@ -1,11 +1,49 @@
 """Expose the Part 3 ranker and product data to the web application."""
 
+import re
 from urllib.parse import urlsplit
 
 import pandas as pd
 
 from project_progress.part_1.preprocessing import parse_numeric_value
+from project_progress.part_3.corpus import check_top_k
 from project_progress.part_3.pipeline import SearchEngine as RankingEngine
+
+
+PRICE_EXPRESSION = re.compile(
+    r"\b(?P<operator>under|below|over|above|at\s+most|at\s+least)\s+"
+    r"₹?\s*(?P<amount>\d{1,3}(?:,\d{3})+|\d+)(?:\.(?P<decimal>\d{1,2}))?(?!\w|[,.]\d)",
+    re.IGNORECASE,
+)
+
+
+def split_price_constraints(query: str) -> tuple[str, list[tuple[str, float]]]:
+    """Extract explicit price comparisons in the catalogue's price units."""
+    constraints = []
+
+    def collect(match: re.Match) -> str:
+        amount = match["amount"].replace(",", "")
+        if match["decimal"] is not None:
+            amount += "." + match["decimal"]
+        constraints.append((" ".join(match["operator"].lower().split()), float(amount)))
+        return " "
+
+    return " ".join(PRICE_EXPRESSION.sub(collect, query).split()), constraints
+
+
+def _matches_price(price: float, constraints: list[tuple[str, float]]) -> bool:
+    if pd.isna(price):
+        return False
+    for operator, value in constraints:
+        if operator in {"under", "below"} and price >= value:
+            return False
+        if operator in {"over", "above"} and price <= value:
+            return False
+        if operator == "at most" and price > value:
+            return False
+        if operator == "at least" and price < value:
+            return False
+    return True
 
 
 def _web_url(value: object) -> str | None:
@@ -64,7 +102,16 @@ class SearchEngine:
 
     def search(self, query: str, top_k: int = 20) -> list[dict]:
         """Return up to top_k products in descending BM25 order."""
-        ranked_products = self.ranker.rank(query, "bm25", top_k=top_k)
+        check_top_k(top_k)
+        text, constraints = split_price_constraints(query)
+        if not text:
+            return []
+        ranked_products = self.ranker.rank(text, "bm25", top_k=None if constraints else top_k)
+        if constraints:
+            prices = self.ranker.products["price"]
+            ranked_products = [
+                (pid, score) for pid, score in ranked_products if _matches_price(prices.at[pid], constraints)
+            ][:top_k]
         return [_display_product(self.ranker.products.loc[pid]) for pid, _ in ranked_products]
 
     def get_product(self, pid: str) -> dict | None:

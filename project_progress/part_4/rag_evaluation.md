@@ -1,5 +1,7 @@
 # Live RAG comparison
 
+This is the frozen 12-query comparison from before the [search and recommendation refinements](refinements.md). Its retrieval counts, responses and judgements describe that run.
+
 The [frozen live responses](rag-comparison.json) cover the 12 queries in the [evaluation protocol](rag_evaluation_protocol.md). Both variants use the same initial BM25 top 20 and `openai/gpt-oss-20b` on Groq because the starter's original default was retired for the free tier. The original text of the starter prompt is preserved. One baseline request failed at the transport layer, was retried on its own, and is recorded in the snapshot metadata.
 
 ## Per-query judgements

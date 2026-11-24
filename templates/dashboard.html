@@ -54,6 +54,7 @@
         <p class="small text-muted">
             {{ metrics.clicks }} attributed clicks, including {{ metrics.summary_clicks }} from the AI summary.
             The rank of a summary click comes from its product's position in the search results.
+            {{ metrics.outbound_clicks }} original-listing clicks are tracked separately.
         </p>
         {{ bars(metrics.ranks, "Open a product from the results to record a click.") }}
     </section>

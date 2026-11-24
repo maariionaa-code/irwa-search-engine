@@ -120,6 +120,7 @@ class AnalyticsData:
         self._missions = defaultdict(list)
         self._searches = {}
         self._clicks = {}
+        self._outbound = []
         self._requests = []
         self._product_views = Counter()
 
@@ -213,6 +214,12 @@ class AnalyticsData:
             )
             return click_id
 
+    def log_outbound(self, search: SearchEvent | None, pid: str) -> None:
+        """Record a retailer link separately from attributable detail opens."""
+        if search is not None and pid in search.pids:
+            with self._lock:
+                self._outbound.append((search.id, pid, self._clock()))
+
     def log_return(self, click_id: str, search_id: str, visitor_id: str) -> bool:
         """Record one return to the click's results within the dwell window."""
         with self._lock:
@@ -284,6 +291,7 @@ class AnalyticsData:
                 "clicks": len(clicks),
                 "clicked_searches": len({event.search_id for event in clicks}),
                 "summary_clicks": sum(event.source == "summary" for event in clicks),
+                "outbound_clicks": sum(search_id in search_ids for search_id, _, _ in self._outbound),
                 "median_dwell": median(dwell) if dwell else None,
                 "dwell_count": len(dwell),
                 "missions": len(mission_visits),

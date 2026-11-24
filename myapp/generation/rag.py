@@ -26,6 +26,7 @@ distinct keys from the selected product's evidence object that support the
 selection). Do not include other keys or Markdown.
 For no match, return {"pid": "", "evidence": []}.
 The description helps you decide but cannot be listed as an evidence field.
+Prefer evidence that directly addresses explicit attributes in the query.
 """
 
 BASELINE_PROMPT = """
@@ -62,6 +63,11 @@ EVIDENCE_LABELS = {
     "audience": "Ideal for",
     "style": "Style",
     "availability": "Availability",
+    "hooded": "Hooded",
+    "fit": "Fit",
+    "sleeve": "Sleeve",
+    "generic_name": "Product type",
+    "color": "Colour",
 }
 
 AUDIENCE_LABELS = {
@@ -77,33 +83,45 @@ class RAGSummary:
     pid: str = ""
     title: str = ""
     facts: tuple[tuple[str, str], ...] = ()
+    audience_warning: bool = False
 
 
 def _audience(value: str) -> frozenset:
     return product_genders({}, preprocess_text(value))
 
 
-def _product_audience(product: dict, details: dict) -> set | None:
-    """Keep audiences that agree across the available catalogue signals."""
+def _product_audience(product: dict, details: dict, allow_slug_override: bool) -> tuple[set | None, str | None]:
+    """Separate conflicting explicit fields from a disagreement with the URL."""
     slug = unquote(urlsplit(product.get("url") or "").path).strip("/").split("/", 1)[0]
-    signals = [
-        _audience(details.get("ideal for", "")),
-        _audience(product.get("title") or ""),
-        _audience(slug.replace("-", " ")),
-    ]
+    attribute = _audience(details.get("ideal for", ""))
+    title = _audience(product.get("title") or "")
+    url = _audience(slug.replace("-", " "))
+    if attribute and title and not attribute & title:
+        return None, "explicit_audience_conflict"
+    signals = [attribute, title, url]
     known = [set(audiences) for audiences in signals if audiences]
     if not known:
-        return set()
-    return set.intersection(*known) or None
+        return set(), None
+    agreed = set.intersection(*known)
+    if agreed:
+        return agreed, None
+    if allow_slug_override and attribute & title:
+        return set(attribute & title), "url_audience_conflict"
+    return None, "url_audience_conflict"
 
 
-def prepare_context(query: str, products: list[dict]) -> list[dict]:
+def prepare_context(
+    query: str, products: list[dict], *, allow_slug_override: bool = False,
+    diagnostics: list[dict] | None = None,
+) -> list[dict]:
     """Build evidence for in-stock products consistent with explicit audiences."""
     wanted = _audience(query)
 
     context = []
     for product in products:
         if product.get("out_of_stock"):
+            if diagnostics is not None:
+                diagnostics.append({"pid": product["pid"], "exclusion_reason": "out_of_stock"})
             continue
 
         details = {
@@ -111,8 +129,11 @@ def prepare_context(query: str, products: list[dict]) -> list[dict]:
             for label, value in (product.get("product_details") or {}).items()
             if value is not None
         }
-        audiences = _product_audience(product, details)
+        audiences, conflict = _product_audience(product, details, allow_slug_override)
         if audiences is None or not wanted.issubset(audiences):
+            if diagnostics is not None:
+                reason = conflict if audiences is None else ("audience_mismatch" if audiences else "audience_unknown")
+                diagnostics.append({"pid": product["pid"], "exclusion_reason": reason})
             continue
 
         price = product.get("selling_price")
@@ -128,14 +149,37 @@ def prepare_context(query: str, products: list[dict]) -> list[dict]:
             "audience": ", ".join(AUDIENCE_LABELS[audience] for audience in sorted(audiences)),
             "style": details.get("type") or details.get("pattern"),
             "availability": "In stock" if product.get("out_of_stock") is not None else None,
+            "hooded": details.get("hooded"),
+            "fit": details.get("fit"),
+            "sleeve": details.get("sleeve"),
+            "generic_name": details.get("generic name"),
+            "color": details.get("color") or details.get("colour"),
         }
-        context.append({
+        item = {
             "pid": product["pid"],
             "title": product["title"],
             "description": (product.get("description") or "")[:240],
             "evidence": {field: value for field, value in fields.items() if value},
-        })
+        }
+        if conflict:
+            item["audience_warning"] = True
+        context.append(item)
     return context
+
+
+def _prioritise_evidence(query: str, names: list[str], available: dict) -> list[str]:
+    """Move requested catalogue fields ahead of less relevant model choices."""
+    words = set(preprocess_text(query))
+    requested = {
+        "hooded": {"hood"},
+        "fit": {"fit", "slim", "skinny"},
+        "sleeve": {"sleev", "sleeveless"},
+        "fabric": {"cotton", "denim", "wool", "leather", "polyester", "linen", "silk"},
+        "color": {"black", "blue", "white", "red", "green", "pink", "brown", "yellow", "grey", "gray"},
+        "generic_name": {"shoe", "jacket", "jean", "short", "sweatshirt", "kurta", "pant"},
+    }
+    priority = [field for field, cues in requested.items() if field in available and words & cues]
+    return list(dict.fromkeys([*priority, *names]))[:3]
 
 
 class RAGGenerator:
@@ -144,6 +188,7 @@ class RAGGenerator:
     def __init__(self, client: Groq | None = None):
         load_dotenv()
         self.model = os.getenv("GROQ_MODEL") or DEFAULT_MODEL
+        self.allow_slug_override = os.getenv("IRWA_RAG_RELAX_URL") == "1"
         api_key = os.getenv("GROQ_API_KEY")
         self._client = client
         if client is None and api_key:
@@ -178,7 +223,7 @@ class RAGGenerator:
 
     def generate_response(self, query: str, products: list[dict]) -> RAGSummary:
         """Validate the model's selection and display exact catalogue evidence."""
-        context = prepare_context(query, products)
+        context = prepare_context(query, products, allow_slug_override=self.allow_slug_override)
         if not context:
             return RAGSummary(status="no_match")
         if not self.configured:
@@ -218,7 +263,11 @@ class RAGGenerator:
         ):
             return RAGSummary(status="invalid_response")
 
+        evidence = _prioritise_evidence(query, evidence, product["evidence"])
         facts = tuple(
             (EVIDENCE_LABELS[field], product["evidence"][field]) for field in evidence
         )
-        return RAGSummary(status="ok", pid=pid, title=product["title"], facts=facts)
+        return RAGSummary(
+            status="ok", pid=pid, title=product["title"], facts=facts,
+            audience_warning=product.get("audience_warning", False),
+        )
