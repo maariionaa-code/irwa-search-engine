@@ -1,0 +1,2621 @@
+{
+  "mode": "live",
+  "model": "openai/gpt-oss-20b",
+  "ranker": "bm25",
+  "cases": [
+    {
+      "query": "women cotton kurta",
+      "retrieved": [
+        {
+          "pid": "KTAFZ8JECS48J3AG",
+          "title": "Women Solid Cotton Blend Straight Kurta  (Beige)"
+        },
+        {
+          "pid": "KTAFZ8JEBG2NZBPA",
+          "title": "Women Solid Cotton Blend Straight Kurta  (Yellow)"
+        },
+        {
+          "pid": "KTAFZ8JENRH668GH",
+          "title": "Women Solid Cotton Blend Straight Kurta  (Blue)"
+        },
+        {
+          "pid": "KTAFZ8JETTV87AZD",
+          "title": "Women Solid Cotton Blend Straight Kurta  (Light Green)"
+        },
+        {
+          "pid": "KTAF5SD2C3TJACQF",
+          "title": "Women Striped Cotton Blend Straight Kurta  (Pink)"
+        },
+        {
+          "pid": "KTAF5SD3WHM2V9HZ",
+          "title": "Women Printed Cotton Blend Straight Kurta  (Orange)"
+        },
+        {
+          "pid": "KTAFD2U8FHZRECCF",
+          "title": "Women Self Design Cotton Blend Straight Kurta  (Black)"
+        },
+        {
+          "pid": "KTAFD2U8ZGHHHNYF",
+          "title": "Women Self Design Cotton Blend Straight Kurta  (Black)"
+        },
+        {
+          "pid": "KTAFZPA5GRMYWAJ9",
+          "title": "Women Striped Cotton Blend Straight Kurta  (Yellow)"
+        },
+        {
+          "pid": "ETHFVVZRBSXSEU7A",
+          "title": "Women Kurta and Churidar Set Cotton Blend"
+        },
+        {
+          "pid": "ETHFVVZRZYBXZB7A",
+          "title": "Women Kurta and Churidar Set Cotton Blend"
+        },
+        {
+          "pid": "KTAFD2UBHHZNSX2B",
+          "title": "Women Embroidered Cotton Blend Straight Kurta  (Blue)"
+        },
+        {
+          "pid": "KTAFD2UBNRWRAQJW",
+          "title": "Women Embroidered Cotton Blend Straight Kurta  (Red)"
+        },
+        {
+          "pid": "KTAFD2UBPY9HHSY6",
+          "title": "Women Embroidered Cotton Blend Straight Kurta  (Maroon)"
+        },
+        {
+          "pid": "ETHFZDS5FXFK9W9X",
+          "title": "Women Kurta and Pyjama Set Cambric, Cambric"
+        },
+        {
+          "pid": "ETHFUYQWUPWYP6KZ",
+          "title": "Women Kurta and Churidar Set Cotton Blend"
+        },
+        {
+          "pid": "ETHFVVZR4UPF3Z7Q",
+          "title": "Women Kurta and Churidar Set Cotton Blend"
+        },
+        {
+          "pid": "ETHFVVZREVPNSKW6",
+          "title": "Women Kurta and Churidar Set Cotton Blend"
+        },
+        {
+          "pid": "ETHFVVZRMARGQAHJ",
+          "title": "Women Kurta and Churidar Set Cotton Blend"
+        },
+        {
+          "pid": "ETHFVVZRZMFZD3CB",
+          "title": "Women Kurta and Churidar Set Cotton Blend"
+        }
+      ],
+      "improved_context": [],
+      "baseline": {
+        "status": "completed",
+        "text": "- Best Product: KTAFZ8JECS48J3AG Women Solid Cotton Blend Straight Kurta  (Beige)  \n- Why: This kurta is a classic solid cotton‑blend style, offering a comfortable fit and breathable fabric ideal for everyday wear. The beige color is versatile and pairs well with a variety of bottoms, making it a practical choice for a wide range of occasions.  \n- Alternative: KTAFZ8JEBG2NZBPA Women Solid Cotton Blend Straight Kurta  (Yellow)"
+      },
+      "improved": {
+        "status": "no_match",
+        "pid": "",
+        "title": "",
+        "facts": []
+      }
+    },
+    {
+      "query": "men running shoes",
+      "retrieved": [
+        {
+          "pid": "SHOFC585JH9RGXWG",
+          "title": "Cricket Shoes For Women  (White)"
+        },
+        {
+          "pid": "SHOESS9ZEZ6TEQUJ",
+          "title": "Running Shoes For Men  (Multicolor)"
+        },
+        {
+          "pid": "SHOESS9ZGMH7CURM",
+          "title": "Running Shoes For Men  (Multicolor)"
+        },
+        {
+          "pid": "SHOEP5GUQYYFKYSN",
+          "title": "Running Shoes For Women  (White)"
+        },
+        {
+          "pid": "SHOEKNRJ34UCMAPA",
+          "title": "SPRINT Running Shoes For Men  (Black, Grey)"
+        },
+        {
+          "pid": "SHOEKNRJGEYJCDQK",
+          "title": "SPRINT Running Shoes For Men  (Blue, Grey)"
+        },
+        {
+          "pid": "SHOEWQKVSGFGXPQF",
+          "title": "Running Shoes For Men  (Blue)"
+        },
+        {
+          "pid": "SHOFN3EJVGC9VXYT",
+          "title": "RS-7200 Running Shoes For Men  (Navy)"
+        },
+        {
+          "pid": "SHOFN3EJHXHGSGUC",
+          "title": "RS-7250 Running Shoes For Men  (Black)"
+        },
+        {
+          "pid": "SHOFN3EFNYGBKZT7",
+          "title": "RS-7050 Running Shoes For Men  (Blue, Navy)"
+        },
+        {
+          "pid": "SHOFUH9JBHVZC5TU",
+          "title": "Sneakers For Women  (Red)"
+        },
+        {
+          "pid": "SHOFN3EJZVGC6GH8",
+          "title": "RS-7250 Running Shoes For Women  (Navy)"
+        },
+        {
+          "pid": "SHOEYF5UHUUH5ADZ",
+          "title": "Running Shoes For Women  (Blue, Orange)"
+        },
+        {
+          "pid": "SHOF5BDSWHAMZHSU",
+          "title": "Running Shoes For Men  (White)"
+        },
+        {
+          "pid": "SOCFVYHYZFJ4FFNG",
+          "title": "Men Solid Low Cut, Peds/Footie/No-Show  (Pack of 6)"
+        },
+        {
+          "pid": "SHOE9A6HHNQUGQ7C",
+          "title": "Rs-5014 Running Shoes For Men  (Red, Grey)"
+        },
+        {
+          "pid": "SHOFTZFPNCU4VWHK",
+          "title": "Running Shoes For Men  (Black)"
+        },
+        {
+          "pid": "SHOFTZFQQYKC8HY6",
+          "title": "Running Shoes For Men  (Yellow)"
+        },
+        {
+          "pid": "SHOFUH52V5AVNHMN",
+          "title": "Loafers For Men  (Black)"
+        },
+        {
+          "pid": "SHOE9R2HZDSZZZKD",
+          "title": "Bolt Spike Running Shoes For Women  (Multicolor)"
+        }
+      ],
+      "improved_context": [
+        {
+          "pid": "SHOESS9ZEZ6TEQUJ",
+          "title": "Running Shoes For Men  (Multicolor)",
+          "description": "",
+          "evidence": {
+            "category": "Men's Footwear",
+            "brand": "Vector",
+            "selling_price": "1,440.00",
+            "discount": "9%",
+            "average_rating": "4.3",
+            "audience": "Men",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "SHOESS9ZGMH7CURM",
+          "title": "Running Shoes For Men  (Multicolor)",
+          "description": "",
+          "evidence": {
+            "category": "Men's Footwear",
+            "brand": "Vector",
+            "selling_price": "1,440.00",
+            "discount": "9%",
+            "average_rating": "3.7",
+            "audience": "Men",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "SHOEKNRJ34UCMAPA",
+          "title": "SPRINT Running Shoes For Men  (Black, Grey)",
+          "description": "",
+          "evidence": {
+            "category": "Men's Footwear",
+            "brand": "Vector",
+            "selling_price": "490.00",
+            "discount": "1%",
+            "average_rating": "3.7",
+            "audience": "Men",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "SHOEKNRJGEYJCDQK",
+          "title": "SPRINT Running Shoes For Men  (Blue, Grey)",
+          "description": "",
+          "evidence": {
+            "category": "Men's Footwear",
+            "brand": "Vector",
+            "selling_price": "490.00",
+            "discount": "1%",
+            "average_rating": "3.7",
+            "audience": "Men",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "SHOEWQKVSGFGXPQF",
+          "title": "Running Shoes For Men  (Blue)",
+          "description": "",
+          "evidence": {
+            "category": "Men's Footwear",
+            "brand": "Vector",
+            "selling_price": "1,520.00",
+            "discount": "1%",
+            "average_rating": "3.3",
+            "audience": "Men",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "SHOFN3EJVGC9VXYT",
+          "title": "RS-7200 Running Shoes For Men  (Navy)",
+          "description": "sports shoes",
+          "evidence": {
+            "category": "Men's Footwear",
+            "brand": "Vector",
+            "selling_price": "990.00",
+            "discount": "9%",
+            "average_rating": "3.9",
+            "audience": "Men",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "SHOFN3EJHXHGSGUC",
+          "title": "RS-7250 Running Shoes For Men  (Black)",
+          "description": "sports shoes",
+          "evidence": {
+            "category": "Men's Footwear",
+            "brand": "Vector",
+            "selling_price": "990.00",
+            "discount": "9%",
+            "average_rating": "3.9",
+            "audience": "Men",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "SHOFN3EFNYGBKZT7",
+          "title": "RS-7050 Running Shoes For Men  (Blue, Navy)",
+          "description": "sports shoes",
+          "evidence": {
+            "category": "Men's Footwear",
+            "brand": "Vector",
+            "selling_price": "810.00",
+            "discount": "9%",
+            "average_rating": "3.9",
+            "audience": "Men",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "SHOF5BDSWHAMZHSU",
+          "title": "Running Shoes For Men  (White)",
+          "description": "Vector-X is one of the best brands for school shoes, particularly when it comes to durability, good fit and comfort levels. These shoes are lightweight, flexible and they have anti-bacterial linings to stop little tootsies getting hot and s",
+          "evidence": {
+            "category": "Men's Footwear",
+            "brand": "Vector",
+            "selling_price": "720.00",
+            "discount": "9%",
+            "average_rating": "4.1",
+            "audience": "Men",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "SOCFVYHYZFJ4FFNG",
+          "title": "Men Solid Low Cut, Peds/Footie/No-Show  (Pack of 6)",
+          "description": "Wear with your favorite golf shoes, dress shoes, deck shoes, boat shoes, running shoes, climbing shoes, athletic shoes, or any of your other favorite shoes. Your feet need to be comfortable in order for the rest of your body to feel comfort",
+          "evidence": {
+            "category": "Clothing Accessories",
+            "brand": "Aeload",
+            "selling_price": "249.00",
+            "discount": "68%",
+            "average_rating": "4.2",
+            "fabric": "Cotton Blend",
+            "audience": "Men",
+            "style": "Low Cut, Peds/Footie/No-Show Socks",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "SHOE9A6HHNQUGQ7C",
+          "title": "Rs-5014 Running Shoes For Men  (Red, Grey)",
+          "description": "Vector X Is One Of The Established Sports Brands Who Provide Stylish And Innovative Sports Gear To Most Of The Aspiring Sport Players As Well As Others. As A Brand They Have Produced Thousands Of Spectacular Gear Which Have Been Used By Num",
+          "evidence": {
+            "category": "Men's Footwear",
+            "brand": "Vector",
+            "selling_price": "1,350.00",
+            "discount": "9%",
+            "average_rating": "1",
+            "audience": "Men",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "SHOFTZFPNCU4VWHK",
+          "title": "Running Shoes For Men  (Black)",
+          "description": "",
+          "evidence": {
+            "category": "Men's Footwear",
+            "brand": "Bone",
+            "selling_price": "379.00",
+            "discount": "62%",
+            "average_rating": "4.1",
+            "audience": "Men",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "SHOFTZFQQYKC8HY6",
+          "title": "Running Shoes For Men  (Yellow)",
+          "description": "",
+          "evidence": {
+            "category": "Men's Footwear",
+            "brand": "Bone",
+            "selling_price": "341.00",
+            "discount": "65%",
+            "average_rating": "4.1",
+            "audience": "Men",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "SHOFUH52V5AVNHMN",
+          "title": "Loafers For Men  (Black)",
+          "description": "Bonexy, a brand well known for its domination over the footwear industry has brought the legacy of stupendously awesome products, innovations and supreme technology to India. Rockfield understands the dynamic Indian footwear market and offe",
+          "evidence": {
+            "category": "Men's Footwear",
+            "brand": "Bone",
+            "selling_price": "474.00",
+            "discount": "52%",
+            "average_rating": "3.9",
+            "audience": "Men",
+            "availability": "In stock"
+          }
+        }
+      ],
+      "baseline": {
+        "status": "completed",
+        "text": "- Best Product: SHOESS9ZEZ6TEQUJ Running Shoes For Men  (Multicolor)  \n- Why: This shoe is specifically marketed as a men’s running shoe, offering a versatile multicolor design that suits a variety of styles. It’s listed among the running shoe options, indicating it’s built for performance and comfort during runs.  \n- Alternative (optional): SHOFN3EJHXHGSGUC RS-7250 Running Shoes For Men  (Black)"
+      },
+      "improved": {
+        "status": "ok",
+        "pid": "SHOFTZFPNCU4VWHK",
+        "title": "Running Shoes For Men  (Black)",
+        "facts": [
+          [
+            "Brand",
+            "Bone"
+          ],
+          [
+            "Selling price",
+            "379.00"
+          ],
+          [
+            "Discount",
+            "62%"
+          ]
+        ]
+      }
+    },
+    {
+      "query": "men slim fit jeans",
+      "retrieved": [
+        {
+          "pid": "JEAEHGRJSGGYEYYX",
+          "title": "Slim Men Light Blue Jeans"
+        },
+        {
+          "pid": "JEAFGKA5JZKHHFPT",
+          "title": "Slim Men Multicolor Jeans  (Pack of 2)"
+        },
+        {
+          "pid": "JEAFGKAYFHRPXFXZ",
+          "title": "Slim Men Multicolor Jeans  (Pack of 2)"
+        },
+        {
+          "pid": "JEAEJYZ8KAGSABDQ",
+          "title": "Slim Men Dark Blue Jeans"
+        },
+        {
+          "pid": "JEAFDZRVABZZ2PQ3",
+          "title": "Stretchable Slim Men Blue Jeans  (Pack of 2)"
+        },
+        {
+          "pid": "JEAFEC2HZNJ6ERBY",
+          "title": "Slim Men Black Jeans"
+        },
+        {
+          "pid": "JEAFEC2HZZPPTFNJ",
+          "title": "Slim Men Green Jeans"
+        },
+        {
+          "pid": "JEAFDWG9K7KPKHS8",
+          "title": "Slim Men Blue Jeans"
+        },
+        {
+          "pid": "JEAFEC2GEMGBWHA5",
+          "title": "Slim Men Light Blue Jeans"
+        },
+        {
+          "pid": "JEAFEC2GUMAQWGFB",
+          "title": "Slim Men Multicolor Jeans  (Pack of 2)"
+        },
+        {
+          "pid": "JEAFEC2HCNHW8V3K",
+          "title": "Slim Men Multicolor Jeans  (Pack of 2)"
+        },
+        {
+          "pid": "JEAFEC2HJZPZQRGQ",
+          "title": "Slim Men Multicolor Jeans  (Pack of 2)"
+        },
+        {
+          "pid": "JEAFEC2HNSNFUWQ8",
+          "title": "Slim Men Multicolor Jeans  (Pack of 2)"
+        },
+        {
+          "pid": "JEAEVJGUSXRNSHRY",
+          "title": "Slim Men Dark Blue Jeans"
+        },
+        {
+          "pid": "JEAF6VAUCH2HCSSD",
+          "title": "Stretchable Slim Men Black Jeans"
+        },
+        {
+          "pid": "JEAFDWCPDCVQAA3T",
+          "title": "Slim Men Green, Blue Jeans  (Pack of 2)"
+        },
+        {
+          "pid": "JEAFDWC8NGRWDHRS",
+          "title": "Slim Men Blue Jeans"
+        },
+        {
+          "pid": "JEAFVMMSRYBGDQQ2",
+          "title": "Slim Men White Jeans"
+        },
+        {
+          "pid": "JEAFDHHGY3HBXEMP",
+          "title": "Stretchable Regular Men Blue Jeans"
+        },
+        {
+          "pid": "JEAFEC2GEYFEWMVM",
+          "title": "Slim Men Multicolor Jeans  (Pack of 2)"
+        }
+      ],
+      "improved_context": [
+        {
+          "pid": "JEAEHGRJSGGYEYYX",
+          "title": "Slim Men Light Blue Jeans",
+          "description": "Uber Urban Poly Cotton Lycra Slim Fit PIUS Jeans For Mens",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "Uber Urb",
+            "selling_price": "699.00",
+            "discount": "30%",
+            "average_rating": "3",
+            "fabric": "Cotton Lycra Blend",
+            "audience": "Men",
+            "style": "Solid",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "JEAFGKA5JZKHHFPT",
+          "title": "Slim Men Multicolor Jeans  (Pack of 2)",
+          "description": "NEBRASKA Slim Fit Men Men Streachable Jeans",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "NEBRAS",
+            "selling_price": "1,275.00",
+            "discount": "57%",
+            "average_rating": "3.9",
+            "fabric": "Denim",
+            "audience": "Men",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "JEAFGKAYFHRPXFXZ",
+          "title": "Slim Men Multicolor Jeans  (Pack of 2)",
+          "description": "NEBRASKA Slim Fit Men Men Streachable Jeans",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "NEBRAS",
+            "selling_price": "1,275.00",
+            "discount": "57%",
+            "average_rating": "3.9",
+            "fabric": "Denim",
+            "audience": "Men",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "JEAEJYZ8KAGSABDQ",
+          "title": "Slim Men Dark Blue Jeans",
+          "description": "Look cool and feel relaxed in these jeans for men, made from stretch denim, these slim-fit jeans make a trendy and comfortable inclusion into your casual wear range. You can team these jeans with a t-shirt or casual shirt of your choice to ",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "Inspi",
+            "selling_price": "854.00",
+            "discount": "57%",
+            "average_rating": "3",
+            "fabric": "Cotton Blend",
+            "audience": "Men",
+            "style": "Solid",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "JEAFDZRVABZZ2PQ3",
+          "title": "Stretchable Slim Men Blue Jeans  (Pack of 2)",
+          "description": "Authentic Mens Slim Fit Jean. This jean is constructed with durable materials built for long-lasting comfort. These jeans sit below the waist with a slim fit from hip to ankle. This pair has just the right amount of stretch for all-day comf",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "NEBRAS",
+            "selling_price": "1,275.00",
+            "discount": "57%",
+            "average_rating": "3.9",
+            "fabric": "Cotton Lycra Blend",
+            "audience": "Men",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "JEAFEC2HZNJ6ERBY",
+          "title": "Slim Men Black Jeans",
+          "description": "Authentic Mens Slim Fit Jean. This jean is constructed with durable materials built for long-lasting comfort. These jeans sit below the waist with a slim fit from hip to ankle. This pair has just the right amount of stretch for all-day comf",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "NEBRAS",
+            "selling_price": "699.00",
+            "discount": "53%",
+            "average_rating": "3.6",
+            "fabric": "Denim",
+            "audience": "Men",
+            "style": "Acid Washed",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "JEAFEC2HZZPPTFNJ",
+          "title": "Slim Men Green Jeans",
+          "description": "Authentic Mens Slim Fit Jean. This jean is constructed with durable materials built for long-lasting comfort. These jeans sit below the waist with a slim fit from hip to ankle. This pair has just the right amount of stretch for all-day comf",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "NEBRAS",
+            "selling_price": "699.00",
+            "discount": "53%",
+            "average_rating": "3.9",
+            "fabric": "Denim",
+            "audience": "Men",
+            "style": "Acid Washed",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "JEAFDWG9K7KPKHS8",
+          "title": "Slim Men Blue Jeans",
+          "description": "Authentic Mens Slim Fit Jean. This jean is constructed with durable materials built for long-lasting comfort. These jeans sit below the waist with a slim fit from hip to ankle. This pair has just the right amount of stretch for all-day comf",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "NEBRAS",
+            "selling_price": "599.00",
+            "discount": "60%",
+            "average_rating": "4.1",
+            "fabric": "Cotton Lycra Blend",
+            "audience": "Men",
+            "style": "Washed",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "JEAFEC2GEMGBWHA5",
+          "title": "Slim Men Light Blue Jeans",
+          "description": "Authentic Mens Slim Fit Jean. This jean is constructed with durable materials built for long-lasting comfort. These jeans sit below the waist with a slim fit from hip to ankle. This pair has just the right amount of stretch for all-day comf",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "NEBRAS",
+            "selling_price": "629.00",
+            "discount": "58%",
+            "average_rating": "3.9",
+            "fabric": "Denim",
+            "audience": "Men",
+            "style": "Acid Washed",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "JEAFEC2GUMAQWGFB",
+          "title": "Slim Men Multicolor Jeans  (Pack of 2)",
+          "description": "Authentic Mens Slim Fit Jean. This jean is constructed with durable materials built for long-lasting comfort. These jeans sit below the waist with a slim fit from hip to ankle. This pair has just the right amount of stretch for all-day comf",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "NEBRAS",
+            "selling_price": "1,275.00",
+            "discount": "57%",
+            "average_rating": "4",
+            "fabric": "Denim",
+            "audience": "Men",
+            "style": "Acid Washed",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "JEAFEC2HCNHW8V3K",
+          "title": "Slim Men Multicolor Jeans  (Pack of 2)",
+          "description": "Authentic Mens Slim Fit Jean. This jean is constructed with durable materials built for long-lasting comfort. These jeans sit below the waist with a slim fit from hip to ankle. This pair has just the right amount of stretch for all-day comf",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "NEBRAS",
+            "selling_price": "1,275.00",
+            "discount": "57%",
+            "average_rating": "3.9",
+            "fabric": "Denim",
+            "audience": "Men",
+            "style": "Acid Washed",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "JEAFEC2HJZPZQRGQ",
+          "title": "Slim Men Multicolor Jeans  (Pack of 2)",
+          "description": "Authentic Mens Slim Fit Jean. This jean is constructed with durable materials built for long-lasting comfort. These jeans sit below the waist with a slim fit from hip to ankle. This pair has just the right amount of stretch for all-day comf",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "NEBRAS",
+            "selling_price": "1,275.00",
+            "discount": "57%",
+            "average_rating": "2",
+            "fabric": "Denim",
+            "audience": "Men",
+            "style": "Washed",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "JEAFEC2HNSNFUWQ8",
+          "title": "Slim Men Multicolor Jeans  (Pack of 2)",
+          "description": "Authentic Mens Slim Fit Jean. This jean is constructed with durable materials built for long-lasting comfort. These jeans sit below the waist with a slim fit from hip to ankle. This pair has just the right amount of stretch for all-day comf",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "NEBRAS",
+            "selling_price": "1,275.00",
+            "discount": "57%",
+            "average_rating": "3.9",
+            "fabric": "Denim",
+            "audience": "Men",
+            "style": "Washed",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "JEAEVJGUSXRNSHRY",
+          "title": "Slim Men Dark Blue Jeans",
+          "description": "Absolute High quality Smart-fit Dark Blue Jeans For Men's",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "Absolu",
+            "selling_price": "489.00",
+            "discount": "53%",
+            "average_rating": "3.8",
+            "fabric": "Cotton Blend",
+            "audience": "Men",
+            "style": "Solid",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "JEAF6VAUCH2HCSSD",
+          "title": "Stretchable Slim Men Black Jeans",
+          "description": "Authentic Mens Slim Fit Jean. This jean is constructed with durable materials built for long-lasting comfort. These jeans sit below the waist with a slim fit from hip to ankle. This pair has just the right amount of stretch for all-day comf",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "NEBRAS",
+            "selling_price": "699.00",
+            "discount": "53%",
+            "average_rating": "4",
+            "fabric": "Denim",
+            "audience": "Men",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "JEAFDWCPDCVQAA3T",
+          "title": "Slim Men Green, Blue Jeans  (Pack of 2)",
+          "description": "Authentic Mens Slim Fit Jean. This jean is constructed with durable materials built for long-lasting comfort. These jeans sit below the waist with a slim fit from hip to ankle. This pair has just the right amount of stretch for all-day comf",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "NEBRAS",
+            "selling_price": "1,275.00",
+            "discount": "57%",
+            "average_rating": "3.7",
+            "fabric": "Cotton Lycra Blend",
+            "audience": "Men",
+            "style": "Washed",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "JEAFDWC8NGRWDHRS",
+          "title": "Slim Men Blue Jeans",
+          "description": "Authentic Mens Slim Fit Jean. This jean is constructed with durable materials built for long-lasting comfort. These jeans sit below the waist with a slim fit from hip to ankle. This pair has just the right amount of stretch for all-day comf",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "NEBRAS",
+            "selling_price": "649.00",
+            "discount": "56%",
+            "average_rating": "3.8",
+            "fabric": "Cotton Lycra Blend",
+            "audience": "Men",
+            "style": "Washed",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "JEAFVMMSRYBGDQQ2",
+          "title": "Slim Men White Jeans",
+          "description": "? It has side strip both side with Stylish Logos, tattos and funky look.  ? Jeans is crafted in soft denim with a slim fit and Real Denim for added comfort .  ? The material is very good you can wear this jeans regularly.  ? what you see is",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "Reliable Ca",
+            "selling_price": "799.00",
+            "discount": "36%",
+            "average_rating": "4.1",
+            "fabric": "Denim",
+            "audience": "Men",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "JEAFDHHGY3HBXEMP",
+          "title": "Stretchable Regular Men Blue Jeans",
+          "description": "Authentic Mens Slim Fit Jean. This jean is constructed with durable materials built for long-lasting comfort. These jeans sit below the waist with a slim fit from hip to ankle. This pair has just the right amount of stretch for all-day comf",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "NEBRAS",
+            "selling_price": "629.00",
+            "discount": "58%",
+            "average_rating": "3.6",
+            "fabric": "Cotton Lycra Blend",
+            "audience": "Men",
+            "style": "Acid Washed",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "JEAFEC2GEYFEWMVM",
+          "title": "Slim Men Multicolor Jeans  (Pack of 2)",
+          "description": "Authentic Mens Slim Fit Jean. This jean is constructed with durable materials built for long-lasting comfort. These jeans sit below the waist with a slim fit from hip to ankle. This pair has just the right amount of stretch for all-day comf",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "NEBRAS",
+            "selling_price": "1,275.00",
+            "discount": "57%",
+            "average_rating": "3.9",
+            "fabric": "Denim",
+            "audience": "Men",
+            "style": "Acid Washed",
+            "availability": "In stock"
+          }
+        }
+      ],
+      "baseline": {
+        "status": "completed",
+        "text": "- Best Product: JEAFDWG9K7KPKHS8 Slim Men Blue Jeans  \n- Why: This is a single pair of slim‑fit jeans in a classic blue color, offering a versatile and timeless look that works well for both casual and semi‑formal occasions. It’s a straightforward choice without the extra cost of a pack, making it a practical and budget‑friendly option.  \n- Alternative (optional): JEAFDZRVABZZ2PQ3 Stretchable Slim Men Blue Jeans  (Pack of 2) – a good option if you want a second pair in the same style."
+      },
+      "improved": {
+        "status": "ok",
+        "pid": "JEAEHGRJSGGYEYYX",
+        "title": "Slim Men Light Blue Jeans",
+        "facts": [
+          [
+            "Category",
+            "Bottomwear"
+          ],
+          [
+            "Ideal for",
+            "Men"
+          ],
+          [
+            "Style",
+            "Solid"
+          ]
+        ]
+      }
+    },
+    {
+      "query": "zzzxxyynoresults",
+      "retrieved": [],
+      "improved_context": [],
+      "baseline": {
+        "status": "completed",
+        "text": "There are no good products that fit the request based on the retrieved results."
+      },
+      "improved": {
+        "status": "no_match",
+        "pid": "",
+        "title": "",
+        "facts": []
+      }
+    },
+    {
+      "query": "women full sleeve jacket",
+      "retrieved": [
+        {
+          "pid": "JCKFMV5WTASYK4Y2",
+          "title": "Full Sleeve Solid Women Casual Jacket"
+        },
+        {
+          "pid": "JCKFUUSN3YZPEJXP",
+          "title": "Full Sleeve Solid Women Casual Jacket"
+        },
+        {
+          "pid": "JCKFUUSPZCTSACGH",
+          "title": "Full Sleeve Solid Women Casual Jacket"
+        },
+        {
+          "pid": "JCKFYQGKUNHTVXCF",
+          "title": "Full Sleeve Solid Women Casual Jacket"
+        },
+        {
+          "pid": "JCKFYQGXDVYFKU3P",
+          "title": "Full Sleeve Solid Women Casual Jacket"
+        },
+        {
+          "pid": "JCKFWYNCWEHNZCTJ",
+          "title": "Full Sleeve Striped Women Casual Jacket"
+        },
+        {
+          "pid": "JCKEAMZNPZBAQY3Y",
+          "title": "Full Sleeve Self Design Women Bodycon Jacket"
+        },
+        {
+          "pid": "JCKFXQWYXH5QPSXV",
+          "title": "Full Sleeve Colorblock Women Sports Jacket"
+        },
+        {
+          "pid": "JCKFVVHNFANGGWNP",
+          "title": "Full Sleeve Solid Women Casual Jacket"
+        },
+        {
+          "pid": "JCKFVVHNUHUHMYSN",
+          "title": "Full Sleeve Solid Women Casual Jacket"
+        },
+        {
+          "pid": "JCKFVVHNHW89CS4E",
+          "title": "Full Sleeve Striped Women Casual Jacket"
+        },
+        {
+          "pid": "JCKFDXGQS6FGCTQ3",
+          "title": "Full Sleeve Checkered Women Bomber Jacket"
+        },
+        {
+          "pid": "JCKFDXGZGPYY3FUC",
+          "title": "Full Sleeve Checkered Women Casual Jacket"
+        },
+        {
+          "pid": "JCKFDXGZGQK5WSHK",
+          "title": "Full Sleeve Checkered Women Casual Jacket"
+        },
+        {
+          "pid": "JCKFY4B2XYFTKYWX",
+          "title": "Full Sleeve Solid Women Leather Jacket"
+        },
+        {
+          "pid": "JCKFY4B2ZXXFUBEH",
+          "title": "Full Sleeve Solid Women Leather Jacket"
+        },
+        {
+          "pid": "JCKFVVHN72FTTT9B",
+          "title": "Full Sleeve Colorblock Women Casual Jacket"
+        },
+        {
+          "pid": "JCKFVVHNFQYBYNGH",
+          "title": "Full Sleeve Striped Women Casual Jacket"
+        },
+        {
+          "pid": "JCKFVVHNG3ME8HYZ",
+          "title": "Full Sleeve Colorblock Women Casual Jacket"
+        },
+        {
+          "pid": "JCKFKGR4FADV7SZS",
+          "title": "Full Sleeve Colorblock Women Sports Jacket"
+        }
+      ],
+      "improved_context": [],
+      "baseline": {
+        "status": "completed",
+        "text": "- Best Product: JCKFMV5WTASYK4Y2 Full Sleeve Solid Women Casual Jacket  \n- Why: This jacket offers a classic solid color, full sleeves, and a casual style that’s versatile for everyday wear. It’s priced competitively among the listed options and has a clean, simple design that fits most body types.  \n- Alternative: JCKFUUSN3YZPEJXP Full Sleeve Solid Women Casual Jacket (identical style, just a different SKU)."
+      },
+      "improved": {
+        "status": "no_match",
+        "pid": "",
+        "title": "",
+        "facts": []
+      }
+    },
+    {
+      "query": "men cotton sports shorts",
+      "retrieved": [
+        {
+          "pid": "SRTEQ4873ZRGBPYJ",
+          "title": "Solid Men White Sports Shorts"
+        },
+        {
+          "pid": "SRTFZFYXJFFJYWDQ",
+          "title": "Solid Men Black Sports Shorts"
+        },
+        {
+          "pid": "SRTFZFYXWSZFEZ8C",
+          "title": "Solid Men Blue Sports Shorts"
+        },
+        {
+          "pid": "SRTFZ3KE4QTYBZGU",
+          "title": "Solid Men Dark Blue Sports Shorts"
+        },
+        {
+          "pid": "DHYFHFUJMNHJCYYR",
+          "title": "Color Block Men Multicolor Sports Shorts"
+        },
+        {
+          "pid": "SRTESGHGHQVJC77H",
+          "title": "Solid Men Blue Sports Shorts"
+        },
+        {
+          "pid": "SRTFZYYXKPMGCRDJ",
+          "title": "Solid Men Black Sports Shorts"
+        },
+        {
+          "pid": "SRTFDT7FAGUTMSVY",
+          "title": "Solid Men Blue Sports Shorts"
+        },
+        {
+          "pid": "SRTFDT7F8K7VAFWA",
+          "title": "Self Design Men Grey Sports Shorts"
+        },
+        {
+          "pid": "TKPF7NWYGHPBVFMA",
+          "title": "Solid Men Blue Sports Shorts"
+        },
+        {
+          "pid": "SRTEHZFHNM2MKMM3",
+          "title": "Solid Men Red Basic Shorts, Sports Shorts"
+        },
+        {
+          "pid": "SRTEHZFHVH6A9XHC",
+          "title": "Solid Men Dark Blue Basic Shorts, Sports Shorts"
+        },
+        {
+          "pid": "SRTEQKY62CMVFZNY",
+          "title": "Solid Men Black Beach Shorts, Gym Shorts, Night Shorts, Basic Shorts, Running Shorts, Boxer Shorts, Sports Shorts, Cycling Shorts"
+        },
+        {
+          "pid": "SRTESGH8B6STFGTF",
+          "title": "Solid Men Black Sports Shorts"
+        },
+        {
+          "pid": "JCKFWZ8HBF7C3HM3",
+          "title": "short_sleeve Solid Men Sports Jacket"
+        },
+        {
+          "pid": "JCKFWZ8HDMZZVYNC",
+          "title": "short_sleeve Solid Men Sports Jacket"
+        },
+        {
+          "pid": "SRTFWYYDASDR42FF",
+          "title": "Solid Men Black Sports Shorts"
+        },
+        {
+          "pid": "SRTF9FCRBFV27UGK",
+          "title": "Solid Men Grey Sports Shorts"
+        },
+        {
+          "pid": "SRTEDGDPDSMJNJFW",
+          "title": "Solid Men White Running Shorts"
+        },
+        {
+          "pid": "SRTFW4GC2JQEGDAC",
+          "title": "Solid Men Black Swim Shorts"
+        }
+      ],
+      "improved_context": [
+        {
+          "pid": "SRTEQ4873ZRGBPYJ",
+          "title": "Solid Men White Sports Shorts",
+          "description": "Actiwick™ Processed Extra Light Weight Shorts Crafted With Details To Soothe The Requirements As A Sports Person",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "T10 Spor",
+            "selling_price": "349.00",
+            "discount": "50%",
+            "average_rating": "2.3",
+            "fabric": "Cotton Blend",
+            "audience": "Men",
+            "style": "Sports Shorts",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "SRTFZFYXJFFJYWDQ",
+          "title": "Solid Men Black Sports Shorts",
+          "description": "F SHORT",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "adidas Origina",
+            "selling_price": "2,591.00",
+            "discount": "28%",
+            "average_rating": "4.5",
+            "fabric": "Cotton Viscose Blend",
+            "audience": "Men",
+            "style": "Sports Shorts",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "SRTFZ3KE4QTYBZGU",
+          "title": "Solid Men Dark Blue Sports Shorts",
+          "description": "CL D VECTOR REPEAT SHORTS",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "REEBOK CLASSI",
+            "selling_price": "1,739.00",
+            "discount": "42%",
+            "average_rating": "4.5",
+            "fabric": "Cotton Viscose Blend",
+            "audience": "Men",
+            "style": "Sports Shorts",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "DHYFHFUJMNHJCYYR",
+          "title": "Color Block Men Multicolor Sports Shorts",
+          "description": "",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "Oka",
+            "selling_price": "617.00",
+            "discount": "34%",
+            "average_rating": "3.8",
+            "fabric": "Cotton Blend",
+            "audience": "Men",
+            "style": "Sports Shorts",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "SRTESGHGHQVJC77H",
+          "title": "Solid Men Blue Sports Shorts",
+          "description": "All Sports Shorts: Multi Purpose Shorts With Technical And Strategic Usable Features Like Side Pockets And Low Light Visible Neon Strips And Reflectors Makes The Product Must Have For All Active Athletes : Dry Fit : Dry Fit",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "T10 Spor",
+            "selling_price": "649.00",
+            "discount": "50%",
+            "average_rating": "2.3",
+            "fabric": "Cotton Blend",
+            "audience": "Men",
+            "style": "Sports Shorts",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "SRTFZYYXKPMGCRDJ",
+          "title": "Solid Men Black Sports Shorts",
+          "description": "PRE GAME SHORT",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "adidas Origina",
+            "selling_price": "2,699.00",
+            "discount": "25%",
+            "average_rating": "3.5",
+            "fabric": "Cotton Blend",
+            "audience": "Men",
+            "style": "Sports Shorts",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "SRTFDT7FAGUTMSVY",
+          "title": "Solid Men Blue Sports Shorts",
+          "description": "Grab these men's short for anytime comfort. French terry fabric offers soft comfort for rest days, and an inseam gusset adds room and mobility. Plus, the ribbed waistband assists the fit.",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "REEB",
+            "selling_price": "1,959.00",
+            "discount": "30%",
+            "average_rating": "4.5",
+            "fabric": "Cotton Blend",
+            "audience": "Men",
+            "style": "Sports Shorts",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "SRTFDT7F8K7VAFWA",
+          "title": "Self Design Men Grey Sports Shorts",
+          "description": "Grab these men's short for anytime comfort. French terry fabric offers soft comfort for rest days, and an inseam gusset adds room and mobility. Plus, the ribbed waistband assists the fit.",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "REEB",
+            "selling_price": "1,959.00",
+            "discount": "30%",
+            "average_rating": "2.7",
+            "fabric": "Cotton Blend",
+            "audience": "Men",
+            "style": "Sports Shorts",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "TKPF7NWYGHPBVFMA",
+          "title": "Solid Men Blue Sports Shorts",
+          "description": "",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "REEB",
+            "selling_price": "1,424.00",
+            "discount": "25%",
+            "average_rating": "4",
+            "fabric": "Cotton Blend",
+            "audience": "Men",
+            "style": "Sports Shorts",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "SRTEHZFHNM2MKMM3",
+          "title": "Solid Men Red Basic Shorts, Sports Shorts",
+          "description": "TeeMoods Men's Sports Short-comfortable to wear. \nMade from 100% Premium Cotton, for smooth and soft feel. \nSoft Elastane Waistband, sits comfortably at waist.\nWith Cross Pockets.\nWith attractive Side Panel.\nIdeal for Sports activity, Night",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "TeeMoo",
+            "selling_price": "399.00",
+            "discount": "55%",
+            "average_rating": "3",
+            "fabric": "Cotton Blend",
+            "audience": "Men",
+            "style": "Basic Shorts, Sports Shorts",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "SRTEHZFHVH6A9XHC",
+          "title": "Solid Men Dark Blue Basic Shorts, Sports Shorts",
+          "description": "TeeMoods Men's Sports Short-comfortable to wear. \nMade from 100% Premium Cotton, for smooth and soft feel. \nSoft Elastane Waistband, sits comfortably at waist.\nWith Cross Pockets.\nWith attractive Side Panel.\nIdeal for Sports activity, Night",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "TeeMoo",
+            "selling_price": "399.00",
+            "discount": "55%",
+            "average_rating": "3",
+            "fabric": "Cotton Blend",
+            "audience": "Men",
+            "style": "Basic Shorts, Sports Shorts",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "SRTEQKY62CMVFZNY",
+          "title": "Solid Men Black Beach Shorts, Gym Shorts, Night Shorts, Basic Shorts, Running Shorts, Boxer Shorts, Sports Shorts, Cycling Shorts",
+          "description": "•\tDiscription - Build your summer workout collection with Dunamis regular fit anthra melange shorts. Created from soft fabric for optimum comfort, they feature zippered pockets and perforated panels down the side for breathability. Compleme",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "dunam",
+            "selling_price": "335.00",
+            "discount": "72%",
+            "average_rating": "3.9",
+            "fabric": "Polycotton",
+            "audience": "Men",
+            "style": "Beach Shorts, Gym Shorts, Night Shorts, Basic Shorts, Running Shorts, Boxer Shorts, Sports Shorts, Cycling Shorts",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "SRTESGH8B6STFGTF",
+          "title": "Solid Men Black Sports Shorts",
+          "description": "Ultra Shorts: Extra Light Weight Running Shorts In Quarter Length With Inner Chaffing Resistant Perforated Compressor Breathable To Keep Inner Dry Outer Layer Have Two Concealed Zipped Pockets Water Resistant , Sides Are Highlighted With Ne",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "T10 Spor",
+            "selling_price": "999.00",
+            "discount": "50%",
+            "average_rating": "2.3",
+            "fabric": "Polycotton",
+            "audience": "Men",
+            "style": "Sports Shorts",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "JCKFWZ8HBF7C3HM3",
+          "title": "short_sleeve Solid Men Sports Jacket",
+          "description": "",
+          "evidence": {
+            "category": "Winter Wear",
+            "brand": "Cher",
+            "selling_price": "899.00",
+            "discount": "10%",
+            "average_rating": "2.2",
+            "fabric": "Cotton Blend",
+            "audience": "Men",
+            "style": "Sports Jacket",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "JCKFWZ8HDMZZVYNC",
+          "title": "short_sleeve Solid Men Sports Jacket",
+          "description": "",
+          "evidence": {
+            "category": "Winter Wear",
+            "brand": "Cher",
+            "selling_price": "1,099.00",
+            "discount": "15%",
+            "average_rating": "2.2",
+            "fabric": "Cotton Blend",
+            "audience": "Men",
+            "style": "Sports Jacket",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "SRTFWYYDASDR42FF",
+          "title": "Solid Men Black Sports Shorts",
+          "description": "Promote the free-living lifestyle wearing shorts by ATHLET. Made from cotton, these shorts will keep you comfortable throughout. Featuring an attractive color , these shorts will surely lend you a smart look. ATHLET is a western wear value ",
+          "evidence": {
+            "category": "Bottomwear",
+            "selling_price": "594.00",
+            "discount": "10%",
+            "average_rating": "3.7",
+            "fabric": "Hosiery",
+            "audience": "Men",
+            "style": "Sports Shorts",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "SRTF9FCRBFV27UGK",
+          "title": "Solid Men Grey Sports Shorts",
+          "description": "PRODUCT STORYTake your training to a new level of performance and style with these iconic sweat shorts. Designed with a timeless fit, this piece is crafted with a comfortable cotton-poly blend for a smooth and comfortable feel as you train.",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "Pu",
+            "selling_price": "1,049.00",
+            "discount": "30%",
+            "average_rating": "4.1",
+            "fabric": "Cotton Blend",
+            "audience": "Men",
+            "style": "Sports Shorts",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "SRTEDGDPDSMJNJFW",
+          "title": "Solid Men White Running Shorts",
+          "description": "Actiwick™ processed extra light weight Shorts crafted with details to soothe the requirements as a sports person",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "T10 Spor",
+            "selling_price": "478.00",
+            "discount": "52%",
+            "average_rating": "4.9",
+            "fabric": "Cotton Blend",
+            "audience": "Men",
+            "style": "Running Shorts",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "SRTFW4GC2JQEGDAC",
+          "title": "Solid Men Black Swim Shorts",
+          "description": "Can be used for all kinds of sports like Cycling, Gym, Cricket, Yoga, Hockey, Badminton, Swimming, Basketball,Basketball, Athletics , Tennis, Squash, Volleyball, Baseball, Exercise & Fitness, Running, Camping & Hiking, any Outdoor Activity.",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "Reen",
+            "selling_price": "265.00",
+            "discount": "33%",
+            "average_rating": "3.4",
+            "fabric": "Cotton Lycra Blend",
+            "audience": "Men",
+            "style": "Swim Shorts",
+            "availability": "In stock"
+          }
+        }
+      ],
+      "baseline": {
+        "status": "completed",
+        "text": "There are no good products that fit the request based on the retrieved results."
+      },
+      "improved": {
+        "status": "ok",
+        "pid": "SRTEQ4873ZRGBPYJ",
+        "title": "Solid Men White Sports Shorts",
+        "facts": [
+          [
+            "Fabric",
+            "Cotton Blend"
+          ],
+          [
+            "Ideal for",
+            "Men"
+          ],
+          [
+            "Style",
+            "Sports Shorts"
+          ]
+        ]
+      }
+    },
+    {
+      "query": "black track pants",
+      "retrieved": [
+        {
+          "pid": "TKPFGGWJMDQFKZ5Y",
+          "title": "Solid Women Black Track Pants"
+        },
+        {
+          "pid": "TKPFZMQ8YMWNGXEU",
+          "title": "Solid Men Black Track Pants"
+        },
+        {
+          "pid": "TKPFZG5ZGSZZGR5F",
+          "title": "Striped Women Black Track Pants"
+        },
+        {
+          "pid": "TKPEYQ6YNHW8FV5R",
+          "title": "Solid Men Black, Orange Track Pants"
+        },
+        {
+          "pid": "TKPFSMZ7SGZTHNJW",
+          "title": "Color Block Women Black Track Pants"
+        },
+        {
+          "pid": "TKPFZMZSWZN5HKEZ",
+          "title": "Solid Men Black Track Pants"
+        },
+        {
+          "pid": "TKPFNWG6GVFNXUVG",
+          "title": "Solid Men Black Track Pants"
+        },
+        {
+          "pid": "TKPFRR83HRGAYYJ6",
+          "title": "Solid Men Black Track Pants"
+        },
+        {
+          "pid": "TKPFRR83TFTU9TDV",
+          "title": "Solid Men Black Track Pants"
+        },
+        {
+          "pid": "TKPFRR83W2WEQGV3",
+          "title": "Solid Women Black Track Pants"
+        },
+        {
+          "pid": "TKPFRR83YNVYCUPN",
+          "title": "Solid Men Black Track Pants"
+        },
+        {
+          "pid": "TKPF3FPJNVVBKPRG",
+          "title": "Solid Men Blue, Black Track Pants"
+        },
+        {
+          "pid": "TKPF3FPKHNWZ3UMG",
+          "title": "Solid Men Blue, Black Track Pants"
+        },
+        {
+          "pid": "TKPF3FPKTYM55SAV",
+          "title": "Solid Men Black, Grey Track Pants"
+        },
+        {
+          "pid": "TKPF3FPMC6PGGGYH",
+          "title": "Solid Women Black, Grey Track Pants"
+        },
+        {
+          "pid": "TKPF3FPNZ5XCHZ6R",
+          "title": "Solid Men Black, Grey Track Pants"
+        },
+        {
+          "pid": "TKPF3FPQGCHXHGRM",
+          "title": "Solid Men Black, Grey Track Pants"
+        },
+        {
+          "pid": "TKPF3FPZRRJUWTAZ",
+          "title": "Solid Men Blue, Black Track Pants"
+        },
+        {
+          "pid": "TKPFWGWBQY8UZZUB",
+          "title": "Solid Women Black Track Pants"
+        },
+        {
+          "pid": "TKPFYHVE7SZNHTMR",
+          "title": "Solid Men Black, Blue Track Pants"
+        }
+      ],
+      "improved_context": [
+        {
+          "pid": "TKPFZMQ8YMWNGXEU",
+          "title": "Solid Men Black Track Pants",
+          "description": "This Track Pants offers a nice look and a perfect day-to-night Track Pants. Whatever the occasion this Track Pants will be your choice. The style you want and the feel you need all rolled into this Track Pants. Pair them with a printed vest",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "Linsd",
+            "selling_price": "399.00",
+            "discount": "60%",
+            "fabric": "Polyester Blend",
+            "audience": "Men",
+            "style": "Solid",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "TKPEYQ6YNHW8FV5R",
+          "title": "Solid Men Black, Orange Track Pants",
+          "description": "Look urban and feel relaxed by slipping into these black and orange coloured track pants for men from Fairdeals. Made from a polyester blend, these track pants are really comfortable to wear. You can team these track pants with a T-shirt of",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "Fairdea",
+            "selling_price": "375.00",
+            "discount": "46%",
+            "average_rating": "3.5",
+            "fabric": "Polycotton",
+            "audience": "Men",
+            "style": "Solid",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "TKPFZMZSWZN5HKEZ",
+          "title": "Solid Men Black Track Pants",
+          "description": "",
+          "evidence": {
+            "category": "Bottomwear",
+            "selling_price": "349.00",
+            "discount": "50%",
+            "average_rating": "2.1",
+            "fabric": "Polyester",
+            "audience": "Men",
+            "style": "Solid",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "TKPFNWG6GVFNXUVG",
+          "title": "Solid Men Black Track Pants",
+          "description": "",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "ARBO",
+            "selling_price": "521.00",
+            "discount": "50%",
+            "average_rating": "3.4",
+            "fabric": "Pure Cotton",
+            "audience": "Men",
+            "style": "Solid",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "TKPFRR83HRGAYYJ6",
+          "title": "Solid Men Black Track Pants",
+          "description": "",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "ECKO Unl",
+            "selling_price": "559.00",
+            "discount": "30%",
+            "average_rating": "2.5",
+            "fabric": "Cotton Blend",
+            "audience": "Men",
+            "style": "Solid",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "TKPFRR83TFTU9TDV",
+          "title": "Solid Men Black Track Pants",
+          "description": "",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "ECKO Unl",
+            "selling_price": "559.00",
+            "discount": "30%",
+            "average_rating": "2.5",
+            "fabric": "Cotton Blend",
+            "audience": "Men",
+            "style": "Solid",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "TKPFRR83YNVYCUPN",
+          "title": "Solid Men Black Track Pants",
+          "description": "",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "ECKO Unl",
+            "selling_price": "559.00",
+            "discount": "30%",
+            "average_rating": "3.4",
+            "fabric": "Cotton Blend",
+            "audience": "Men",
+            "style": "Solid",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "TKPF3FPJNVVBKPRG",
+          "title": "Solid Men Blue, Black Track Pants",
+          "description": "Look urban and feel relaxed by slipping into these track pants for men from Direction of Desire. Made from a polyester blend, these track pants are really comfortable to wear. You can team these track pants with a T-shirt of your choice to ",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "Fairdea",
+            "selling_price": "631.00",
+            "discount": "51%",
+            "average_rating": "2.6",
+            "fabric": "Polycotton",
+            "audience": "Men",
+            "style": "Solid",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "TKPF3FPKHNWZ3UMG",
+          "title": "Solid Men Blue, Black Track Pants",
+          "description": "Look urban and feel relaxed by slipping into these track pants for men from Direction of Desire. Made from a polyester blend, these track pants are really comfortable to wear. You can team these track pants with a T-shirt of your choice to ",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "Fairdea",
+            "selling_price": "538.00",
+            "discount": "58%",
+            "average_rating": "2.6",
+            "fabric": "Polycotton",
+            "audience": "Men",
+            "style": "Solid",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "TKPF3FPKTYM55SAV",
+          "title": "Solid Men Black, Grey Track Pants",
+          "description": "Look urban and feel relaxed by slipping into these track pants for men from Direction of Desire. Made from a polyester blend, these track pants are really comfortable to wear. You can team these track pants with a T-shirt of your choice to ",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "Fairdea",
+            "selling_price": "538.00",
+            "discount": "58%",
+            "average_rating": "2.6",
+            "fabric": "Polycotton",
+            "audience": "Men",
+            "style": "Solid",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "TKPF3FPNZ5XCHZ6R",
+          "title": "Solid Men Black, Grey Track Pants",
+          "description": "Look urban and feel relaxed by slipping into these track pants for men from Direction of Desire. Made from a polyester blend, these track pants are really comfortable to wear. You can team these track pants with a T-shirt of your choice to ",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "Fairdea",
+            "selling_price": "538.00",
+            "discount": "58%",
+            "average_rating": "2.6",
+            "fabric": "Polycotton",
+            "audience": "Men",
+            "style": "Solid",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "TKPF3FPQGCHXHGRM",
+          "title": "Solid Men Black, Grey Track Pants",
+          "description": "Look urban and feel relaxed by slipping into these track pants for men from Direction of Desire. Made from a polyester blend, these track pants are really comfortable to wear. You can team these track pants with a T-shirt of your choice to ",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "Fairdea",
+            "selling_price": "538.00",
+            "discount": "58%",
+            "average_rating": "2.6",
+            "fabric": "Polycotton",
+            "audience": "Men",
+            "style": "Solid",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "TKPF3FPZRRJUWTAZ",
+          "title": "Solid Men Blue, Black Track Pants",
+          "description": "Look urban and feel relaxed by slipping into these track pants for men from Direction of Desire. Made from a polyester blend, these track pants are really comfortable to wear. You can team these track pants with a T-shirt of your choice to ",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "Fairdea",
+            "selling_price": "538.00",
+            "discount": "58%",
+            "average_rating": "2.6",
+            "fabric": "Polycotton",
+            "audience": "Men",
+            "style": "Solid",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "TKPFYHVE7SZNHTMR",
+          "title": "Solid Men Black, Blue Track Pants",
+          "description": "",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "REAZ",
+            "selling_price": "684.00",
+            "discount": "63%",
+            "average_rating": "3.9",
+            "fabric": "Pure Cotton",
+            "audience": "Men",
+            "style": "Solid",
+            "availability": "In stock"
+          }
+        }
+      ],
+      "baseline": {
+        "status": "completed",
+        "text": "- Best Product: TKPFGGWJMDQFKZ5Y Solid Women Black Track Pants  \n- Why: This item is a classic solid black track pant, offering a versatile fit for both casual and athletic wear. It’s listed first among the retrieved results, suggesting it’s a primary or highlighted option, and it’s specifically labeled for women, providing a clear fit for that demographic.  \n- Alternative: TKPFZMQ8YMWNGXEU Solid Men Black Track Pants (for men)"
+      },
+      "improved": {
+        "status": "ok",
+        "pid": "TKPFZMQ8YMWNGXEU",
+        "title": "Solid Men Black Track Pants",
+        "facts": [
+          [
+            "Category",
+            "Bottomwear"
+          ],
+          [
+            "Brand",
+            "Linsd"
+          ],
+          [
+            "Selling price",
+            "399.00"
+          ]
+        ]
+      }
+    },
+    {
+      "query": "hooded sweatshirt",
+      "retrieved": [
+        {
+          "pid": "SWSFXZWGFKHNG88S",
+          "title": "Full Sleeve Solid Men Sweatshirt"
+        },
+        {
+          "pid": "SWSFXZWGMGVDUCXA",
+          "title": "Full Sleeve Printed Women Sweatshirt"
+        },
+        {
+          "pid": "SWSFXZWWYXPZXPTY",
+          "title": "Full Sleeve Printed Men Sweatshirt"
+        },
+        {
+          "pid": "SWSFYFFFMWQMAPJJ",
+          "title": "Full Sleeve Printed Men Sweatshirt"
+        },
+        {
+          "pid": "SWSFYFFYJCSGNGD8",
+          "title": "Full Sleeve Printed Men Sweatshirt"
+        },
+        {
+          "pid": "SWSFXZWGAFH4WFHV",
+          "title": "Full Sleeve Solid Women Sweatshirt"
+        },
+        {
+          "pid": "SWSFXZWGE4HCKG86",
+          "title": "Full Sleeve Solid Men Sweatshirt"
+        },
+        {
+          "pid": "SWSFXZWGGJYSWYK2",
+          "title": "Full Sleeve Printed Men Sweatshirt"
+        },
+        {
+          "pid": "SWSFXZWGSKPYAMHR",
+          "title": "Full Sleeve Solid Women Sweatshirt"
+        },
+        {
+          "pid": "SWSFXZWHCDGSHDUP",
+          "title": "Full Sleeve Solid Women Sweatshirt"
+        },
+        {
+          "pid": "SWSFXZWHHTZHZG6V",
+          "title": "Full Sleeve Solid Women Sweatshirt"
+        },
+        {
+          "pid": "SWSFXZWRDCTXHSHP",
+          "title": "Full Sleeve Printed Women Sweatshirt"
+        },
+        {
+          "pid": "SWSFXZWRDFRAWMN2",
+          "title": "Full Sleeve Solid Women Sweatshirt"
+        },
+        {
+          "pid": "SWSFXZWWCSGRZ3HT",
+          "title": "Full Sleeve Solid Women Sweatshirt"
+        },
+        {
+          "pid": "SWSFXZWWZ8QKXY6Y",
+          "title": "Full Sleeve Solid Men Sweatshirt"
+        },
+        {
+          "pid": "SWSFXZWUMUXNUHSZ",
+          "title": "Full Sleeve Solid Men Sweatshirt"
+        },
+        {
+          "pid": "SWSFYFFFZBZKUQUS",
+          "title": "Full Sleeve Printed Men Sweatshirt"
+        },
+        {
+          "pid": "SWSFYFFYFXCMPBDZ",
+          "title": "Full Sleeve Printed Women Sweatshirt"
+        },
+        {
+          "pid": "SWSFYFFYQ7Z3ZKN6",
+          "title": "Full Sleeve Printed Women Sweatshirt"
+        },
+        {
+          "pid": "SWSFXZWG7FZNSGZX",
+          "title": "Full Sleeve Solid Men Sweatshirt"
+        }
+      ],
+      "improved_context": [
+        {
+          "pid": "SWSFXZWGFKHNG88S",
+          "title": "Full Sleeve Solid Men Sweatshirt",
+          "description": "Mash Unlimited White  Hooded Sweatshirt",
+          "evidence": {
+            "category": "Winter Wear",
+            "brand": "MASH UNLIMIT",
+            "selling_price": "649.00",
+            "discount": "63%",
+            "average_rating": "3.2",
+            "fabric": "Cotton Blend",
+            "audience": "Men",
+            "style": "Solid",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "SWSFXZWWYXPZXPTY",
+          "title": "Full Sleeve Printed Men Sweatshirt",
+          "description": "Mash Unlimited Mustard  Hooded Sweatshirt",
+          "evidence": {
+            "category": "Winter Wear",
+            "brand": "MASH UNLIMIT",
+            "selling_price": "649.00",
+            "discount": "63%",
+            "average_rating": "3.2",
+            "fabric": "Cotton Blend",
+            "audience": "Men",
+            "style": "Printed",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "SWSFYFFFMWQMAPJJ",
+          "title": "Full Sleeve Printed Men Sweatshirt",
+          "description": "Mash Unlimited Mens White Hooded Sweatshirt",
+          "evidence": {
+            "category": "Winter Wear",
+            "brand": "MASH UNLIMIT",
+            "selling_price": "649.00",
+            "discount": "63%",
+            "average_rating": "3.2",
+            "fabric": "Cotton Blend",
+            "audience": "Men",
+            "style": "Printed",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "SWSFYFFYJCSGNGD8",
+          "title": "Full Sleeve Printed Men Sweatshirt",
+          "description": "Mash Unlimited Mens Maroon Hooded Sweatshirt",
+          "evidence": {
+            "category": "Winter Wear",
+            "brand": "MASH UNLIMIT",
+            "selling_price": "649.00",
+            "discount": "63%",
+            "average_rating": "3.2",
+            "fabric": "Cotton Blend",
+            "audience": "Men",
+            "style": "Printed",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "SWSFXZWGE4HCKG86",
+          "title": "Full Sleeve Solid Men Sweatshirt",
+          "description": "Mash Unlimited Charcoal  Hooded Sweatshirt",
+          "evidence": {
+            "category": "Winter Wear",
+            "brand": "MASH UNLIMIT",
+            "selling_price": "649.00",
+            "discount": "63%",
+            "average_rating": "3.2",
+            "fabric": "Cotton Blend",
+            "audience": "Men",
+            "style": "Solid",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "SWSFXZWGGJYSWYK2",
+          "title": "Full Sleeve Printed Men Sweatshirt",
+          "description": "Mash Unlimited Charcoal  Hooded Sweatshirt",
+          "evidence": {
+            "category": "Winter Wear",
+            "brand": "MASH UNLIMIT",
+            "selling_price": "649.00",
+            "discount": "63%",
+            "average_rating": "3.2",
+            "fabric": "Cotton Blend",
+            "audience": "Men",
+            "style": "Printed",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "SWSFXZWWZ8QKXY6Y",
+          "title": "Full Sleeve Solid Men Sweatshirt",
+          "description": "Mash Unlimited Black  Hooded Sweatshirt",
+          "evidence": {
+            "category": "Winter Wear",
+            "brand": "MASH UNLIMIT",
+            "selling_price": "649.00",
+            "discount": "63%",
+            "average_rating": "3.2",
+            "fabric": "Cotton Blend",
+            "audience": "Men",
+            "style": "Solid",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "SWSFXZWUMUXNUHSZ",
+          "title": "Full Sleeve Solid Men Sweatshirt",
+          "description": "Mash Unlimited Navy Red Zip And Hooded Sweatshirt",
+          "evidence": {
+            "category": "Winter Wear",
+            "brand": "MASH UNLIMIT",
+            "selling_price": "679.00",
+            "discount": "66%",
+            "average_rating": "3.2",
+            "fabric": "Cotton Blend",
+            "audience": "Men",
+            "style": "Solid",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "SWSFYFFFZBZKUQUS",
+          "title": "Full Sleeve Printed Men Sweatshirt",
+          "description": "Mash Unlimited Mens Maroon Zip & Hooded Sweatshirt",
+          "evidence": {
+            "category": "Winter Wear",
+            "brand": "MASH UNLIMIT",
+            "selling_price": "679.00",
+            "discount": "66%",
+            "average_rating": "3.2",
+            "fabric": "Cotton Blend",
+            "audience": "Men",
+            "style": "Printed",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "SWSFXZWG7FZNSGZX",
+          "title": "Full Sleeve Solid Men Sweatshirt",
+          "description": "Mash Unlimited Charcoal Zip And Hooded Sweatshirt",
+          "evidence": {
+            "category": "Winter Wear",
+            "brand": "MASH UNLIMIT",
+            "selling_price": "679.00",
+            "discount": "66%",
+            "average_rating": "3.2",
+            "fabric": "Cotton Blend",
+            "audience": "Men",
+            "style": "Solid",
+            "availability": "In stock"
+          }
+        }
+      ],
+      "baseline": {
+        "status": "completed",
+        "text": "There are no good products that fit the request based on the retrieved results."
+      },
+      "improved": {
+        "status": "ok",
+        "pid": "SWSFXZWGFKHNG88S",
+        "title": "Full Sleeve Solid Men Sweatshirt",
+        "facts": [
+          [
+            "Category",
+            "Winter Wear"
+          ],
+          [
+            "Style",
+            "Solid"
+          ],
+          [
+            "Availability",
+            "In stock"
+          ]
+        ]
+      }
+    },
+    {
+      "query": "denim jacket",
+      "retrieved": [
+        {
+          "pid": "JCKFMHKMYEWHQFNU",
+          "title": "Full Sleeve Printed Men Denim Casual Jacket"
+        },
+        {
+          "pid": "JCKFVJ54N4NZGPTP",
+          "title": "Full Sleeve Washed Men Denim Riding Jacket"
+        },
+        {
+          "pid": "JCKFURYWGYKVKFH3",
+          "title": "Full Sleeve Solid Men Denim Jacket"
+        },
+        {
+          "pid": "JCKFKKFZ7QB2KUQV",
+          "title": "Full Sleeve Washed Men Denim Jacket"
+        },
+        {
+          "pid": "JCKFKKFZMDEHEZQS",
+          "title": "Full Sleeve Washed Men Denim Jacket"
+        },
+        {
+          "pid": "JCKFZZN6AWQZ8FC2",
+          "title": "Full Sleeve Solid Men Denim Jacket"
+        },
+        {
+          "pid": "JCKFMHS8ANSPXK72",
+          "title": "Full Sleeve Printed Women Jacket"
+        },
+        {
+          "pid": "JCKFZJWZBZCCTYXM",
+          "title": "Full Sleeve Washed Men Denim Jacket"
+        },
+        {
+          "pid": "JCKFZJWZNCGGZGSE",
+          "title": "Full Sleeve Washed Men Denim Jacket"
+        },
+        {
+          "pid": "JCKFVDPW4WNPBGS2",
+          "title": "Full Sleeve Solid Men Denim Jacket"
+        },
+        {
+          "pid": "JCKFWC5YPXZG6S7F",
+          "title": "Full Sleeve Solid Men Denim Jacket"
+        },
+        {
+          "pid": "JCKFWC5YW4Z3YYZX",
+          "title": "Full Sleeve Solid Women Denim Jacket"
+        },
+        {
+          "pid": "JCKFWC5YZKFWXGEB",
+          "title": "Full Sleeve Solid Men Denim Jacket"
+        },
+        {
+          "pid": "JCKFXAKEY2ANHJGW",
+          "title": "Full Sleeve Solid Women Denim Jacket"
+        },
+        {
+          "pid": "JCKFYY97BC7KWPM4",
+          "title": "Full Sleeve Solid Men Denim Jacket"
+        },
+        {
+          "pid": "JCKFWC5YGQENYT6B",
+          "title": "Full Sleeve Solid Women Denim Jacket"
+        },
+        {
+          "pid": "JCKFWC5ZHSAEVYMS",
+          "title": "Full Sleeve Solid Men Denim Jacket"
+        },
+        {
+          "pid": "JCKFWC5ZKPYQ6ZGH",
+          "title": "Full Sleeve Solid Women Denim Jacket"
+        },
+        {
+          "pid": "JCKFWC5ZQ8QVSETD",
+          "title": "Full Sleeve Solid Women Denim Jacket"
+        },
+        {
+          "pid": "JCKFWC5ZAF3BRTPA",
+          "title": "Full Sleeve Solid Men Denim Jacket"
+        }
+      ],
+      "improved_context": [
+        {
+          "pid": "JCKFVJ54N4NZGPTP",
+          "title": "Full Sleeve Washed Men Denim Riding Jacket",
+          "description": "Solid Styles Jet Black Denim jackets are a different breed of jackets. Fits like dream. Perfect for wearing out on a weekend ride.  These jackets are built to last years. They age like old wine.",
+          "evidence": {
+            "category": "Winter Wear",
+            "brand": "Solid Styl",
+            "selling_price": "1,709.00",
+            "discount": "65%",
+            "average_rating": "3.3",
+            "fabric": "Denim",
+            "audience": "Men",
+            "style": "Riding Jacket",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "JCKFKKFZ7QB2KUQV",
+          "title": "Full Sleeve Washed Men Denim Jacket",
+          "description": "Light Blue solid denim jacket, has a spread collar, four pockets, a full button placket, long sleeves. Pair it with denim pants and leather boots to complete your rugged look.",
+          "evidence": {
+            "category": "Winter Wear",
+            "brand": "Solid Styl",
+            "selling_price": "1,443.00",
+            "discount": "63%",
+            "average_rating": "3.8",
+            "fabric": "Denim",
+            "audience": "Men",
+            "style": "Denim Jacket",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "JCKFZZN6AWQZ8FC2",
+          "title": "Full Sleeve Solid Men Denim Jacket",
+          "description": "",
+          "evidence": {
+            "category": "Winter Wear",
+            "selling_price": "1,249.00",
+            "discount": "53%",
+            "fabric": "Denim",
+            "audience": "Men",
+            "style": "Denim Jacket",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "JCKFZJWZBZCCTYXM",
+          "title": "Full Sleeve Washed Men Denim Jacket",
+          "description": "",
+          "evidence": {
+            "category": "Winter Wear",
+            "brand": "saltla",
+            "selling_price": "1,200.00",
+            "discount": "50%",
+            "average_rating": "2.9",
+            "fabric": "Denim",
+            "audience": "Men",
+            "style": "Denim Jacket",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "JCKFVDPW4WNPBGS2",
+          "title": "Full Sleeve Solid Men Denim Jacket",
+          "description": "Denim Cotton Blend, Slim Fit, Double Pockets",
+          "evidence": {
+            "category": "Winter Wear",
+            "brand": "VOXA",
+            "selling_price": "1,199.00",
+            "discount": "53%",
+            "average_rating": "3.7",
+            "fabric": "Denim",
+            "audience": "Men",
+            "style": "Denim Jacket",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "JCKFWC5YZKFWXGEB",
+          "title": "Full Sleeve Solid Men Denim Jacket",
+          "description": "Denim Cotton Blend, Slim Fit, Double Pockets",
+          "evidence": {
+            "category": "Winter Wear",
+            "brand": "VOXA",
+            "selling_price": "1,199.00",
+            "discount": "53%",
+            "average_rating": "4",
+            "fabric": "Denim",
+            "audience": "Men",
+            "style": "Denim Jacket",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "JCKFYY97BC7KWPM4",
+          "title": "Full Sleeve Solid Men Denim Jacket",
+          "description": "Denim Cotton Blend, Slim Fit, Double Pockets",
+          "evidence": {
+            "category": "Winter Wear",
+            "brand": "VOXA",
+            "selling_price": "1,199.00",
+            "discount": "53%",
+            "average_rating": "3.7",
+            "fabric": "Denim",
+            "audience": "Men",
+            "style": "Denim Jacket",
+            "availability": "In stock"
+          }
+        }
+      ],
+      "baseline": {
+        "status": "completed",
+        "text": "- Best Product: JCKFURYWGYKVKFH3 Full Sleeve Solid Men Denim Jacket  \n- Why: This jacket is a classic solid denim style, offering a versatile look that pairs well with almost any outfit. It features a full‑sleeve cut for a timeless silhouette, and solid color provides maximum styling flexibility. The price point is competitive compared to other options, making it a solid value choice.  \n- Alternative: JCKFZZN6AWQZ8FC2 Full Sleeve Solid Men Denim Jacket (similar style and price)."
+      },
+      "improved": {
+        "status": "ok",
+        "pid": "JCKFWC5YZKFWXGEB",
+        "title": "Full Sleeve Solid Men Denim Jacket",
+        "facts": [
+          [
+            "Average rating",
+            "4"
+          ],
+          [
+            "Fabric",
+            "Denim"
+          ],
+          [
+            "Style",
+            "Denim Jacket"
+          ]
+        ]
+      }
+    },
+    {
+      "query": "women full sleeve sweatshirt cotton",
+      "retrieved": [
+        {
+          "pid": "SWSFVZRFS7GHGKSF",
+          "title": "Full Sleeve Solid Women Sweatshirt"
+        },
+        {
+          "pid": "SWSFXMFPDVRHYYPH",
+          "title": "Full Sleeve Striped Women Sweatshirt"
+        },
+        {
+          "pid": "SWSFXMFPPZGDQGMW",
+          "title": "Full Sleeve Striped Women Sweatshirt"
+        },
+        {
+          "pid": "SWSFXMFP2RUM86QD",
+          "title": "Full Sleeve Printed Women Sweatshirt"
+        },
+        {
+          "pid": "SWSFXMFPNZQGZZNE",
+          "title": "Full Sleeve Printed Women Sweatshirt"
+        },
+        {
+          "pid": "SWSFVZRFCWPPZVGT",
+          "title": "Full Sleeve Solid Men Sweatshirt"
+        },
+        {
+          "pid": "SWSFFVKBAZGKCQCX",
+          "title": "Full Sleeve Graphic Print Women Sweatshirt"
+        },
+        {
+          "pid": "SWSFVZRFDEQAKUH2",
+          "title": "Full Sleeve Solid Men Sweatshirt"
+        },
+        {
+          "pid": "SWSFVZRFNFMYYRCK",
+          "title": "Full Sleeve Solid Men Sweatshirt"
+        },
+        {
+          "pid": "SWSFVZRFTM4P9XGF",
+          "title": "Full Sleeve Solid Men Sweatshirt"
+        },
+        {
+          "pid": "SWSFVZRFVZ2SZ3HZ",
+          "title": "Full Sleeve Solid Men Sweatshirt"
+        },
+        {
+          "pid": "SWSFZVTTQCB4SJ7F",
+          "title": "Full Sleeve Solid Women Sweatshirt"
+        },
+        {
+          "pid": "SWSFXYRYTHZWSZPE",
+          "title": "Full Sleeve Graphic Print Women Sweatshirt"
+        },
+        {
+          "pid": "SWSF9W5YHFAAHNJZ",
+          "title": "Full Sleeve Striped Women Sweatshirt"
+        },
+        {
+          "pid": "SWSFWTND3EPMFCQD",
+          "title": "Full Sleeve Solid Women Sweatshirt"
+        },
+        {
+          "pid": "SWSFMTNHEM5SNHVZ",
+          "title": "Full Sleeve Solid Women Sweatshirt"
+        },
+        {
+          "pid": "SWSFXZWGMGVDUCXA",
+          "title": "Full Sleeve Printed Women Sweatshirt"
+        },
+        {
+          "pid": "SWSFMJF98EY2FXBH",
+          "title": "Full Sleeve Solid Women Sweatshirt"
+        },
+        {
+          "pid": "SWSFV4E6HJSPQGVM",
+          "title": "Full Sleeve Printed Women Sweatshirt"
+        },
+        {
+          "pid": "SWSFUNF6V4ASAUTP",
+          "title": "Full Sleeve Printed Women Sweatshirt"
+        }
+      ],
+      "improved_context": [],
+      "baseline": {
+        "status": "completed",
+        "text": "There are no good products that fit the request based on the retrieved results."
+      },
+      "improved": {
+        "status": "no_match",
+        "pid": "",
+        "title": "",
+        "facts": []
+      }
+    },
+    {
+      "query": "men slim jeans blue",
+      "retrieved": [
+        {
+          "pid": "JEAEVJGUSXRNSHRY",
+          "title": "Slim Men Dark Blue Jeans"
+        },
+        {
+          "pid": "JEAFSKYHRVZSABPR",
+          "title": "Slim Men Blue Jeans"
+        },
+        {
+          "pid": "JEAFSKYHTE76YWH7",
+          "title": "Slim Men Blue Jeans"
+        },
+        {
+          "pid": "JEAEHGRJSGGYEYYX",
+          "title": "Slim Men Light Blue Jeans"
+        },
+        {
+          "pid": "JEAFWZXTFGMP9GCN",
+          "title": "Slim Men Blue Jeans"
+        },
+        {
+          "pid": "JEAFJM2P2FQQJF3C",
+          "title": "Slim Men Dark Blue Jeans"
+        },
+        {
+          "pid": "JEAEJYZ8KAGSABDQ",
+          "title": "Slim Men Dark Blue Jeans"
+        },
+        {
+          "pid": "JEAF2QF6HNZHDXVX",
+          "title": "Slim Men Dark Blue Jeans"
+        },
+        {
+          "pid": "JEAFRAQWW9FYHVVE",
+          "title": "Slim Men Blue Jeans"
+        },
+        {
+          "pid": "JEAFSKYHDYZK5SHZ",
+          "title": "Slim Men Blue Jeans"
+        },
+        {
+          "pid": "JEAFRAQGMM8AZA7R",
+          "title": "Slim Men Blue Jeans"
+        },
+        {
+          "pid": "JEAFM634A4SG4GC7",
+          "title": "Slim Men Blue Jeans"
+        },
+        {
+          "pid": "JEAFRAQXEKGUPNUN",
+          "title": "Slim Men Blue Jeans"
+        },
+        {
+          "pid": "JEAFRARZAGZTZSWC",
+          "title": "Slim Men Blue Jeans"
+        },
+        {
+          "pid": "JEAFRAQYJAGJSJUY",
+          "title": "Slim Men Blue Jeans"
+        },
+        {
+          "pid": "JEAFUZXRSH4HW3YY",
+          "title": "Super Skinny Men Blue Jeans"
+        },
+        {
+          "pid": "JEAFUZXSPGQFPYFC",
+          "title": "Super Skinny Men Blue Jeans"
+        },
+        {
+          "pid": "JEAFUZXSQQHZXRYM",
+          "title": "Super Skinny Men Blue Jeans"
+        },
+        {
+          "pid": "JEAFUZXSSBU9FVYZ",
+          "title": "Super Skinny Men Blue Jeans"
+        },
+        {
+          "pid": "JEAFUZXT6BYHVNF2",
+          "title": "Tapered Fit Men Blue Jeans"
+        }
+      ],
+      "improved_context": [
+        {
+          "pid": "JEAEVJGUSXRNSHRY",
+          "title": "Slim Men Dark Blue Jeans",
+          "description": "Absolute High quality Smart-fit Dark Blue Jeans For Men's",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "Absolu",
+            "selling_price": "489.00",
+            "discount": "53%",
+            "average_rating": "3.8",
+            "fabric": "Cotton Blend",
+            "audience": "Men",
+            "style": "Solid",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "JEAFSKYHRVZSABPR",
+          "title": "Slim Men Blue Jeans",
+          "description": "ECKO Unltd Denim Cotton Stretch Super Slim INDIGO Jeans",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "ECKO Unl",
+            "selling_price": "974.00",
+            "discount": "35%",
+            "average_rating": "3.3",
+            "fabric": "Cotton Blend",
+            "audience": "Men",
+            "style": "Solid",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "JEAFSKYHTE76YWH7",
+          "title": "Slim Men Blue Jeans",
+          "description": "ECKO Unltd Denim Cotton Stretch Super Slim INDIGO Jeans",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "ECKO Unl",
+            "selling_price": "974.00",
+            "discount": "35%",
+            "average_rating": "2.5",
+            "fabric": "Cotton Blend",
+            "audience": "Men",
+            "style": "Solid",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "JEAEHGRJSGGYEYYX",
+          "title": "Slim Men Light Blue Jeans",
+          "description": "Uber Urban Poly Cotton Lycra Slim Fit PIUS Jeans For Mens",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "Uber Urb",
+            "selling_price": "699.00",
+            "discount": "30%",
+            "average_rating": "3",
+            "fabric": "Cotton Lycra Blend",
+            "audience": "Men",
+            "style": "Solid",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "JEAFWZXTFGMP9GCN",
+          "title": "Slim Men Blue Jeans",
+          "description": "Blue medium wash 5-pocket mid-rise jeans, clean look with light fade, has a zip fly closure, waistband with belt loops. Amp up your style game with a pair of slim jeans from Levis.  When you have a low-key dinner date, wear yours with easy ",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "Lev",
+            "selling_price": "2,305.00",
+            "discount": "50%",
+            "average_rating": "2.2",
+            "fabric": "Pure Cotton",
+            "audience": "Men",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "JEAFJM2P2FQQJF3C",
+          "title": "Slim Men Dark Blue Jeans",
+          "description": "Absolute High Quality Slim Fit Clean Look Navy Blue Jeans",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "Absolu",
+            "selling_price": "589.00",
+            "discount": "61%",
+            "average_rating": "4.1",
+            "fabric": "Cotton Lycra Blend",
+            "audience": "Men",
+            "style": "Solid",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "JEAEJYZ8KAGSABDQ",
+          "title": "Slim Men Dark Blue Jeans",
+          "description": "Look cool and feel relaxed in these jeans for men, made from stretch denim, these slim-fit jeans make a trendy and comfortable inclusion into your casual wear range. You can team these jeans with a t-shirt or casual shirt of your choice to ",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "Inspi",
+            "selling_price": "854.00",
+            "discount": "57%",
+            "average_rating": "3",
+            "fabric": "Cotton Blend",
+            "audience": "Men",
+            "style": "Solid",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "JEAF2QF6HNZHDXVX",
+          "title": "Slim Men Dark Blue Jeans",
+          "description": "Absolute Jeans Men's Slim Fit Jeans",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "Absolu",
+            "selling_price": "856.00",
+            "discount": "57%",
+            "average_rating": "3.8",
+            "fabric": "Denim",
+            "audience": "Men",
+            "style": "Ombre",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "JEAFSKYHDYZK5SHZ",
+          "title": "Slim Men Blue Jeans",
+          "description": "ECKO Unltd Denim Cotton Stretch Super Slim INDIGO Jeans",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "ECKO Unl",
+            "selling_price": "899.00",
+            "discount": "40%",
+            "average_rating": "2.5",
+            "fabric": "Cotton Blend",
+            "audience": "Men",
+            "style": "Solid",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "JEAFUZXRSH4HW3YY",
+          "title": "Super Skinny Men Blue Jeans",
+          "description": "ECKO Unltd Super Slim Cotton Stretch BLUE Jeans",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "ECKO Unl",
+            "selling_price": "1,529.00",
+            "discount": "15%",
+            "average_rating": "2.5",
+            "fabric": "Cotton Blend",
+            "audience": "Men",
+            "style": "Solid",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "JEAFUZXSQQHZXRYM",
+          "title": "Super Skinny Men Blue Jeans",
+          "description": "ECKO Unltd Super Slim Cotton Stretch BLUE Jeans",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "ECKO Unl",
+            "selling_price": "1,444.00",
+            "discount": "15%",
+            "average_rating": "2.5",
+            "fabric": "Cotton Blend",
+            "audience": "Men",
+            "style": "Solid",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "JEAFUZXSSBU9FVYZ",
+          "title": "Super Skinny Men Blue Jeans",
+          "description": "ECKO Unltd Super Slim Cotton Stretch BLUE Jeans",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "ECKO Unl",
+            "selling_price": "1,444.00",
+            "discount": "15%",
+            "average_rating": "2.5",
+            "fabric": "Cotton Blend",
+            "audience": "Men",
+            "style": "Solid",
+            "availability": "In stock"
+          }
+        },
+        {
+          "pid": "JEAFUZXT6BYHVNF2",
+          "title": "Tapered Fit Men Blue Jeans",
+          "description": "ECKO Unltd SLIM TAPERED Cotton Stretch BLUE Jeans",
+          "evidence": {
+            "category": "Bottomwear",
+            "brand": "ECKO Unl",
+            "selling_price": "1,639.00",
+            "discount": "18%",
+            "average_rating": "2.5",
+            "fabric": "Cotton Blend",
+            "audience": "Men",
+            "style": "Solid",
+            "availability": "In stock"
+          }
+        }
+      ],
+      "baseline": {
+        "status": "completed",
+        "text": "- Best Product: JEAFSKYHRVZSABPR Slim Men Blue Jeans  \n- Why: This item is a classic slim‑fit blue jean, matching the user’s request for “men slim jeans blue.” It offers a standard blue color, a slim cut for a modern look, and is listed among the top‑rated options in the retrieved set.  \n- Alternative: JEAFSKYHTE76YWH7 Slim Men Blue Jeans (identical style, just a different SKU)."
+      },
+      "improved": {
+        "status": "ok",
+        "pid": "JEAFSKYHRVZSABPR",
+        "title": "Slim Men Blue Jeans",
+        "facts": [
+          [
+            "Category",
+            "Bottomwear"
+          ],
+          [
+            "Ideal for",
+            "Men"
+          ],
+          [
+            "Style",
+            "Solid"
+          ]
+        ]
+      }
+    },
+    {
+      "query": "men running shoes under 1000",
+      "retrieved": [],
+      "improved_context": [],
+      "baseline": {
+        "status": "completed",
+        "text": "\"There are no good products that fit the request based on the retrieved results.\""
+      },
+      "improved": {
+        "status": "no_match",
+        "pid": "",
+        "title": "",
+        "facts": []
+      }
+    }
+  ],
+  "transport_retries": [
+    {
+      "query": "women full sleeve sweatshirt cotton",
+      "variant": "baseline",
+      "first_attempt": {
+        "status": "unavailable",
+        "error": "APIConnectionError"
+      },
+      "resolution": "Only the failed baseline response was replaced with the completed retry."
+    }
+  ]
+}

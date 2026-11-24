@@ -1,0 +1,64 @@
+{
+  "queries": [
+    {
+      "query": "women cotton kurta",
+      "bm25": 20,
+      "eligible": 0
+    },
+    {
+      "query": "men running shoes",
+      "bm25": 20,
+      "eligible": 14
+    },
+    {
+      "query": "men slim fit jeans",
+      "bm25": 20,
+      "eligible": 20
+    },
+    {
+      "query": "zzzxxyynoresults",
+      "bm25": 0,
+      "eligible": 0
+    },
+    {
+      "query": "women full sleeve jacket",
+      "bm25": 20,
+      "eligible": 0
+    },
+    {
+      "query": "men cotton sports shorts",
+      "bm25": 20,
+      "eligible": 19
+    },
+    {
+      "query": "black track pants",
+      "bm25": 20,
+      "eligible": 14
+    },
+    {
+      "query": "hooded sweatshirt",
+      "bm25": 20,
+      "eligible": 10
+    },
+    {
+      "query": "denim jacket",
+      "bm25": 20,
+      "eligible": 7
+    },
+    {
+      "query": "women full sleeve sweatshirt cotton",
+      "bm25": 20,
+      "eligible": 0
+    },
+    {
+      "query": "men slim jeans blue",
+      "bm25": 20,
+      "eligible": 13
+    },
+    {
+      "query": "men running shoes under 1000",
+      "bm25": 0,
+      "eligible": 0
+    }
+  ]
+}
