@@ -9,7 +9,7 @@ The project develops an information retrieval system over a fashion-product data
 - **Part 3 — Ranking and Filtering**
 - **Part 4 — RAG, Web Interface and Web Analytics**
 
-The project is implemented in Python. The final stage will integrate the search engine into a Flask-based web application.
+The project is implemented in Python. Its Flask application connects the search engine to a catalogue interface, a RAG summary and a web analytics dashboard.
 
 ---
 
@@ -65,33 +65,39 @@ irwa-search-engine/
 │   │   ├── test_queries_summary.csv
 │   │   └── validation_ranked_metrics.csv
 │   │
-│   └── part_3/
-│       ├── corpus.py                      # dataset loading + shared index statistics
-│       ├── ranking_methods.py             # TF-IDF, BM25, our score
-│       ├── intent_score.py                # intent-aware score (second original score)
-│       ├── embedded_ranking.py            # word2vec and Doc2Vec
-│       ├── pipeline.py                    # SearchEngine class + command-line search
-│       ├── queries.py
-│       ├── query_term_stats.py
-│       ├── run_rankings.py
-│       ├── export_judgment_pool.py
-│       ├── evaluate_methods.py
-│       ├── evaluate_validation_methods.py
-│       ├── compare_rankings.py
-│       ├── ablation.py
-│       ├── explain_scores.py
-│       ├── inspect_embeddings.py
-│       ├── rank_statistics.py             # significance test and rank-biased overlap
-│       ├── make_figures.py
-│       ├── test_part_3.py
-│       ├── test_intent_score.py
-│       ├── test_extras.py
-│       ├── judgments_pool.csv             # pooled relevance judgments
+│   ├── part_3/
+│   │   ├── corpus.py                      # dataset loading + shared index statistics
+│   │   ├── ranking_methods.py             # TF-IDF, BM25, our score
+│   │   ├── intent_score.py                # intent-aware score (second original score)
+│   │   ├── embedded_ranking.py            # word2vec and Doc2Vec
+│   │   ├── pipeline.py                    # SearchEngine class + command-line search
+│   │   ├── queries.py
+│   │   ├── query_term_stats.py
+│   │   ├── run_rankings.py
+│   │   ├── export_judgment_pool.py
+│   │   ├── evaluate_methods.py
+│   │   ├── evaluate_validation_methods.py
+│   │   ├── compare_rankings.py
+│   │   ├── ablation.py
+│   │   ├── explain_scores.py
+│   │   ├── inspect_embeddings.py
+│   │   ├── rank_statistics.py             # significance test and rank-biased overlap
+│   │   ├── make_figures.py
+│   │   ├── test_part_3.py
+│   │   ├── test_intent_score.py
+│   │   ├── test_extras.py
+│   │   ├── judgments_pool.csv             # pooled relevance judgments
+│   │   ├── README.md
+│   │   ├── results/                       # CSV outputs of the experiments
+│   │   ├── figures/                       # report figures
+│   │   └── models/                        # trained embeddings (not committed)
+│   │
+│   └── part_4/
 │       ├── README.md
-│       ├── results/                       # CSV outputs of the experiments
-│       ├── figures/                       # report figures
-│       └── models/                        # trained embeddings (not committed)
-│ 
+│       ├── compare_rag.py
+│       ├── rag_evaluation.md
+│       └── test_*.py
+│
 ├── static/
 ├── templates/
 ├── .gitignore
@@ -112,7 +118,7 @@ The `project_progress/` directory contains the implementation and report materia
 | Part 1 | Text Processing and Exploratory Data Analysis | Complete |
 | Part 2 | Indexing and Evaluation | Complete |
 | Part 3 | Ranking and Filtering | Complete |
-| Part 4 | RAG, Web Interface and Web Analytics | Not completed yet |
+| Part 4 | RAG, Web Interface and Web Analytics | Complete |
 
 ---
 
@@ -561,31 +567,41 @@ The trained models are saved in `project_progress/part_3/models/`, which is not 
 
 ---
 
-# Part 4 — Web Application and RAG
+# Part 4 — Web Application, RAG and Analytics
 
-The final stage of the project will integrate the search engine into a Flask-based application.
+The Flask app uses the shared Part 3 BM25 index to rank the course fashion catalogue. Search results show product descriptions, prices, discounts and ratings, with links to detail pages and original listings.
 
-Part 4 will include:
+## Run the app
 
-- search-engine integration
-- user interface
-- Retrieval-Augmented Generation (RAG)
-- interaction with an LLM
-- web analytics
-- query and user-interaction tracking
+From the repository root, activate the environment from [Installation](#installation). Part 4 needs `data/fashion_products_dataset.json`. The validation labels are used in the earlier ranking experiments.
 
-The final web application will use the existing:
-
-```text
-web_app.py
-myapp/
-templates/
-static/
+```bash
+python -m nltk.downloader stopwords
+python web_app.py
 ```
 
-structure.
+Open [Search](http://127.0.0.1:8088/) and try `men slim fit jeans`. Select a product, then return to the results. Open **Analytics** from the navigation to see the search, product rank and dwell measurement. Analytics are held in memory for the current Flask process.
 
-Detailed execution instructions for the final application will be added once Part 4 is completed.
+To enable live recommendations, set `GROQ_API_KEY` in your environment or in the repository's ignored `.env` file:
+
+```dotenv
+GROQ_API_KEY=your_groq_key
+```
+
+The default model is `openai/gpt-oss-20b`, served through Groq. Search, product details and analytics also work when the key is absent. Configure the key before starting Flask, or restart the server after adding it.
+
+## Verify and reproduce Part 4
+
+```bash
+python -m pytest project_progress/part_4 -q
+python -m project_progress.part_4.compare_rag --inspect --output data/rag-context.json
+python -m project_progress.part_4.compare_rag
+```
+
+The first command runs offline tests. The second uses the course catalogue to inspect RAG inputs without calling Groq. The last requires a key and saves both live responses for each query in `data/rag-comparison.json`.
+
+- [Part 4 guide](project_progress/part_4/README.md) includes the data model, analytics definitions and a walkthrough.
+- [RAG evaluation examples](project_progress/part_4/rag_evaluation.md) summarize one recorded live comparison.
 
 ---
 
@@ -594,10 +610,10 @@ Detailed execution instructions for the final application will be added once Par
 Run every test from the repository root:
 
 ```bash
-python -m pytest project_progress/part_1/test_preprocessing.py project_progress/part_2/test_part_2.py project_progress/part_3 -v
+python -m pytest project_progress/part_1 project_progress/part_2 project_progress/part_3 project_progress/part_4 -q
 ```
 
-The suite contains 82 tests: 26 preprocessing tests (Part 1), 7 Part 2 tests and 49 Part 3 tests (17 ranking, 8 intent score, 24 evaluation and extra analyses). The tests use small toy collections, so they do not need the dataset.
+The tests use small examples and simulated API responses. Set up the Python dependencies and NLTK stopwords first. The test suite runs without the course dataset or a Groq key.
 
 ---
 
@@ -620,8 +636,9 @@ Add `data/fashion_products_dataset.json` and `data/validation_labels.csv`, then:
 | Part 1 | Run `project_progress/part_1/part_1.ipynb` from top to bottom |
 | Part 2 | Run the Part 2 commands listed above |
 | Part 3 | Run the ten Part 3 commands listed above |
+| Part 4 | Follow the Part 4 web app and RAG comparison commands above |
 
-All results are deterministic: ties are broken by product ID, the embedding models use a fixed seed with a single worker, significance tests enumerate every sign assignment, and existing judgment labels are never dropped or overwritten automatically. Tested with Python 3.13.3.
+Part 3 resolves ranking ties by product ID, uses fixed seeds and a single worker for embedding training, and enumerates every sign assignment for significance tests. Existing judgment labels are preserved. Live RAG replies can vary with the provider and model. Part 4 was verified on Windows with Python 3.12.6.
 
 ---
 

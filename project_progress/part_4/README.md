@@ -1,6 +1,6 @@
-# Part 4 · Retrieval-augmented generation
+# Part 4 · Web application, RAG and analytics
 
-Run the commands from the repository root with the project's Python environment and the course catalogue at `data/fashion_products_dataset.json`.
+Run the commands from the repository root after following the [project installation steps](../../README.md#installation). Use the project Python environment and the course catalogue at `data/fashion_products_dataset.json`.
 
 ## Run the web app
 
@@ -30,7 +30,7 @@ python -m project_progress.part_4.compare_rag
 
 The inspect command records which real candidates reach the improved generator without using a key or making API calls. The live command writes `data/rag-comparison.json` with the shared BM25 results, the eligible input for the improved prompt, and both outputs. Both variants use the same Groq model and generation limits. The comparison preserves the starter's prompt and title-only input while replacing its retired default model for both variants.
 
-Review each case for product suitability, whether the cited evidence supports the query, and whether the system abstains when it should. The starter's free-text answer requires human review. An unavailable or invalid response is an integration outcome and should be recorded separately from recommendation quality. Save the live results before writing the report.
+Review each case for product suitability, whether the cited evidence supports the query, and whether the system abstains when it should. The starter's free-text answer requires human review. An unavailable or invalid response is an integration outcome and should be recorded separately from recommendation quality. See the [recorded live comparison](rag_evaluation.md) for examples and interpretation limits.
 
 ## Web analytics
 
@@ -50,7 +50,14 @@ The dashboard filters by a search's UTC submission time for search metrics and b
 
 Events and search snapshots live in one Flask process and reset when it restarts. Run the local single-worker app when demonstrating analytics. Device, browser and operating-system labels are inferred from the user agent. The optional setting `IRWA_GEOIP_CSV` accepts a local CSV with `network,country,city` columns and IP networks in CIDR notation. It uses the connection address to look up country and city without saving the address or making an external request. With the setting absent, no location chart is shown.
 
-### Test analytics
+### Verify the shopping and analytics flow
+
+1. With a fresh server, open **Analytics** and confirm there are zero searches.
+2. Submit `men slim fit jeans`. Open the second ranked result title, wait a few seconds and return with **Back to results** or the browser Back button.
+3. Submit `zzzxxyynoresults` and open **Analytics**. Expect two searches, 50% click-through, 50% no-result rate, one click at rank 2 and one measured return.
+4. Switch the period to **Last 24 hours**. The recent totals should agree and the chart should group searches by hour.
+
+The automated route tests use small fake search results and a simulated summary. Run them alongside the RAG and analytics unit tests:
 
 ```text
 python -m pytest project_progress/part_4 -q
