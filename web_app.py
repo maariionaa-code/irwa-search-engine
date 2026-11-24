@@ -2,10 +2,10 @@
 
 import os
 from datetime import timedelta
-from secrets import token_hex
+from secrets import compare_digest, token_hex
 from time import perf_counter
 
-from flask import Flask, abort, g, render_template, request, session
+from flask import Flask, Response, abort, g, redirect, render_template, request, session
 
 from myapp.analytics.analytics_data import PERIODS, AnalyticsData, GeoLookup
 from myapp.generation.rag import RAGGenerator
@@ -23,7 +23,20 @@ app.config.update(
     PERMANENT_SESSION_LIFETIME=timedelta(days=30),
     SESSION_REFRESH_EACH_REQUEST=False,
     SESSION_COOKIE_SAMESITE="Lax",
+    SESSION_COOKIE_SECURE=os.getenv("IRWA_SECURE_COOKIES") == "1",
+    IRWA_DASHBOARD_PASSWORD=os.getenv("IRWA_DASHBOARD_PASSWORD"),
 )
+
+
+@app.before_request
+def protect_analytics():
+    password = app.config["IRWA_DASHBOARD_PASSWORD"]
+    if password and request.endpoint in {"dashboard", "stats", "plot_number_of_views"}:
+        auth = request.authorization
+        if not auth or auth.type != "basic" or auth.username != "analytics" or not compare_digest(
+            (auth.password or "").encode(), password.encode(),
+        ):
+            return Response("Authentication required.", 401, {"WWW-Authenticate": 'Basic realm="IRWA analytics"'})
 
 
 @app.before_request
@@ -112,6 +125,21 @@ def analytics_return():
     if not analytics_data.log_return(click_id, search_id, session.get("visitor_id", "")):
         abort(404)
     return "", 204
+
+
+@app.get("/original_listing")
+def original_listing():
+    pid = request.args.get("pid", "")
+    product = search_engine.get_product(pid)
+    if product is None or not product["url"]:
+        abort(404)
+    if request.method == "GET":
+        issued = analytics_data.find_search(request.args.get("search_id", ""), session.get("visitor_id", ""))
+        analytics_data.log_outbound(issued, pid)
+    response = redirect(product["url"])
+    response.headers["Cache-Control"] = "no-store"
+    response.headers["Referrer-Policy"] = "no-referrer"
+    return response
 
 
 @app.get("/stats")

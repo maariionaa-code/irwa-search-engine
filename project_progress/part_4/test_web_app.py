@@ -140,3 +140,23 @@ def test_invalid_requests_have_no_search_or_click_events(site):
     metrics = site.analytics_data.dashboard("all")
     assert (metrics["requests"], metrics["request_errors"]) == (2, 2)
     assert (metrics["searches"], metrics["clicks"]) == (0, 0)
+
+
+def test_retailer_click_is_separate_from_detail_clicks(site):
+    client = site.app.test_client()
+    result = client.get("/search?q=men+slim+fit+jeans")
+    link = Page(result).links_to("/original_listing")[0]
+    response = client.get(link)
+    assert response.status_code == 302 and response.location == "https://example.com/P1"
+    stranger = site.app.test_client()
+    assert stranger.get(link).status_code == 302
+    metrics = site.analytics_data.dashboard("all")
+    assert (metrics["outbound_clicks"], metrics["clicks"], metrics["clicked_searches"]) == (1, 0, 0)
+
+
+def test_password_protects_all_analytics_views(site):
+    site.app.config["IRWA_DASHBOARD_PASSWORD"] = "test-password"
+    client = site.app.test_client()
+    for path in ("/dashboard", "/stats", "/plot_number_of_views"):
+        assert client.get(path).status_code == 401
+        assert client.get(path, auth=("analytics", "test-password")).status_code == 200

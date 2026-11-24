@@ -34,6 +34,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("queries", nargs="*", help="Queries to run instead of the default cases.")
     parser.add_argument("--inspect", action="store_true", help="Record inputs without any API calls.")
+    parser.add_argument("--relax-url-audience", action="store_true", help="Allow agreeing title and Ideal For to override a conflicting URL slug.")
     parser.add_argument("--pause", type=float, default=25, help="Seconds between live query pairs.")
     parser.add_argument("--output", type=Path, default=Path("data/rag-comparison.json"))
     args = parser.parse_args()
@@ -41,6 +42,8 @@ def main() -> None:
         parser.error("--pause must be non-negative")
 
     generator = RAGGenerator() if not args.inspect else None
+    if generator is not None:
+        generator.allow_slug_override = args.relax_url_audience
     if generator is not None and not generator.configured:
         parser.error("Set GROQ_API_KEY in the environment or .env to compare live outputs.")
 
@@ -53,11 +56,13 @@ def main() -> None:
             time.sleep(args.pause)
         print(f"Checking {query!r}", file=sys.stderr)
         products = engine.search(query)
-        context = prepare_context(query, products)
+        exclusions = []
+        context = prepare_context(query, products, allow_slug_override=args.relax_url_audience, diagnostics=exclusions)
         case = {
             "query": query,
             "retrieved": [{"pid": item["pid"], "title": item["title"]} for item in products],
             "improved_context": context,
+            "excluded_candidates": exclusions,
         }
         if generator is not None:
             try:
@@ -73,6 +78,7 @@ def main() -> None:
         "mode": "live" if generator is not None else "inspect",
         "model": generator.model if generator is not None else None,
         "ranker": "bm25",
+        "audience_policy": "title_and_attribute_override" if args.relax_url_audience else "strict",
         "cases": cases,
     }
     args.output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
