@@ -1,7 +1,12 @@
 {% extends "base.html" %}
 {% block page_title %}{{ page_title }}{% endblock %}
+{% block header %}<script defer src="{{ url_for('static', filename='scripts/analytics.js') }}"></script>{% endblock %}
 {% block content %}
-{% if query %}
+{% if click_id %}
+    <p data-analytics-click="{{ click_id }}" data-search-id="{{ search_id }}">
+        <a href="{{ url_for('search', q=query, search_id=search_id, returned_click=click_id) }}">Back to results</a>
+    </p>
+{% elif query %}
     <p><a href="{{ url_for('search', q=query) }}">Back to results</a></p>
 {% else %}
     <p><a href="{{ url_for('index') }}">Back to search</a></p>

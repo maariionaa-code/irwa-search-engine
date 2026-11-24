@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block page_title %}{{ page_title }}{% endblock %}
+{% block header %}<script defer src="{{ url_for('static', filename='scripts/analytics.js') }}"></script>{% endblock %}
 {% block content %}
 <h1>Results for “{{ query }}”</h1>
 <form class="input-group mb-4" action="{{ url_for('search') }}" method="get">
@@ -10,11 +11,13 @@
     </div>
 </form>
 
-<section class="alert alert-light border" aria-labelledby="summary-heading">
+<section class="alert alert-light border" aria-labelledby="summary-heading"
+         data-analytics-results data-search-id="{{ search_id }}"
+         data-return-url="{{ url_for('analytics_return') }}">
     <h2 class="h5" id="summary-heading">AI shopping summary</h2>
     {% if summary.status == "ok" %}
         <p>Suggested match:
-            <a href="{{ url_for('doc_details', pid=summary.pid, q=query) }}">
+            <a href="{{ url_for('doc_details', pid=summary.pid, q=query, search_id=search_id, source='summary') }}">
                 {{ summary.title }}
             </a>
         </p>
@@ -36,7 +39,7 @@
         {% for product in results %}
         <li class="border-bottom pb-3 mb-3">
             <h2 class="h5">
-                <a href="{{ url_for('doc_details', pid=product.pid, q=query) }}">
+                <a href="{{ url_for('doc_details', pid=product.pid, q=query, search_id=search_id) }}">
                     {{ product.title }}
                 </a>
             </h2>

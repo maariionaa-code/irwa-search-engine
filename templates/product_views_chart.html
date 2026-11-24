@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% from "analytics_charts.html" import bars %}
+{% block page_title %}Product views{% endblock %}
+{% block content %}
+<h1 class="h4">Product views</h1>
+{{ bars(rows, "No product views yet.") }}
+{% endblock %}
