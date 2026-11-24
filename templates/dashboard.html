@@ -1,31 +1,109 @@
 {% extends "base.html" %}
+{% from "analytics_charts.html" import bars %}
 {% block page_title %}{{ page_title }}{% endblock %}
-
-{% block header %}
-    <!-- Next tag loads Charts.js https://www.chartjs.org/docs/latest/ -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.2/chart.min.js"
-            integrity="sha512-tMabqarPtykgDtdtSqCL3uLVM0gS1ZkUAVhRFu1vSEFgvB73niFQWJuvviDyBGBH22Lcau4rHB5p2K2T0Xvr6Q=="
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-{% endblock %}
-
 {% block content %}
+<div class="d-flex flex-wrap align-items-center justify-content-between mb-3">
+    <h1 class="mb-2">Search analytics</h1>
+    <form method="get" action="{{ url_for('dashboard') }}" class="form-inline mb-2">
+        <label for="period" class="mr-2">Period</label>
+        <select id="period" name="period" class="custom-select mr-2">
+            {% for value, label in [('all', 'Since startup'), ('24h', 'Last 24 hours'), ('7d', 'Last 7 days')] %}
+                <option value="{{ value }}"{% if value == period %} selected{% endif %}>{{ label }}</option>
+            {% endfor %}
+        </select>
+        <button class="btn btn-outline-secondary" type="submit">Apply</button>
+    </form>
+</div>
 
-    <!--
-    Examples of what to show in Dashboard:
+{% set ctr = '{:.1%}'.format(metrics.clicked_searches / metrics.searches) if metrics.searches else '—' %}
+{% set no_results = '{:.1%}'.format(metrics.empty_searches / metrics.searches) if metrics.searches else '—' %}
+{% set dwell = '{:.1f} s'.format(metrics.median_dwell) if metrics.median_dwell is not none else '—' %}
+<div class="row mb-2">
+    {% for label, value, note in [
+        ('Searches', metrics.searches, 'Queries submitted'),
+        ('Click-through', ctr, metrics.clicked_searches ~ ' searches with a detail click'),
+        ('No-result rate', no_results, metrics.empty_searches ~ ' searches with zero hits'),
+        ('Median dwell', dwell, metrics.dwell_count ~ ' measured returns to results'),
+    ] %}
+        <div class="col-6 col-md-3 mb-3">
+            <section class="card h-100">
+                <div class="card-body p-3">
+                    <h2 class="h6 text-muted mb-1">{{ label }}</h2>
+                    <strong class="h4 d-block">{{ value }}</strong>
+                    <span class="small">{{ note }}</span>
+                </div>
+            </section>
+        </div>
+    {% endfor %}
+</div>
 
-    - Ranking of visited documents (from results page)
-    - Visitor's preferred browsers
-    - Visitor's city (from IP)
-    - preferred queries ranking
-    - preferred terms
-    - etc.
+<div class="row mb-4">
+    <section class="col-md-6 mb-4 mb-md-0" aria-labelledby="search-timeline">
+        <h2 id="search-timeline" class="h5">Searches over time</h2>
+        <p class="small text-muted">Queries by {% if period == '24h' %}hour{% else %}day{% endif %} in UTC.</p>
+        {% if metrics.timeline | length > 12 %}
+            <div class="overflow-auto pr-2" style="max-height: 21rem">
+                {{ bars(metrics.timeline, "No searches in this period.") }}
+            </div>
+        {% else %}
+            {{ bars(metrics.timeline, "No searches in this period.") }}
+        {% endif %}
+    </section>
+    <section class="col-md-6" aria-labelledby="rank-clicks">
+        <h2 id="rank-clicks" class="h5">Detail clicks by result rank</h2>
+        <p class="small text-muted">
+            {{ metrics.clicks }} attributed clicks, including {{ metrics.summary_clicks }} from the AI summary.
+            The rank of a summary click comes from its product's position in the search results.
+        </p>
+        {{ bars(metrics.ranks, "Open a product from the results to record a click.") }}
+    </section>
+</div>
 
-    -->
+<section class="mb-4" aria-labelledby="top-queries">
+    <h2 id="top-queries" class="h5">Top queries</h2>
+    {% if metrics.queries %}
+        <p class="small text-muted">Up to 10 queries, grouped by spelling after lowercasing and trimming whitespace.
+            Mean processed terms per search: {{ '%.1f' | format(metrics.avg_terms) }}.</p>
+        <div class="table-responsive">
+            <table class="table table-sm">
+                <thead><tr><th scope="col">Query</th><th scope="col">Searches</th><th scope="col">No results</th></tr></thead>
+                <tbody>
+                {% for query, count, empty in metrics.queries %}
+                    <tr><th scope="row" class="font-weight-normal text-break">{{ query }}</th><td>{{ count }}</td><td>{{ empty }}</td></tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <p class="text-muted">No searches in this period.</p>
+    {% endif %}
+</section>
 
-    <h3>Dashboard</h3>
-    <iframe src="/plot_number_of_views" width="600" height="400" style="border: none;"></iframe>
+<section class="mb-4" aria-labelledby="visits">
+    <h2 id="visits" class="h5">Visits and search missions</h2>
+    <dl class="row mb-2">
+        <dt class="col-7">Anonymous browsers</dt><dd class="col-5">{{ metrics.visitors }}</dd>
+        <dt class="col-7">Visits</dt><dd class="col-5">{{ metrics.sessions }}</dd>
+        <dt class="col-7">Search missions</dt><dd class="col-5">{{ metrics.missions }}</dd>
+        <dt class="col-7">Missions spanning visits</dt><dd class="col-5">{{ metrics.multi_session_missions }}</dd>
+    </dl>
+    <p class="small text-muted">A visit starts after 30 minutes of inactivity.
+        Missions group similar queries from one browser within seven days.</p>
+    <div class="row">
+        <div class="col-md-4 mb-3"><h3 class="h6">Devices</h3>{{ bars(metrics.devices) }}</div>
+        <div class="col-md-4 mb-3"><h3 class="h6">Browsers</h3>{{ bars(metrics.browsers) }}</div>
+        <div class="col-md-4 mb-3"><h3 class="h6">Operating systems</h3>{{ bars(metrics.systems) }}</div>
+    </div>
+    {% if metrics.geo_enabled %}
+        <h3 class="h6">Locations with matched network data</h3>
+        {{ bars(metrics.locations) }}
+    {% endif %}
+</section>
 
-
+<section class="mb-4" aria-labelledby="http-activity">
+    <h2 id="http-activity" class="h5">Shopping requests</h2>
+    <p class="mb-1">{{ metrics.requests }} requests · {{ metrics.request_errors }} HTTP errors
+        {% if metrics.median_request_ms is not none %} · {{ '%.1f' | format(metrics.median_request_ms) }} ms median server time{% endif %}</p>
+    <p class="small text-muted mb-0">Counts requests to the home, search, and product pages. Data is held until the server restarts.</p>
+</section>
 {% endblock %}
-
-

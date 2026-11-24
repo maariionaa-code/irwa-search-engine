@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {# Using Bootstrap v4.6.1 #}
     <link rel="stylesheet" href="{{ url_for('static',filename='styles/bootstrap.min.css') }}">
@@ -16,6 +17,10 @@
         </a>
         <span> IRWA Search Engine </span>
     </div>
+    <nav class="d-flex justify-content-center mt-2" aria-label="Main navigation">
+        <a class="mr-3" href="{{ url_for('index') }}"{% if request.endpoint == 'index' %} aria-current="page"{% endif %}>Search</a>
+        <a href="{{ url_for('dashboard') }}"{% if request.endpoint == 'dashboard' %} aria-current="page"{% endif %}>Analytics</a>
+    </nav>
     <hr>
     <div class='content'>
         {% block content %}

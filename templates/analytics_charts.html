@@ -1,0 +1,21 @@
+{% macro bars(rows, empty="No data in this period.") %}
+    {% if rows %}
+        {% set max_count = rows | map(attribute=1) | max %}
+        <ul class="list-unstyled mb-0">
+        {% for label, count in rows %}
+            <li class="row align-items-center mb-2">
+                <span class="col-5 text-break small">{{ label }}</span>
+                <span class="col-5">
+                    <span class="progress" style="height: .55rem" aria-hidden="true">
+                        <span class="progress-bar bg-info"
+                              style="width: {{ (100 * count / max_count) if max_count else 0 }}%"></span>
+                    </span>
+                </span>
+                <span class="col-2 text-right small font-weight-bold">{{ count }}</span>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p class="text-muted mb-0">{{ empty }}</p>
+    {% endif %}
+{% endmacro %}
