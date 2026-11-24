@@ -19,6 +19,14 @@ QUERIES = (
     "men running shoes",
     "men slim fit jeans",
     "zzzxxyynoresults",
+    "women full sleeve jacket",
+    "men cotton sports shorts",
+    "black track pants",
+    "hooded sweatshirt",
+    "denim jacket",
+    "women full sleeve sweatshirt cotton",
+    "men slim jeans blue",
+    "men running shoes under 1000",
 )
 
 

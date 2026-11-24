@@ -28,9 +28,9 @@ python -m project_progress.part_4.compare_rag --inspect --output data/rag-contex
 python -m project_progress.part_4.compare_rag
 ```
 
-The inspect command records which real candidates reach the improved generator without using a key or making API calls. The live command writes `data/rag-comparison.json` with the shared BM25 results, the eligible input for the improved prompt, and both outputs. Both variants use the same Groq model and generation limits. The comparison preserves the starter's prompt and title-only input while replacing its retired default model for both variants.
+The inspect command records which real candidates reach the improved generator without using a key or making API calls. The live command runs twelve queries and writes `data/rag-comparison.json` with the shared BM25 results, the eligible input for the improved prompt, and both outputs. Both variants use the same Groq model and generation limits. The comparison preserves the starter's prompt and title-only input while replacing its retired default model for both variants.
 
-Review each case for product suitability, whether the cited evidence supports the query, and whether the system abstains when it should. The starter's free-text answer requires human review. An unavailable or invalid response is an integration outcome and should be recorded separately from recommendation quality. See the [recorded live comparison](rag_evaluation.md) for examples and interpretation limits.
+The tagged project includes the [frozen Groq responses](rag-comparison.json), the [decision rules](rag_evaluation_protocol.md), the [per-query judgements](rag_evaluation.md), and the [data behind Figure 4](figure4_counts.json). These files can be inspected without a Groq key. An unavailable or invalid response is an integration outcome and should be recorded separately from recommendation quality.
 
 ## Web analytics
 
