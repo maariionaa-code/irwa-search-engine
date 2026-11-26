@@ -32,6 +32,8 @@ The inspect command records candidates and exclusion reasons without API calls. 
 
 The tagged project includes the [frozen Groq responses](rag-comparison.json), the [decision rules](rag_evaluation_protocol.md), the [per-query judgements](rag_evaluation.md), and the [data behind Figure 4](figure4_counts.json). These files can be inspected without a Groq key. An unavailable or invalid response is an integration outcome and should be recorded separately from recommendation quality.
 
+The [live follow-up on the revised app](rag_evaluation_current.md) includes the new per-query judgments and links to the raw replies.
+
 ## Search and recommendation refinements
 
 The web app defaults to **Our Score**, the Part 3 ranker that combines BM25 with catalogue signals. Set `IRWA_WEB_RANKER=bm25` to use the lexical reference. The results page identifies the active ranker. A query such as `men running shoes under 1000` runs AND retrieval on the product terms, ranks the matches, then filters on selling price before taking the first 20. It supports `under`, `below`, `over`, `above`, `at most` and `at least` in catalogue price units. Strict inequalities exclude the boundary. A missing price cannot satisfy a price constraint.
