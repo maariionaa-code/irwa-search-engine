@@ -1,4 +1,4 @@
-"""Record the starter and improved RAG outputs over identical BM25 results."""
+"""Record the starter and improved RAG outputs over identical search results."""
 
 import argparse
 import json
@@ -34,6 +34,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("queries", nargs="*", help="Queries to run instead of the default cases.")
     parser.add_argument("--inspect", action="store_true", help="Record inputs without any API calls.")
+    parser.add_argument("--ranker", choices=("our_score", "bm25"), default="our_score")
     parser.add_argument("--relax-url-audience", action="store_true", help="Allow agreeing title and Ideal For to override a conflicting URL slug.")
     parser.add_argument("--pause", type=float, default=25, help="Seconds between live query pairs.")
     parser.add_argument("--output", type=Path, default=Path("data/rag-comparison.json"))
@@ -55,7 +56,7 @@ def main() -> None:
         if index and generator is not None:
             time.sleep(args.pause)
         print(f"Checking {query!r}", file=sys.stderr)
-        products = engine.search(query)
+        products = engine.search(query, method=args.ranker)
         exclusions = []
         context = prepare_context(query, products, allow_slug_override=args.relax_url_audience, diagnostics=exclusions)
         case = {
@@ -71,13 +72,15 @@ def main() -> None:
                 }
             except GroqError as error:
                 case["baseline"] = {"status": "unavailable", "error": type(error).__name__}
-            case["improved"] = asdict(generator.generate_response(query, products))
+            raw_replies = []
+            case["improved"] = asdict(generator.generate_response(query, products, record_raw=raw_replies.append))
+            case["improved_raw_reply"] = raw_replies[0] if raw_replies else None
         cases.append(case)
 
     report = {
         "mode": "live" if generator is not None else "inspect",
         "model": generator.model if generator is not None else None,
-        "ranker": "bm25",
+        "ranker": args.ranker,
         "audience_policy": "title_and_attribute_override" if args.relax_url_audience else "strict",
         "cases": cases,
     }

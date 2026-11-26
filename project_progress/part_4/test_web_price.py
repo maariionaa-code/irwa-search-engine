@@ -15,7 +15,8 @@ def test_price_constraints_leave_the_text_query_intact(query, expected):
     assert split_price_constraints(query) == expected
 
 
-def test_price_filter_runs_before_top_k(monkeypatch):
+@pytest.mark.parametrize("method", ["bm25", "our_score"])
+def test_price_filter_runs_before_top_k(monkeypatch, method):
     search = SearchEngine.__new__(SearchEngine)
     search.ranker = Mock()
     search.ranker.products = pd.DataFrame(
@@ -24,8 +25,8 @@ def test_price_filter_runs_before_top_k(monkeypatch):
     )
     search.ranker.rank.return_value = [(pid, 10 - index) for index, pid in enumerate(search.ranker.products.index)]
     monkeypatch.setattr("myapp.search.search_engine._display_product", lambda row: {"pid": row.name})
-    assert search.search("men running shoes under 1000 over 500", top_k=1) == [{"pid": "eligible"}]
-    search.ranker.rank.assert_called_once_with("men running shoes", "bm25", top_k=None)
+    assert search.search("men running shoes under 1000 over 500", top_k=1, method=method) == [{"pid": "eligible"}]
+    search.ranker.rank.assert_called_once_with("men running shoes", method, top_k=None)
 
 
 def test_inclusive_price_bounds():

@@ -48,7 +48,7 @@ def site(monkeypatch):
     by_id = {product["pid"]: product for product in products}
     search_engine = Mock()
     search_engine.get_product.side_effect = by_id.get
-    search_engine.search.side_effect = lambda query: products if query == "men slim fit jeans" else []
+    search_engine.search.side_effect = lambda query, *, method: products if query == "men slim fit jeans" else []
     rag = Mock()
     rag.generate_response.side_effect = lambda query, hits: RAGSummary(
         status="unavailable" if hits else "no_match"
@@ -57,6 +57,7 @@ def site(monkeypatch):
     monkeypatch.setattr("myapp.search.search_engine.SearchEngine", lambda: search_engine)
     monkeypatch.setattr("myapp.generation.rag.RAGGenerator", lambda: rag)
     monkeypatch.delenv("IRWA_GEOIP_CSV", raising=False)
+    monkeypatch.delenv("IRWA_WEB_RANKER", raising=False)
     app_file = Path(__file__).resolve().parents[2] / "web_app.py"
     spec = importlib.util.spec_from_file_location("irwa_web_app_under_test", app_file)
     module = importlib.util.module_from_spec(spec)

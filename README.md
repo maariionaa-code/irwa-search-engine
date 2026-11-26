@@ -569,7 +569,7 @@ The trained models are saved in `project_progress/part_3/models/`, which is not 
 
 # Part 4 — Web Application, RAG and Analytics
 
-The Flask app uses the shared Part 3 BM25 index to rank the course fashion catalogue. Search results show product descriptions, prices, discounts and ratings, with links to detail pages and original listings.
+The Flask app uses the shared Part 3 index and defaults to Our Score. Set `IRWA_WEB_RANKER=bm25` to use BM25. Search results show product descriptions, prices, discounts and ratings, with links to detail pages and original listings.
 
 ## Run the app
 
@@ -637,6 +637,8 @@ Add `data/fashion_products_dataset.json` and `data/validation_labels.csv`, then:
 | Part 2 | Run the Part 2 commands listed above |
 | Part 3 | Run the ten Part 3 commands listed above |
 | Part 4 | Follow the Part 4 web app and RAG comparison commands above |
+
+To reproduce a submitted revision, check out the tag named in that revision's PDF before running the commands (for example, `git checkout --detach IRWA-2026-part-4` for the original Part 4 submission).
 
 Part 3 resolves ranking ties by product ID, uses fixed seeds and a single worker for embedding training, and enumerates every sign assignment for significance tests. Existing judgment labels are preserved. Live RAG replies can vary with the provider and model. Part 4 was verified on Windows with Python 3.12.6.
 

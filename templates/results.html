@@ -37,7 +37,7 @@
 </section>
 
 {% if results %}
-    <p>Showing {{ results|length }} ranked products. <span class="badge badge-light">BM25</span></p>
+    <p>Showing {{ results|length }} ranked products. <span class="badge badge-light">{{ ranker_label }}</span></p>
     <p class="small text-muted">Prices and availability come from the course catalogue.</p>
     <ol class="pl-4">
         {% for product in results %}
