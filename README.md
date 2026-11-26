@@ -638,7 +638,7 @@ Add `data/fashion_products_dataset.json` and `data/validation_labels.csv`, then:
 | Part 3 | Run the ten Part 3 commands listed above |
 | Part 4 | Follow the Part 4 web app and RAG comparison commands above |
 
-To reproduce a submitted revision, check out the tag named in that revision's PDF before running the commands (for example, `git checkout --detach IRWA-2026-part-4` for the original Part 4 submission).
+To reproduce the current Part 4 submission, run `git checkout --detach IRWA-2026-part-4` before running the commands. The [original Part 4 revision](https://github.com/maariionaa-code/irwa-search-engine/tree/dda17e7efad3f2b3a4ee8140705f5ede84b73051) contains the earlier BM25 evaluation.
 
 Part 3 resolves ranking ties by product ID, uses fixed seeds and a single worker for embedding training, and enumerates every sign assignment for significance tests. Existing judgment labels are preserved. Live RAG replies can vary with the provider and model. Part 4 was verified on Windows with Python 3.12.6.
 
