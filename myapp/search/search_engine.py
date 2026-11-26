@@ -100,13 +100,13 @@ class SearchEngine:
     def __init__(self):
         self.ranker = RankingEngine(use_embeddings=False)
 
-    def search(self, query: str, top_k: int = 20) -> list[dict]:
-        """Return up to top_k products in descending BM25 order."""
+    def search(self, query: str, top_k: int = 20, *, method: str = "bm25") -> list[dict]:
+        """Return up to top_k products in the selected lexical ranking order."""
         check_top_k(top_k)
         text, constraints = split_price_constraints(query)
         if not text:
             return []
-        ranked_products = self.ranker.rank(text, "bm25", top_k=None if constraints else top_k)
+        ranked_products = self.ranker.rank(text, method, top_k=None if constraints else top_k)
         if constraints:
             prices = self.ranker.products["price"]
             ranked_products = [

@@ -1,5 +1,26 @@
 # Checks after the frozen RAG run
 
+## Latest Part 4 revision
+
+The web app now uses Our Score by default. The original BM25 results, including the ranking shown in the report's screenshots, belong to the earlier revision. Set `IRWA_WEB_RANKER=bm25` to restore that ranking method. Both ranking modes apply numeric price constraints before truncating the result list.
+
+In a check against the 28,080-product course catalogue, Our Score moved a men's running shoe to rank 1 for `men running shoes`, where BM25 put a women's cricket shoe first. With Our Score, `men running shoes under 1000` returned 20 items with selling prices from 341 to 999. The catalogue-backed Flask check exercised the home, results, detail, return and dashboard routes. Two searches (one zero-hit) produced one rank-1 detail click and one completed dwell. The 40 Part 4 tests and all 122 repository tests passed.
+
+The recommendation generator now excludes known contradictions for hood, fit, fabric and colour. For example, `Hooded: No` excludes a record for an explicitly hooded query. Unknown catalogue values still leave a decision to the model. A regression test exercises exclusion before the provider call, and the positive control checks that `Hooded: Yes` appears in the summary. RAG comparisons now save raw improved replies alongside validated results for inspection. The archived twelve-query results describe the earlier revision.
+
+The browser Back handler keeps a pending dwell event through network and temporary HTTP failures. It clears the event after an accepted return or an expired or unknown click. The measurement uses the server's first accepted return, so a delayed retry can lengthen measured dwell.
+
+To capture the revised input pools without provider calls, run:
+
+```bash
+python -m project_progress.part_4.compare_rag --inspect --output data/rag-context-current.json
+python -m project_progress.part_4.compare_rag --inspect --relax-url-audience --output data/rag-context-relaxed.json
+```
+
+Use a configured Groq key and omit `--inspect` to collect fresh paired replies. Apply the [judgment protocol](rag_evaluation_protocol.md) to the new replies before reporting scores. The two runs can reuse the same ranking and queries while testing different audience policies.
+
+## Earlier catalogue checks
+
 These checks use the course catalogue and no provider calls. The [archived live run](rag-comparison.json), its judgements and Figure 4 retain their original values. The command below reproduces the [new check output](refinement_checks.json).
 
 ```bash

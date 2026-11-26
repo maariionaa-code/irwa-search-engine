@@ -27,14 +27,18 @@ window.addEventListener("pageshow", () => {
             const key = "irwa:dwell:" + searchId;
             const clickId = sessionStorage.getItem(key);
             if (clickId) {
-                sessionStorage.removeItem(key);
                 fetch(results.dataset.returnUrl, {
                     method: "POST",
                     headers: {"Content-Type": "application/json"},
                     body: JSON.stringify({click_id: clickId, search_id: searchId}),
                     keepalive: true,
+                }).then((response) => {
+                    // A 404 means the click expired or no longer exists.
+                    if ((response.ok || response.status === 404) && sessionStorage.getItem(key) === clickId) {
+                        sessionStorage.removeItem(key);
+                    }
                 }).catch(() => {
-                    // Dwell tracking is optional for the shopper's navigation.
+                    // Keep the pending return for the next visit to these results.
                 });
             }
         } catch {

@@ -3,13 +3,14 @@
 import json
 import logging
 import os
+from collections.abc import Callable
 from dataclasses import dataclass
 from urllib.parse import unquote, urlsplit
 
 from dotenv import load_dotenv
 from groq import Groq, GroqError
 
-from project_progress.part_1.preprocessing import preprocess_text
+from project_progress.part_1.preprocessing import preprocess_text, tokenize_text
 from project_progress.part_3.intent_score import product_genders
 
 
@@ -74,6 +75,40 @@ AUDIENCE_LABELS = {
     "men": "Men", "woman": "Women", "boy": "Boys", "girl": "Girls",
 }
 
+ATTRIBUTE_VALUES = {
+    "fit": {"slim", "skinny", "regular", "relaxed", "loose", "straight"},
+    "fabric": {"cotton", "denim", "wool", "leather", "polyester", "linen", "silk"},
+    "color": {"black", "blue", "white", "red", "green", "pink", "brown", "yellow", "grey", "gray"},
+}
+
+
+def _attribute_matches(query: str, available: dict) -> tuple[list[str], list[str]]:
+    """Compare supported explicit requirements with structured catalogue values."""
+    tokens = tokenize_text(query)
+    words = set(tokens)
+    supported, contradicted = [], []
+    hood = available.get("hooded", "").strip().casefold()
+    if words & {"hood", "hooded", "hoodless"} and hood in {"yes", "no"}:
+        without_hood = "hoodless" in words or any(
+            qualifier in {"no", "without", "non"} and attribute in {"hood", "hooded"}
+            for qualifier, attribute in zip(tokens, tokens[1:])
+        )
+        expected = "no" if without_hood else "yes"
+        (supported if hood == expected else contradicted).append("hooded")
+    for field, vocabulary in ATTRIBUTE_VALUES.items():
+        requested = words & vocabulary
+        if not requested or not available.get(field):
+            continue
+        recorded = set(tokenize_text(available[field]))
+        if field == "color":
+            requested = {"grey" if word == "gray" else word for word in requested}
+            recorded = {"grey" if word == "gray" else word for word in recorded}
+        if requested <= recorded:
+            supported.append(field)
+        elif requested.isdisjoint(recorded) and recorded & vocabulary:
+            contradicted.append(field)
+    return supported, contradicted
+
 
 @dataclass(frozen=True)
 class RAGSummary:
@@ -114,7 +149,7 @@ def prepare_context(
     query: str, products: list[dict], *, allow_slug_override: bool = False,
     diagnostics: list[dict] | None = None,
 ) -> list[dict]:
-    """Build evidence for in-stock products consistent with explicit audiences."""
+    """Build evidence for products without known stock or query conflicts."""
     wanted = _audience(query)
 
     context = []
@@ -155,11 +190,21 @@ def prepare_context(
             "generic_name": details.get("generic name"),
             "color": details.get("color") or details.get("colour"),
         }
+        fields = {field: value for field, value in fields.items() if value}
+        _, contradictions = _attribute_matches(query, fields)
+        if contradictions:
+            if diagnostics is not None:
+                diagnostics.append({
+                    "pid": product["pid"],
+                    "exclusion_reason": "attribute_conflict",
+                    "fields": contradictions,
+                })
+            continue
         item = {
             "pid": product["pid"],
             "title": product["title"],
             "description": (product.get("description") or "")[:240],
-            "evidence": {field: value for field, value in fields.items() if value},
+            "evidence": fields,
         }
         if conflict:
             item["audience_warning"] = True
@@ -169,16 +214,7 @@ def prepare_context(
 
 def _prioritise_evidence(query: str, names: list[str], available: dict) -> list[str]:
     """Move requested catalogue fields ahead of less relevant model choices."""
-    words = set(preprocess_text(query))
-    requested = {
-        "hooded": {"hood"},
-        "fit": {"fit", "slim", "skinny"},
-        "sleeve": {"sleev", "sleeveless"},
-        "fabric": {"cotton", "denim", "wool", "leather", "polyester", "linen", "silk"},
-        "color": {"black", "blue", "white", "red", "green", "pink", "brown", "yellow", "grey", "gray"},
-        "generic_name": {"shoe", "jacket", "jean", "short", "sweatshirt", "kurta", "pant"},
-    }
-    priority = [field for field, cues in requested.items() if field in available and words & cues]
+    priority, _ = _attribute_matches(query, available)
     return list(dict.fromkeys([*priority, *names]))[:3]
 
 
@@ -221,7 +257,9 @@ class RAGGenerator:
         prompt = BASELINE_PROMPT.format(retrieved_results=retrieved, user_query=query)
         return self._complete([{"role": "user", "content": prompt}])
 
-    def generate_response(self, query: str, products: list[dict]) -> RAGSummary:
+    def generate_response(
+        self, query: str, products: list[dict], *, record_raw: Callable[[str], None] | None = None,
+    ) -> RAGSummary:
         """Validate the model's selection and display exact catalogue evidence."""
         context = prepare_context(query, products, allow_slug_override=self.allow_slug_override)
         if not context:
@@ -241,11 +279,13 @@ class RAGGenerator:
             LOGGER.warning("Groq summary request failed (%s)", type(error).__name__)
             return RAGSummary(status="unavailable")
 
+        if record_raw is not None:
+            record_raw(raw)
         try:
             selection = json.loads(raw)
         except json.JSONDecodeError:
             return RAGSummary(status="invalid_response")
-        if not isinstance(selection, dict):
+        if not isinstance(selection, dict) or selection.keys() != {"pid", "evidence"}:
             return RAGSummary(status="invalid_response")
 
         pid = selection.get("pid")

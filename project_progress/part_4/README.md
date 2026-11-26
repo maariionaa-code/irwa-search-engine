@@ -18,7 +18,7 @@ Open `http://127.0.0.1:8088/` and run a product search.
 2. **Candidate checks and abstention.** The summary excludes out-of-stock items and compares explicit audience signals in the title, catalogue metadata, and retailer URL. If the search specifies an audience, the available signals must support it. An empty candidate list skips the API call. This conservative heuristic can remove valid items when the catalogue has missing fields or misleading URLs.
 3. **Validated selection.** The model selects a product ID and up to three supporting field names. The app verifies the selection and displays the exact catalogue values. This limits unsupported claims about prices and attributes. It does not guarantee that the selected product is the best semantic match or that the catalogue itself is accurate.
 
-These checks apply to the AI summary. The results list preserves the original BM25 order.
+The summary also excludes explicit contradictions for recognised hood, fit, fabric and colour values. Missing or unrecognised attributes remain a model judgment. Only matching values from these fields are automatically promoted as supporting evidence. The results list keeps the selected ranker's order.
 
 ## Reproduce the comparison
 
@@ -28,15 +28,17 @@ python -m project_progress.part_4.compare_rag --inspect --output data/rag-contex
 python -m project_progress.part_4.compare_rag
 ```
 
-The inspect command records which real candidates reach the improved generator without using a key or making API calls. The live command runs twelve queries and writes `data/rag-comparison.json` with the shared BM25 results, the eligible input for the improved prompt, and both outputs. Both variants use the same Groq model and generation limits. The comparison preserves the starter's prompt and title-only input while replacing its retired default model for both variants.
+The inspect command records candidates and exclusion reasons without API calls. The live command runs twelve queries and writes `data/rag-comparison.json` with the shared results, eligible input, processed outputs and raw improved provider replies. Both variants use the same Groq model and generation limits. The comparison preserves the starter's prompt and title-only input while replacing its retired default model for both variants. Pass `--ranker bm25` to use the archived run's ranking method with the current pipeline.
 
 The tagged project includes the [frozen Groq responses](rag-comparison.json), the [decision rules](rag_evaluation_protocol.md), the [per-query judgements](rag_evaluation.md), and the [data behind Figure 4](figure4_counts.json). These files can be inspected without a Groq key. An unavailable or invalid response is an integration outcome and should be recorded separately from recommendation quality.
 
+The [live follow-up on the revised app](rag_evaluation_current.md) includes the new per-query judgments and links to the raw replies.
+
 ## Search and recommendation refinements
 
-The web app defaults to BM25. A query such as `men running shoes under 1000` runs AND retrieval on the product terms, orders the matches with BM25, then filters on selling price before taking the first 20. It supports `under`, `below`, `over`, `above`, `at most` and `at least` in catalogue price units. Strict inequalities exclude the boundary. A missing price cannot satisfy a price constraint.
+The web app defaults to **Our Score**, the Part 3 ranker that combines BM25 with catalogue signals. Set `IRWA_WEB_RANKER=bm25` to use the lexical reference. The results page identifies the active ranker. A query such as `men running shoes under 1000` runs AND retrieval on the product terms, ranks the matches, then filters on selling price before taking the first 20. It supports `under`, `below`, `over`, `above`, `at most` and `at least` in catalogue price units. Strict inequalities exclude the boundary. A missing price cannot satisfy a price constraint.
 
-The default recommendation continues to reject conflicting audience signals. Set `IRWA_RAG_RELAX_URL=1` to try the experimental variant. It allows a conflicting retailer slug when the product title and Ideal For agree, and displays an audience warning for such a recommendation. Strong conflicts between the explicit catalogue fields remain excluded. The summary prioritises verified facts tied to requested attributes such as hood, fit, sleeve, fabric, colour and product type.
+The default recommendation continues to reject conflicting audience signals. Set `IRWA_RAG_RELAX_URL=1` to try the experimental variant. It allows a conflicting retailer slug when the product title and Ideal For agree, and displays an audience warning for such a recommendation. Strong conflicts between the explicit catalogue fields remain excluded.
 
 ```bash
 python -m project_progress.part_4.inspect_refinements

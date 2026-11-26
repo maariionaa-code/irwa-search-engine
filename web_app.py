@@ -16,6 +16,10 @@ from myapp.search.search_engine import SearchEngine
 app = Flask(__name__)
 search_engine = SearchEngine()
 rag_generator = RAGGenerator()
+ranker_labels = {"our_score": "Our Score", "bm25": "BM25"}
+web_ranker = os.getenv("IRWA_WEB_RANKER", "our_score")
+if web_ranker not in ranker_labels:
+    raise ValueError("IRWA_WEB_RANKER must be our_score or bm25")
 geo_path = os.getenv("IRWA_GEOIP_CSV")
 analytics_data = AnalyticsData(geo=GeoLookup(geo_path) if geo_path else None)
 app.config.update(
@@ -83,7 +87,7 @@ def search():
             analytics_data.log_return(returned_click, issued.id, session["visitor_id"])
         results = [search_engine.get_product(pid) for pid in issued.pids]
     else:
-        results = search_engine.search(query)
+        results = search_engine.search(query, method=web_ranker)
         summary = rag_generator.generate_response(query, results)
         issued = analytics_data.log_search(
             g.analytics_session, query, tuple(product["pid"] for product in results), summary,
@@ -91,6 +95,7 @@ def search():
     return render_template(
         "results.html", page_title="Search results", query=query,
         results=results, summary=issued.summary, search_id=issued.id,
+        ranker_label=ranker_labels[web_ranker],
     )
 
 

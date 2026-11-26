@@ -89,6 +89,19 @@ def test_no_eligible_product_skips_the_api(generator_and_completion):
     complete.assert_not_called()
 
 
+@pytest.mark.parametrize(("query", "details"), [
+    ("hooded sweatshirt", {"Hooded": "No"}),
+    ("black sweatshirt", {"Color": "White"}),
+    ("wool sweatshirt", {"Fabric": "Cotton Blend"}),
+    ("slim sweatshirt", {"Fit": "Regular"}),
+])
+def test_explicit_catalogue_contradiction_skips_api(generator_and_completion, query, details):
+    generator, complete = generator_and_completion
+    product = {**WOMENS_KURTA, "title": "Sweatshirt", "product_details": details}
+    assert generator.generate_response(query, [product]).status == "no_match"
+    complete.assert_not_called()
+
+
 @pytest.mark.parametrize(
     ("payload", "status"),
     [
@@ -96,13 +109,17 @@ def test_no_eligible_product_skips_the_api(generator_and_completion):
         ('{"pid":"INVENTED","evidence":["fabric"]}', "invalid_response"),
         ('{"pid":"KURTA1","evidence":["free_shipping"]}', "invalid_response"),
         ('{"pid":"KURTA1","evidence":["fabric","fabric"]}', "invalid_response"),
+        ('{"pid":"KURTA1","evidence":["fabric"],"extra":1}', "invalid_response"),
         ("invalid JSON", "invalid_response"),
     ],
 )
 def test_handles_abstention_and_invalid_replies(generator_and_completion, payload, status):
     generator, complete = generator_and_completion
     complete.return_value.choices = [Mock(message=Mock(content=payload))]
-    assert generator.generate_response("women cotton kurta", [WOMENS_KURTA]).status == status
+    raw_replies = []
+    result = generator.generate_response("women cotton kurta", [WOMENS_KURTA], record_raw=raw_replies.append)
+    assert result.status == status
+    assert raw_replies == [payload]
 
 
 def test_gracefully_handles_provider_failure(generator_and_completion):
